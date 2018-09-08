@@ -136,6 +136,10 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'touchbelgium'
 AWS_S3_REGION_NAME = 'eu-west-1'
 
-# The following command makes Dokku (or Heroku) work well. It sets up
-# WhiteNoise for static file serving etc.
+# The following option prevents CKEditor from generating a signed URL
+# with expire time when uploading a file (image) to S3
+AWS_QUERYSTRING_AUTH = False
+
+# The following command makes Dokku (although intended for Heroku)
+# work well. It sets up WhiteNoise for static file serving etc.
 django_heroku.settings(locals())
