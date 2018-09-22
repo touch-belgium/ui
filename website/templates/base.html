@@ -1,4 +1,5 @@
 {% load static %}
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html>
    <head>
@@ -8,15 +9,15 @@
       <meta name=viewport content="width=device-width, initial-scale=1">
 
       <!-- icons -->
-      <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
-      <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
-      <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
-      <link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
-      <link rel="mask-icon" href="{% static 'icons/safari-pinned-tab.svg' %}" color="#5bbad5">
+      <link rel="apple-touch-icon" sizes="180x180" href="{% static 'webpack_bundles/icons/apple-touch-icon.png' %}">
+      <link rel="icon" type="image/png" sizes="32x32" href="{% static 'webpack_bundles/icons/favicon-32x32.png' %}">
+      <link rel="icon" type="image/png" sizes="16x16" href="{% static 'webpack_bundles/icons/favicon-16x16.png' %}">
+      <link rel="manifest" href="{% static 'webpack_bundles/icons/manifest.json' %}">
+      <link rel="mask-icon" href="{% static 'webpack_bundles/icons/safari-pinned-tab.svg' %}" color="#5bbad5">
       <meta name="msapplication-TileColor" content="#2b5797">
       <meta name="theme-color" content="#ffffff">
 
-      <!-- <link rel="stylesheet" href="{% static 'w3.css' %}"> -->
+      {% render_bundle 'main' %}
    </head>
    <body>
       <p>Hello</p>
