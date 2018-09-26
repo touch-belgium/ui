@@ -9,7 +9,7 @@
         "build": "webpack --config webpack.prod.js",
         "heroku-postbuild": "npm run build"
     },
-    "engines" : {
+    "engines": {
         "node": ">=10.10.0",
         "npm": ">=6.4.1"
     },
