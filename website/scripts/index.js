@@ -1,4 +1,8 @@
 import css from 'Styles/main.scss';
+import Materialize from 'materialize-css/dist/js/materialize.min';
 
-//import css from 'Styles/main.css';
-const esp = 1;
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, {});
+});
