@@ -1,11 +1,13 @@
 @charset "UTF-8";
 
 // Color
-@import "~materialize-css/sass/components/color-variables";
+//@import "~materialize-css/sass/components/color-variables";
+@import "custom-color-variables";
 @import "~materialize-css/sass/components/color-classes";
 
 // Variables;
-@import "~materialize-css/sass/components/variables";
+//@import "~materialize-css/sass/components/variables";
+@import "custom-variables";
 
 // Reset
 @import "~materialize-css/sass/components/normalize";

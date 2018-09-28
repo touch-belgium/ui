@@ -1,1 +1,5 @@
 @import "custom-materialize";
+
+body {
+    color: map-get($materialize-red, "base");
+}
