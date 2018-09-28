@@ -3,12 +3,14 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WebappWebpackPlugin = require('webapp-webpack-plugin')
 
 const common = require('./webpack.common.js');
 
 //const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = merge(common, {
+  mode: "production",
   module: {
     rules: [{
       test: /\.(sa|sc|c)ss$/,
@@ -37,5 +39,11 @@ module.exports = merge(common, {
     new UglifyJSPlugin({
       parallel: 4
     }),
+    new WebappWebpackPlugin({
+      logo: path.resolve(__dirname, 'website/img/logo.png'),
+      cache: true,
+      prefix: 'icons/',
+      inject: false,
+    })
   ]
 });

@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BundleTracker = require('webpack-bundle-tracker')
-const WebappWebpackPlugin = require('webapp-webpack-plugin')
 
 module.exports = {
   entry: './website/scripts/index.js',
@@ -52,11 +51,5 @@ module.exports = {
     new CleanWebpackPlugin([path.resolve(__dirname, 'assets/webpack_bundles')],
                            {exclude: ['icons']}),
     new BundleTracker({filename: './webpack-stats.json'}),
-    new WebappWebpackPlugin({
-      logo: path.resolve(__dirname, 'website/img/logo.png'),
-      cache: true,
-      prefix: 'icons/',
-      inject: false,
-    })
   ]
 };

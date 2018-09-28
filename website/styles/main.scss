@@ -1,5 +1,22 @@
 @import "custom-materialize";
 
-body {
-    color: map-get($materialize-red, "base");
+div#splash-bg {
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+
+    video#bgvid {
+        width: 100%;
+    }
+
+    div.splash-content {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: white;
+    }
 }
