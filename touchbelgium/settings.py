@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'touch-belgium.be', '*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'touch-belgium.be']
 
 
 # Application definition
@@ -137,8 +137,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
 
-STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 CKEDITOR_UPLOAD_PATH = "media/"
