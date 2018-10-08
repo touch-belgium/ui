@@ -16,12 +16,26 @@
    </div>
 </div>
 
-{% for post in posts %}
-<div class="card">
-
+<div class="container">
+   <div class="row">
+      <div class="s12">
+         <h2 class="">Announcements</h2>
+      </div>
+   </div>
+   {% for post in posts %}
+   <div class="row">
+      <div class="s12">
+         <div class="card post">
+            <div class="card-content">
+               <span class="card-title">{{post.title}}</span>
+               <p><em>Published: {{post.created_at}}</em></p>
+               {{post.body}}
+            </div>
+         </div>
+      </div>
+   </div>
+   {% endfor %}
 </div>
-{{post.title}}
-{{post.body}}
-{% endfor %}
+
 
 {% endblock %}
