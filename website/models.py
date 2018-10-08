@@ -1,12 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     body = RichTextUploadingField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         out = self.title
@@ -19,7 +22,7 @@ class Post(models.Model):
 class Team(models.Model):
     name = models.CharField(max_length=50)
     website = models.URLField(blank=True)
-    logo = models.ImageField(blank=True, null=True, # TODO change to default placeholder image
+    logo = models.ImageField(default="placeholder.png",
                              upload_to="media/")
 
     def __str__(self):
@@ -28,7 +31,7 @@ class Team(models.Model):
 
 class Venue(models.Model):
     name = models.CharField(max_length=100)
-    address = models.CharField(max_length=100, blank=True, null=True)
+    address = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.name
@@ -39,10 +42,13 @@ class Match(models.Model):
                                   related_name="home_team")
     away_team = models.ForeignKey('Team', on_delete=models.PROTECT,
                                   related_name="away_team")
-    when = models.DateTimeField()
+    when = models.DateTimeField(help_text="Type the time in HH:MM format")
     venue = models.ForeignKey('Venue', on_delete=models.PROTECT,
                               blank=True, null=True)
     pitch = models.CharField(max_length=50, blank=True, null=True)
+
+    home_touchdowns = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0)])
+    away_touchdowns = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0)])
 
     def __str__(self):
         return self.when.strftime("%d %b %H:%M") + " | " + \
@@ -65,6 +71,9 @@ class BoardMember(models.Model):
 class Competition(models.Model):
     name = models.CharField(max_length=50)
     teams = models.ManyToManyField('Team')
+    win_value = models.IntegerField(default=3, validators=[MinValueValidator(0)])
+    defeat_value = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    tie_value = models.IntegerField(default=1, validators=[MinValueValidator(0)])
 
     def __str__(self):
         return self.name

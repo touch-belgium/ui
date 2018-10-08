@@ -6,7 +6,7 @@ clean_db:
 	python manage.py flush
 
 load_fixtures:
-	python manage.py loaddata users.json
-	python manage.py loaddata teams.json
-	python manage.py loaddata posts.json
-	python manage.py loaddata venues.json
+	python manage.py loaddata touchbelgium-users.json
+	python manage.py loaddata touchbelgium-teams.json
+	python manage.py loaddata touchbelgium-posts.json
+	python manage.py loaddata touchbelgium-venues.json

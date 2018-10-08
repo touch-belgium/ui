@@ -12,10 +12,16 @@
 
    </video>
    <div class="splash-content">
-      <h1>Touch Belgium</h1>
+      <h2>Catchy and powerful motto goes here.</h2>
    </div>
 </div>
 
-Hello world
+{% for post in posts %}
+<div class="card">
+
+</div>
+{{post.title}}
+{{post.body}}
+{% endfor %}
 
 {% endblock %}
