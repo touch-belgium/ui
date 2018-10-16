@@ -7,22 +7,34 @@ module.exports = merge(common, {
   mode: "development",
   devtool: "source-map",
   module: {
-    rules: [{
-      test: /\.(sa|sc|c)ss$/,
-      use: [
-        {
-          loader: "style-loader"/* needed if CSS is going to be embedded in the bundle.js */
-        },
-        {
-          loader: "css-loader", // translates CSS into CommonJS
-        },
-        {
-          loader: "sass-loader", // compiles Sass to CSS
-          options: {/* also use "~" in prefix for node_modules stylesheets */
-            includePaths: [path.resolve(__dirname, "website/styles")],
-            implementation: require("dart-sass")
-          }
-        }]
-    }]
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: "style-loader"/* needed if CSS is going to be embedded in the bundle.js */
+          },
+          {
+            loader: "css-loader", // translates CSS into CommonJS
+          },
+          {
+            loader: "sass-loader", // compiles Sass to CSS
+            options: {/* also use "~" in prefix for node_modules stylesheets */
+              includePaths: [path.resolve(__dirname, "website/styles")],
+                      implementation: require("dart-sass")
+            }
+          }]
+      },
+      {
+        test: /\.(eot|otf|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+          /* Gunicorn, heroku, dokku etc can serve the font asset
+             correctly, the development server cannot without this
+             option. */
+          publicPath: "static/webpack_bundles/",
+        }
+      },
+    ]
   },
 });

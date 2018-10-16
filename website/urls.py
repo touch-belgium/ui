@@ -6,4 +6,5 @@ urlpatterns = [
     path('where', views.index, name='where'),
     path('competitions', views.index, name='competitions'),
     path('rules', views.index, name='rules'),
+    path('news', views.news, name='news'),
 ]

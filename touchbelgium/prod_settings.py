@@ -34,8 +34,6 @@ LOGGING = {
     }
 }
 
-DEBUG = False
-
 ALLOWED_HOSTS.append(os.environ.get('PROD_MACHINE'))
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)

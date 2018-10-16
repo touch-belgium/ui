@@ -1,40 +1,46 @@
 {% extends 'base.html' %}
 
+{% load render_bundle from webpack_loader %}
+
+{% block extra_bundle %}
+{% render_bundle 'landing' %}
+{% endblock %}
+
 {% block content %}
 
-<div id="splash-bg">
-   <video poster="" id="bgvid" playsinline autoplay muted loop>
-      <!-- from a codepen
-         - Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
-           WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
-      <source src="https://s3-eu-west-1.amazonaws.com/touchbelgium/media/video/splash.webm" type="video/webm">
-      <!-- <source src=".mp4" type="video/mp4"> -->
-
-   </video>
-   <div class="splash-content">
-      <h2>Catchy and powerful motto goes here.</h2>
-   </div>
+<video poster="" id="bgvid" playsinline autoplay muted loop>
+   <!-- from a codepen
+      - Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
+        WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+   <source src="https://s3-eu-west-1.amazonaws.com/touchbelgium/media/video/splash.webm" type="video/webm">
+</video>
+<div class="viewport-header">
+   <h2>Catchy and powerful motto goes here.</h2>
 </div>
 
-<div class="container">
-   <div class="row">
-      <div class="s12">
-         <h2 class="">Announcements</h2>
+
+<div class="landing-news">
+   <div class="container">
+      <div class="row">
+         <div class="s12">
+            <h2 class="">News</h2>
+         </div>
       </div>
-   </div>
-   {% for post in posts %}
-   <div class="row">
-      <div class="s12">
-         <div class="card post">
-            <div class="card-content">
-               <span class="card-title">{{post.title}}</span>
-               <p><em>Published: {{post.created_at}}</em></p>
-               {{post.body}}
+      {% for post in posts %}
+      <div class="row">
+         <div class="s12">
+            <div class="card post">
+               <div class="card-content">
+                  <span class="card-title">{{post.title}}</span>
+                  <p><em>Published: {{post.created_at}}</em></p>
+                  {{post.body | safe}}
+               </div>
             </div>
          </div>
       </div>
+      {% endfor %}
+      <a href="{% url 'news' %}">See all news</a>
    </div>
-   {% endfor %}
 </div>
 
 

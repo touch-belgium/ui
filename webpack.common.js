@@ -4,11 +4,14 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BundleTracker = require('webpack-bundle-tracker')
 
 module.exports = {
-  entry: './website/scripts/index.js',
+  entry: {
+    main: './website/scripts/index.js',
+    landing: './website/scripts/landing.js',
+  },
 
   output: {
     path: path.resolve(__dirname, 'assets/webpack_bundles/'),
-    filename: '[name]-[hash].js'
+    filename: '[name]-[hash].js',
   },
 
   module: {
@@ -29,10 +32,6 @@ module.exports = {
           limit: 8192,
           name: 'images/[hash]-[name].[ext]',
         }
-      },
-      {
-        test: /\.(eot|otf|ttf|woff|woff2)$/,
-        loader: 'file-loader',
       },
     ]
   },

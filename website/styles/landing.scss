@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'GlacialIndifference-Bold';
+    src: url("../fonts/GlacialIndifference-Bold.ttf") format('truetype'),
+         url("../fonts/GlacialIndifference-Bold.otf") format('opentype');
+}
+
+.viewport-header {
+    text-align: center;
+    font-family: 'GlacialIndifference-Bold';
+    color: white;
+}
+
+video {
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
+}
+
+
+.landing-news {
+    background: #dfdfdf;
+    position: relative;
+    width: 100%;
+    margin-top: 100vh;
+}

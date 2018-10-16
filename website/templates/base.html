@@ -30,17 +30,20 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
       {% render_bundle 'main' %}
+      {% block extra_bundle %}{% endblock %}
    </head>
    <body>
-      <nav class="nav-extended">
-         <div class="nav-wrapper">
-            <a href="#" class="brand-logo"><img src="https://s3-eu-west-1.amazonaws.com/touchbelgium/media/keep/logo.png" style="height: 64px" alt="TB logo" /></a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-               {% include "partials/nav_links.html" %}
-            </ul>
-         </div>
-      </nav>
+      <div class="navbar-fixed">
+         <nav>
+            <div class="nav-wrapper">
+               <a href="{% url 'index' %}" class="brand-logo"><img src="https://s3-eu-west-1.amazonaws.com/touchbelgium/media/keep/logo.png" style="height: 64px" alt="TB logo" /></a>
+               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+               <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  {% include "partials/nav_links.html" %}
+               </ul>
+            </div>
+         </nav>
+      </div>
 
       <ul class="sidenav" id="mobile-demo">
          {% include "partials/nav_links.html" %}
