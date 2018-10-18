@@ -1,3 +1,7 @@
+@import "custom-color-variables";
+@import "custom-variables";
+
+
 @font-face {
     font-family: 'GlacialIndifference-Bold';
     src: url("../fonts/GlacialIndifference-Bold.ttf") format('truetype'),
@@ -6,8 +10,18 @@
 
 .viewport-header {
     text-align: center;
-    font-family: 'GlacialIndifference-Bold';
+    width: 100%;
     color: white;
+    position: fixed;
+    left: 50%;
+    top: 30vh;                  /*offset with top edge*/
+    transform: translate(-50%, 0);
+    h2 {
+        font-family: 'GlacialIndifference-Bold';
+    }
+    .btn-large {
+        margin: 4vw;
+    }
 }
 
 video {
@@ -23,5 +37,5 @@ video {
     background: #dfdfdf;
     position: relative;
     width: 100%;
-    margin-top: 100vh;
+    margin-top: calc(100vh - #{$navbar-height});
 }
