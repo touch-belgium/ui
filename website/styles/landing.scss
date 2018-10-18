@@ -14,7 +14,12 @@
     color: white;
     position: fixed;
     left: 50%;
-    top: 30vh;                  /*offset with top edge*/
+    @media #{$small-and-down} {
+        top: 20vh;                  /*offset with top edge*/
+    }
+    @media #{$medium-and-up} {
+        top: 30vh;                  /*offset with top edge*/
+    }
     transform: translate(-50%, 0);
     h2 {
         font-family: 'GlacialIndifference-Bold';
@@ -30,6 +35,8 @@ video {
     position: fixed;
     bottom: 0;
     z-index: -1;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 
@@ -37,5 +44,10 @@ video {
     background: #dfdfdf;
     position: relative;
     width: 100%;
-    margin-top: calc(100vh - #{$navbar-height});
+    @media #{$small-and-down} {
+        margin-top: calc(100vh - #{$navbar-height-mobile});
+    }
+    @media #{$medium-and-up} {
+        margin-top: calc(100vh - #{$navbar-height});
+    }
 }
