@@ -38,9 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
-    'storages',
-    'ckeditor',
-    'ckeditor_uploader',
+    'tinymce',
+    'filebrowser',
     'webpack_loader',
 ]
 
@@ -137,18 +136,14 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_ROOT = os.environ.get('MEDIA_ROOT')
+MEDIA_URL = '/media/'
 
-CKEDITOR_UPLOAD_PATH = "media/"
-
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'touchbelgium'
-AWS_S3_REGION_NAME = 'eu-west-1'
-
-# The following option prevents CKEditor from generating a signed URL
-# with expire time when uploading a file (image) to S3
-AWS_QUERYSTRING_AUTH = False
+# Filebrowser will explore all of MEDIA_ROOT and not a folder in
+# particular. Prevents error if folder is not found.
+FILEBROWSER_DIRECTORY = ''
+# Hide thumbnails with a hidden dir
+FILEBROWSER_VERSIONS_BASEDIR = '.versions'
 
 # The following command makes Dokku (although intended for Heroku)
 # work well. It sets up WhiteNoise for static file serving etc.

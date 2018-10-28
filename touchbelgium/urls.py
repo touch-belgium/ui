@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
+from django.conf.urls.static import static
+from django.conf import settings
+from filebrowser.sites import site
+
 
 urlpatterns = [
+    path('admin/filebrowser/', site.urls),
     path('admin/', admin.site.urls),
+    re_path(r'^tinymce/', include('tinymce.urls')),
     path('', include('website.urls')),
-    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# That last + static line allows media to be served during development
+# see
+# https://docs.djangoproject.com/en/2.1/howto/static-files/#serving-files-uploaded-by-a-user-during-development
