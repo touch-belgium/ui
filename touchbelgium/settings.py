@@ -147,4 +147,8 @@ FILEBROWSER_VERSIONS_BASEDIR = '.versions'
 
 # The following command makes Dokku (although intended for Heroku)
 # work well. It sets up WhiteNoise for static file serving etc.
+
+# WhiteNoise does not serve media files ! Nginx or Apache do that. It
+# is not the best approach (S3 would be better) but
+# TinyMCE/FileBrowser do not work with django-storages/S3Boto3
 django_heroku.settings(locals())

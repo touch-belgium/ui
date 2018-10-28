@@ -1,5 +1,4 @@
 from .settings import *
-import dj_database_url
 
 LOGGING = {
     'version': 1,
@@ -35,9 +34,4 @@ LOGGING = {
 }
 
 ALLOWED_HOSTS.append(os.environ.get('PROD_MACHINE'))
-
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
-DATABASE_URL=os.environ.get('DATABASE_URL')
-
-DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
+DEBUG = False
