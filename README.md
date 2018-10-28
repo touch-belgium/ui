@@ -5,10 +5,15 @@ $ pipenv install
 $ npm i
 $ npm start &
 $ pipenv shell
-$ python manage.py migrate
+$ python manage.py migrate website
 $ python manage.py runserver
 ```
-Environment variables can be set in the `activate` script of the venv or any other way...
+
+Environment variables required in `settings.py` have to be set
+somehow, in the `activate` script, .env file, etc.
+
+The folder `MEDIA_ROOT` (also an env variable) has to be
+created. FileBrowser will not create it.
 
 ## On Heroku/Dokku
 
