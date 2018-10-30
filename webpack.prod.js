@@ -45,7 +45,7 @@ module.exports = merge(common, {
       parallel: 4
     }),
     new WebappWebpackPlugin({
-      logo: path.resolve(__dirname, 'website/img/logo.png'),
+      logo: path.resolve(__dirname, 'assets/img/logo.png'),
       cache: true,
       prefix: 'icons/',
       inject: false,

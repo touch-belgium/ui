@@ -36,14 +36,13 @@ module.exports = {
     ]
   },
   /* resolve makes it easier for JS files to look for style files:
-     import css from "Styles/filename.scss" and for css files to find
-     images, fonts etc */
+     import css from "Styles/filename.scss" */
   resolve: {
     modules: ['node_modules'],
     alias: {
       Styles: path.resolve(__dirname, 'website/styles/'),
-      Images: path.resolve(__dirname, 'website/img/'),
-      Fonts: path.resolve(__dirname, 'website/fonts/'),
+      Images: path.resolve(__dirname, 'assets/img/'),
+      Fonts: path.resolve(__dirname, 'assets/fonts/'),
       /* Import Vue from 'vue' will get the full standalone vue, not
       just the runtime build */
       vue: 'vue/dist/vue.js',

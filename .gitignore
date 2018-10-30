@@ -182,7 +182,7 @@ typings/
 webpack-stats.json
 
 # Webpack output
-assets/
+assets/webpack_bundles
 
 # Local media
 storage
