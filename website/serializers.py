@@ -12,4 +12,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ('title', 'body', 'created_at', 'author')

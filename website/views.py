@@ -5,16 +5,16 @@ from django.contrib.auth.models import User
 
 from rest_framework import viewsets
 from rest_framework import generics
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
 from .models import Post
 from .serializers import UserSerializer, PostSerializer
 # Create your views here.
 
 
 def index(request):
-    posts = Post.objects.order_by('-pk')[:3]
-
-    context = {"posts": posts}
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 
 def news(request):
@@ -25,7 +25,6 @@ def news(request):
     first_posts = paginator.get_page(page)
     context = {"posts": first_posts}
     return render(request, 'news.html', context)
-
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
@@ -40,5 +39,12 @@ class PostViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+    def get_queryset(self):
+        queryset = Post.objects.all()
+        number = self.request.query_params.get('number', None)
+        if number:
+            queryset = queryset[:int(number)]
+
+        return queryset

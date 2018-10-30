@@ -26,7 +26,7 @@ from website import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
-router.register(r'posts', views.PostViewSet)
+router.register(r'posts', views.PostViewSet, basename="posts")
 
 urlpatterns = [
     path('admin/filebrowser/', site.urls),

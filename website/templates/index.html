@@ -24,27 +24,8 @@
 
 
 <div class="landing-news" id="vue-root">
-   <div class="container">
-      <div class="row">
-         <div class="s12">
-            <h2 class="">${message}</h2>
-         </div>
-      </div>
-      {% for post in posts %}
-      <div class="row">
-         <div class="s12">
-            <div class="card post">
-               <div class="card-content">
-                  <span class="card-title">{{post.title}}</span>
-                  <p><em>Published: {{post.created_at}}</em></p>
-                  {{post.body | safe}}
-               </div>
-            </div>
-         </div>
-      </div>
-      {% endfor %}
-      <a href="{% url 'news' %}">See all news</a>
-   </div>
+   <Blog post-number="3"></Blog>
+   <a href="{% url 'news' %}">See all news</a>
 </div>
 
 

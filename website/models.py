@@ -10,7 +10,7 @@ class Tag(models.Model):
         return self.word
 
 class Post(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=80)
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     body = HTMLField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -23,6 +23,10 @@ class Post(models.Model):
             out += ", by "
             out += self.author.username
         return out
+
+    class Meta:
+        get_latest_by = ['-created_at']
+        ordering = ['-created_at']
 
 
 class Team(models.Model):

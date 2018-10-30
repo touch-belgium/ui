@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BundleTracker = require('webpack-bundle-tracker')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: {
@@ -16,6 +17,10 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.jsx?$/,
         include: [path.resolve(__dirname, "website/scripts")],
@@ -44,7 +49,7 @@ module.exports = {
       Images: path.resolve(__dirname, 'assets/img/'),
       Fonts: path.resolve(__dirname, 'assets/fonts/'),
       /* Import Vue from 'vue' will get the full standalone vue, not
-      just the runtime build */
+         just the runtime build */
       vue: 'vue/dist/vue.js',
     }
   },
@@ -52,5 +57,6 @@ module.exports = {
     new CleanWebpackPlugin([path.resolve(__dirname, 'assets/webpack_bundles')],
                            {exclude: ['icons']}),
     new BundleTracker({filename: './webpack-stats.json'}),
+    new VueLoaderPlugin(),
   ]
 };

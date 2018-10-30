@@ -12,7 +12,7 @@ module.exports = merge(common, {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
-            loader: "style-loader"/* needed if CSS is going to be embedded in the bundle.js */
+            loader: "vue-style-loader"/* needed if CSS is going to be embedded in the bundle.js */
           },
           {
             loader: "css-loader", // translates CSS into CommonJS
