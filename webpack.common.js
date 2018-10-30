@@ -43,7 +43,10 @@ module.exports = {
     alias: {
       Styles: path.resolve(__dirname, 'website/styles/'),
       Images: path.resolve(__dirname, 'website/img/'),
-      Fonts: path.resolve(__dirname, 'website/fonts/')
+      Fonts: path.resolve(__dirname, 'website/fonts/'),
+      /* Import Vue from 'vue' will get the full standalone vue, not
+      just the runtime build */
+      vue: 'vue/dist/vue.js',
     }
   },
   plugins: [

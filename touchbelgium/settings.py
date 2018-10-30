@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'tinymce',
     'filebrowser',
     'webpack_loader',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,14 @@ WEBPACK_LOADER = {
         'TIMEOUT': None,
         'IGNORE': ['.+\.hot-update.js', '.+\.map']
     }
+}
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
 
 STATICFILES_DIRS = (

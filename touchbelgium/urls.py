@@ -19,12 +19,21 @@ from django.conf.urls.static import static
 from django.conf import settings
 from filebrowser.sites import site
 
+from rest_framework import routers
+
+from website import views
+
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'posts', views.PostViewSet)
 
 urlpatterns = [
     path('admin/filebrowser/', site.urls),
     path('admin/', admin.site.urls),
     re_path(r'^tinymce/', include('tinymce.urls')),
     path('', include('website.urls')),
+    path('api/', include(router.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # That last + static line allows media to be served during development

@@ -28,9 +28,6 @@
       <meta name="theme-color" content="#ffffff">
 
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-      {% render_bundle 'main' %}
-      {% block extra_bundle %}{% endblock %}
    </head>
    <body>
       <div class="navbar-fixed">
@@ -75,5 +72,7 @@
             </div>
          </div>
       </footer>
+      {% render_bundle 'main' %}
+      {% block extra_bundle %}{% endblock %}
    </body>
 </html>
