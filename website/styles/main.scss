@@ -27,7 +27,7 @@
     }
     @media #{$medium-and-down} {
         & {
-            visibility: hidden;
+            display: none;
         }
     }
 }
