@@ -50,7 +50,7 @@ module.exports = {
       Fonts: path.resolve(__dirname, 'assets/fonts/'),
       /* Import Vue from 'vue' will get the full standalone vue, not
          just the runtime build */
-      vue: 'vue/dist/vue.js',
+      vue: 'vue/dist/vue.min.js',
     }
   },
   plugins: [

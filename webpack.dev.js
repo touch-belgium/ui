@@ -21,7 +21,7 @@ module.exports = merge(common, {
             loader: "sass-loader", // compiles Sass to CSS
             options: {/* also use "~" in prefix for node_modules stylesheets */
               includePaths: [path.resolve(__dirname, "website/styles")],
-                      implementation: require("dart-sass")
+              implementation: require("dart-sass")
             }
           }]
       },

@@ -7,25 +7,21 @@ const WebappWebpackPlugin = require('webapp-webpack-plugin')
 
 const common = require('./webpack.common.js');
 
-//const devMode = process.env.NODE_ENV !== 'production'
-
 module.exports = merge(common, {
   mode: "production",
   module: {
     rules: [
       {
         test: /\.(sa|sc|c)ss$/,
-        include: [path.resolve(__dirname, 'website/styles')],
-        use: [{
-          loader: MiniCssExtractPlugin.loader
-        }, {
-          loader: 'css-loader',
-        }, {
-          loader: 'sass-loader',
-          options: {
-            implementation: require("dart-sass")
-          }
-        }],
+        use: [MiniCssExtractPlugin.loader,
+              'css-loader',
+              {
+                loader: 'sass-loader',
+                options: {
+                  includePaths: [path.resolve(__dirname, "website/styles")],
+                  implementation: require("dart-sass")
+                }
+              }],
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,

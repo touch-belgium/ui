@@ -18,6 +18,18 @@
  }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+ @import "custom-color-variables";
 
+ .card.post {
+   .card-content {
+     p {
+       em {
+         color: color("grey", "darken-3");
+         font-size: 0.8em;
+       }
+       margin-bottom: 1.5em;
+     }
+   }
+ }
 </style>

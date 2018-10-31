@@ -2,7 +2,7 @@
    <div class="container">
       <div class="row">
          <div class="s12">
-            <h2 class="">News</h2>
+            <h2>News</h2>
          </div>
       </div>
       <Post v-for="post in posts"
@@ -46,6 +46,8 @@
  }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+ .container {
+   padding-top: 5px;
+ }
 </style>
