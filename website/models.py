@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
+from filebrowser.fields import FileBrowseField
 from tinymce import HTMLField
 
 class Tag(models.Model):
@@ -31,10 +32,13 @@ class Post(models.Model):
 
 class Team(models.Model):
     name = models.CharField(max_length=50)
+    logo = FileBrowseField(max_length=500, default="base/team-placeholder.png",
+                           directory="/")
+    created = models.CharField(max_length=4, blank=True, help_text="Year in YYYY format")
     website = models.URLField(blank=True)
     facebook = models.URLField(blank=True)
-    logo = models.ImageField(default="placeholder.png",
-                             upload_to="media/")
+    address = models.CharField(max_length=100, blank=True)
+    main_belgian_club = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

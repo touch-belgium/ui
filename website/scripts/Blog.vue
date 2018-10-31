@@ -11,6 +11,7 @@
             v-bind:body="post.body"
             v-bind:created_at="post.created_at"
             v-bind:author="post.author"
+            v-bind:tags="post.tags"
       ></Post>
    </div>
 </template>

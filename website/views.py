@@ -8,8 +8,8 @@ from rest_framework import generics
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from .models import Post
-from .serializers import UserSerializer, PostSerializer
+from .models import Post, Tag
+from .serializers import UserSerializer, PostSerializer, TagSerializer
 # Create your views here.
 
 
@@ -28,17 +28,11 @@ def news(request):
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
 
 class PostViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
     serializer_class = PostSerializer
 
     def get_queryset(self):
@@ -48,3 +42,8 @@ class PostViewSet(viewsets.ReadOnlyModelViewSet):
             queryset = queryset[:int(number)]
 
         return queryset
+
+
+class TagViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer

@@ -6,7 +6,7 @@ clean_db:
 	python manage.py flush
 
 load_fixtures:
-	python manage.py loaddata touchbelgium-users.json
-	python manage.py loaddata touchbelgium-teams.json
-	python manage.py loaddata touchbelgium-posts.json
-	python manage.py loaddata touchbelgium-venues.json
+	for file in website/fixtures/*.json; do \
+		echo "Loading " $$file ;\
+		python manage.py loaddata $$file; \
+	done

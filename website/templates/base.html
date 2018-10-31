@@ -32,12 +32,22 @@
       <div class="navbar-fixed">
          <nav>
             <div class="nav-wrapper">
-               <a href="{% url 'index' %}" class="brand-logo"><img src="{% static 'img/logo-tb.png' %}" style="height: 64px" alt="TB logo" /></a>
+               <div class="left">
+                  <a href="{% url 'index' %}" class="brand-logo"><img src="{% static 'img/logo-tb.png' %}" style="height: 64px" alt="TB logo" /></a>
+               </div>
                <div class="social-links-navbar left">
-                  <div class="icon-insta" data-icon="ei-sc-instagram" data-size="m"></div>
-                  <a target="_blank" href="https://facebook.com/touchbelgium"><div class="icon-fb" data-icon="ei-sc-facebook" data-size="m"></div></a>
-                  <div class="icon-twitter" data-icon="ei-sc-twitter" data-size="m"></div>
-                  <div class="icon-yt" data-icon="ei-sc-youtube" data-size="m"></div>
+                  <a target="_blank" href="https://www.instagram.com/touchbelgium/">
+                     <div class="icon-insta" data-icon="ei-sc-instagram" data-size="m"></div>
+                  </a>
+                  <a target="_blank" href="https://facebook.com/touchbelgium">
+                     <div class="icon-fb" data-icon="ei-sc-facebook" data-size="m"></div>
+                  </a>
+                  <a target="_blank" href="https://twitter.com/touchbelgium">
+                     <div class="icon-twitter" data-icon="ei-sc-twitter" data-size="m"></div>
+                  </a>
+                  <a target="_blank" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT">
+                     <div class="icon-yt" data-icon="ei-sc-youtube" data-size="m"></div>
+                  </a>
                </div>
                <ul id="nav-mobile" class="right hide-on-med-and-down">
                   {% include "partials/nav_links.html" %}
@@ -69,7 +79,7 @@
                   <ul>
                      <li><a class="grey-text text-lighten-3" href="#!">FIT</a></li>
                      <li><a class="grey-text text-lighten-3" href="#!">EFT</a></li>
-                     <li><a class="grey-text text-lighten-3" href="#!">API</a></li>
+                     <li><a class="grey-text text-lighten-3" href="/api">API</a></li>
                      <li><a class="grey-text text-lighten-3" href="#!">GitHub</a></li>
                   </ul>
                </div>
