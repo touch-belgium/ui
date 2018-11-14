@@ -1,15 +1,19 @@
 <template>
    <div class="container">
-      <div class="row">
-         <PostCard v-for="post in posts"
-                   :key="post.id"
-                   v-bind:title="post.title"
-                   v-bind:body="post.body"
-                   v-bind:created_at="post.created_at"
-                   v-bind:author="post.author"
-                   v-bind:tags="post.tags"
-         ></PostCard>
+   <div class="row">
+      <div class="s12">
+         <h2>News</h2>
       </div>
+   </div>
+   <div class="row">
+      <PostCard v-for="post in posts"
+                :key="post.id"
+                v-bind:title="post.title"
+                v-bind:created_at="post.created_at"
+                v-bind:author="post.author"
+                v-bind:tags="post.tags"
+      ></PostCard>
+   </div>
    </div>
 </template>
 

@@ -25,12 +25,12 @@
             fill: #000 !important;
         }
     }
-    @media #{$medium-and-down} {
-        & {
-            display: none;
-        }
-    }
 }
+
+/* #contact-us { */
+/*     border: 1px solid white; */
+/*     display: inline; */
+/* } */
 
 .page-footer {
     position: relative;

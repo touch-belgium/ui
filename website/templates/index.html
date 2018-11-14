@@ -13,15 +13,21 @@
    <source src="{% static 'video/splash.mp4'  %}" type="video/mp4">
 </video>
 
-<div class="viewport-header">
-   <h2>Catchy and powerful motto goes here.</h2>
-   <a class="waves-effect waves-light btn-large">Where to play</a>
+<div class="viewport-header valign-wrapper">
+   <!-- <h2 class="center-align">Six players, six touches, one team !</h2> -->
+   <h2 class="center-align">Ready to take on the challenge ?</h2>
    <a class="waves-effect waves-light btn-large">What is touch</a>
+   <a class="waves-effect waves-light btn-large">Where to play</a>
 </div>
 
 <div class="landing-news">
-   <Blog post-number="3"></Blog>
-   <a href="{% url 'news' %}">See all news</a>
+   <div class="container">
+      <div class="row">
+         <h2>News</h2>
+      </div>
+   </div>
+   <Blog post-number="6"></Blog>
+   <a href="{% url 'news' %}" class="center-align">See all news</a>
 </div>
 
 

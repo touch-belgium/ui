@@ -10,23 +10,27 @@
 }
 
 .viewport-header {
-    text-align: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: center;
     width: 100%;
     color: white;
     position: fixed;
-    left: 50%;
     @media #{$small-and-down} {
         top: 20vh;                  /*offset with top edge*/
     }
     @media #{$medium-and-up} {
         top: 30vh;                  /*offset with top edge*/
     }
-    transform: translate(-50%, 0);
     h2 {
         font-family: 'GlacialIndifference-Bold';
+        order: 1;
+        flex-basis: 100%;
     }
     .btn-large {
         margin: 4vw;
+        order: 2;
     }
 }
 
@@ -50,5 +54,8 @@ video {
     }
     @media #{$medium-and-up} {
         margin-top: calc(100vh - #{$navbar-height});
+    }
+    .container:first-child {
+        padding-top: 3em;
     }
 }
