@@ -24,7 +24,7 @@
      }
    },
    methods: {
-     fetchPosts: function () {
+     fetchPosts () {
        if (typeof this.postNumber !== 'undefined') {
          var url = "/api/posts/?number=" + this.postNumber;
        } else {
@@ -36,7 +36,7 @@
      }
    },
    mounted () {
-     this.fetchPosts()
+     this.fetchPosts();
    },
    components: {
      PostCard

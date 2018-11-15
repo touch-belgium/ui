@@ -3,12 +3,14 @@
       <div id="calendar">
          <calendar-view
            :show-date="showDate"
-           class="theme-default holiday-us-traditional holiday-us-official">
-            <calendar-view-header
-              slot="header"
-              slot-scope="t"
-              :header-props="t.headerProps"
-              @input="setShowDate" />
+           :events="events"
+           :time-format-options="{hour: 'numeric', minute:'2-digit'}"
+           :show-event-times="true"
+           :starting-day-of-week=1
+           class="theme-default holiday-us-traditional holiday-us-official"
+           @click-event="onClickEvent"
+         >
+            <calendar-view-header slot="header" slot-scope="{ headerProps }" :header-props="headerProps" @input="setShowDate" />
          </calendar-view>
       </div>
    </div>
@@ -16,16 +18,15 @@
 
 <script>
  import { CalendarView, CalendarViewHeader } from "vue-simple-calendar";
- // The next two lines are processed by webpack. If you're using the component without webpack compilation,
- // you should just create <link> elements for these. Both are optional, you can create your own theme if you prefer.
  require("vue-simple-calendar/static/css/default.css")
  require("vue-simple-calendar/static/css/holidays-us.css")
 
  export default {
    name: 'calendar',
-   data: function() {
+   data () {
      return {
        showDate: new Date(),
+       showEventTimes: true,
        events: [] // fill with call to GCalendar API
      }
    },
@@ -34,45 +35,55 @@
      CalendarViewHeader,
    },
    mounted () {
-     /* How to include external JS in Vue component */
-     /* let gapi_script = document.createElement('script');
-      * gapi_script.setAttribute('src', 'https://apis.google.com/js/api.js');
-      * document.head.appendChild(gapi_script); */
-     gapi.load('client', () => {})
-     /* this.fetchEvents(); */
+     this.fetchEvents();
    },
    methods: {
      setShowDate(d) {
        this.showDate = d;
      },
-     fetchEvents() {
-       gapi.client.init({
-         'apiKey': '234523452345',
-         // Your API key will be automatically added to the Discovery Document URLs.
-         'discoveryDocs': ['https://people.googleapis.com/$discovery/rest'],
-       }).then(function() {
-         // 3. Initialize and make the API request.
-         return gapi.client.people.people.get({
-           'resourceName': 'people/me',
-           'requestMask.includeField': 'person.names'
+     clean_event(ev) {
+       return {
+         startDate: typeof ev.start.date === 'undefined' ? ev.start.dateTime : ev.start.date,
+         endDate: typeof ev.end.date === 'undefined' ? ev.end.dateTime : ev.end.date,
+         title: ev.summary
+       }
+     },
+     fetchEvents () {
+       /* Google Apis JS library doesn't work very well with Vue, so
+          the request is made in a simpler way */
+       let CALENDAR = "touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k@group.calendar.google.com";
+       let GOOGLE_API_KEY = "AIzaSyAGfECY7JPalI0pfARPXTmAxiN1uz15Ja8";
+       let url = "https://www.googleapis.com/calendar/v3/calendars/" +
+                 CALENDAR + "/events?key=" + GOOGLE_API_KEY;
+       fetch(url)
+         .then(response => response.json())
+         .then(data => {
+           console.log(data.items);
+           let eso = data.items.map(this.clean_event);
+           this.events = eso;
          });
-       }).then(function(response) {
-         console.log(response.result);
-       }, function(reason) {
-         console.log('Error: ' + reason.result.error.message);
-       });
+     },
+     onClickEvent(e) {
+       e.title = "andalee";
      },
    }
  }
 </script>
 
 <style>
- #app {
+ #calendar {
+   min-height: 70vh;
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
    font-family: 'Avenir', Helvetica, Arial, sans-serif;
    color: #2c3e50;
-   height: 67vh;
-   width: 90vw;
    margin-left: auto;
    margin-right: auto;
+   padding-bottom: 5em;
+   .cv-event {
+     overflow: visible;
+     white-space: normal;
+   }
  }
 </style>
