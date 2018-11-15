@@ -2,6 +2,9 @@
 
 {% load render_bundle from webpack_loader %}
 {% load static %}
+{% block external_deps %}
+<script src="https://apis.google.com/js/api.js"></script>
+{% endblock %}
 {% block extra_bundle %}
 {% render_bundle 'landing' %}
 {% endblock %}
@@ -20,15 +23,23 @@
    <a class="waves-effect waves-light btn-large">Where to play</a>
 </div>
 
-<div class="landing-news">
+<div class="landing-body">
    <div class="container">
       <div class="row">
-         <h2>News</h2>
+         <h2>Latest news</h2>
       </div>
    </div>
    <Blog post-number="6"></Blog>
-   <a href="{% url 'news' %}" class="center-align">See all news</a>
+   <!-- <a href="{% url 'news' %}" class="center-align">See all news</a> -->
+   <div class="container">
+      <div class="row">
+         <h2>Events</h2>
+      </div>
+   </div>
+   <Calendar></Calendar>
+
 </div>
+
 
 
 {% endblock %}

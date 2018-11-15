@@ -9,6 +9,7 @@ import PostCard from './PostCard.vue';
 import Blog from './Blog.vue';
 import BlogLanding from './BlogLanding.vue';
 import Tag from './Tag.vue';
+import Calendar from './Calendar.vue';
 
 import css from 'Styles/main.scss';
 
@@ -36,5 +37,5 @@ Vue.use(require('vue-moment'));
 var vm = new Vue({
   el: '#vue-root',
   delimiters: ["${", "}"],
-  components: { Post, PostCard, Blog, BlogLanding, Tag },
+  components: { Post, PostCard, Blog, BlogLanding, Tag, Calendar },
 });
