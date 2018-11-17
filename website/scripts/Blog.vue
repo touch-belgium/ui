@@ -1,6 +1,16 @@
 <template>
    <div class="container">
       <div class="row">
+         <div class="col s12 m6 left">
+            <p>Selected tags:</p>
+         </div>
+         <div class="col s12 m6 right">
+            <p>Sort by tag:</p>
+            <Tag v-for="tag in tags"
+                 v-bind:word="tag"></Tag>
+         </div>
+      </div>
+      <div class="row">
          <PostCard v-for="post in posts"
                    :key="post.id"
                    v-bind:title="post.title"
@@ -14,33 +24,39 @@
 </template>
 
 <script>
+ import axios from 'axios';
  import PostCard from './PostCard.vue';
+ import BlogLanding from './BlogLanding.vue';
+ import Tag from './Tag.vue';
 
  export default {
+   extends: BlogLanding,
    props: ['postNumber'],
    data () {
      return {
-       posts: null
+       posts: [],
+       shown: null,
+       tags: [],
+       selected_tags: [],
      }
    },
    methods: {
-     fetchPosts () {
-       if (typeof this.postNumber !== 'undefined') {
-         var url = "/api/posts/?number=" + this.postNumber;
-       } else {
-         var url = "/api/posts/"
-       }
-       fetch(url)
-         .then(response => response.json())
-         .then(data => this.posts = data.results)
-     }
+     fetchTags () {
+       let url = "/api/tags/";
+       axios.get(url).then(response => {
+         this.tags = response.data.results.map(x => x.word);
+       });
+     },
+   },
+   created () {
    },
    mounted () {
-     this.fetchPosts();
+     this.fetchTags();
    },
    components: {
-     PostCard
-   }
+     PostCard,
+     Tag
+   },
  }
 </script>
 

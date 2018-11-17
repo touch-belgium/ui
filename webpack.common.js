@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const BundleTracker = require('webpack-bundle-tracker')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const BundleTracker = require('webpack-bundle-tracker');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: {

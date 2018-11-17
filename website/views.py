@@ -27,6 +27,10 @@ def news(request):
     return render(request, 'news.html', context)
 
 
+def new(request, id, slug=""):
+    return render(request, 'new.html', {"post": Post.objects.get(pk=id)})
+
+
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer

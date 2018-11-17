@@ -4,14 +4,17 @@ from django.core.validators import MinValueValidator
 from filebrowser.fields import FileBrowseField
 from tinymce import HTMLField
 
+
 class Tag(models.Model):
     word = models.CharField(max_length=35)
 
     def __str__(self):
         return self.word
 
+
 class Post(models.Model):
     title = models.CharField(max_length=80)
+    slug = models.SlugField(max_length=100, blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     body = HTMLField()
     created_at = models.DateTimeField(auto_now_add=True)

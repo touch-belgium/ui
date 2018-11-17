@@ -7,4 +7,6 @@ urlpatterns = [
     path('competitions', views.index, name='competitions'),
     path('rules', views.index, name='rules'),
     path('news', views.news, name='news'),
+    path('news/<int:id>/', views.new, name='new'),
+    path('news/<int:id>/<slug:slug>/', views.new, name='new')
 ]

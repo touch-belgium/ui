@@ -1,5 +1,13 @@
 @import "custom-materialize";
 
+body {
+    background: #f4f4f4 !important;
+    #vue-root {
+        background: inherit;
+        z-index: 2;
+    }
+}
+
 
 .icon {
     vertical-align: middle;
@@ -33,5 +41,6 @@
 /* } */
 
 .page-footer {
+    z-index: inherit;
     position: relative;
 }

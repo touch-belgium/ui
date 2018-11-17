@@ -6,7 +6,7 @@
          </div>
          <div class="card-content">
             <p><em>Published: {{ props.created_at | moment("from") }} by {{ props.author.username }}</em></p>
-            <a href="#">
+            <a :href="'news/' + props.iden + '/' + props.slug">
                <span class="card-title truncate">{{ props.title }}</span>
             </a>
             <div v-if="props.tags.length > 0" class="post-tags">
@@ -22,7 +22,7 @@
  import Tag from './Tag.vue';
 
  export default {
-   props: ['title', 'created_at', 'author', 'tags'],
+   props: ['iden', 'title', 'created_at', 'author', 'tags', 'slug'],
    /* Hack to show children components inside functional components */
    /* https://github.com/vuejs/vue/issues/7492 */
    inject: {

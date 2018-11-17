@@ -29,11 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Init collaps
   var collaps_menus = document.querySelectorAll('.collapsible');
   var cm_instances = M.Collapsible.init(collaps_menus, {});
+
+  // Init selects
+  var selects = document.querySelectorAll('select');
+  var s_instances = M.FormSelect.init(selects, {});
 });
 
 /* Plugins come before new Vue instance */
 Vue.use(require('vue-moment'));
-
+Vue.config.devtools = true;
 var vm = new Vue({
   el: '#vue-root',
   delimiters: ["${", "}"],

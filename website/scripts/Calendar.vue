@@ -58,13 +58,11 @@
        fetch(url)
          .then(response => response.json())
          .then(data => {
-           console.log(data.items);
-           let eso = data.items.map(this.clean_event);
-           this.events = eso;
+           this.events = data.items.map(this.clean_event);
          });
      },
      onClickEvent(e) {
-       e.title = "andalee";
+       /* popup or tooltip maybe */
      },
    }
  }

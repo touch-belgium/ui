@@ -9,7 +9,12 @@
          url('../../assets/fonts/GlacialIndifference-Bold.otf') format('opentype');
 }
 
+#bgvid {
+    z-index: 1;
+}
+
 .viewport-header {
+    z-index: inherit;
     justify-content: center;
     flex-flow: row wrap;
     align-items: center;
@@ -46,7 +51,8 @@ video {
 
 
 .landing-body {
-    background: #f4f4f4;
+    background: inherit;
+    z-index: inherit;
     position: relative;
     width: 100%;
     @media #{$small-and-down} {
