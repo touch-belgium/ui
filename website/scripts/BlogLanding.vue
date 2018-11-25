@@ -5,6 +5,7 @@
                 :key="post.id"
                 v-bind:iden="post.id"
                 v-bind:title="post.title"
+                v-bind:picture="post.picture"
                 v-bind:created_at="post.created_at"
                 v-bind:author="post.author"
                 v-bind:tags="post.tags"
@@ -52,5 +53,9 @@
 <style scoped lang="scss">
  .container {
    padding-top: 5px;
+   .row {
+     display: flex;
+     flex-wrap: wrap;
+   }
  }
 </style>

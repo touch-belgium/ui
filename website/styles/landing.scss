@@ -14,7 +14,7 @@
 }
 
 .viewport-header {
-    z-index: inherit;
+    z-index: 2;
     justify-content: center;
     flex-flow: row wrap;
     align-items: center;
@@ -52,7 +52,7 @@ video {
 
 .landing-body {
     background: inherit;
-    z-index: inherit;
+    z-index: 2;
     position: relative;
     width: 100%;
     @media #{$small-and-down} {

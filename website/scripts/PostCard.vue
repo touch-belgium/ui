@@ -2,7 +2,7 @@
    <div class="col s12 m6 l4">
       <div class="card post hoverable">
          <div class="card-image">
-            <img class="responsive-img" src="https://www.nosm.ca/wp-content/themes/NOSM/images/news_placeholder.png">
+            <img class="responsive-img" :src="'/media/' + props.picture">
          </div>
          <div class="card-content">
             <p><em>Published: {{ props.created_at | moment("from") }} by {{ props.author.username }}</em></p>
@@ -22,7 +22,7 @@
  import Tag from './Tag.vue';
 
  export default {
-   props: ['iden', 'title', 'created_at', 'author', 'tags', 'slug'],
+   props: ['iden', 'title', 'picture', 'created_at', 'author', 'tags', 'slug'],
    /* Hack to show children components inside functional components */
    /* https://github.com/vuejs/vue/issues/7492 */
    inject: {
