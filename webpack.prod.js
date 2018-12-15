@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WebappWebpackPlugin = require('webapp-webpack-plugin')
+const WebappWebpackPlugin = require('webapp-webpack-plugin');
 
 const common = require('./webpack.common.js');
 
@@ -18,7 +18,7 @@ module.exports = merge(common, {
               {
                 loader: 'sass-loader',
                 options: {
-                  includePaths: [path.resolve(__dirname, "website/styles")],
+                  includePaths: [path.resolve(__dirname, "assets/css")],
                   implementation: require("dart-sass")
                 }
               }],

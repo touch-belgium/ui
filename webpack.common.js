@@ -1,17 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const BundleTracker = require('webpack-bundle-tracker');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './website/scripts/index.js',
-    landing: './website/scripts/landing.js',
+    main: './assets/js/index.js',
+    landing: './assets/js/landing.js',
   },
 
   output: {
-    path: path.resolve(__dirname, 'assets/webpack_bundles/'),
+    path: path.resolve(__dirname, 'build/'),
     filename: '[name]-[hash].js',
   },
 
@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        include: [path.resolve(__dirname, "website/scripts")],
+        include: [path.resolve(__dirname, "assets/js")],
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
@@ -45,7 +45,7 @@ module.exports = {
   resolve: {
     modules: ['node_modules'],
     alias: {
-      Styles: path.resolve(__dirname, 'website/styles/'),
+      Styles: path.resolve(__dirname, 'assets/css/'),
       Images: path.resolve(__dirname, 'assets/img/'),
       Fonts: path.resolve(__dirname, 'assets/fonts/'),
       /* Import Vue from 'vue' will get the full standalone vue, not
@@ -54,9 +54,14 @@ module.exports = {
     }
   },
   plugins: [
-    new CleanWebpackPlugin([path.resolve(__dirname, 'assets/webpack_bundles')],
+    new CleanWebpackPlugin([path.resolve(__dirname, 'build')],
                            {exclude: ['icons']}),
-    new BundleTracker({filename: './webpack-stats.json'}),
     new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true,
+      chunksSortMode: 'dependency'
+    }),
   ]
 };

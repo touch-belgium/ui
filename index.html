@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Touch Belgium 🇧🇪</title>
+      <meta charset="utf-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name=viewport content="width=device-width, initial-scale=1">
+
+      <!-- icons -->
+      <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-touch-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-touch-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-touch-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-touch-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-touch-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180x180.png">
+
+      <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+      <link rel="manifest" href="icons/manifest.json">
+
+      <meta name="msapplication-config" content="icons/browserconfig.xml" />
+      <meta name="msapplication-TileColor" content="#2b5797">
+      <meta name="theme-color" content="#ffffff">
+
+   </head>
+   <body>
+      <div id="vue-root">
+         <navbar></navbar>
+         <ul class="sidenav" id="mobile-demo">
+            <li class="no-padding">
+               <a class="collapsible-header" href="news">News</a>
+            </li>
+            <li class="no-padding">
+               <ul class="collapsible collapsible-accordion">
+                  <li>
+                     <a class="collapsible-header">Events</i></a>
+                     <div class="collapsible-body">
+                        <ul>
+                           <li><a href="#!">Tournaments and results</a></li>
+                           <li><a href="#!">Calendar</a></li>
+                           <li><a href="#!">AGM</a></li>
+                        </ul>
+                     </div>
+                  </li>
+               </ul>
+            </li>
+            <li class="no-padding">
+               <ul class="collapsible collapsible-accordion">
+                  <li>
+                     <a class="collapsible-header">Get Involved</i></a>
+                     <div class="collapsible-body">
+                        <ul>
+                           <li><a href="#!">Where to play</a></li>
+                           <li><a href="#!">Referees</a></li>
+                           <li><a href="#!">Coaches</a></li>
+                           <li><a href="#!">National teams</a></li>
+                        </ul>
+                     </div>
+                  </li>
+               </ul>
+            </li>
+            <li class="no-padding">
+               <ul class="collapsible collapsible-accordion">
+                  <li>
+                     <a class="collapsible-header">About Touch</i></a>
+                     <div class="collapsible-body">
+                        <ul>
+                           <li><a href="#!">What is touch</a></li>
+                           <li><a href="#!">Where to play</a></li>
+                           <li><a href="#!">Training/courses</a></li>
+                           <li><a href="#!">Rules and regulations</a></li>
+                        </ul>
+                     </div>
+                  </li>
+               </ul>
+            </li>
+            <li class="no-padding">
+               <a class="collapsible-header" href="news">Sponsorship</a>
+            </li>
+            <li class="no-padding">
+               <ul class="collapsible collapsible-accordion">
+                  <li>
+                     <a class="collapsible-header">Touch Belgium</i></a>
+                     <div class="collapsible-body">
+                        <ul>
+                           <li><a href="#!">Members</a></li>
+                           <li><a href="#!">Committee</a></li>
+                           <li><a href="#!">Contact</a></li>
+                           <li><a href="#!">Fourth</a></li>
+                        </ul>
+                     </div>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+         <router-view></router-view>
+         <foot></foot>
+      </div>
+   </body>
+</html>

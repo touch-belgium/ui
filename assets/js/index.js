@@ -3,7 +3,10 @@ import EvilIcons from 'evil-icons/assets/evil-icons.min.js';
 import EvilIconsCss from 'evil-icons/assets/evil-icons.min.css';
 
 import Vue from 'vue';
+//import VueRouter from 'vue-router';
 
+import Navbar from './Navbar.vue';
+import Foot from './Foot.vue';
 import Post from './Post.vue';
 import PostCard from './PostCard.vue';
 import Blog from './Blog.vue';
@@ -35,11 +38,23 @@ document.addEventListener('DOMContentLoaded', () => {
   var s_instances = M.FormSelect.init(selects, {});
 });
 
+// const routes = [
+//   { path: '/foo', component: Post },
+//   { path: '/bar', component: Blog }
+// ];
+
 /* Plugins come before new Vue instance */
 Vue.use(require('vue-moment'));
+//Vue.use(VueRouter);
+
+// const router = new VueRouter({
+//   routes // short for `routes: routes`
+// });
+
 Vue.config.devtools = true;
 var vm = new Vue({
   el: '#vue-root',
+  //router,
   delimiters: ["${", "}"],
-  components: { Post, PostCard, Blog, BlogLanding, Tag, Calendar },
+  components: { Navbar, Foot, Post, PostCard, Blog, BlogLanding, Tag, Calendar },
 });
