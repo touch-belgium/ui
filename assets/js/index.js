@@ -6,7 +6,9 @@ import Vue from 'vue';
 //import VueRouter from 'vue-router';
 
 import Navbar from './Navbar.vue';
+import Sidenav from './Sidenav.vue';
 import Foot from './Foot.vue';
+import Landing from './Landing.vue';
 import Post from './Post.vue';
 import PostCard from './PostCard.vue';
 import Blog from './Blog.vue';
@@ -56,5 +58,5 @@ var vm = new Vue({
   el: '#vue-root',
   //router,
   delimiters: ["${", "}"],
-  components: { Navbar, Foot, Post, PostCard, Blog, BlogLanding, Tag, Calendar },
+  components: { Navbar, Sidenav, Foot, Landing, Post, PostCard, Blog, BlogLanding, Tag, Calendar },
 });

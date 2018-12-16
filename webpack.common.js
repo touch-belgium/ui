@@ -48,6 +48,7 @@ module.exports = {
       Styles: path.resolve(__dirname, 'assets/css/'),
       Images: path.resolve(__dirname, 'assets/img/'),
       Fonts: path.resolve(__dirname, 'assets/fonts/'),
+      Videos: path.resolve(__dirname, 'assets/video/'),
       /* Import Vue from 'vue' will get the full standalone vue, not
          just the runtime build */
       vue: 'vue/dist/vue.min.js',

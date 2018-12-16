@@ -26,13 +26,13 @@ module.exports = merge(common, {
           }]
       },
       {
-        test: /\.(eot|otf|ttf|woff|woff2)$/,
+        test: /\.(eot|otf|ttf|woff|woff2|webm|mp4)$/,
         loader: 'file-loader',
         options: {
           /* Gunicorn, heroku, dokku etc can serve the font asset
              correctly, the development server cannot without this
              option. */
-          publicPath: "static/webpack_bundles/",
+          // publicPath: "/",
         }
       },
     ]
