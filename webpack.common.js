@@ -6,8 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './assets/js/index.js',
-    landing: './assets/js/landing.js',
+    main: './js/index.js',
+    landing: './js/landing.js',
   },
 
   output: {
@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        include: [path.resolve(__dirname, "assets/js")],
+        include: [path.resolve(__dirname, "js")],
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
@@ -38,6 +38,17 @@ module.exports = {
           name: 'images/[hash]-[name].[ext]',
         }
       },
+      {
+        test: /\.(eot|otf|ttf|woff|woff2|webm|mp4)$/,
+        loader: 'file-loader',
+        options: {
+          /* Gunicorn, heroku, dokku etc can serve the font asset
+             correctly, the development server cannot without this
+             option. */
+          // publicPath: "/",
+        }
+      },
+
     ]
   },
   /* resolve makes it easier for JS files to look for style files:
@@ -45,12 +56,12 @@ module.exports = {
   resolve: {
     modules: ['node_modules'],
     alias: {
-      Styles: path.resolve(__dirname, 'assets/css/'),
-      Images: path.resolve(__dirname, 'assets/img/'),
-      Fonts: path.resolve(__dirname, 'assets/fonts/'),
-      Videos: path.resolve(__dirname, 'assets/video/'),
-      /* Import Vue from 'vue' will get the full standalone vue, not
-         just the runtime build */
+      Styles: path.resolve(__dirname, 'css/'),
+      Images: path.resolve(__dirname, 'img/'),
+      Fonts: path.resolve(__dirname, 'fonts/'),
+      Videos: path.resolve(__dirname, 'video/'),
+      /* This way, import Vue from 'vue' will get the full standalone
+         vue, not just the runtime build */
       vue: 'vue/dist/vue.min.js',
     }
   },

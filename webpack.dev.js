@@ -20,20 +20,10 @@ module.exports = merge(common, {
           {
             loader: "sass-loader", // compiles Sass to CSS
             options: {/* also use "~" in prefix for node_modules stylesheets */
-              includePaths: [path.resolve(__dirname, "assets/css")],
+              includePaths: [path.resolve(__dirname, "css")],
               implementation: require("dart-sass")
             }
           }]
-      },
-      {
-        test: /\.(eot|otf|ttf|woff|woff2|webm|mp4)$/,
-        loader: 'file-loader',
-        options: {
-          /* Gunicorn, heroku, dokku etc can serve the font asset
-             correctly, the development server cannot without this
-             option. */
-          // publicPath: "/",
-        }
       },
     ]
   },

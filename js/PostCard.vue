@@ -2,7 +2,7 @@
    <div class="col s12 m6 l4">
       <div class="card post hoverable">
          <div class="card-image">
-            <img class="responsive-img" :src="'/media/' + props.picture">
+            <img class="responsive-img" :src="props.picture">
          </div>
          <div class="card-content">
             <p><em>Published: {{ props.created_at | moment("from") }} by {{ props.author.username }}</em></p>

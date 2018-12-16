@@ -18,7 +18,7 @@ module.exports = merge(common, {
               {
                 loader: 'sass-loader',
                 options: {
-                  includePaths: [path.resolve(__dirname, "assets/css")],
+                  includePaths: [path.resolve(__dirname, "css")],
                   implementation: require("dart-sass")
                 }
               }],
@@ -41,10 +41,10 @@ module.exports = merge(common, {
       parallel: 4
     }),
     new WebappWebpackPlugin({
-      logo: path.resolve(__dirname, 'assets/img/logo.png'),
+      logo: path.resolve(__dirname, 'img/logo.png'),
       cache: true,
       prefix: 'icons/',
-      inject: false,
+      inject: true,
     })
   ]
 });

@@ -5,8 +5,8 @@
 @font-face {
     font-family: 'GlacialIndifference-Bold';
     /* Relative paths since sass-loader cannot resolve URL */
-    src: url('../../assets/fonts/GlacialIndifference-Bold.ttf') format('truetype'),
-         url('../../assets/fonts/GlacialIndifference-Bold.otf') format('opentype');
+    src: url('~Fonts/GlacialIndifference-Bold.ttf') format('truetype'),
+         url('~Fonts/GlacialIndifference-Bold.otf') format('opentype');
 }
 
 #bgvid {

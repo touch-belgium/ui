@@ -36,9 +36,7 @@
          var url = "localhost:8000/api/posts/";
        }
        axios.get(url, {
-         headers: {
-           'Access-Control-Allow-Origin': '*',
-         }
+         crossdomain: true
        }).then(response => {
          this.posts = response.data.results;
        });
