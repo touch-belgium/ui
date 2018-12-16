@@ -35,4 +35,8 @@
 </script>
 
 <style scoped lang="scss">
+ .page-footer {
+   z-index: 2;
+   position: relative;
+ }
 </style>

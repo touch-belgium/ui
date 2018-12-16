@@ -8,6 +8,7 @@
     "start": "webpack --watch --config webpack.dev.js",
     "start:dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+    "//": "Comment: the following will run after `npm i`",
     "heroku-postbuild": "npm run build"
   },
   "engines": {

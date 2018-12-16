@@ -16,33 +16,18 @@
 </template>
 
 <script>
+ import Blog from './Blog.vue';
  import PostCard from './PostCard.vue';
  import slugify from 'slugify';
  import axios from 'axios';
 
  export default {
+   extends: Blog,
    props: ['postNumber'],
    data () {
      return {
        posts: null
      }
-   },
-   methods: {
-     fetchPosts () {
-       const API = "localhost:8000"
-       if (typeof this.postNumber !== 'undefined') {
-         var url = "http://localhost:8000/api/posts/?number=" + this.postNumber;
-       } else {
-         var url = "localhost:8000/api/posts/";
-       }
-       axios.get(url, {
-         crossdomain: true
-       }).then(response => {
-         this.posts = response.data.results;
-       });
-     },
-   },
-   created () {
    },
    mounted () {
      this.fetchPosts();

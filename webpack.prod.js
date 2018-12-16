@@ -23,10 +23,7 @@ module.exports = merge(common, {
                 }
               }],
       },
-      {
-        test: /\.(eot|otf|ttf|woff|woff2)$/,
-        loader: 'file-loader',
-      }]
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({

@@ -4,10 +4,16 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+var API_URLS = {
+    production: JSON.stringify('https://admin.touchb.shop/api/'),
+    development: JSON.stringify('http://localhost:8000/api/')
+};
+
+var environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
 module.exports = {
   entry: {
-    main: './js/index.js',
-    landing: './js/landing.js',
+    main: './js/index.js'
   },
 
   output: {
@@ -45,7 +51,7 @@ module.exports = {
           /* Gunicorn, heroku, dokku etc can serve the font asset
              correctly, the development server cannot without this
              option. */
-          // publicPath: "/",
+          publicPath: "/",
         }
       },
 
@@ -74,6 +80,9 @@ module.exports = {
       template: 'index.html',
       inject: true,
       chunksSortMode: 'dependency'
+    }),
+    new webpack.DefinePlugin({
+      'API': API_URLS[environment]
     }),
   ]
 };

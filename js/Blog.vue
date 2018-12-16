@@ -29,11 +29,9 @@
 <script>
  import axios from 'axios';
  import PostCard from './PostCard.vue';
- import BlogLanding from './BlogLanding.vue';
  import Tag from './Tag.vue';
 
  export default {
-   extends: BlogLanding,
    props: ['postNumber'],
    data () {
      return {
@@ -44,6 +42,16 @@
      }
    },
    methods: {
+     fetchPosts () {
+       if (typeof this.postNumber !== 'undefined') {
+         var url = API + "posts/?number=" + this.postNumber;
+       } else {
+         var url = API + "posts/";
+       }
+       axios.get(url, {crossdomain: true}).then(response => {
+         this.posts = response.data.results;
+       });
+     },
      fetchTags () {
        let url = "/api/tags/";
        axios.get(url).then(response => {
@@ -54,6 +62,7 @@
    created () {
    },
    mounted () {
+     this.fetchPosts();
      this.fetchTags();
    },
    components: {
