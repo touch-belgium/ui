@@ -1,19 +1,27 @@
 <template>
-   <div class="container">
-      <div id="calendar">
-         <calendar-view
-           :show-date="showDate"
-           :events="events"
-           :time-format-options="{hour: 'numeric', minute:'2-digit'}"
-           :show-event-times="true"
-           :starting-day-of-week=1
-           class="theme-default holiday-us-traditional holiday-us-official"
-           @click-event="onClickEvent"
-         >
-            <calendar-view-header slot="header" slot-scope="{ headerProps }" :header-props="headerProps" @input="setShowDate" />
-         </calendar-view>
-      </div>
-   </div>
+   <v-container>
+      <v-layout row wrap>
+         <v-flex xs12>
+            <h2 class="display-2 mt-4 mb-5">📅 Events</h2>
+         </v-flex>
+
+         <v-flex xs12>
+            <div id="calendar">
+               <calendar-view
+                 :show-date="showDate"
+                 :events="events"
+                 :time-format-options="{hour: 'numeric', minute:'2-digit'}"
+                 :show-event-times="true"
+                 :starting-day-of-week=1
+                 class="theme-default holiday-us-traditional holiday-us-official"
+                 @click-event="onClickEvent"
+               >
+                  <calendar-view-header slot="header" slot-scope="{ headerProps }" :header-props="headerProps" @input="setShowDate" />
+               </calendar-view>
+            </div>
+         </v-flex>
+      </v-layout>
+   </v-container>
 </template>
 
 <script>

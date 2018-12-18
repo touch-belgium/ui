@@ -10,26 +10,18 @@
          <v-flex xs12 align-self-center>
             <h2 class="display-3">Ready to take on the challenge ?</h2>
          </v-flex>
-         <v-flex xs12 md4>
-            <v-btn large color="tbred" dark to="/news">What is touch</v-btn>
+         <v-flex xs12 md2>
+            <v-btn large color="tb_red" dark to="/news">What is touch</v-btn>
          </v-flex>
-         <v-flex xs12 md4>
-            <v-btn large color="tbred" dark to="/news">Where to play</v-btn>
+         <v-flex xs12 md2>
+            <v-btn large color="tb_red" dark to="/news">Where to play</v-btn>
          </v-flex>
       </v-layout>
 
       <div class="landing-body">
-         <v-container>
-            <v-layout>
-               <h2 class="display-1">🏉 Latest news</h2>
-               <blog-landing post-number="6"></blog-landing>
-               <!-- <a href="{% url 'news' %}" class="center-align">See all news</a> -->
-            </v-layout>
-            <v-layout>
-               <h2 class="display-1">📅 Events</h2>
-               <calendar></calendar>
-            </v-layout>
-         </v-container>
+         <blog-landing post-number="6"></blog-landing>
+            <!-- <a href="{% url 'news' %}" class="center-align">See all news</a> -->
+         <calendar></calendar>
       </div>
    </div>
 </template>
@@ -59,6 +51,7 @@
  }
 
  .viewport-header {
+   width: 100%;
    z-index: 2;
    color: white;
    position: fixed;

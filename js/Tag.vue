@@ -1,5 +1,5 @@
 <template functional>
-   <div class="chip">{{ props.word }}</div>
+   <v-chip>{{ props.word }}</v-chip>
 </template>
 
 <script>

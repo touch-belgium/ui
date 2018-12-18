@@ -1,5 +1,5 @@
 <template>
-   <v-toolbar app dark color="tbred">
+   <v-toolbar app dark color="tb_red">
       <v-layout align-center fill-height row>
          <router-link to="/">
             <img src="~Images/logo-tb.png" style="height: 64px" alt="TB logo" />

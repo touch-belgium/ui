@@ -1,29 +1,35 @@
 <template>
-   <div class="container">
-      <div class="row">
-         <div class="col s12 m6 left">
+   <v-container class="mt-5" v-bind="{ [`grid-list-xl`]: true }">
+      <v-layout row wrap>
+         <v-flex xs12>
+            <h2 class="display-1">🏉 News</h2>
+         </v-flex>
+
+         <v-flex xs12 sm6>
             <p>Selected tags:</p>
-         </div>
-         <div class="col s12 m6 right">
+
+         </v-flex>
+
+         <v-flex xs12 sm6>
             <p>Sort by tag:</p>
             <Tag v-for="tag in tags"
                  :key="tag.id"
                  v-bind:word="tag"></Tag>
-         </div>
-      </div>
-      <div class="row">
-         <PostCard v-for="post in posts"
-                   :key="post.id"
-                   v-bind:iden="post.id"
-                   v-bind:title="post.title"
-                   v-bind:picture="post.picture"
-                   v-bind:created_at="post.created_at"
-                   v-bind:author="post.author"
-                   v-bind:tags="post.tags"
-                   v-bind:slug="post.slug"
-         ></PostCard>
-      </div>
-   </div>
+         </v-flex>
+
+         <v-flex xs12 sm6 md4 lg3 v-for="post in posts" :key="post.id">
+            <PostCard
+              v-bind:iden="post.id"
+              v-bind:title="post.title"
+              v-bind:picture="post.picture"
+              v-bind:created_at="post.created_at"
+              v-bind:author="post.author"
+              v-bind:tags="post.tags"
+              v-bind:slug="post.slug"
+            ></PostCard>
+         </v-flex>
+      </v-layout>
+   </v-container>
 </template>
 
 <script>
@@ -53,7 +59,7 @@
        });
      },
      fetchTags () {
-       let url = "/api/tags/";
+       let url = API + "tags/";
        axios.get(url).then(response => {
          this.tags = response.data.results.map(x => x.word);
        });

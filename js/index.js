@@ -28,14 +28,19 @@ const routes = [
 Vue.use(require('vue-moment'));
 Vue.use(VueRouter);
 Vue.use(Vuetify, {
+  options: {
+    // Generates CSS variables for the theme below
+    customProperties: true
+  },
   theme: {
     primary: '#3f51b5',
     secondary: '#b0bec5',
     accent: '#8c9eff',
     error: '#b71c1c',
-    tbred: '#e11e26',
-    tbyellow: '#d6b92b',
-    tbblack: '#111617'
+    tb_red: '#e11e26',
+    tb_yellow: '#d6b92b',
+    tb_black: '#111617',
+    tb_black_light: '#273234'
   }
 });
 
