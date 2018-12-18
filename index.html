@@ -5,14 +5,23 @@
       <meta charset="utf-8">
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name=viewport content="width=device-width, initial-scale=1">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:500" rel="stylesheet">
+
    </head>
    <body>
       <div id="vue-root">
-         <navbar></navbar>
-         <landing></landing>
-         <sidenav></sidenav>
-         <router-view></router-view>
-         <foot></foot>
+         <v-app>
+            <navbar></navbar>
+            <v-content>
+               <router-view></router-view>
+            </v-content>
+            <foot></foot>
+         </v-app>
+
+         <!-- <navbar></navbar>
+              <sidenav></sidenav>
+              <router-view></router-view>
+              <foot></foot> -->
       </div>
       <script src="https://apis.google.com/js/api.js"></script>
    </body>

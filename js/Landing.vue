@@ -5,27 +5,31 @@
          <source src="~Videos/splash.webm" type="video/webm">
       </video>
 
-      <div class="viewport-header valign-wrapper">
-         <!-- <h2 class="center-align">Six players, six touches, one team !</h2> -->
-         <h2 class="center-align">Ready to take on the challenge ?</h2>
-         <a class="waves-effect waves-light btn-large">What is touch</a>
-         <a class="waves-effect waves-light btn-large">Where to play</a>
-      </div>
+      <!-- <h2 class="center-align">Six players, six touches, one team !</h2> -->
+      <v-layout align-center justify-center row wrap class="viewport-header">
+         <v-flex xs12 align-self-center>
+            <h2 class="display-3">Ready to take on the challenge ?</h2>
+         </v-flex>
+         <v-flex xs12 md4>
+            <v-btn large color="tbred" dark to="/news">What is touch</v-btn>
+         </v-flex>
+         <v-flex xs12 md4>
+            <v-btn large color="tbred" dark to="/news">Where to play</v-btn>
+         </v-flex>
+      </v-layout>
 
       <div class="landing-body">
-         <div class="container">
-            <div class="row">
-               <h2>🏉 Latest news</h2>
-            </div>
-         </div>
-         <blog-landing post-number="6"></blog-landing>
-         <!-- <a href="{% url 'news' %}" class="center-align">See all news</a> -->
-         <div class="container">
-            <div class="row">
-               <h2>📅 Events</h2>
-            </div>
-         </div>
-         <calendar></calendar>
+         <v-container>
+            <v-layout>
+               <h2 class="display-1">🏉 Latest news</h2>
+               <blog-landing post-number="6"></blog-landing>
+               <!-- <a href="{% url 'news' %}" class="center-align">See all news</a> -->
+            </v-layout>
+            <v-layout>
+               <h2 class="display-1">📅 Events</h2>
+               <calendar></calendar>
+            </v-layout>
+         </v-container>
       </div>
    </div>
 </template>
@@ -56,13 +60,9 @@
 
  .viewport-header {
    z-index: 2;
-   justify-content: center;
-   flex-flow: row wrap;
-   align-items: center;
-   align-content: center;
-   width: 100%;
    color: white;
    position: fixed;
+   text-align: center;
    @media #{$small-and-down} {
      top: 20vh;                  /*offset with top edge*/
    }
@@ -70,13 +70,10 @@
      top: 30vh;                  /*offset with top edge*/
    }
    h2 {
-     font-family: 'GlacialIndifference-Bold';
-     order: 1;
-     flex-basis: 100%;
+     font-family: 'GlacialIndifference-Bold' !important;
    }
-   .btn-large {
+   .v-btn {
      margin: 4vw;
-     order: 2;
    }
  }
 
@@ -92,10 +89,9 @@
 
 
  .landing-body {
-   background: inherit;
+   background: #fff;
    z-index: 2;
    position: relative;
-   width: 100%;
    @media #{$small-and-down} {
      margin-top: calc(100vh - #{$navbar-height-mobile});
    }

@@ -1,9 +1,10 @@
-import Materialize from 'materialize-css/dist/js/materialize.min';
 import EvilIcons from 'evil-icons/assets/evil-icons.min.js';
 import EvilIconsCss from 'evil-icons/assets/evil-icons.min.css';
 
 import Vue from 'vue';
-//import VueRouter from 'vue-router';
+import VueRouter from 'vue-router';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
 
 import Navbar from './Navbar.vue';
 import Sidenav from './Sidenav.vue';
@@ -18,45 +19,37 @@ import Calendar from './Calendar.vue';
 
 import css from 'Styles/main.scss';
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Init side navs
-  var side_navs = document.querySelectorAll('.sidenav');
-  var sn_instances = M.Sidenav.init(side_navs, {});
-
-  // Init dropdown menus
-  var drop_menus = document.querySelectorAll('.dropdown-trigger');
-  var dm_instances = M.Dropdown.init(drop_menus, {
-    constrainWidth: false,
-    coverTrigger: false,
-  });
-
-  // Init collaps
-  var collaps_menus = document.querySelectorAll('.collapsible');
-  var cm_instances = M.Collapsible.init(collaps_menus, {});
-
-  // Init selects
-  var selects = document.querySelectorAll('select');
-  var s_instances = M.FormSelect.init(selects, {});
-});
-
-// const routes = [
-//   { path: '/foo', component: Post },
-//   { path: '/bar', component: Blog }
-// ];
+const routes = [
+  { path: '/news', name: "news", component: Blog },
+  { path: '/', name:"landing", component: Landing }
+];
 
 /* Plugins come before new Vue instance */
 Vue.use(require('vue-moment'));
-//Vue.use(VueRouter);
+Vue.use(VueRouter);
+Vue.use(Vuetify, {
+  theme: {
+    primary: '#3f51b5',
+    secondary: '#b0bec5',
+    accent: '#8c9eff',
+    error: '#b71c1c',
+    tbred: '#e11e26',
+    tbyellow: '#d6b92b',
+    tbblack: '#111617'
+  }
+});
 
-// const router = new VueRouter({
-//   routes // short for `routes: routes`
-// });
+const router = new VueRouter({
+  routes // short for `routes: routes`
+});
 
 Vue.config.devtools = true;
 var vm = new Vue({
   el: '#vue-root',
-  //router,
+  data: () => ({
+    drawer_visible: false
+  }),
+  router,
   delimiters: ["${", "}"],
   components: { Navbar, Sidenav, Foot, Landing, Post, PostCard, Blog, BlogLanding, Tag, Calendar },
 });

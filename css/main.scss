@@ -1,7 +1,5 @@
-@import "custom-materialize";
-
 body {
-    background: #f4f4f4 !important;
+    background: #fefefe !important;
     #vue-root {
         background: inherit;
         z-index: 2;
@@ -14,26 +12,6 @@ body {
     margin-bottom: 3px;
 }
 
-.social-links-navbar {
-    margin-left: 180px;
-    height: 100%;
-    .icon {
-        transition: 0.3s;
-        fill: #ffffff !important;
-        &.icon-insta:hover {
-            fill: #3f729b !important;
-        }
-        &.icon-fb:hover {
-            fill: #3b5998 !important;
-        }
-        &.icon-twitter:hover {
-            fill: #55acee !important;
-        }
-        &.icon-yt:hover {
-            fill: #000 !important;
-        }
-    }
-}
 
 /* #contact-us { */
 /*     border: 1px solid white; */
