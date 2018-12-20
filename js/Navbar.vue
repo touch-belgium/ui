@@ -4,13 +4,6 @@
          <router-link to="/">
             <img src="~Images/logo-tb.png" style="height: 64px" alt="TB logo" />
          </router-link>
-         <div class="social-links-navbar hidden-md-and-down">
-            <a v-for="(icon_, index) in social_links" target="_blank" :href="icon_.url">
-               <div :class="icon_.cls" :data-icon="icon_.icon" data-size="m"></div>
-            </a>
-         </div>
-      </v-layout>
-      <v-layout align-center fill-height justify-end>
          <v-toolbar-items>
             <template v-for="(section, index) in sections">
                <v-menu v-if="section.subsections.length" offset-y class="hidden-md-and-down">
@@ -31,6 +24,15 @@
                </v-btn>
             </template>
          </v-toolbar-items>
+
+
+      </v-layout>
+      <v-layout align-center fill-height justify-end>
+         <div class="social-links-navbar hidden-md-and-down">
+            <a v-for="(icon_, index) in social_links" target="_blank" :href="icon_.url">
+               <div :class="icon_.cls" :data-icon="icon_.icon" data-size="m"></div>
+            </a>
+         </div>
       </v-layout>
    </v-toolbar>
 
@@ -80,7 +82,7 @@
          subsections: [
            {
              name: "Tournaments and results",
-             url: "/news"
+             url: "/competitions"
            },
            {
              name: "Calendar",

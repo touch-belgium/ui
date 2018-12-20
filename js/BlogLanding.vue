@@ -2,13 +2,14 @@
    <v-container v-bind="{ [`grid-list-xl`]: true }">
       <v-layout row wrap>
          <v-flex xs12>
-            <h2 class="display-2 mb-4 mt-4">🏉 Latest news</h2>
+            <h2 class="display-2 mb-4 mt-4"><div data-icon="ei-pencil" data-size="l"></div>Latest news</h2>
          </v-flex>
 
          <v-flex xs12 sm6 md4 lg3 v-for="post in posts" :key="post.id">
             <PostCard
               v-bind:iden="post.id"
               v-bind:title="post.title"
+              v-bind:body="post.body"
               v-bind:picture="post.picture"
               v-bind:created_at="post.created_at"
               v-bind:author="post.author"

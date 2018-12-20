@@ -16,12 +16,15 @@ import Blog from './Blog.vue';
 import BlogLanding from './BlogLanding.vue';
 import Tag from './Tag.vue';
 import Calendar from './Calendar.vue';
+import Competitions from './Competitions.vue';
 
 import css from 'Styles/main.scss';
 
 const routes = [
+  { path: '/', name:"landing", component: Landing },
   { path: '/news', name: "news", component: Blog },
-  { path: '/', name:"landing", component: Landing }
+  { path: '/competitions', name: "competitions", component: Competitions },
+
 ];
 
 /* Plugins come before new Vue instance */

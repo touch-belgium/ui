@@ -2,7 +2,7 @@
    <v-container class="mt-5" v-bind="{ [`grid-list-xl`]: true }">
       <v-layout row wrap>
          <v-flex xs12>
-            <h2 class="display-1">🏉 News</h2>
+            <h2 class="display-1"><div data-icon="ei-pencil" data-size="m" style="display: inline;"></div>News</h2>
          </v-flex>
 
          <v-flex xs12 sm6>
@@ -21,6 +21,7 @@
             <PostCard
               v-bind:iden="post.id"
               v-bind:title="post.title"
+              v-bind:body="post.body"
               v-bind:picture="post.picture"
               v-bind:created_at="post.created_at"
               v-bind:author="post.author"
