@@ -2,7 +2,7 @@
    <v-container>
       <v-layout row wrap>
          <v-flex xs12>
-            <h2 class="display-2 mt-4 mb-5"><v-icon size="30px">event</v-icon>Events</h2>
+            <h2 class="display-2 mt-4 mb-5"><v-icon color="#000" size="48px">event</v-icon>Events</h2>
          </v-flex>
 
          <v-flex xs12>

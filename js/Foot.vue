@@ -1,4 +1,4 @@
-<template functional>
+<template>
    <div class="page-footer">
       <v-container>
          <v-layout row wrap >
@@ -26,7 +26,7 @@
       <v-layout>
          <v-flex class="footer-copyright">
             <v-container>
-               <p>© 2018 Touch Belgium</p>
+               <p>© 2018 Touch Belgium. Language test: {{$t("message.hello")}}</p>
             </v-container>
          </v-flex>
       </v-layout>

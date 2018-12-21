@@ -2,7 +2,8 @@
    <v-container class="mt-5" v-bind="{ [`grid-list-xl`]: true }">
       <v-layout row wrap>
          <v-flex xs12>
-            <h2 class="display-1"><div data-icon="ei-pencil" data-size="m" style="display: inline;"></div>News</h2>
+            <h2 class="display-1"><v-icon large color="blue darken-2">chat</v-icon>
+               </div>News</h2>
          </v-flex>
 
          <v-flex xs12 sm6>
@@ -14,7 +15,8 @@
             <p>Sort by tag:</p>
             <Tag v-for="tag in tags"
                  :key="tag.id"
-                 v-bind:word="tag"></Tag>
+                 v-bind:word="tag"
+            ></Tag>
          </v-flex>
 
          <v-flex xs12 sm6 md4 lg3 v-for="post in posts" :key="post.id">

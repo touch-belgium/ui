@@ -23,16 +23,23 @@
                   {{section.name}}
                </v-btn>
             </template>
+            <v-divider inset vertical></v-divider>
+            <v-flex md1>
+               <v-select
+                 class="hidden-md-and-down ml-3"
+                 dense
+                 prepend-icon="language"
+                 :items="langs"
+                 v-model="$i18n.locale"
+               ></v-select>
+            </v-flex>
+            <v-spacer></v-spacer>
+            <div class="social-links-navbar hidden-md-and-down">
+               <a v-for="(icon_, index) in social_links" target="_blank" :href="icon_.url">
+                  <div :class="icon_.cls" :data-icon="icon_.icon" data-size="m"></div>
+               </a>
+            </div>
          </v-toolbar-items>
-
-
-      </v-layout>
-      <v-layout align-center fill-height justify-end>
-         <div class="social-links-navbar hidden-md-and-down">
-            <a v-for="(icon_, index) in social_links" target="_blank" :href="icon_.url">
-               <div :class="icon_.cls" :data-icon="icon_.icon" data-size="m"></div>
-            </a>
-         </div>
       </v-layout>
    </v-toolbar>
 
@@ -158,8 +165,8 @@
            },
          ]
        },
-
-     ]
+     ],
+     langs: ['EN', 'FR', 'NL']
    })
  }
 </script>
@@ -169,6 +176,10 @@
 
  nav {
 
+   .v-divider {
+     border-width: 1px;
+     border-color: #555 !important;
+   }
  }
 
  .social-links-navbar {

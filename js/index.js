@@ -3,6 +3,7 @@ import EvilIconsCss from 'evil-icons/assets/evil-icons.min.css';
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueI18n from 'vue-i18n';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 
@@ -20,6 +21,19 @@ import Competitions from './Competitions.vue';
 
 import css from 'Styles/main.scss';
 
+const messages = {
+  EN: {
+    message: {
+      hello: 'hello world'
+    }
+  },
+  FR: {
+    message: {
+      hello: 'こんにちは、世界'
+    }
+  }
+};
+
 const routes = [
   { path: '/', name:"landing", component: Landing },
   { path: '/news', name: "news", component: Blog },
@@ -30,6 +44,7 @@ const routes = [
 /* Plugins come before new Vue instance */
 Vue.use(require('vue-moment'));
 Vue.use(VueRouter);
+Vue.use(VueI18n);
 Vue.use(Vuetify, {
   options: {
     // Generates CSS variables for the theme below
@@ -47,6 +62,13 @@ Vue.use(Vuetify, {
   }
 });
 
+// Create VueI18n instance with options
+const i18n = new VueI18n({
+  locale: 'EN', // set locale
+  messages, // set locale messages
+});
+
+// Create Vue Router with options
 const router = new VueRouter({
   routes // short for `routes: routes`
 });
@@ -58,6 +80,7 @@ var vm = new Vue({
     drawer_visible: false
   }),
   router,
+  i18n,
   delimiters: ["${", "}"],
   components: { Navbar, Sidenav, Foot, Landing, Post, PostCard, Blog, BlogLanding, Tag, Calendar },
 });
