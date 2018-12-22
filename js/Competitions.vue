@@ -29,17 +29,6 @@
                </template>
             </v-data-table>
          </v-flex>
-         <!-- <v-flex xs12 sm6 md4 lg3 v-for="post in posts" :key="post.id">
-              <PostCard
-              v-bind:iden="post.id"
-              v-bind:title="post.title"
-              v-bind:picture="post.picture"
-              v-bind:created_at="post.created_at"
-              v-bind:author="post.author"
-              v-bind:tags="post.tags"
-              v-bind:slug="post.slug"
-              ></PostCard>
-              </v-flex> -->
       </v-layout>
    </v-container>
 </template>

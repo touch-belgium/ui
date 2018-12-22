@@ -80,11 +80,11 @@ const router = new VueRouter({
 Vue.config.devtools = true;
 var vm = new Vue({
   el: '#vue-root',
-  data: () => ({
-    drawer_visible: false
-  }),
   router,
   i18n,
+  data: {
+    drawer: false,
+  },
   delimiters: ["${", "}"],
   components: { Navbar, Sidenav, Foot, Landing, Post, PostCard, Blog, BlogLanding, Tag, Calendar },
 });

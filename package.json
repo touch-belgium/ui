@@ -53,7 +53,7 @@
     "webapp-webpack-plugin": "^2.4.0",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "3.1.10",
+    "webpack-dev-server": "3846masa-tmp/webpack-dev-server#workaround-for-sockjs",
     "webpack-merge": "^4.1.5"
   }
 }
