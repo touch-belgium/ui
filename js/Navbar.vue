@@ -145,7 +145,7 @@
        },
        {
          name: "Sponsorship",
-         url: {name: "news"},
+         url: {name: "sponsorship"},
          subsections: []
        },
        {
