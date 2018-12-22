@@ -1,8 +1,8 @@
 <template>
-   <v-toolbar app dark color="tb_red">
+   <v-toolbar fixed app dark color="tb_red">
       <v-layout align-center fill-height row>
          <router-link to="/">
-            <img src="~Images/logo-tb.png" style="height: 64px" alt="TB logo" />
+            <img src="~Images/logo-tb.png" style="height: 64px; vertical-align: middle;" alt="TB logo" />
          </router-link>
          <v-toolbar-items style="width: 100%;">
             <template v-for="(section, index) in sections">
@@ -12,9 +12,10 @@
                      <v-list-tile
                        v-for="(e, index) in section.subsections"
                        :key="index"
+                       @click=""
                      >
                         <router-link :to="e.url">
-                           <v-list-tile-title>{{ e.name }}</v-list-tile-title>
+                           {{ e.name }}
                         </router-link>
                      </v-list-tile>
                   </v-list>
@@ -34,7 +35,7 @@
                ></v-select>
             </v-flex>
             <v-spacer></v-spacer>
-            <v-flex v-for="(icon_, index) in social_links" align-self-center class="social_icon hidden-md-and-down">
+            <v-flex v-for="(icon_, index) in social_links" :key="index" align-self-center class="social_icon hidden-md-and-down">
                <a target="_blank" :href="icon_.url">
                   <div :class="icon_.cls" :data-icon="icon_.icon" data-size="m"></div>
                </a>
@@ -93,11 +94,11 @@
            },
            {
              name: "Calendar",
-             url: "/news"
+             url: "/template"
            },
            {
              name: "AGM",
-             url: "/news"
+             url: "/template"
            }
          ]
        },
@@ -106,19 +107,19 @@
          subsections: [
            {
              name: "Where to play",
-             url: "/news"
+             url: "/template"
            },
            {
              name: "Referees",
-             url: "/news"
+             url: "/template"
            },
            {
              name: "Coaches",
-             url: "/news"
+             url: "/template"
            },
            {
              name: "National teams",
-             url: "/news"
+             url: "/template"
            }
          ]
        },
@@ -127,19 +128,19 @@
          subsections: [
            {
              name: "What is touch ?",
-             url: "/news"
+             url: "/template"
            },
            {
              name: "Where to play ?",
-             url: "/news"
+             url: "/template"
            },
            {
              name: "Training/courses",
-             url: "/news"
+             url: "/template"
            },
            {
              name: "Rules and regulations",
-             url: "/news"
+             url: "/template"
            }
          ]
        },
@@ -153,15 +154,15 @@
          subsections: [
            {
              name: "Members",
-             url: "/news"
+             url: "/template"
            },
            {
              name: "Committee",
-             url: "/news"
+             url: "/template"
            },
            {
              name: "Contact",
-             url: "/news"
+             url: "/template"
            },
          ]
        },
@@ -174,34 +175,43 @@
 <style module lang="scss">
  @import "custom-color-variables";
 
+
+ .v-list a {
+   color: #000;
+   text-decoration: none;
+   &.router-link-active {
+     color: red;
+   }
+ }
+
  nav {
 
    .v-divider {
-     border-width: 1px;
-     border-color: #555 !important;
+     border-width: 1pt;
+     border-color: white !important;
    }
    .social_icon {
      /* Small fix to vuetify flex default */
      flex: 0 1 auto !important;
+     div.icon {
+       flex: 0 1 auto;
+       align-self: center;
+       transition: 0.3s;
+       fill: #ffffff !important;
+       &.icon-insta:hover {
+         fill: #fef444 !important;
+       }
+       &.icon-fb:hover {
+         fill: #3b5998 !important;
+       }
+       &.icon-twitter:hover {
+         fill: #55acee !important;
+       }
+       &.icon-yt:hover {
+         fill: #000 !important;
+       }
+     }
    }
  }
 
-   div.icon {
-     flex: 0 1 auto;
-     align-self: center;
-     transition: 0.3s;
-     fill: #ffffff !important;
-     &.icon-insta:hover {
-       fill: #3f729b !important;
-     }
-     &.icon-fb:hover {
-       fill: #3b5998 !important;
-     }
-     &.icon-twitter:hover {
-       fill: #55acee !important;
-     }
-     &.icon-yt:hover {
-       fill: #000 !important;
-     }
- }
 </style>

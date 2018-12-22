@@ -19,6 +19,7 @@ import Tag from './Tag.vue';
 import Calendar from './Calendar.vue';
 import Competitions from './Competitions.vue';
 import Sponsorship from './Sponsorship.vue';
+import Template from './Template.vue';
 
 import css from 'Styles/main.scss';
 
@@ -38,6 +39,7 @@ const messages = {
 const routes = [
   { path: '/', name:"landing", component: Landing },
   { path: '/news', name: "news", component: Blog },
+  { path: '/template', name: "template", component: Template },
   { path: '/competitions', name: "competitions", component: Competitions },
   { path: '/sponsorship', name: "sponsorship", component: Sponsorship },
 

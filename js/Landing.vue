@@ -47,12 +47,12 @@
  }
 
  #bgvid {
-   z-index: 1;
+   z-index: 0;
  }
 
  .viewport-header {
    width: 100%;
-   z-index: 2;
+   z-index: 1;
    color: white;
    position: fixed;
    text-align: center;
@@ -75,7 +75,7 @@
    min-height: 100%;
    position: fixed;
    bottom: 0;
-   z-index: -1;
+   z-index: 0;
    left: 50%;
    transform: translate(-50%, 0);
  }
@@ -83,7 +83,7 @@
 
  .landing-body {
    background: #fff;
-   z-index: 2;
+   z-index: 1;
    position: relative;
    @media #{$small-and-down} {
      margin-top: calc(100vh - #{$navbar-height-mobile});
