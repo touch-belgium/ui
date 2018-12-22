@@ -4,7 +4,7 @@
          <router-link to="/">
             <img src="~Images/logo-tb.png" style="height: 64px" alt="TB logo" />
          </router-link>
-         <v-toolbar-items>
+         <v-toolbar-items style="width: 100%;">
             <template v-for="(section, index) in sections">
                <v-menu v-if="section.subsections.length" offset-y class="hidden-md-and-down">
                   <v-btn flat slot="activator">{{section.name}}</v-btn>
@@ -23,10 +23,10 @@
                   {{section.name}}
                </v-btn>
             </template>
-            <v-divider inset vertical></v-divider>
+            <v-divider inset vertical class="hidden-md-and-down"></v-divider>
             <v-flex md1>
                <v-select
-                 class="hidden-md-and-down ml-3"
+                 class="hidden-md-and-down ml-3 pt-3"
                  dense
                  prepend-icon="language"
                  :items="langs"
@@ -34,11 +34,11 @@
                ></v-select>
             </v-flex>
             <v-spacer></v-spacer>
-            <div class="social-links-navbar hidden-md-and-down">
-               <a v-for="(icon_, index) in social_links" target="_blank" :href="icon_.url">
+            <v-flex v-for="(icon_, index) in social_links" align-self-center class="social_icon hidden-md-and-down">
+               <a target="_blank" :href="icon_.url">
                   <div :class="icon_.cls" :data-icon="icon_.icon" data-size="m"></div>
                </a>
-            </div>
+            </v-flex>
          </v-toolbar-items>
       </v-layout>
    </v-toolbar>
@@ -180,10 +180,15 @@
      border-width: 1px;
      border-color: #555 !important;
    }
+   .social_icon {
+     /* Small fix to vuetify flex default */
+     flex: 0 1 auto !important;
+   }
  }
 
- .social-links-navbar {
    div.icon {
+     flex: 0 1 auto;
+     align-self: center;
      transition: 0.3s;
      fill: #ffffff !important;
      &.icon-insta:hover {
@@ -198,6 +203,5 @@
      &.icon-yt:hover {
        fill: #000 !important;
      }
-   }
  }
 </style>
