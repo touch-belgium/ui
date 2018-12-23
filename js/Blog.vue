@@ -8,7 +8,11 @@
 
          <v-flex xs12 sm6>
             <p>Selected tags:</p>
-
+            <Tag v-for="tag in selected_tags"
+                 :key="tag.id"
+                 v-bind:word="tag"
+                 v-bind:close="true"
+            ></Tag>
          </v-flex>
 
          <v-flex xs12 sm6>
@@ -16,10 +20,11 @@
             <Tag v-for="tag in tags"
                  :key="tag.id"
                  v-bind:word="tag"
+                 v-bind:close="false"
             ></Tag>
          </v-flex>
 
-         <v-flex xs12 sm6 md4 lg3 v-for="post in posts" :key="post.id">
+         <v-flex xs12 sm6 md4 lg3 v-for="post in shown" :key="post.id">
             <PostCard
               v-bind:iden="post.id"
               v-bind:title="post.title"
@@ -28,7 +33,6 @@
               v-bind:created_at="post.created_at"
               v-bind:author="post.author"
               v-bind:tags="post.tags"
-              v-bind:slug="post.slug"
             ></PostCard>
          </v-flex>
       </v-layout>
@@ -37,6 +41,7 @@
 
 <script>
  import axios from 'axios';
+// import { some } from 'lodash';
  import PostCard from './PostCard.vue';
  import Tag from './Tag.vue';
 
@@ -45,7 +50,6 @@
    data () {
      return {
        posts: [],
-       shown: null,
        tags: [],
        selected_tags: [],
      }
@@ -64,13 +68,38 @@
      fetchTags () {
        let url = API + "tags/";
        axios.get(url).then(response => {
-         this.tags = response.data.results.map(x => x.word);
+         this.tags = response.data.results.map(t => t.word);
        });
      },
    },
    mounted () {
      this.fetchPosts();
      this.fetchTags();
+     this.$on('add_tag', (word) => {
+       this.tags = this.tags.filter(x => x != word);
+       if (!this.selected_tags.includes(word))
+         this.selected_tags.push(word);
+       this.selected_tags.sort();
+     });
+     this.$on('remove_tag', (word) => {
+       this.selected_tags = this.selected_tags.filter(t => t != word);
+       this.tags.push(word);
+       this.tags.sort();
+     })
+   },
+   computed: {
+     shown () {
+       if (this.selected_tags.length) {
+         return this.posts.filter(p => {
+           return p.tags.some(t => {
+             console.log(t.word);
+             return this.selected_tags.includes(t.word);
+           });
+         });
+       } else {
+         return this.posts;
+       }
+     }
    },
    components: {
      PostCard,

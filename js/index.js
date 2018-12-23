@@ -18,6 +18,7 @@ import BlogLanding from './BlogLanding.vue';
 import Tag from './Tag.vue';
 import Calendar from './Calendar.vue';
 import Competitions from './Competitions.vue';
+import Competition from './Competition.vue';
 import Sponsorship from './Sponsorship.vue';
 import Template from './Template.vue';
 
@@ -31,7 +32,7 @@ const messages = {
   },
   FR: {
     message: {
-      hello: 'こんにちは、世界'
+      hello: 'texte en français'
     }
   }
 };
@@ -42,6 +43,7 @@ const routes = [
   { path: '/news/*,:id', name: "post", component: Post },
   { path: '/template', name: "template", component: Template },
   { path: '/competitions', name: "competitions", component: Competitions },
+  { path: '/competitions/*,:id', name: "competition", component: Competition },
   { path: '/sponsorship', name: "sponsorship", component: Sponsorship },
 
 ];

@@ -1,13 +1,18 @@
 <template>
-   <v-chip><v-avatar :class="color">{{letter}}</v-avatar>{{ this.word }}</v-chip>
+   <v-chip @click="add_tag" @input="remove_tag" :close="this.close"><v-avatar :class="color">{{letter}}</v-avatar>{{ this.word }}</v-chip>
 </template>
 
 <script>
  import colors from 'vuetify/es5/util/colors';
  export default {
-   props: ['word'],
-   mounted () {
-     console.log(this.color_list);
+   props: ['word', 'close'],
+   methods: {
+     add_tag () {
+       this.$parent.$emit('add_tag', this.word);
+     },
+     remove_tag () {
+       this.$parent.$emit('remove_tag', this.word);
+     }
    },
    computed: {
      letter () {
@@ -19,7 +24,7 @@
      color () {
        return this.color_list[this.letter.charCodeAt(0) % Object.keys(colors).length];
      },
-   }
+   },
  }
 
 </script>

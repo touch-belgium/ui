@@ -1,5 +1,5 @@
 <template>
-   <v-toolbar fixed app dark color="tb_red">
+   <v-toolbar fixed app color="white">
       <v-layout align-center fill-height row>
          <router-link to="/">
             <img src="~Images/logo-tb.png" style="height: 64px; vertical-align: middle;" alt="TB logo" />
@@ -78,7 +78,7 @@
  nav {
    .v-divider {
      border-width: 1pt;
-     border-color: white !important;
+     border-color: black !important;
    }
    .social_icon {
      /* Small fix to vuetify flex default */
@@ -92,9 +92,10 @@
        -o-transition: all 0.2s ease;
        transition: all 0.2s ease;
        /* transition: 0.3s; */
-       fill: #ffffff !important;
+       fill: #000 !important;
        &.icon-insta:hover {
-         fill: #fef444 !important;
+         /* fill: #fef444 !important; */
+         fill: blue !important;
        }
        &.icon-fb:hover {
          fill: #3b5998 !important;
@@ -103,7 +104,7 @@
          fill: #55acee !important;
        }
        &.icon-yt:hover {
-         fill: #000 !important;
+         fill: red !important;
        }
      }
    }

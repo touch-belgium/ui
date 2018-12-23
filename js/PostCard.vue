@@ -20,7 +20,7 @@
 
 
  export default {
-   props: ['iden', 'body', 'title', 'picture', 'created_at', 'author', 'tags', 'slug'],
+   props: ['iden', 'body', 'title', 'picture', 'created_at', 'author', 'tags'],
    /* Hack to show children components inside functional components */
    /* https://github.com/vuejs/vue/issues/7492 */
    computed: {

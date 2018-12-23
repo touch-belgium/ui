@@ -24,7 +24,7 @@
               :pagination.sync="pagination"
               >
                <template slot="items" slot-scope="props">
-                  <td>{{ props.item.name }}</td>
+                  <router-link :style="{ cursor: 'pointer'}" tag="td" :to="url(props.item.name, props.item.id)">{{ props.item.name }}</router-link>
                   <td><v-rating readonly :value="props.item.rating" class="ml-2"></v-rating></td>
                </template>
             </v-data-table>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+ import slugify from 'slugify';
  import axios from 'axios';
  export default {
    props: [],
@@ -53,10 +54,10 @@
          }
        ],
        pagination: {
-         descending: true,
+         descending: false,
          page: 1,
          rowsPerPage: 10,
-         sortBy: 'fat',
+         sortBy: 'name',
          totalItems: 0,
        }
      }
@@ -69,6 +70,9 @@
          this.competitions = response.data.results;
        });
      },
+     url (name, id) {
+       return 'competitions/' + slugify(name) + ',' + id;
+     }
    },
    created () {
    },
@@ -79,7 +83,7 @@
      shown () {
        let patt = new RegExp(this.search, "i");
        return this.competitions.filter(c => patt.test(c.name));
-     }
+     },
    }
  }
 
