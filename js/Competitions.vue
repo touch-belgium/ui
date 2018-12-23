@@ -1,5 +1,6 @@
 <template>
    <v-container class="mt-3" v-bind="{ [`grid-list-xl`]: true }">
+      <v-img aspect-ratio="5" src="media/banner_tournaments.jpg"></v-img>
       <v-layout row wrap>
          <v-flex xs12>
             <h2 class="display-1">Tournaments and competitions</h2>

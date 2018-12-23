@@ -29,7 +29,7 @@ module.exports = merge(common, {
   },
   devServer: {
     proxy: {
-      '/media/*.png': {
+      '/media/*.(png|jpg|jpeg)': {
         target: "http://localhost:8000",
         secure: false
       }
