@@ -27,4 +27,13 @@ module.exports = merge(common, {
       },
     ]
   },
+  devServer: {
+    proxy: {
+      '/media/*.png': {
+        target: "http://localhost:8000",
+        secure: false
+      }
+    }
+  }
+
 });
