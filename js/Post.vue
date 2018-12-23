@@ -8,12 +8,17 @@
          <v-card-text>
             <p><em>Published: {{ post.created_at | moment("from") }} by {{ post.author.username }}</em></p>
             <div v-html="post.body"></div>
+            <div v-if="post.tags.length" class="mt-5">
+               <em>Tags: </em>
+               <Tag v-for="tag in post.tags" :key="tag.id" v-bind:word="tag.word"></Tag>
+            </div>
          </v-card-text>
       </v-card>
    </v-container>
 </template>
 
 <script>
+ import Tag from './Tag.vue';
  import axios from 'axios';
 
  export default {
@@ -38,6 +43,9 @@
    },
    mounted () {
 
+   },
+   components: {
+     Tag
    }
  }
 </script>
@@ -51,17 +59,6 @@
        em {
          color: color("grey", "darken-3");
          font-size: 0.8em;
-       }
-       margin-bottom: 1.5em;
-     }
-     .post-tags {
-       margin-top: 2em;
-       span {
-         background-color: color("teal", "base");
-         color: color("shades", "white");
-         padding: 5px;
-         border-radius: 2px;
-         margin-right: 0.5em;
        }
      }
    }

@@ -86,7 +86,12 @@
      div.icon {
        flex: 0 1 auto;
        align-self: center;
-       transition: 0.3s;
+       -webkit-transition: all 0.2s ease;
+       -moz-transition: all 0.2s ease;
+       -ms-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+       transition: all 0.2s ease;
+       /* transition: 0.3s; */
        fill: #ffffff !important;
        &.icon-insta:hover {
          fill: #fef444 !important;

@@ -11,10 +11,10 @@
             <h2 class="display-3">Ready to take on the challenge ?</h2>
          </v-flex>
          <v-flex xs12 md2>
-            <v-btn large color="tb_red" dark to="/news">What is touch</v-btn>
+            <v-btn large color="tb_red" dark to="/template">What is touch</v-btn>
          </v-flex>
          <v-flex xs12 md2>
-            <v-btn large color="tb_red" dark to="/news">Where to play</v-btn>
+            <v-btn large color="tb_red" dark to="/template">Where to play</v-btn>
          </v-flex>
       </v-layout>
 
