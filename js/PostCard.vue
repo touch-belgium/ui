@@ -1,10 +1,10 @@
 <template>
-   <v-card hover @click="" ripple>
+   <v-card hover>
       <v-img :src="picture"></v-img>
 
       <v-card-text>
          <p><em>Published: {{ created_at | moment("from") }} by {{ author.username }}</em></p>
-         <router-link tag="h5" :to="slug" class="headline mb-4">{{ title }}</router-link>
+         <router-link tag="a" :to="slug" class="headline mb-4">{{ title }}</router-link>
          <p v-html="raw_body" class="block-with-text"></p>
          <div v-if="tags.length" class="post-tags">
             <em>Tags: </em>
@@ -39,4 +39,10 @@
 
 <style scoped lang="scss">
  @import "custom-color-variables";
+ .v-card {
+   cursor: auto;
+   a {
+     text-decoration: none;
+   }
+ }
 </style>

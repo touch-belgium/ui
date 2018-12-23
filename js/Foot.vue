@@ -5,9 +5,9 @@
             <v-flex xs12 sm5>
                <v-list color="tb_black_light" dark dense subheader>
                   <v-subheader>Find us on social media !</v-subheader>
-                  <v-list-tile><a target="_blank" class="grey-text text-lighten-3" href="https://facebook.com/touchbelgium"><div data-icon="ei-sc-facebook"></div><span>Facebook</span></a></v-list-tile>
+                  <v-list-tile><a target="_blank" class="grey-text text-lighten-3" href="https://facebook.com/touchbelgium"><div data-icon="ei-sc-facebook"></div>Facebook</a></v-list-tile>
                   <v-list-tile><a target="_blank" class="grey-text text-lighten-3" href="https://www.instagram.com/touchbelgium/"><div data-icon="ei-sc-instagram"></div>Instagram</a></v-list-tile>
-                  <v-list-tile><a target="_blank" class="grey-text text-lighten-3" href="https://twitter.com/touchbelgium?lang=en"><div data-icon="ei-sc-twitter"></div><span>Twitter</span></a></v-list-tile>
+                  <v-list-tile><a target="_blank" class="grey-text text-lighten-3" href="https://twitter.com/touchbelgium?lang=en"><div data-icon="ei-sc-twitter"></div>Twitter</a></v-list-tile>
                   <v-list-tile><a target="_blank" class="grey-text text-lighten-3" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT"><div data-icon="ei-sc-youtube"></div>YouTube</a></v-list-tile>
                </v-list>
             </v-flex>
