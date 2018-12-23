@@ -1,24 +1,44 @@
-<template functional>
-   <div class="row">
-      <div class="s12">
-         <div class="card post">
-            <div class="card-content">
-               <span class="card-title">{{ props.title }}</span>
-               <p><em>Published: {{ props.created_at | moment("from") }} by {{ props.author.username }}</em></p>
-               <div v-html="props.body"></div>
-               <div v-if="props.tags.length > 0" class="post-tags">
-                  <em>Tags: </em>
-                  <span v-for="tag in props.tags">{{ tag.word }}</span>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+<template>
+   <v-container>
+      <v-card raised v-if="post">
+         <v-card-title primary-title>
+            <h3 class="display-1">{{post.title}}</h3>
+         </v-card-title>
+
+         <v-card-text>
+            <p><em>Published: {{ post.created_at | moment("from") }} by {{ post.author.username }}</em></p>
+            <div v-html="post.body"></div>
+         </v-card-text>
+      </v-card>
+   </v-container>
 </template>
 
 <script>
+ import axios from 'axios';
+
  export default {
-   props: ['title', 'body', 'created_at', 'author', 'tags'],
+   data () {
+     return {
+       post: null
+     }
+   },
+   methods: {
+     fetchPost () {
+       let url = API + "posts/" + this.$route.params.id + "/";
+       axios.get(url, {crossdomain: true}).then(response => {
+         this.post = response.data;
+       });
+     }
+   },
+   created () {
+     this.fetchPost();
+   },
+   watch: {
+     '$route': 'fetchPost'
+   },
+   mounted () {
+
+   }
  }
 </script>
 

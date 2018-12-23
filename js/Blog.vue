@@ -68,8 +68,6 @@
        });
      },
    },
-   created () {
-   },
    mounted () {
      this.fetchPosts();
      this.fetchTags();

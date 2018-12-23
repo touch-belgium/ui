@@ -1,11 +1,10 @@
 <template>
-   <v-card hover>
+   <v-card hover @click="" ripple>
       <v-img :src="picture"></v-img>
 
-      <!-- <a :href="'news/' + props.iden + '/' + props.slug"> -->
       <v-card-text>
          <p><em>Published: {{ created_at | moment("from") }} by {{ author.username }}</em></p>
-         <h5 class="headline mb-4">{{ title }}</h5>
+         <router-link tag="h5" :to="slug" class="headline mb-4">{{ title }}</router-link>
          <p v-html="raw_body" class="block-with-text"></p>
          <div v-if="tags.length" class="post-tags">
             <em>Tags: </em>
@@ -17,6 +16,8 @@
 
 <script>
  import Tag from './Tag.vue';
+ import slugify from 'slugify';
+
 
  export default {
    props: ['iden', 'body', 'title', 'picture', 'created_at', 'author', 'tags', 'slug'],
@@ -25,6 +26,9 @@
    computed: {
      raw_body: function () {
        return this.body.replace(/<(?:.|\n)*?>/gm, '');
+     },
+     slug () {
+       return "news/" + slugify(this.title) + "," + this.iden;
      }
    },
    components: {

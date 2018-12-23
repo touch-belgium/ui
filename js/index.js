@@ -39,6 +39,7 @@ const messages = {
 const routes = [
   { path: '/', name:"landing", component: Landing },
   { path: '/news', name: "news", component: Blog },
+  { path: '/news/*,:id', name: "post", component: Post },
   { path: '/template', name: "template", component: Template },
   { path: '/competitions', name: "competitions", component: Competitions },
   { path: '/sponsorship', name: "sponsorship", component: Sponsorship },

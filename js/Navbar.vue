@@ -9,15 +9,14 @@
                <v-menu v-if="section.subsections.length" offset-y class="hidden-md-and-down">
                   <v-btn flat slot="activator">{{section.name}}</v-btn>
                   <v-list>
-                     <v-list-tile
+                     <router-link
+                       tag="v-list-tile"
+                       :to="e.url"
                        v-for="(e, index) in section.subsections"
                        :key="index"
-                       @click=""
                      >
-                        <router-link :to="e.url">
-                           {{ e.name }}
-                        </router-link>
-                     </v-list-tile>
+                        {{ e.name }}
+                     </router-link>
                   </v-list>
                </v-menu>
                <v-btn class="hidden-md-and-down" flat v-else :to="section.url">
