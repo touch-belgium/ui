@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch --config webpack.dev.js",
-    "start:dev": "webpack-dev-server --config webpack.dev.js",
+    "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "//": "Comment: the following will run after `npm i`",
     "heroku-postbuild": "npm run build"
   },
   "engines": {
-    "node": ">=10.10.0",
+    "node": ">=11.5.0",
     "npm": ">=6.4.1"
   },
   "repository": {
@@ -53,7 +52,7 @@
     "webapp-webpack-plugin": "^2.4.0",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "3846masa-tmp/webpack-dev-server#workaround-for-sockjs",
+    "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.1.5"
   },
   "devDependencies": {
