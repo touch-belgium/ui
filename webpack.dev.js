@@ -28,12 +28,15 @@ module.exports = merge(common, {
     ]
   },
   devServer: {
+    hot: true,
     proxy: {
       '/media/*.(png|jpg|jpeg)': {
         target: "http://localhost:8000",
         secure: false
       }
     }
-  }
-
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 });

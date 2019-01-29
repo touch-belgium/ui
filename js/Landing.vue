@@ -19,7 +19,7 @@
       </v-layout>
 
       <div class="landing-body">
-         <blog-landing post-number="6"></blog-landing>
+         <blog-landing></blog-landing>
          <!-- <a href="{% url 'news' %}" class="center-align">See all news</a> -->
          <calendar></calendar>
       </div>

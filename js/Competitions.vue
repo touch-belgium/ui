@@ -64,7 +64,7 @@
      }
    },
    methods: {
-     fetchComp () {
+     fetchComps () {
        let url = API + "competitions/";
 
        axios.get(url, {crossdomain: true}).then(response => {
@@ -78,7 +78,7 @@
    created () {
    },
    mounted () {
-     this.fetchComp();
+     this.fetchComps();
    },
    computed: {
      shown () {

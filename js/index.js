@@ -20,6 +20,7 @@ import Calendar from './Calendar.vue';
 import Competitions from './Competitions.vue';
 import Competition from './Competition.vue';
 import Sponsorship from './Sponsorship.vue';
+import Match from './Match.vue';
 import Template from './Template.vue';
 
 import css from 'Styles/main.scss';

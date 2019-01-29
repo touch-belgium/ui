@@ -36,6 +36,14 @@
        posts: null
      }
    },
+   methods: {
+     fetchPosts () {
+       let url = `${API}posts/recent`;
+       axios.get(url, {crossdomain: true}).then(response => {
+         this.posts = response.data.results;
+       });
+     }
+   },
    mounted () {
      this.fetchPosts();
    },

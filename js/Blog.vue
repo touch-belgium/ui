@@ -41,12 +41,11 @@
 
 <script>
  import axios from 'axios';
-// import { some } from 'lodash';
+ // import { some } from 'lodash';
  import PostCard from './PostCard.vue';
  import Tag from './Tag.vue';
 
  export default {
-   props: ['postNumber'],
    data () {
      return {
        posts: [],
@@ -56,11 +55,7 @@
    },
    methods: {
      fetchPosts () {
-       if (typeof this.postNumber !== 'undefined') {
-         var url = API + "posts/?number=" + this.postNumber;
-       } else {
-         var url = API + "posts/";
-       }
+       let url = `${API}posts`;
        axios.get(url, {crossdomain: true}).then(response => {
          this.posts = response.data.results;
        });
