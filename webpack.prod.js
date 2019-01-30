@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebappWebpackPlugin = require('webapp-webpack-plugin');
 
@@ -33,9 +32,6 @@ module.exports = merge(common, {
        * chunkFilename: devMode ? '[id].css' : '[id].[hash].css', */
       filename: '[name]-[hash].css',
       chunkFilename: '[id]-[hash].css',
-    }),
-    new UglifyJSPlugin({
-      parallel: 4
     }),
     new WebappWebpackPlugin({
       logo: path.resolve(__dirname, 'img/logo.png'),
