@@ -42,7 +42,9 @@
      '$route': 'fetchPost'
    },
    mounted () {
-
+     this.$root.$on("SIGlocale", () => {
+       this.$forceUpdate();
+     })
    },
    components: {
      Tag

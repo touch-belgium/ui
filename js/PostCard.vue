@@ -21,8 +21,6 @@
 
  export default {
    props: ['iden', 'body', 'title', 'picture', 'created_at', 'author', 'tags'],
-   /* Hack to show children components inside functional components */
-   /* https://github.com/vuejs/vue/issues/7492 */
    computed: {
      raw_body: function () {
        return this.body.replace(/<(?:.|\n)*?>/gm, '');
@@ -30,6 +28,11 @@
      slug () {
        return "news/" + slugify(this.title) + "," + this.iden;
      }
+   },
+   mounted () {
+     this.$root.$on("SIGlocale", () => {
+       this.$forceUpdate();
+     })
    },
    components: {
      Tag

@@ -7,6 +7,8 @@ import VueI18n from 'vue-i18n';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 
+import moment from 'moment';
+
 import Navbar from './Navbar.vue';
 import Sidenav from './Sidenav.vue';
 import Foot from './Foot.vue';
@@ -50,7 +52,7 @@ const routes = [
 ];
 
 /* Plugins come before new Vue instance */
-Vue.use(require('vue-moment'));
+Vue.use(require('vue-moment'), {moment});
 Vue.use(VueRouter);
 Vue.use(VueI18n);
 Vue.use(Vuetify, {
@@ -62,11 +64,7 @@ Vue.use(Vuetify, {
     primary: '#3f51b5',
     secondary: '#b0bec5',
     accent: '#8c9eff',
-    error: '#b71c1c',
-    tb_red: '#e11e26',
-    tb_yellow: '#d6b92b',
-    tb_black: '#111617',
-    tb_black_light: '#273234'
+    error: '#b71c1c'
   }
 });
 

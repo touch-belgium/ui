@@ -37,19 +37,21 @@
 </script>
 
 <style scoped lang="scss">
+ @import "custom-color-variables";
+
  .page-footer {
-   background: var(--v-tb_black_light-base);
+   background: $tb-black-light;
    z-index: 2;
    position: relative;
    .v-list {
-     background: var(--v-tb_black_light-base);
+     background: $tb-black-light;
      a {
        color: white;
        text-decoration: none;
      }
    }
    .footer-copyright {
-     background: var(--v-tb_black-base);
+     background: $tb-black;
      min-height: 50px;
      color: white;
      .container {

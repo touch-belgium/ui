@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 var API_URLS = {
     production: JSON.stringify('https://admin.touchb.shop/api/'),
@@ -84,6 +84,9 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'API': API_URLS[environment]
+    }),
+    new MomentLocalesPlugin({
+      localesToKeep: ['en', 'fr', 'nl'],
     }),
   ]
 };

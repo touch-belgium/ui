@@ -30,6 +30,7 @@
                  dense
                  prepend-icon="language"
                  :items="langs"
+                 @change="change_moment_locale"
                  v-model="$i18n.locale"
                ></v-select>
             </v-flex>
@@ -52,12 +53,17 @@
 
 <script>
  import Navigation from './Navigation.vue';
+ const moment = require('moment');
 
  export default {
    extends: Navigation,
    methods: {
      switch_drawer_state () {
        this.$root.$emit('SIGdrawer');
+     },
+     change_moment_locale (e) {
+       this.$moment.locale(e.toLowerCase());
+       this.$root.$emit('SIGlocale');
      }
    }
  }
