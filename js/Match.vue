@@ -1,15 +1,23 @@
 <template>
    <v-card color="grey lighten-3" :elevation="elevation">
-      <v-layout>
+      <v-layout row wrap>
          <v-flex class="grey lighten-4" xs12 md3>
             <v-card-text>
-               <v-layout align-center justify-start>
+               <v-layout class="mb-1" align-center justify-start>
                   <v-flex shrink><v-icon class="mr-2">event</v-icon></v-flex>
                   <v-flex><span>{{info.when | moment("dddd Do MMMM YYYY")}}</span></v-flex grow>
                </v-layout>
-               <v-layout align-center justify-start>
+               <v-layout class="mb-1" align-center justify-start>
                   <v-flex shrink><v-icon class="mr-2">access_time</v-icon></v-flex>
                   <v-flex><span>{{info.when | moment("HH:mm")}}</span></v-flex grow>
+               </v-layout>
+               <v-layout class="mb-1" v-if="info.pitch" align-center justify-start>
+                  <v-flex shrink><v-icon class="mr-2">pin_drop</v-icon></v-flex>
+                  <v-flex><span>Pitch: {{info.pitch}}</span></v-flex grow>
+               </v-layout>
+               <v-layout class="mb-1" v-if="info.refs" align-center justify-start>
+                  <v-flex shrink><v-icon class="mr-2">gavel</v-icon></v-flex>
+                  <v-flex><span>Refs: {{info.refs}}</span></v-flex grow>
                </v-layout>
             </v-card-text>
          </v-flex>
