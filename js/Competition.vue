@@ -19,17 +19,21 @@
         :headers="headers"
         :items="table_info">
          <template slot="items" slot-scope="props">
-            <td>{{props.item.team}}</td>
-            <td>{{props.item.points}}</td>
-            <td>{{props.item.bonus}}</td>
-            <td>{{props.item.wins}}</td>
-            <td>{{props.item.loses}}</td>
-            <td>{{props.item.ties}}</td>
-            <td>{{props.item.tf}}</td>
-            <td>{{props.item.ta}}</td>
-            <td>{{props.item.td}}</td>
+            <tr :active="isActive(props.item.team)">
+               <td>{{props.item.team}}</td>
+               <td>{{props.item.points}}</td>
+               <td>{{props.item.bonus}}</td>
+               <td>{{props.item.wins}}</td>
+               <td>{{props.item.loses}}</td>
+               <td>{{props.item.ties}}</td>
+               <td>{{props.item.tf}}</td>
+               <td>{{props.item.ta}}</td>
+               <td>{{props.item.td}}</td>
+            </tr>
          </template>
       </v-data-table>
+
+
       <h1 class="display-1 mb-4 mt-4">Fixtures and results</h1>
       <v-layout row wrap>
          <v-flex v-if="matches" xs12 sm6 md4 lg3>
@@ -157,6 +161,9 @@
                tf,
                ta,
                td: tf - ta};
+     },
+     isActive (name) {
+       return name == this.filtered_team;
      }
    },
    computed: {
