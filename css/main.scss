@@ -6,12 +6,10 @@ body {
     }
 }
 
-
 .icon {
     vertical-align: middle;
     margin-bottom: 3px;
 }
-
 
 /* Thanks hackingui.com */
 @mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1){
@@ -41,8 +39,3 @@ body {
 .block-with-text {
     @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3);
 }
-
-/* #contact-us { */
-/*     border: 1px solid white; */
-/*     display: inline; */
-/* } */

@@ -98,10 +98,10 @@
        -o-transition: all 0.2s ease;
        transition: all 0.2s ease;
        /* transition: 0.3s; */
-       fill: #000 !important;
+       /* fill: #000 !important; */
        &.icon-insta:hover {
          /* fill: #fef444 !important; */
-         fill: blue !important;
+         fill: black !important;
        }
        &.icon-fb:hover {
          fill: #3b5998 !important;
