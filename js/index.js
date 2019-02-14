@@ -44,6 +44,7 @@ const routes = [
   { path: '/', name:"landing", component: Landing },
   { path: '/news', name: "news", component: Blog },
   { path: '/news/*,:id', name: "post", component: Post },
+  { path: '/calendar', name: "calendar", component: Calendar },
   { path: '/template', name: "template", component: Template },
   { path: '/competitions', name: "competitions", component: Competitions },
   { path: '/competitions/*,:id', name: "competition", component: Competition },

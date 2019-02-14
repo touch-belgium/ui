@@ -25,19 +25,19 @@
             <v-card-text>
                <v-layout justify-space-around>
                   <v-flex>
-                     <v-img class="team_logo" :src="info.home_team.logo"></v-img>
+                     <v-img contain max-height="250px" max-width="250px" height="100%" class="team_logo" :src="info.home_team.logo"></v-img>
                   </v-flex>
                   <v-flex>
                      <h3 class="headline">
-                        <span>{{info.home_team.name}}</span> vs <span>{{info.away_team.name}}</span>
+                        <span>{{info.home_team.name}} vs {{info.away_team.name}}</span>
                      </h3>
 
                      <h2 class="mt-4 mb-4">
-                        <span>{{info.home_touchdowns}}</span> - <span>{{info.away_touchdowns}}</span>
+                        <span>{{info.home_touchdowns}} - {{info.away_touchdowns}}</span>
                      </h2>
                   </v-flex>
                   <v-flex>
-                     <v-img class="team_logo" :src="info.away_team.logo"></v-img>
+                     <v-img contain max-height="250px" max-width="250px" height="100%" class="team_logo" :src="info.away_team.logo"></v-img>
                   </v-flex>
                </v-layout>
             </v-card-text>
@@ -96,14 +96,6 @@
  }
  .tie {
    background-color: $tie;
- }
- .match span {
-   display: inline-block;
-   width: 40%;
-   text-align: left;
- }
- .match span:first-of-type {
-   text-align:right
  }
  .team_logo {
    height: 6em;

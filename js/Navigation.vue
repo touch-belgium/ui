@@ -45,7 +45,7 @@
            },
            {
              name: "Calendar",
-             url: "/template"
+             url: "/calendar"
            },
            {
              name: "AGM",

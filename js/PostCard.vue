@@ -1,6 +1,6 @@
 <template>
    <v-card hover>
-      <v-img :src="picture"></v-img>
+      <v-img contain :src="picture"></v-img>
 
       <v-card-text>
          <p><em>Published: {{ created_at | moment("from") }} by {{ author.username }}</em></p>
