@@ -23,21 +23,29 @@
          </v-flex>
          <v-flex class="text-xs-center match" :class="bg_colour" xs12 md9>
             <v-card-text>
-               <v-layout justify-space-around>
+               <v-layout justify-space-between row>
                   <v-flex>
                      <v-img contain max-height="250px" max-width="250px" height="100%" class="team_logo" :src="info.home_team.logo"></v-img>
                   </v-flex>
                   <v-flex>
-                     <h3 class="headline">
-                        <span>{{info.home_team.name}} vs {{info.away_team.name}}</span>
-                     </h3>
+                     <v-layout fill-height column justify-center align-content-center>
+                        <p :class="{'subheading': $vuetify.breakpoint.xsOnly,
+                                   'title': $vuetify.breakpoint.smOnly,
+                                   'headline': $vuetify.breakpoint.mdAndUp}">
+                           {{info.home_team.name}} vs {{info.away_team.name}}
+                        </p>
 
-                     <h2 class="mt-4 mb-4">
-                        <span>{{info.home_touchdowns}} - {{info.away_touchdowns}}</span>
-                     </h2>
+                        <p class="mt-4 mb-4" :class="{'subheading': $vuetify.breakpoint.xsOnly,
+                                     'title': $vuetify.breakpoint.smOnly,
+                                     'headline': $vuetify.breakpoint.mdAndUp}">
+                           {{info.home_touchdowns}} - {{info.away_touchdowns}}
+                        </p>
+                     </v-layout>
                   </v-flex>
                   <v-flex>
-                     <v-img contain max-height="250px" max-width="250px" height="100%" class="team_logo" :src="info.away_team.logo"></v-img>
+                     <v-layout justify-end>
+                        <v-img contain max-height="250px" max-width="250px" height="100%" class="team_logo" :src="info.away_team.logo"></v-img>
+                     </v-layout>
                   </v-flex>
                </v-layout>
             </v-card-text>
