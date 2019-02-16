@@ -1,8 +1,8 @@
 <template functional>
    <div class="landing-wrapper">
       <video poster="" id="bgvid" playsinline autoplay muted loop>
-         <source src="~Videos/splash.mp4" type="video/mp4">
          <source src="~Videos/splash.webm" type="video/webm">
+         <source src="~Videos/splash.mp4" type="video/mp4">
       </video>
 
       <!-- <h2 class="center-align">Six players, six touches, one team !</h2> -->
