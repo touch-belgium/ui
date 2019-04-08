@@ -6,8 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 var API_URLS = {
-    production: JSON.stringify('https://admin.touchb.shop/api/'),
-    development: JSON.stringify('http://localhost:8000/api/')
+  production: JSON.stringify('https://admin.touchb.shop/api/'),
+  development: JSON.stringify('http://localhost:8000/api/')
 };
 
 var environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
@@ -24,6 +24,11 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.styl$/,
+        loader: ['style-loader', 'css-loader', 'stylus-loader']
+      },
+
       {
         test: /\.vue$/,
         loader: 'vue-loader'

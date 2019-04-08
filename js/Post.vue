@@ -1,5 +1,6 @@
 <template>
    <v-container>
+      <p>← Back to news</p>
       <v-card raised v-if="post">
          <v-card-title primary-title>
             <h3 class="display-1">{{post.title}}</h3>

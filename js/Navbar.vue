@@ -27,7 +27,6 @@
             <v-flex md1>
                <v-select
                  class="hidden-md-and-down ml-3 pt-3"
-                 dense
                  prepend-icon="language"
                  :items="langs"
                  @change="change_moment_locale"
@@ -43,8 +42,26 @@
             <v-toolbar-side-icon @click="switch_drawer_state" class="hidden-lg-and-up"></v-toolbar-side-icon>
          </v-toolbar-items>
       </v-layout>
+      <!-- Gradient for instagram -->
+      <svg width="0" height="0">
+         <radialGradient id="instagram_gradient" r="150%" cx="30%" cy="107%">
+            <stop stop-color="#fdf497" offset="0" />
+            <stop stop-color="#fdf497" offset="0.05" />
+            <stop stop-color="#fd5949" offset="0.25" />
+            <stop stop-color="#d6249f" offset="0.6" />
+            <stop stop-color="#285AEB" offset="0.9" />
+         </radialGradient>
+      </svg>
+      <svg width="0" height="0">
+         <radialGradient id="instagram_gradient_reverse" r="150%" cx="30%" cy="107%">
+            <stop stop-color="#285AEB" offset="0" />
+            <stop stop-color="#d6249f" offset="0.2" />
+            <stop stop-color="#fd5949" offset="0.6" />
+            <stop stop-color="#fdf497" offset="0.85" />
+            <stop stop-color="#fdf497" offset="0.9" />
+         </radialGradient>
+      </svg>
    </v-toolbar>
-
    <!-- Contact us comes after in here but it is shown before the rest of the menu items (wanted)  -->
    <!-- <div id="contact-us" class="right hide-on-med-and-down">
         <span>Contact us !</span>
@@ -92,22 +109,20 @@
      div.icon {
        flex: 0 1 auto;
        align-self: center;
-       -webkit-transition: all 0.2s ease;
-       -moz-transition: all 0.2s ease;
-       -ms-transition: all 0.2s ease;
-       -o-transition: all 0.2s ease;
-       transition: all 0.2s ease;
-       /* transition: 0.3s; */
-       /* fill: #000 !important; */
-       &.icon-insta:hover {
-         /* fill: #fef444 !important; */
-         fill: black !important;
+       -webkit-transition: all 0.3s ease;
+       -moz-transition: all 0.3s ease;
+       -ms-transition: all 0.3s ease;
+       -o-transition: all 0.3s ease;
+       transition: all 0.3s ease;
+
+       &.icon-insta {
+         fill: url(#instagram_gradient);
        }
        &.icon-fb:hover {
-         fill: #3b5998 !important;
+         fill: #8b9dc3 !important;
        }
        &.icon-twitter:hover {
-         fill: #55acee !important;
+         fill: #4d9ddd !important;
        }
        &.icon-yt:hover {
          fill: red !important;

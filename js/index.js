@@ -2,10 +2,10 @@ import EvilIcons from 'evil-icons/assets/evil-icons.min.js';
 import EvilIconsCss from 'evil-icons/assets/evil-icons.min.css';
 
 import Vue from 'vue';
+import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import VueI18n from 'vue-i18n';
-import Vuetify from 'vuetify';
-import 'vuetify/dist/vuetify.min.css';
+
 
 import moment from 'moment';
 
@@ -24,8 +24,6 @@ import Competition from './Competition.vue';
 import Sponsorship from './Sponsorship.vue';
 import Match from './Match.vue';
 import Template from './Template.vue';
-
-import css from 'Styles/main.scss';
 
 const messages = {
   EN: {
@@ -56,6 +54,7 @@ const routes = [
 Vue.use(require('vue-moment'), {moment});
 Vue.use(VueRouter);
 Vue.use(VueI18n);
+Vue.use(Vuex);
 Vue.use(Vuetify, {
   options: {
     // Generates CSS variables for the theme below
@@ -69,6 +68,18 @@ Vue.use(Vuetify, {
   }
 });
 
+
+const store = new Vuex.Store({
+  state: {
+    count: 0,
+  },
+  mutations: {
+    increment (state) {
+      state.count++;
+    }
+  }
+});
+
 // Create VueI18n instance with options
 const i18n = new VueI18n({
   locale: 'EN', // set locale
@@ -77,7 +88,7 @@ const i18n = new VueI18n({
 
 // Create Vue Router with options
 const router = new VueRouter({
-  routes // short for `routes: routes`
+  routes
 });
 
 Vue.config.devtools = true;
