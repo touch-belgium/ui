@@ -5,16 +5,11 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
-var API_URLS = {
-  production: JSON.stringify('https://admin.touchb.shop/api/'),
-  development: JSON.stringify('http://localhost:8000/api/')
-};
-
-var environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+let environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 module.exports = {
   entry: {
-    main: './js/index.js'
+    main: './src/app.js'
   },
 
   output: {
@@ -68,27 +63,26 @@ module.exports = {
   resolve: {
     modules: ['node_modules'],
     alias: {
-      Styles: path.resolve(__dirname, 'css/'),
-      Images: path.resolve(__dirname, 'img/'),
-      Fonts: path.resolve(__dirname, 'fonts/'),
-      Videos: path.resolve(__dirname, 'video/'),
+      Styles: path.resolve(__dirname, 'src/css/'),
+      Images: path.resolve(__dirname, 'resources/img/'),
+      Fonts: path.resolve(__dirname, 'resources/fonts/'),
+      Videos: path.resolve(__dirname, 'resources/video/'),
       /* This way, import Vue from 'vue' will get the full standalone
          vue, not just the runtime build */
       vue: 'vue/dist/vue.min.js',
     }
   },
   plugins: [
+    // The following is needed to remove the Chinese locale from
+    // Element UI and replace it with English
+    new webpack.NormalModuleReplacementPlugin(/element-ui[\/\\]lib[\/\\]locale[\/\\]lang[\/\\]zh-CN/, 'element-ui/lib/locale/lang/en'),
     new CleanWebpackPlugin([path.resolve(__dirname, 'build')],
                            {exclude: ['icons']}),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
+      template: 'src/index.html',
       inject: true,
       chunksSortMode: 'dependency'
-    }),
-    new webpack.DefinePlugin({
-      'API': API_URLS[environment]
     }),
     new MomentLocalesPlugin({
       localesToKeep: ['en', 'fr', 'nl'],

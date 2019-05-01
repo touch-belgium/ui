@@ -39,7 +39,10 @@
 </script>
 
 <style module lang="scss">
- @import "custom-color-variables";
+ /* @import "custom-color-variables"; */
+
+ $tb-black-light: black;
+ $tb-black: black;
 
  .page-footer {
    background: $tb-black-light;

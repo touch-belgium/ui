@@ -21,19 +21,23 @@
       <div class="landing-body">
          <blog-landing></blog-landing>
          <!-- <a href="{% url 'news' %}" class="center-align">See all news</a> -->
-         <calendar></calendar>
+         <!-- <calendar></calendar> -->
       </div>
    </div>
 </template>
 
-<script>
-
-
-</script>
+<script></script>
 
 <style scoped lang="scss">
- @import "custom-color-variables";
- @import "custom-variables";
+ /* @import "custom-color-variables";
+    @import "custom-variables"; */
+
+ $small-and-down: 600px;
+ $medium-and-up: 1000px;
+ $tb-red: red;
+
+ $navbar-height-mobile: 80px;
+ $navbar-height: 90px;
 
  .landing-wrapper {
    background: inherit;
@@ -56,12 +60,13 @@
    color: white;
    position: fixed;
    text-align: center;
-   @media #{$small-and-down} {
-     top: 20vh;                  /*offset with top edge*/
+   @media (min-width: #{$small-and-down}) {
+     top: 20vh;
    }
-   @media #{$medium-and-up} {
-     top: 30vh;                  /*offset with top edge*/
+   @media (min-width: #{$medium-and-up}) {
+     top: 30vh;
    }
+
    h2 {
      font-family: 'GlacialIndifference-Bold' !important;
    }
@@ -86,10 +91,10 @@
    background: #fff;
    z-index: 1;
    position: relative;
-   @media #{$small-and-down} {
+   @media (min-width: #{$small-and-down}) {
      margin-top: calc(100vh - #{$navbar-height-mobile});
    }
-   @media #{$medium-and-up} {
+   @media (min-width: #{$medium-and-up}) {
      margin-top: calc(100vh - #{$navbar-height});
    }
    .container:first-child {

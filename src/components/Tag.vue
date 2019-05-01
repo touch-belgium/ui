@@ -3,7 +3,6 @@
 </template>
 
 <script>
- import colors from 'vuetify/es5/util/colors';
  export default {
    props: ['word', 'close'],
    methods: {

@@ -87,7 +87,8 @@
 </script>
 
 <style module lang="scss">
- @import "custom-color-variables";
+ /* @import "custom-color-variables"; */
+
 
 
  .v-list a {
