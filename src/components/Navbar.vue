@@ -1,76 +1,43 @@
 <template>
-   <v-toolbar fixed app color="white">
-      <v-layout align-center fill-height row>
-         <router-link to="/">
-            <img src="~Images/logo-tb.png" style="height: 64px; vertical-align: middle;" alt="TB logo" />
-         </router-link>
-         <v-toolbar-items style="width: 100%;">
-            <template v-for="(section, index) in sections">
-               <v-menu v-if="section.subsections.length" offset-y class="hidden-md-and-down">
-                  <v-btn flat slot="activator">{{section.name}}</v-btn>
-                  <v-list>
-                     <router-link
-                       tag="v-list-tile"
-                       :to="e.url"
-                       v-for="(e, index) in section.subsections"
-                       :key="index"
-                     >
-                        {{ e.name }}
-                     </router-link>
-                  </v-list>
-               </v-menu>
-               <v-btn class="hidden-md-and-down" flat v-else :to="section.url">
-                  {{section.name}}
-               </v-btn>
-            </template>
-            <v-divider inset vertical class="hidden-md-and-down"></v-divider>
-            <v-flex md1>
-               <v-select
-                 class="hidden-md-and-down ml-3 pt-3"
-                 prepend-icon="language"
-                 :items="langs"
-                 @change="change_moment_locale"
-                 v-model="$i18n.locale"
-               ></v-select>
-            </v-flex>
-            <v-spacer></v-spacer>
-            <v-flex v-for="(icon_, index) in social_links" :key="index" align-self-center class="social_icon hidden-md-and-down">
-               <a target="_blank" :href="icon_.url">
-                  <div :class="icon_.cls" :data-icon="icon_.icon" data-size="m"></div>
-               </a>
-            </v-flex>
-            <v-toolbar-side-icon @click="switch_drawer_state" class="hidden-lg-and-up"></v-toolbar-side-icon>
-         </v-toolbar-items>
-      </v-layout>
-      <!-- Gradient for instagram -->
-      <svg width="0" height="0">
-         <radialGradient id="instagram_gradient" r="150%" cx="30%" cy="107%">
-            <stop stop-color="#fdf497" offset="0" />
-            <stop stop-color="#fdf497" offset="0.05" />
-            <stop stop-color="#fd5949" offset="0.25" />
-            <stop stop-color="#d6249f" offset="0.6" />
-            <stop stop-color="#285AEB" offset="0.9" />
-         </radialGradient>
-      </svg>
-      <svg width="0" height="0">
-         <radialGradient id="instagram_gradient_reverse" r="150%" cx="30%" cy="107%">
-            <stop stop-color="#285AEB" offset="0" />
-            <stop stop-color="#d6249f" offset="0.2" />
-            <stop stop-color="#fd5949" offset="0.6" />
-            <stop stop-color="#fdf497" offset="0.85" />
-            <stop stop-color="#fdf497" offset="0.9" />
-         </radialGradient>
-      </svg>
-   </v-toolbar>
-   <!-- Contact us comes after in here but it is shown before the rest of the menu items (wanted)  -->
-   <!-- <div id="contact-us" class="right hide-on-med-and-down">
-        <span>Contact us !</span>
-        </div> -->
+   <b-navbar toggleable="lg" variant="light">
+      <b-navbar-brand href="#">NavBar</b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+         <b-navbar-nav>
+            <b-nav-item href="#">Link</b-nav-item>
+            <b-nav-item href="#" disabled>Disabled</b-nav-item>
+         </b-navbar-nav>
+
+         <!-- Right aligned nav items -->
+         <b-navbar-nav class="ml-auto">
+            <b-nav-form>
+               <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+               <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+            </b-nav-form>
+
+            <b-nav-item-dropdown text="Lang" right>
+               <b-dropdown-item href="#">EN</b-dropdown-item>
+               <b-dropdown-item href="#">ES</b-dropdown-item>
+               <b-dropdown-item href="#">RU</b-dropdown-item>
+               <b-dropdown-item href="#">FA</b-dropdown-item>
+            </b-nav-item-dropdown>
+
+            <b-nav-item-dropdown right>
+               <!-- Using 'button-content' slot -->
+               <template slot="button-content"><em>User</em></template>
+               <b-dropdown-item href="#">Profile</b-dropdown-item>
+               <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            </b-nav-item-dropdown>
+         </b-navbar-nav>
+      </b-collapse>
+   </b-navbar>
 </template>
 
 <script>
  import Navigation from './Navigation.vue';
- const moment = require('moment');
+ import moment from 'moment';
 
  export default {
    extends: Navigation,
@@ -87,7 +54,7 @@
 </script>
 
 <style module lang="scss">
- /* @import "custom-color-variables"; */
+ @import "Styles/_custom-color-variables.scss";
 
 
 

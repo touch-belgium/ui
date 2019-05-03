@@ -1,28 +1,10 @@
 <template functional>
    <div class="landing-wrapper">
-      <video poster="" id="bgvid" playsinline autoplay muted loop>
-         <source src="~Videos/splash.webm" type="video/webm">
-         <source src="~Videos/splash.mp4" type="video/mp4">
-      </video>
-
-      <!-- <h2 class="center-align">Six players, six touches, one team !</h2> -->
-      <v-layout align-center justify-center row wrap class="viewport-header">
-         <v-flex xs12 align-self-center>
-            <h2 class="display-3">Ready to take on the challenge ?</h2>
-         </v-flex>
-         <v-flex xs12 md2>
-            <v-btn large color="tb-red" dark to="/template">What is touch</v-btn>
-         </v-flex>
-         <v-flex xs12 md2>
-            <v-btn large color="tb-red" dark to="/template">Where to play</v-btn>
-         </v-flex>
-      </v-layout>
-
-      <div class="landing-body">
-         <blog-landing></blog-landing>
-         <!-- <a href="{% url 'news' %}" class="center-align">See all news</a> -->
-         <!-- <calendar></calendar> -->
-      </div>
+      <!-- <video poster="" id="bgvid" playsinline autoplay muted loop>
+           <source src="~Videos/splash.webm" type="video/webm">
+           <source src="~Videos/splash.mp4" type="video/mp4">
+           </video> -->
+      <p>Some text in the body</p>
    </div>
 </template>
 

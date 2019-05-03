@@ -1,13 +1,13 @@
 <template>
-   <div class="app">
+   <div class="app-wrapper">
       <navbar></navbar>
       <router-view></router-view>
    </div>
 </template>
 
 <script>
- import Navbar from './Navbar.vue';
- import Footer from './Footer.vue';
+ import Navbar from './components/Navbar.vue';
+ import Footer from './components/Footer.vue';
 
  export default {
    name: 'App',
@@ -15,8 +15,4 @@
  }
 </script>
 
-<style>
- body {
-   color: red;
- }
-</style>
+<style></style>

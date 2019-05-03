@@ -1,0 +1,19 @@
+// All available variables can be located at
+//
+// ../../node_modules/bootstrap/scss/_variables.scss
+//
+// Visit file directly with C-x C-f in Emacs to check what is
+// available to modify
+
+/* Variables overrides here */
+
+/* Example */
+/* $primary: #8c67ef; */
+/* $primary-invert: findColorInvert($primary); */
+/* $twitter: #4099FF; */
+/* $twitter-invert: findColorInvert($twitter); */
+
+
+/* Bootstrap and BootstrapVue imports */
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-vue/src/index.scss';
