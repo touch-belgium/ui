@@ -1,29 +1,66 @@
-<template functional>
+<template>
    <div class="landing-wrapper">
-      <!-- <video poster="" id="bgvid" playsinline autoplay muted loop>
-           <source src="~Videos/splash.webm" type="video/webm">
-           <source src="~Videos/splash.mp4" type="video/mp4">
-           </video> -->
-      <p>Some text in the body</p>
+      <header>
+         <div class="overlay"></div>
+         <video poster="" id="bgvid" playsinline autoplay muted loop>
+            <source src="~Videos/splash.webm" type="video/webm">
+            <source src="~Videos/splash.mp4" type="video/mp4">
+         </video>
+
+         <b-container class="h-100">
+            <div class="d-flex h-100 text-center align-items-center">
+               <div class="w-100 text-white">
+                  <h1 class="display-5 mb-5">Ready to take on the challenge ?</h1>
+                  <b-row class="justify-content-center">
+                     <b-col xs="12" md="3" class="mb-5">
+                        <b-button size="lg" variant="danger">What is touch</b-button>
+                     </b-col>
+                     <b-col xs="12" md="3">
+                        <b-button size="lg" variant="danger">Where to play</b-button>
+                     </b-col>
+                  </b-row>
+               </div>
+            </div>
+         </b-container>
+      </header>
+
+      <section>
+         <b-container>
+            <h2>News etc</h2>
+            <b-row>
+               <b-col sm="12" md="8">
+                  <blog-landing></blog-landing>
+               </b-col>
+               <b-col sm="12" md="4">
+                  <Timeline id="touchbelgium" sourceType="profile" :options="{ tweetLimit: '6', 'data-height': '300' }">
+                     <b-spinner variant="primary" label="Spinning"></b-spinner>
+                  </Timeline>
+               </b-col>
+            </b-row>
+         </b-container>
+      </section>
+
+
+      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>
    </div>
 </template>
 
-<script></script>
+<script>
+ import { Timeline } from "vue-tweet-embed";
+ import { BlogLanding } from "../components/BlogLanding.vue";
+
+ export default {
+   data () {
+
+   },
+   components: {
+     Timeline, BlogLanding,
+   },
+ }
+</script>
 
 <style scoped lang="scss">
- /* @import "custom-color-variables";
-    @import "custom-variables"; */
-
- $small-and-down: 600px;
- $medium-and-up: 1000px;
- $tb-red: red;
-
- $navbar-height-mobile: 80px;
- $navbar-height: 90px;
-
- .landing-wrapper {
-   background: inherit;
- }
+ @import "~Styles/custom-color-variables";
 
  @font-face {
    font-family: 'GlacialIndifference-Bold';
@@ -32,57 +69,49 @@
    url('~Fonts/GlacialIndifference-Bold.otf') format('opentype');
  }
 
- #bgvid {
-   z-index: 0;
- }
-
- .viewport-header {
+ header {
+   position: relative;
+   background-color: black;
+   height: 75vh;
+   min-height: 25rem;
    width: 100%;
-   z-index: 1;
-   color: white;
-   position: fixed;
-   text-align: center;
-   @media (min-width: #{$small-and-down}) {
-     top: 20vh;
-   }
-   @media (min-width: #{$medium-and-up}) {
-     top: 30vh;
-   }
-
-   h2 {
-     font-family: 'GlacialIndifference-Bold' !important;
-   }
-   .v-btn.tb-red {
-     margin: 4vw;
-     background-color: $tb-red;
-   }
+   overflow: hidden;
  }
 
- video {
+ header video {
+   position: absolute;
+   top: 50%;
+   left: 50%;
    min-width: 100%;
    min-height: 100%;
-   position: fixed;
-   bottom: 0;
+   width: auto;
+   height: auto;
    z-index: 0;
-   left: 50%;
-   transform: translate(-50%, 0);
+   -ms-transform: translateX(-50%) translateY(-50%);
+   -moz-transform: translateX(-50%) translateY(-50%);
+   -webkit-transform: translateX(-50%) translateY(-50%);
+   transform: translateX(-50%) translateY(-50%);
  }
 
-
- .landing-body {
-   background: #fff;
-   z-index: 1;
+ header .container {
    position: relative;
-   @media (min-width: #{$small-and-down}) {
-     margin-top: calc(100vh - #{$navbar-height-mobile});
-   }
-   @media (min-width: #{$medium-and-up}) {
-     margin-top: calc(100vh - #{$navbar-height});
-   }
-   .container:first-child {
-     padding-top: 3em;
-   }
+   z-index: 2;
+   font-family: 'GlacialIndifference-Bold';
  }
 
+ header .overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   z-index: 1;
+ }
+
+ @media (pointer: coarse) and (hover: none) {
+   header video {
+     display: none;
+   }
+ }
 
 </style>

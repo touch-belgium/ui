@@ -23,10 +23,10 @@
 </template>
 
 <script>
- import Blog from './Blog.vue';
- import PostCard from './PostCard.vue';
- import slugify from 'slugify';
- import axios from 'axios';
+ import Blog from "./Blog.vue";
+ import PostCard from "./PostCard.vue";
+ import slugify from "slugify";
+ import api from "../common/api.js";
 
  export default {
    extends: Blog,
@@ -37,11 +37,10 @@
      }
    },
    methods: {
-     fetchPosts () {
-       let url = `${API}posts/recent`;
-       axios.get(url, {crossdomain: true}).then(response => {
-         this.posts = response.data.results;
-       });
+     async fetchPosts () {
+       let url = '/posts/recent';
+       const response = await api.get(url);
+       this.posts = response.data.results;
      }
    },
    mounted () {
@@ -54,7 +53,4 @@
 </script>
 
 <style scoped lang="scss">
- .container {
-   padding-top: 5px;
- }
 </style>

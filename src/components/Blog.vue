@@ -1,5 +1,5 @@
 <template>
-   <v-container class="mt-5" v-bind="{ [`grid-list-xl`]: true }">
+   <b-container class="mt-5" v-bind="{ [`grid-list-xl`]: true }">
       <v-layout row wrap>
          <v-flex xs12>
             <h2 class="display-1"><v-icon large color="blue darken-2">chat</v-icon>
@@ -36,14 +36,13 @@
             ></PostCard>
          </v-flex>
       </v-layout>
-   </v-container>
+   </b-container>
 </template>
 
 <script>
- import axios from 'axios';
- // import { some } from 'lodash';
- import PostCard from './PostCard.vue';
- import Tag from './Tag.vue';
+ import PostCard from "./PostCard.vue";
+ import Tag from "./Tag.vue";
+ import api from "../common/api.js";
 
  export default {
    data () {
@@ -54,17 +53,15 @@
      }
    },
    methods: {
-     fetchPosts () {
-       let url = `${API}posts`;
-       axios.get(url, {crossdomain: true}).then(response => {
-         this.posts = response.data.results;
-       });
+     async fetchPosts () {
+       let url = "/posts";
+       const response = await api.get(url);
+       this.posts = response.data.results;
      },
-     fetchTags () {
-       let url = API + "tags/";
-       axios.get(url).then(response => {
-         this.tags = response.data.results.map(t => t.word);
-       });
+     async fetchTags () {
+       let url = "/tags";
+       const response = await api.get(url);
+       this.tags = response.data.results.map(t => t.word);
      },
    },
    mounted () {

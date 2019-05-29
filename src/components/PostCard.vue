@@ -15,8 +15,8 @@
 </template>
 
 <script>
- import Tag from './Tag.vue';
- import slugify from 'slugify';
+ import Tag from "./Tag.vue";
+ import slugify from "slugify";
 
 
  export default {
@@ -41,7 +41,6 @@
 </script>
 
 <style scoped lang="scss">
- @import "custom-color-variables";
  .v-card {
    cursor: auto;
    a {

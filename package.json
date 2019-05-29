@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.dev.js",
+    "start": "webpack-dev-server --config webpack.dev.js --host 0.0.0.0",
     "build": "webpack --config webpack.prod.js",
     "//": "Comment: the following will run after `npm i`",
     "heroku-postbuild": "npm run build"
@@ -26,9 +26,9 @@
   "homepage": "https://github.com/carlosgeos/touchbelgium#readme",
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "bootstrap-vue": "^2.0.0-rc.20",
+    "bootstrap-vue": "^2.0.0-rc.21",
     "evil-icons": "^1.10.1",
-    "got": "^9.6.0",
+    "ky": "^0.11.0",
     "moment": "^2.24.0",
     "portal-vue": "^2.1.4",
     "sass-loader": "^7.1.0",
@@ -37,16 +37,17 @@
     "vue-i18n": "^8.11.2",
     "vue-moment": "^4.0.0",
     "vue-router": "^3.0.6",
-    "vue-simple-calendar": "^4.2.1",
-    "vuex": "^3.1.0"
+    "vue-simple-calendar": "^4.2.2",
+    "vue-tweet-embed": "^2.3.0",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "babel-loader": "^8.0.5",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.1",
-    "dart-sass": "^1.19.0",
+    "dart-sass": "^1.20.1",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.5",
@@ -56,10 +57,10 @@
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
     "webapp-webpack-plugin": "^2.7.0",
-    "webpack": "^4.30.0",
+    "webpack": "^4.32.2",
     "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-cli": "^3.3.1",
-    "webpack-dev-server": "^3.3.1",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1",
     "webpack-merge": "^4.2.1"
   }
 }

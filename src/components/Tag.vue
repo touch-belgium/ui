@@ -29,5 +29,4 @@
 </script>
 
 <style scoped lang="scss">
- @import "custom-color-variables";
 </style>

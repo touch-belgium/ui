@@ -1,6 +1,6 @@
 <template>
-   <b-navbar toggleable="lg" variant="light">
-      <b-navbar-brand href="#">NavBar</b-navbar-brand>
+   <b-navbar toggleable="lg" variant="light" fixed="top">
+      <b-navbar-brand href="#">TouchBelgium</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
