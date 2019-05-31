@@ -1,5 +1,5 @@
 <template>
-   <v-chip @click="add_tag" @input="remove_tag" :close="this.close"><v-avatar :class="color">{{letter}}</v-avatar>{{ this.word }}</v-chip>
+   <b-badge class="mr-1" variant="info" @click="add_tag" @input="remove_tag" :close="this.close">{{ this.word }}</b-badge>
 </template>
 
 <script>
@@ -14,18 +14,9 @@
      }
    },
    computed: {
-     letter () {
-       return this.word.charAt(0).toUpperCase();
-     },
-     color_list () {
-       return Object.keys(colors).map(x => x.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`));
-     },
-     color () {
-       return this.color_list[this.letter.charCodeAt(0) % Object.keys(colors).length];
-     },
+
    },
  }
-
 </script>
 
 <style scoped lang="scss">

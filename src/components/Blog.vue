@@ -54,14 +54,14 @@
    },
    methods: {
      async fetchPosts () {
-       let url = "/posts";
-       const response = await api.get(url);
-       this.posts = response.data.results;
+       let url = "posts";
+       const response = await api.get(url).json();
+       this.posts = response.results;
      },
      async fetchTags () {
-       let url = "/tags";
-       const response = await api.get(url);
-       this.tags = response.data.results.map(t => t.word);
+       let url = "tags";
+       const response = await api.get(url).json();
+       this.tags = response.results.map(t => t.word);
      },
    },
    mounted () {

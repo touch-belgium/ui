@@ -1,12 +1,7 @@
 <template>
-   <v-container v-bind="{ [`grid-list-xl`]: true }">
-      <v-layout row wrap>
-         <v-flex xs12>
-            <h2 class="display-2"><v-icon size="48px" color="blue darken-2">chat</v-icon>
-               </div>Latest news</h2>
-         </v-flex>
-
-         <v-flex xs12 sm6 md4 lg3 v-for="post in posts" :key="post.id">
+   <b-card-group deck>
+      <b-row>
+         <b-col md="6" v-for="post in posts" :key="post.id">
             <PostCard
               v-bind:iden="post.id"
               v-bind:title="post.title"
@@ -17,9 +12,9 @@
               v-bind:tags="post.tags"
               v-bind:slug="post.slug"
             ></PostCard>
-         </v-flex>
-      </v-layout>
-   </v-container>
+         </b-col>
+      </b-row>
+   </b-card-group>
 </template>
 
 <script>
@@ -38,9 +33,11 @@
    },
    methods: {
      async fetchPosts () {
-       let url = '/posts/recent';
-       const response = await api.get(url);
-       this.posts = response.data.results;
+       let url = 'posts/recent';
+       const response = await api.get(url).json();
+       console.log(response);
+       this.posts = response.results;
+       console.log(this.posts);
      }
    },
    mounted () {

@@ -3,8 +3,8 @@
       <header>
          <div class="overlay"></div>
          <video poster="" id="bgvid" playsinline autoplay muted loop>
-            <source src="~Videos/splash.webm" type="video/webm">
-            <source src="~Videos/splash.mp4" type="video/mp4">
+            <!-- <source src="~Videos/splash.webm" type="video/webm">
+                 <source src="~Videos/splash.mp4" type="video/mp4"> -->
          </video>
 
          <b-container class="h-100">
@@ -24,15 +24,19 @@
          </b-container>
       </header>
 
-      <section>
+      <section class="mt-5">
          <b-container>
-            <h2>News etc</h2>
             <b-row>
-               <b-col sm="12" md="8">
+               <b-col xs="12">
+                  <h2 class="display-4">News</h2>
+               </b-col>
+            </b-row>
+            <b-row>
+               <b-col sm="12" md="9">
                   <blog-landing></blog-landing>
                </b-col>
-               <b-col sm="12" md="4">
-                  <Timeline id="touchbelgium" sourceType="profile" :options="{ tweetLimit: '6', 'data-height': '300' }">
+               <b-col sm="12" md="3">
+                  <Timeline id="touchbelgium" sourceType="profile" :options="{ tweetLimit: '4', 'data-height': '300' }">
                      <b-spinner variant="primary" label="Spinning"></b-spinner>
                   </Timeline>
                </b-col>
@@ -40,14 +44,21 @@
          </b-container>
       </section>
 
-
-      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>      <h2>News etc</h2>
+      <section>
+         <b-container>
+            <b-row>
+               <b-col xs="12">
+                  <h2 class="display-4">Calendar</h2>
+               </b-col>
+            </b-row>
+         </b-container>
+      </section>
    </div>
 </template>
 
 <script>
  import { Timeline } from "vue-tweet-embed";
- import { BlogLanding } from "../components/BlogLanding.vue";
+ import BlogLanding from "../components/BlogLanding.vue";
 
  export default {
    data () {
