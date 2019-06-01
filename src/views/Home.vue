@@ -3,8 +3,8 @@
       <header>
          <div class="overlay"></div>
          <video poster="" id="bgvid" playsinline autoplay muted loop>
-            <!-- <source src="~Videos/splash.webm" type="video/webm">
-                 <source src="~Videos/splash.mp4" type="video/mp4"> -->
+            <source src="~Videos/splash.webm" type="video/webm">
+            <source src="~Videos/splash.mp4" type="video/mp4">
          </video>
 
          <b-container class="h-100">

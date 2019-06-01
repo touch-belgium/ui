@@ -26,7 +26,25 @@ module.exports = {
 
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        // The following options allows relative, possibly aliased
+        // URLs (eg. ~Images/photo.png) in bootstrap components
+        // (eg. b-img)
+        options: {
+          transformAssetUrls: {
+            video: ['src', 'poster'],
+            source: 'src',
+            img: 'src',
+            image: 'xlink:href',
+            'b-img': 'src',
+            'b-img-lazy': ['src', 'blank-src'],
+            'b-card': 'img-src',
+            'b-card-img': 'img-src',
+            'b-card-img-lazy': ['src', 'blank-src'],
+            'b-carousel-slide': 'img-src',
+            'b-embed': 'src'
+          }
+        }
       },
       {
         test: /\.jsx?$/,
@@ -73,9 +91,6 @@ module.exports = {
     }
   },
   plugins: [
-    // The following is needed to remove the Chinese locale from
-    // Element UI and replace it with English
-    new webpack.NormalModuleReplacementPlugin(/element-ui[\/\\]lib[\/\\]locale[\/\\]lang[\/\\]zh-CN/, 'element-ui/lib/locale/lang/en'),
     new CleanWebpackPlugin([path.resolve(__dirname, 'build')],
                            {exclude: ['icons']}),
     new VueLoaderPlugin(),
