@@ -3,8 +3,8 @@
       <header>
          <div class="overlay"></div>
          <video poster="" id="bgvid" playsinline autoplay muted loop>
-            <source src="~Videos/splash.webm" type="video/webm">
-            <source src="~Videos/splash.mp4" type="video/mp4">
+            <!-- <source src="~Videos/splash.webm" type="video/webm">
+                 <source src="~Videos/splash.mp4" type="video/mp4"> -->
          </video>
 
          <b-container class="h-100">
@@ -35,7 +35,7 @@
                <b-col sm="12" md="9">
                   <blog-landing></blog-landing>
                </b-col>
-               <b-col sm="12" md="3">
+               <b-col class="twitter-timeline" sm="12" md="3">
                   <Timeline id="touchbelgium" sourceType="profile" :options="{ tweetLimit: '4', 'data-height': '300' }">
                      <b-spinner variant="primary" label="Spinning"></b-spinner>
                   </Timeline>
@@ -117,6 +117,11 @@
    height: 100%;
    width: 100%;
    z-index: 1;
+ }
+
+ .twitter-timeline {
+   height: 50vh;
+   overflow-y: scroll;
  }
 
  @media (pointer: coarse) and (hover: none) {
