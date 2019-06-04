@@ -51,6 +51,9 @@
                   <h2 class="display-4">Calendar</h2>
                </b-col>
             </b-row>
+            <b-row>
+               <calendar></calendar>
+            </b-row>
          </b-container>
       </section>
    </div>
@@ -59,13 +62,14 @@
 <script>
  import { Timeline } from "vue-tweet-embed";
  import BlogLanding from "../components/BlogLanding.vue";
+ import Calendar from "../components/Calendar.vue";
 
  export default {
    data () {
 
    },
    components: {
-     Timeline, BlogLanding,
+     Timeline, BlogLanding, Calendar
    },
  }
 </script>

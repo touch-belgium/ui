@@ -1,8 +1,8 @@
 <template>
    <div class="app-wrapper">
+      <footer></footer>
       <navbar></navbar>
       <router-view></router-view>
-      <footer></footer>
    </div>
 </template>
 

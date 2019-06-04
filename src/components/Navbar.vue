@@ -63,12 +63,10 @@
 </template>
 
 <script>
- import Navigation from './Navigation.vue';
  import moment from 'moment';
  import octicons from 'octicons';
 
  export default {
-   extends: Navigation,
    methods: {
      change_moment_locale (e) {
        this.$moment.locale(e.toLowerCase());
