@@ -2,6 +2,7 @@
    <div class="app-wrapper">
       <navbar></navbar>
       <router-view></router-view>
+      <footer></footer>
    </div>
 </template>
 

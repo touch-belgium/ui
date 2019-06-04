@@ -1,6 +1,6 @@
 <template>
    <div class="page-footer">
-      <v-container>
+      <b-container>
          <v-layout row wrap >
             <v-flex xs12 sm5>
                <v-list color="tb_black_light" dark dense subheader>
@@ -20,7 +20,7 @@
                </v-list>
             </v-flex>
          </v-layout>
-      </v-container>
+      </b-container>
       <v-layout>
          <v-flex class="footer-copyright">
             <v-container>

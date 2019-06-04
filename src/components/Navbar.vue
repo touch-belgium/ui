@@ -1,6 +1,6 @@
 <template>
-   <b-navbar toggleable="lg" variant="light" fixed="top">
-      <b-navbar-brand href="#">
+   <b-navbar toggleable="xl" variant="light" fixed="top">
+      <b-navbar-brand class="mr-5" href="#">
          <b-img src="~Images/navbar-logo.png" height="45px" alt="Touch Belgium"></b-img>
       </b-navbar-brand>
 
@@ -8,30 +8,55 @@
 
       <b-collapse id="nav-collapse" is-nav>
          <b-navbar-nav>
-            <b-nav-item href="#">Link</b-nav-item>
-            <b-nav-item href="#" disabled>Disabled</b-nav-item>
+            <b-nav-item-dropdown >
+               <template slot="button-content">News and events</template>
+               <b-dropdown-item href="#">Announcements</b-dropdown-item>
+               <b-dropdown-item href="#">Tournaments and results</b-dropdown-item>
+               <b-dropdown-item href="#">Calendar</b-dropdown-item>
+               <b-dropdown-item href="#">AGM</b-dropdown-item>
+            </b-nav-item-dropdown>
+
+            <b-nav-item-dropdown>
+               <template slot="button-content">Get Involved</template>
+               <b-dropdown-item href="#">Where to play</b-dropdown-item>
+               <b-dropdown-item href="#">Referees</b-dropdown-item>
+               <b-dropdown-item href="#">Coaches</b-dropdown-item>
+               <b-dropdown-item href="#">National teams</b-dropdown-item>
+            </b-nav-item-dropdown>
+
+            <b-nav-item-dropdown>
+               <template slot="button-content">About touch</template>
+               <b-dropdown-item href="#">What is touch</b-dropdown-item>
+               <b-dropdown-item href="#">Where to play</b-dropdown-item>
+               <b-dropdown-item href="#">Training/courses</b-dropdown-item>
+               <b-dropdown-item href="#">Rules and regulations</b-dropdown-item>
+            </b-nav-item-dropdown>
+
+            <b-nav-item href="#">Sponsorship</b-nav-item>
+
+            <b-nav-item-dropdown>
+               <template slot="button-content">Touch Belgium</template>
+               <b-dropdown-item href="#">Members</b-dropdown-item>
+               <b-dropdown-item href="#">Committee</b-dropdown-item>
+               <b-dropdown-item href="#">Contact</b-dropdown-item>
+            </b-nav-item-dropdown>
+
+            <b-nav-item-dropdown class="lang-picker">
+               <template slot="button-content"><span v-html="settings"></span></template>
+               <b-dropdown-item href="#">EN</b-dropdown-item>
+               <b-dropdown-item href="#">FR</b-dropdown-item>
+               <b-dropdown-item href="#">NL</b-dropdown-item>
+            </b-nav-item-dropdown>
+
          </b-navbar-nav>
 
          <!-- Right aligned nav items -->
-         <b-navbar-nav class="ml-auto">
-            <b-nav-form>
-               <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-               <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-            </b-nav-form>
+         <b-navbar-nav class="ml-auto d-none d-xl-flex">
+            <b-nav-item class="social-icon" target="_blank" href="https://www.instagram.com/touchbelgium"><span data-icon="ei-sc-instagram" data-size="m"></span></b-nav-item>
+            <b-nav-item class="social-icon" target="_blank" href="https://facebook.com/touchbelgium"><div data-icon="ei-sc-facebook" data-size="m"></div></b-nav-item>
+            <b-nav-item class="social-icon" target="_blank" href="https://twitter.com/touchbelgium"><div data-icon="ei-sc-twitter" data-size="m"></div></b-nav-item>
+            <b-nav-item class="social-icon" target="_blank" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT"><div data-icon="ei-sc-youtube" data-size="m"></div></b-nav-item>
 
-            <b-nav-item-dropdown text="Lang" right>
-               <b-dropdown-item href="#">EN</b-dropdown-item>
-               <b-dropdown-item href="#">ES</b-dropdown-item>
-               <b-dropdown-item href="#">RU</b-dropdown-item>
-               <b-dropdown-item href="#">FA</b-dropdown-item>
-            </b-nav-item-dropdown>
-
-            <b-nav-item-dropdown right>
-               <!-- Using 'button-content' slot -->
-               <template slot="button-content"><em>User</em></template>
-               <b-dropdown-item href="#">Profile</b-dropdown-item>
-               <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-            </b-nav-item-dropdown>
          </b-navbar-nav>
       </b-collapse>
    </b-navbar>
@@ -40,25 +65,28 @@
 <script>
  import Navigation from './Navigation.vue';
  import moment from 'moment';
+ import octicons from 'octicons';
 
  export default {
    extends: Navigation,
    methods: {
-     switch_drawer_state () {
-       this.$root.$emit('SIGdrawer');
-     },
      change_moment_locale (e) {
        this.$moment.locale(e.toLowerCase());
        this.$root.$emit('SIGlocale');
      }
+   },
+   computed: {
+     settings () {
+       return octicons.settings.toSVG({ "height": 24 });
+     }
    }
+
+
  }
 </script>
 
 <style module lang="scss">
  @import "Styles/_custom-color-variables.scss";
-
-
 
  .v-list a {
    color: #000;
@@ -68,34 +96,20 @@
    }
  }
 
- nav {
-   .v-divider {
-     border-width: 1pt;
-     border-color: black !important;
+ .navbar-nav {
+   .lang-picker {
+     @media (min-width: 1200px) {
+       padding-left: 1em;
+       margin-left: 1em;
+       border-left: 1px solid black;
+     }
    }
-   .social_icon {
-     /* Small fix to vuetify flex default */
-     flex: 0 1 auto !important;
-     div.icon {
-       flex: 0 1 auto;
-       align-self: center;
-       -webkit-transition: all 0.3s ease;
-       -moz-transition: all 0.3s ease;
-       -ms-transition: all 0.3s ease;
-       -o-transition: all 0.3s ease;
-       transition: all 0.3s ease;
+   .social-icon {
+     .nav-link {
+       padding: 0;
+       background-size: 10px 10px;
+       .icon {
 
-       &.icon-insta {
-         fill: url(#instagram_gradient);
-       }
-       &.icon-fb:hover {
-         fill: #8b9dc3 !important;
-       }
-       &.icon-twitter:hover {
-         fill: #4d9ddd !important;
-       }
-       &.icon-yt:hover {
-         fill: red !important;
        }
      }
    }
