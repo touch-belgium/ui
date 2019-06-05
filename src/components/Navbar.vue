@@ -52,7 +52,7 @@
 
          <!-- Right aligned nav items -->
          <b-navbar-nav class="ml-auto d-none d-xl-flex">
-            <b-nav-item class="social-icon" target="_blank" href="https://www.instagram.com/touchbelgium"><span data-icon="ei-sc-instagram" data-size="m"></span></b-nav-item>
+            <b-nav-item class="social-icon" target="_blank" href="https://www.instagram.com/touchbelgium"><div data-icon="ei-sc-instagram" data-size="m"></div></b-nav-item>
             <b-nav-item class="social-icon" target="_blank" href="https://facebook.com/touchbelgium"><div data-icon="ei-sc-facebook" data-size="m"></div></b-nav-item>
             <b-nav-item class="social-icon" target="_blank" href="https://twitter.com/touchbelgium"><div data-icon="ei-sc-twitter" data-size="m"></div></b-nav-item>
             <b-nav-item class="social-icon" target="_blank" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT"><div data-icon="ei-sc-youtube" data-size="m"></div></b-nav-item>
@@ -84,6 +84,7 @@
 </script>
 
 <style module lang="scss">
+ @import "Styles/_custom-bootstrap-variables.scss";
  @import "Styles/_custom-color-variables.scss";
 
  .v-list a {
@@ -96,7 +97,7 @@
 
  .navbar-nav {
    .lang-picker {
-     @media (min-width: 1200px) {
+     @media (min-width: map-get($grid-breakpoints, "xl")) {
        padding-left: 1em;
        margin-left: 1em;
        border-left: 1px solid black;

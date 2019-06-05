@@ -90,8 +90,13 @@
 </script>
 
 <style>
+ @import "Styles/_custom-bootstrap-variables.scss";
+
  #calendar {
-   min-height: 70vh;
+   @media (min-width: map-get($grid-breakpoints, "xl")) {
+     min-height: 700px;
+   }
+   height: 70vh;
    display: flex;
    flex-direction: column;
    flex-grow: 1;
