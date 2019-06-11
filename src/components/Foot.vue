@@ -6,10 +6,10 @@
                <b-col cols="12" md="6" xl="4">
                   <ul>
                      <h5>Find us on social media !</h5>
-                     <li><a target="_blank" href="https://facebook.com/touchbelgium"><div data-icon="ei-sc-facebook"></div>Facebook</a></li>
-                     <li><a target="_blank" href="https://www.instagram.com/touchbelgium/"><div data-icon="ei-sc-instagram"></div>Instagram</a></li>
-                     <li><a target="_blank" href="https://twitter.com/touchbelgium?lang=en"><div data-icon="ei-sc-twitter"></div>Twitter</a></li>
-                     <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT"><div data-icon="ei-sc-youtube"></div>YouTube</a></li>
+                     <li><a target="_blank" href="https://facebook.com/touchbelgium"><div class="align-middle" data-icon="ei-sc-facebook"></div>Facebook</a></li>
+                     <li><a target="_blank" href="https://www.instagram.com/touchbelgium/"><div class="align-middle" data-icon="ei-sc-instagram"></div>Instagram</a></li>
+                     <li><a target="_blank" href="https://twitter.com/touchbelgium?lang=en"><div class="align-middle" data-icon="ei-sc-twitter"></div>Twitter</a></li>
+                     <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT"><div class="align-middle" data-icon="ei-sc-youtube"></div>YouTube</a></li>
                   </ul>
                </b-col>
                <b-col class="text-right" cols="12" md="6" xl="4">
@@ -68,8 +68,10 @@
      }
    }
    ul {
-
      list-style: none;
+     .icon {
+       margin-bottom: 5px;
+     }
    }
    .footer1 {
      background: $tb-black-light;
