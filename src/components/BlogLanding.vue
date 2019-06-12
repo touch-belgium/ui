@@ -33,7 +33,7 @@
 
  export default {
    /* extends: Blog, */
-   props: ['postNumber'],
+   props: ["postNumber"],
    data () {
      return {
        posts: null,
@@ -41,10 +41,10 @@
      }
    },
    methods: {
-     async fetchPosts () {
-       let url = 'posts/recent';
+     async fetch_posts () {
+       let url = "posts/recent";
        try {
-         const response = await api.get(url).json()
+         const response = await api.get(url).json();
          this.posts = response.results;
        } catch (e) {
          /* this.error = "Oops. The blog posts could not be retrieved"; */
@@ -53,7 +53,7 @@
      }
    },
    mounted () {
-     this.fetchPosts();
+     this.fetch_posts();
    },
    components: {
      PostCard

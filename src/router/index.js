@@ -10,7 +10,7 @@ export default new Router({
     // { path: '/news/*,:id', name: "post", component: Post },
     // { path: '/calendar', name: "calendar", component: Calendar },
     // { path: '/template', name: "template", component: Template },
-    // { path: '/competitions', name: "competitions", component: Competitions },
+    { path: '/competitions', name: "competitions", component: () => import("../views/Competitions.vue") },
     // { path: '/competitions/*,:id', name: "competition", component: Competition },
     // { path: '/sponsorship', name: "sponsorship", component: Sponsorship },
   ],

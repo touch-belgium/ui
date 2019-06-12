@@ -1,7 +1,7 @@
 <template>
    <b-navbar toggleable="xl" variant="light" fixed="top">
       <b-navbar-brand class="mr-5" href="#">
-         <b-img src="~Images/navbar-logo.png" height="45px" alt="Touch Belgium"></b-img>
+         <b-link :to="{ name: 'home' }"><b-img src="~Images/navbar-logo.png" height="45px" alt="Touch Belgium"></b-img></b-link>
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -11,7 +11,7 @@
             <b-nav-item-dropdown >
                <template slot="button-content">News and events</template>
                <b-dropdown-item href="#">Announcements</b-dropdown-item>
-               <b-dropdown-item href="#">Tournaments and results</b-dropdown-item>
+               <b-dropdown-item href="#"><b-link to="competitions">Tournaments and results</b-link></b-dropdown-item>
                <b-dropdown-item href="#">Calendar</b-dropdown-item>
                <b-dropdown-item href="#">AGM</b-dropdown-item>
             </b-nav-item-dropdown>
@@ -96,6 +96,14 @@
  }
 
  .navbar-nav {
+   a.dropdown-item {
+     a {
+       text-decoration: none;
+       &:hover {
+         text-decoration: none;
+       }
+     }
+   }
    .lang-picker {
      @media (min-width: map-get($grid-breakpoints, "xl")) {
        padding-left: 1em;

@@ -1,58 +1,65 @@
 <template>
-   <v-container class="mt-3" grid-list-xl>
-      <v-img aspect-ratio="5" src="media/banner_tournaments.jpg"></v-img>
-      <v-layout row wrap>
-         <v-flex xs12>
-            <h2 class="display-1">Tournaments and competitions</h2>
-         </v-flex>
+   <b-container class="mt-5">
+      <b-img fluid src="media/banner_tournaments.jpg"></b-img>
+      <h1>Tournaments and competitions</h1>
 
-         <v-flex xs12 sm6 md4 lg3>
-            <v-text-field
+      <b-row>
+         <b-col class="my-4" cols="12" md="6" lg="4" xl="6">
+            <b-form-input
               label="Competition name"
               placeholder="Start typing to narrow down the results"
               browser-autocomplete="off"
               v-model="search"
-            ></v-text-field>
-         </v-flex>
-         <v-flex sm6 md8 lg9></v-flex>
+            ></b-form-input>
+         </b-col>
+      </b-row>
 
-         <v-flex>
-            <v-data-table
-              :headers="headers"
-              :items="shown"
-              class="elevation-1 mb-4"
-              no-data-text="No competitions."
-              :pagination.sync="pagination"
-              >
-               <template slot="items" slot-scope="props">
-                  <router-link :style="{ cursor: 'pointer'}" tag="td" :to="url(props.item.name, props.item.id)">{{ props.item.name }}</router-link>
-                  <td><v-rating readonly :value="props.item.rating" class="ml-2"></v-rating></td>
-               </template>
-            </v-data-table>
-         </v-flex>
-      </v-layout>
-   </v-container>
+
+      <b-row>
+         <b-table
+           striped
+           outlined
+           responsive
+           :per-page="per_page"
+           :fields="headers"
+           :items="shown"
+           :current-page="current_page"
+         >
+         </b-table>
+      </b-row>
+
+      <b-row>
+         <b-col md="6" class="my-1">
+            <b-pagination
+              v-model="current_page"
+              :total-rows="total_rows"
+              :per-page="per_page"
+              class="my-0"
+            ></b-pagination>
+         </b-col>
+      </b-row>
+   </b-container>
 </template>
 
 <script>
- import slugify from 'slugify';
- import axios from 'axios';
+ import slugify from "slugify";
+ import ky from "ky";
+ import api from "../common/api.js";
+
  export default {
    props: [],
    data () {
      return {
+       current_page: 1,
+       per_page: 10,
        competitions: [],
        search: "",
        headers: [
          {
-           text: 'Competition',
-           value: 'name',
-           class: 'subheading',
+           label: 'Competition',
+           key: 'name',
+           sortable: true,
          },
-         { text: 'Rating',
-           value: 'rating',
-           class: 'subheading'
-         }
        ],
        pagination: {
          descending: false,
@@ -64,12 +71,17 @@
      }
    },
    methods: {
-     fetchComps () {
-       let url = API + "competitions/";
+     async fetch_competitions () {
+       let url = "competitions";
 
-       axios.get(url, {crossdomain: true}).then(response => {
-         this.competitions = response.data.results;
-       });
+       try {
+         const response = await api.get(url).json();
+         console.log(response);
+         this.competitions = response.results;
+         console.log(this.competitions);
+       } catch (e) {
+         this.error = true;
+       }
      },
      url (name, id) {
        return 'competitions/' + slugify(name) + ',' + id;
@@ -78,13 +90,17 @@
    created () {
    },
    mounted () {
-     this.fetchComps();
+     this.fetch_competitions();
    },
    computed: {
      shown () {
        let patt = new RegExp(this.search, "i");
        return this.competitions.filter(c => patt.test(c.name));
      },
+     total_rows () {
+       let patt = new RegExp(this.search, "i");
+       return this.competitions.filter(c => patt.test(c.name)).length;
+     }
    }
  }
 

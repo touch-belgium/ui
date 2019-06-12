@@ -13,6 +13,10 @@
 /*     margin-bottom: 3px; */
 /* } */
 
+body {
+    padding-top: $nav-link-height;
+}
+
 /* Thanks hackingui.com */
 @mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1){
     overflow: hidden;
