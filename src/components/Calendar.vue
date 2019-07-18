@@ -17,6 +17,7 @@
  import { CalendarView, CalendarViewHeader } from "vue-simple-calendar";
  import { RRule, Day } from "rfc5545-rrule";
  import moment from "moment";
+ import _ from "lodash";
  import ky from "ky";
  require("vue-simple-calendar/static/css/default.css");
 
@@ -39,34 +40,42 @@
        this.show_date = d;
      },
 
-     expand_recurrent_event(ev) {
-       const startDate = ev.start.hasOwnProperty('dateTime') ? ev.start.dateTime : ev.start.date;
-       const endDate = ev.end.hasOwnProperty('dateTime') ? ev.end.dateTime : ev.end.date;
-       const title = ev.summary;
-       const rfc5545 = RRule.fromString(ev.recurrence[0]);
-       let count;
-       if ('count' in rfc5545) {
-         count = rfc5545.count;
-       } else {
-         /* + 1 for the first (or last) day */
-         count = moment(rfc5545.until).diff(moment(startDate), 'weeks') + 1;
+     expand_recurrent_events(arr) {
+       const expanded_events = [];
+       for (const ev of arr) {
+         if (ev.hasOwnProperty('recurrence')) {
+           const rfc5545 = RRule.fromString(ev.recurrence[0]);
+           const startDate = ev.start.hasOwnProperty('dateTime') ? ev.start.dateTime : ev.start.date;
+           const endDate = ev.end.hasOwnProperty('dateTime') ? ev.end.dateTime : ev.end.date;
+           if (rfc5545.frequency === 'weekly') {
+             let count;
+             if (rfc5545.hasOwnProperty('until')) {
+               /* Calculate for how many weeks should the event be
+                  shown. The MomentJS diff result could be 3.8 weeks,
+                  or 5.02 weeks so we round that number */
+               count = _.round(moment(rfc5545.until).diff(moment(startDate), 'weeks', true));
+             } else if (rfc5545.hasOwnProperty('count')) {
+               count = rfc5545.count;
+             }
+             _.times(count, (i) => {
+               const next = _.cloneDeep(ev);
+               next.start.dateTime = moment(startDate).add(i, 'weeks');
+               next.end.dateTime = moment(endDate).add(i, 'weeks');
+               expanded_events.push(next);
+             });
+           }
+         } else {
+           expanded_events.push(ev);
+         }
        }
+       return expanded_events;
+     },
+
+     streamline_event(ev) {
        return {
          startDate: ev.start.hasOwnProperty('dateTime') ? ev.start.dateTime : ev.start.date,
          endDate: ev.end.hasOwnProperty('dateTime') ? ev.end.dateTime : ev.end.date,
          title: ev.summary
-       }
-     },
-
-     clean_event(ev) {
-       if (ev.hasOwnProperty('recurrence')) {
-         return this.expand_recurrent_event(ev)
-       } else {
-         return {
-           startDate: ev.start.hasOwnProperty('dateTime') ? ev.start.dateTime : ev.start.date,
-           endDate: ev.end.hasOwnProperty('dateTime') ? ev.end.dateTime : ev.end.date,
-           title: ev.summary
-         }
        }
      },
 
@@ -79,8 +88,7 @@
 
        try {
          const response = await ky.get(endpoint).json();
-         console.log(response);
-         this.events = response.items.map(e => this.clean_event(e));
+         this.events = this.expand_recurrent_events(response.items).map(e => this.streamline_event(e));
        } catch (e) {
          console.log(e);
        }
