@@ -30,7 +30,7 @@
                   <span class="align-middle">© {{new Date() | moment("YYYY")}} Touch Belgium</span>
                </b-col>
                <b-col cols="6" class="text-right pt-2 pb-2">
-                  <a href="https://github.com/"><span v-html="github"></span><span class="align-middle ml-1"> GitHub</span></a> <span class="align-middle">|</span> <a class="align-middle" href="/api">API</a>
+                  <a href="https://github.com/"><span v-html="github_icon"></span><span class="align-middle ml-1"> GitHub</span></a> <span class="align-middle">|</span> <a class="align-middle" href="/api">API</a>
                </b-col>
             </b-row>
          </b-container>
@@ -49,7 +49,7 @@
      }
    },
    computed: {
-     github () {
+     github_icon () {
        return octicons["mark-github"].toSVG();
      }
    }

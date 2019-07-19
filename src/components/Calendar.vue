@@ -7,15 +7,28 @@
         :show-event-times="true"
         :starting-day-of-week=1
         class="theme-default"
+        @click-event="on_click_event"
       >
-         <calendar-view-header slot="header" slot-scope="{ headerProps }" :header-props="headerProps" @input="set_show_date" />
+         <calendar-view-header slot="header"
+                               slot-scope="{ headerProps }"
+                               :header-props="headerProps"
+                               @input="set_show_date" />
       </calendar-view>
+
+      <b-modal ref="event_modal" hide-footer title="Touch Belgium event">
+         <h4>{{this.selected_event.title}}</h4>
+         <p><span v-html="calendar_icon"></span><span> {{this.selected_event.start}} - {{this.selected_event.end}}</span></p>
+         <b-button class="mt-3" variant="outline-secondary" block @click="on_click_close_modal">Close</b-button>
+      </b-modal>
+
+      <b-alert show class="mt-3">Sync this calendar:</b-alert>
    </div>
 </template>
 
 <script>
  import { CalendarView, CalendarViewHeader } from "vue-simple-calendar";
  import { RRule, Day } from "rfc5545-rrule";
+ import octicons from "octicons";
  import moment from "moment";
  import _ from "lodash";
  import ky from "ky";
@@ -25,7 +38,12 @@
    data () {
      return {
        show_date: new Date(),
-       events: [] // fill with call to GCalendar API
+       events: [], // fill with call to GCalendar API
+       selected_event: {
+         title: null,
+         start: null,
+         end: null
+       }
      }
    },
    components: {
@@ -36,6 +54,17 @@
      this.fetch_events();
    },
    methods: {
+     on_click_event(e) {
+       this.selected_event.title = e.title;
+       this.selected_event.start = moment(e.startDate).format('LT');
+       this.selected_event.end = moment(e.endDate).format('LT');
+       this.$refs['event_modal'].show();
+     },
+
+     on_click_close_modal() {
+       this.$refs['event_modal'].hide();
+     },
+
      set_show_date(d) {
        this.show_date = d;
      },
@@ -93,6 +122,11 @@
          console.log(e);
        }
      },
+   },
+   computed: {
+     calendar_icon () {
+       return octicons["calendar"].toSVG();
+     }
    }
  }
 </script>
