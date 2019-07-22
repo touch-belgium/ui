@@ -102,9 +102,10 @@
 
      streamline_event(ev) {
        return {
+         title: ev.summary,
          startDate: ev.start.hasOwnProperty('dateTime') ? ev.start.dateTime : ev.start.date,
          endDate: ev.end.hasOwnProperty('dateTime') ? ev.end.dateTime : ev.end.date,
-         title: ev.summary
+         classes: "clickable_event",
        }
      },
 
@@ -147,5 +148,9 @@
    margin-left: auto;
    margin-right: auto;
    padding-bottom: 5em;
+
+   .clickable_event {
+     cursor: pointer;
+   }
  }
 </style>
