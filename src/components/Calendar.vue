@@ -15,7 +15,7 @@
                                @input="set_show_date" />
       </calendar-view>
 
-      <b-modal ref="event_modal" hide-footer title="Touch Belgium event">
+      <b-modal centered ref="event_modal" hide-footer title="Touch Belgium event">
          <h4>{{this.selected_event.title}}</h4>
          <p><span v-html="calendar_icon"></span><span> {{this.selected_event.start}} - {{this.selected_event.end}}</span></p>
          <b-button class="mt-3" variant="outline-secondary" block @click="on_click_close_modal">Close</b-button>

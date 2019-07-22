@@ -2,6 +2,7 @@ import EvilIcons from 'evil-icons/assets/evil-icons.min.js';
 import EvilIconsCss from 'evil-icons/assets/evil-icons.min.css';
 
 import Vue from 'vue';
+import Vuex from 'vuex';
 import BootstrapVue from 'bootstrap-vue';
 import css from './css/main.scss';
 
@@ -13,11 +14,13 @@ import i18n from './i18n/index.js';
 
 import App from './App.vue';
 
+
+Vue.config.devtools = true;
+
 /* Plugins come before new Vue instance */
 Vue.use(require('vue-moment'), {moment});
 Vue.use(BootstrapVue);
-
-Vue.config.devtools = true;
+Vue.use(Vuex);
 
 var vm = new Vue({
   el: '#vue-root',

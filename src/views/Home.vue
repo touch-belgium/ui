@@ -27,7 +27,7 @@
       <section class="mt-5">
          <b-container>
             <b-row>
-               <b-col xs="12">
+               <b-col cols="12">
                   <h2 class="display-4">News</h2>
                </b-col>
             </b-row>
@@ -66,7 +66,9 @@
 
  export default {
    data () {
+     return {
 
+     }
    },
    components: {
      Timeline, BlogLanding, Calendar

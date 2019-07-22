@@ -8,7 +8,7 @@
       </b-col>
       <b-card-group deck>
          <b-row>
-            <b-col md="6" v-for="post in posts" :key="post.id">
+            <b-col md="6" v-for="post in latest_posts" :key="post.id">
                <PostCard
                  v-bind:iden="post.id"
                  v-bind:title="post.title"
@@ -29,31 +29,28 @@
  import Blog from "./Blog.vue";
  import PostCard from "./PostCard.vue";
  import slugify from "slugify";
- import api from "../common/api.js";
+ import { mapGetters } from "vuex";
 
  export default {
    /* extends: Blog, */
-   props: ["postNumber"],
    data () {
      return {
-       posts: null,
-       error: null,
+       error: null
      }
    },
    methods: {
-     async fetch_posts () {
-       let url = "posts/recent";
-       try {
-         const response = await api.get(url).json();
-         this.posts = response.results;
-       } catch (e) {
-         /* this.error = "Oops. The blog posts could not be retrieved"; */
-         this.error = true;
-       }
+   },
+   async mounted () {
+     try {
+       this.$store.dispatch("blog/fetch_recent_posts");
+     } catch (e) {
+       this.error = "Posts could not be retrieved";
      }
    },
-   mounted () {
-     this.fetch_posts();
+   computed: {
+     ...mapGetters("blog", [
+       "latest_posts"
+     ])
    },
    components: {
      PostCard

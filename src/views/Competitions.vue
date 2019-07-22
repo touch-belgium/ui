@@ -9,7 +9,7 @@
               label="Competition name"
               placeholder="Start typing to narrow down the results"
               browser-autocomplete="off"
-              v-model="search"
+              @input="on_type_search_box"
             ></b-form-input>
          </b-col>
       </b-row>
@@ -44,16 +44,13 @@
 <script>
  import slugify from "slugify";
  import ky from "ky";
- import api from "../common/api.js";
+ import { mapGetters } from "vuex";
 
  export default {
-   props: [],
    data () {
      return {
        current_page: 1,
-       per_page: 10,
-       competitions: [],
-       search: "",
+       per_page: 5,
        headers: [
          {
            label: 'Competition',
@@ -71,36 +68,22 @@
      }
    },
    methods: {
-     async fetch_competitions () {
-       let url = "competitions";
-
-       try {
-         const response = await api.get(url).json();
-         console.log(response);
-         this.competitions = response.results;
-         console.log(this.competitions);
-       } catch (e) {
-         this.error = true;
-       }
+     on_type_search_box (text) {
+       this.$store.commit("competitions/update_search_box", text);
      },
      url (name, id) {
        return 'competitions/' + slugify(name) + ',' + id;
      }
    },
-   created () {
-   },
-   mounted () {
-     this.fetch_competitions();
+   async mounted () {
+     this.$store.dispatch("competitions/fetch_competitions");
    },
    computed: {
-     shown () {
-       let patt = new RegExp(this.search, "i");
-       return this.competitions.filter(c => patt.test(c.name));
-     },
-     total_rows () {
-       let patt = new RegExp(this.search, "i");
-       return this.competitions.filter(c => patt.test(c.name)).length;
-     }
+     ...mapGetters("competitions", [
+       "competitions",
+       "shown",
+       "total_rows"
+     ])
    }
  }
 

@@ -1,30 +1,20 @@
 <template>
-   <b-container class="mt-5" v-bind="{ [`grid-list-xl`]: true }">
-      <v-layout row wrap>
-         <v-flex xs12>
-            <h2 class="display-1"><v-icon large color="blue darken-2">chat</v-icon>
-               </div>News</h2>
-         </v-flex>
+   <b-container class="mt-5">
+      <p>Selected tags:</p>
+      <Tag v-for="tag in selected_tags"
+           :key="tag.id"
+           v-bind:word="tag"
+           v-bind:close="true"
+      ></Tag>
 
-         <v-flex xs12 sm6>
-            <p>Selected tags:</p>
-            <Tag v-for="tag in selected_tags"
-                 :key="tag.id"
-                 v-bind:word="tag"
-                 v-bind:close="true"
-            ></Tag>
-         </v-flex>
-
-         <v-flex xs12 sm6>
-            <p>Sort by tag:</p>
-            <Tag v-for="tag in tags"
-                 :key="tag.id"
-                 v-bind:word="tag"
-                 v-bind:close="false"
-            ></Tag>
-         </v-flex>
-
-         <v-flex xs12 sm6 md4 lg3 v-for="post in shown" :key="post.id">
+      <p>Sort by tag:</p>
+      <Tag v-for="tag in tags"
+           :key="tag.id"
+           v-bind:word="tag.word"
+           v-bind:close="false"
+      ></Tag>
+      <b-row>
+         <b-col md="4" v-for="post in filtered_posts" :key="post.id">
             <PostCard
               v-bind:iden="post.id"
               v-bind:title="post.title"
@@ -34,39 +24,27 @@
               v-bind:author="post.author"
               v-bind:tags="post.tags"
             ></PostCard>
-         </v-flex>
-      </v-layout>
+         </b-col>
+      </b-row>
    </b-container>
 </template>
 
 <script>
+ import { mapGetters } from "vuex";
  import PostCard from "./PostCard.vue";
  import Tag from "./Tag.vue";
- import api from "../common/api.js";
 
  export default {
    data () {
      return {
-       posts: [],
-       tags: [],
-       selected_tags: [],
+
      }
    },
    methods: {
-     async fetchPosts () {
-       let url = "posts";
-       const response = await api.get(url).json();
-       this.posts = response.results;
-     },
-     async fetchTags () {
-       let url = "tags";
-       const response = await api.get(url).json();
-       this.tags = response.results.map(t => t.word);
-     },
    },
    mounted () {
-     this.fetchPosts();
-     this.fetchTags();
+     this.$store.dispatch("blog/fetch_posts");
+     this.$store.dispatch("blog/fetch_tags");
      this.$on('add_tag', (word) => {
        this.tags = this.tags.filter(x => x != word);
        if (!this.selected_tags.includes(word))
@@ -80,18 +58,10 @@
      })
    },
    computed: {
-     shown () {
-       if (this.selected_tags.length) {
-         return this.posts.filter(p => {
-           return p.tags.some(t => {
-             console.log(t.word);
-             return this.selected_tags.includes(t.word);
-           });
-         });
-       } else {
-         return this.posts;
-       }
-     }
+     ...mapGetters("blog", [
+       "filtered_posts",
+       "tags"
+     ])
    },
    components: {
      PostCard,

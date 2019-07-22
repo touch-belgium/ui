@@ -1,5 +1,5 @@
 <template>
-   <b-badge class="mr-1" variant="info" @click="add_tag" @input="remove_tag" :close="this.close">{{ this.word }}</b-badge>
+   <b-badge pill class="mr-1" variant="info" @click="add_tag" @input="remove_tag" :close="this.close">{{ this.word }}</b-badge>
 </template>
 
 <script>
