@@ -42,10 +42,10 @@
             </b-nav-item-dropdown>
 
             <b-nav-item-dropdown class="lang-picker">
-               <template slot="button-content"><span v-html="settings"></span></template>
-               <b-dropdown-item href="#">EN</b-dropdown-item>
-               <b-dropdown-item href="#">FR</b-dropdown-item>
-               <b-dropdown-item href="#">NL</b-dropdown-item>
+               <template slot="button-content"><span v-html="globe_icon"></span> {{this.lang}}</template>
+               <b-dropdown-item href="#">English</b-dropdown-item>
+               <b-dropdown-item href="#">Français</b-dropdown-item>
+               <b-dropdown-item href="#">Nederlands</b-dropdown-item>
             </b-nav-item-dropdown>
 
          </b-navbar-nav>
@@ -63,10 +63,15 @@
 </template>
 
 <script>
- import moment from 'moment';
- import octicons from 'octicons';
+ import moment from "moment";
+ import octicons from "octicons";
 
  export default {
+   data () {
+     return {
+       lang: "English",
+     }
+   },
    methods: {
      change_moment_locale (e) {
        this.$moment.locale(e.toLowerCase());
@@ -74,8 +79,8 @@
      }
    },
    computed: {
-     settings () {
-       return octicons.settings.toSVG({ "height": 24 });
+     globe_icon () {
+       return octicons.globe.toSVG({ "height": 24 });
      }
    }
 
