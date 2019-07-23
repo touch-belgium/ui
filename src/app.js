@@ -7,6 +7,7 @@ import BootstrapVue from 'bootstrap-vue';
 import css from './css/main.scss';
 
 import moment from 'moment';
+// require('moment/locale/fr');
 
 import store from './store/index.js';
 import router from './router/index.js';
@@ -22,7 +23,7 @@ Vue.use(require('vue-moment'), {moment});
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
 
-var vm = new Vue({
+export default new Vue({
   el: '#vue-root',
   i18n,
   store,

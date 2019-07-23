@@ -6,6 +6,7 @@
         :time-format-options="{hour: 'numeric', minute:'2-digit'}"
         :show-event-times="true"
         :starting-day-of-week=1
+        :locale="nl"
         class="theme-default"
         @click-event="on_click_event"
       >

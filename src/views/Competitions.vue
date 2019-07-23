@@ -15,74 +15,63 @@
       </b-row>
 
 
-      <b-row>
-         <b-table
-           striped
-           outlined
-           responsive
-           :per-page="per_page"
-           :fields="headers"
-           :items="shown"
-           :current-page="current_page"
-         >
-         </b-table>
+      <b-row v-if="n_total_shown" class="pb-4">
+         <b-col>
+            <b-list-group>
+               <b-list-group-item
+                 v-for="comp in paginated_competitions"
+                 :key="comp.id"
+                 :to="{ path: comp.router }"
+               >
+                  {{comp.name}}
+               </b-list-group-item>
+               <b-list-group-item
+                 button
+                 v-if="n_total_shown < filtered_competitions.length"
+                 @click="on_show_more_click"
+               >
+                  Show 5 more...
+               </b-list-group-item>
+            </b-list-group>
+         </b-col>
       </b-row>
 
-      <b-row>
-         <b-col md="6" class="my-1">
-            <b-pagination
-              v-model="current_page"
-              :total-rows="total_rows"
-              :per-page="per_page"
-              class="my-0"
-            ></b-pagination>
-         </b-col>
+      <b-row v-if="n_total_shown == 0">
+         <b-alert show variant="warning">
+            No competitions to show
+         </b-alert>
       </b-row>
    </b-container>
 </template>
 
 <script>
- import slugify from "slugify";
- import ky from "ky";
- import { mapGetters } from "vuex";
+ import { mapGetters, mapState } from "vuex";
 
  export default {
    data () {
      return {
-       current_page: 1,
        per_page: 5,
-       headers: [
-         {
-           label: 'Competition',
-           key: 'name',
-           sortable: true,
-         },
-       ],
-       pagination: {
-         descending: false,
-         page: 1,
-         rowsPerPage: 10,
-         sortBy: 'name',
-         totalItems: 0,
-       }
      }
    },
    methods: {
+     on_show_more_click (e) {
+       this.$store.commit("competitions/show_more");
+     },
      on_type_search_box (text) {
        this.$store.commit("competitions/update_search_box", text);
-     },
-     url (name, id) {
-       return 'competitions/' + slugify(name) + ',' + id;
      }
    },
    async mounted () {
      this.$store.dispatch("competitions/fetch_competitions");
    },
    computed: {
+     ...mapState("competitions", [
+       "n_total_shown"
+     ]),
      ...mapGetters("competitions", [
        "competitions",
-       "shown",
-       "total_rows"
+       "filtered_competitions",
+       "paginated_competitions"
      ])
    }
  }

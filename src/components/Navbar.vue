@@ -42,10 +42,10 @@
             </b-nav-item-dropdown>
 
             <b-nav-item-dropdown class="lang-picker">
-               <template slot="button-content"><span v-html="globe_icon"></span> {{this.lang}}</template>
-               <b-dropdown-item href="#">English</b-dropdown-item>
-               <b-dropdown-item href="#">Français</b-dropdown-item>
-               <b-dropdown-item href="#">Nederlands</b-dropdown-item>
+               <template slot="button-content"><span v-html="globe_icon"></span> {{pretty_locale}} </template>
+               <b-dropdown-item-button @click="on_locale_change">English</b-dropdown-item-button>
+               <b-dropdown-item-button @click="on_locale_change">Français</b-dropdown-item-button>
+               <b-dropdown-item-button @click="on_locale_change">Nederlands</b-dropdown-item-button>
             </b-nav-item-dropdown>
 
          </b-navbar-nav>
@@ -65,26 +65,28 @@
 <script>
  import moment from "moment";
  import octicons from "octicons";
+ import { mapGetters } from "vuex";
 
  export default {
    data () {
      return {
-       lang: "English",
+
      }
    },
    methods: {
-     change_moment_locale (e) {
-       this.$moment.locale(e.toLowerCase());
-       this.$root.$emit('SIGlocale');
+     on_locale_change (e) {
+       const locale = e.toElement.innerText;
+       this.$store.dispatch("i18n/change_locale", locale);
      }
    },
    computed: {
+     ...mapGetters("i18n", [
+       "pretty_locale"
+     ]),
      globe_icon () {
        return octicons.globe.toSVG({ "height": 24 });
      }
    }
-
-
  }
 </script>
 

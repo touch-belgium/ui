@@ -1,20 +1,22 @@
 import api from "../../common/api.js";
+import slugify from "slugify";
 
 const state = {
   search_box: "",
-  competitions: []
+  competitions: [],
+  n_total_shown: 5
 };
 
 const getters = {
   competitions (state, getters) {
     return state.competitions;
   },
-  shown (state, getters) {
+  filtered_competitions (state, getters) {
     const patt = new RegExp(state.search_box, "i");
     return state.competitions.filter(c => patt.test(c.name));
   },
-  total_rows (state, getters) {
-    return getters.shown.length;
+  paginated_competitions (state, getters) {
+    return getters.filtered_competitions.slice(0, state.n_total_shown);
   }
 };
 
@@ -28,10 +30,13 @@ const actions = {
 
 const mutations = {
   set_competitions (state, competitions) {
-    state.competitions = competitions;
+    state.competitions = competitions.map(comp => {return {...comp, router: `competitions/${slugify(comp.name)},${comp.id}`};});
   },
   update_search_box (state, search) {
     state.search_box = search;
+  },
+  show_more (state) {
+    state.n_total_shown += 5;
   }
 };
 
