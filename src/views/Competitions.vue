@@ -26,6 +26,7 @@
                   {{comp.name}}
                </b-list-group-item>
                <b-list-group-item
+                 variant="secondary"
                  button
                  v-if="n_total_shown < filtered_competitions.length"
                  @click="on_show_more_click"
@@ -62,7 +63,7 @@
      }
    },
    async mounted () {
-     this.$store.dispatch("competitions/fetch_competitions");
+     this.$store.dispatch("competitions/fetch_competition_list");
    },
    computed: {
      ...mapState("competitions", [
