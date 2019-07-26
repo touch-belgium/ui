@@ -16,7 +16,7 @@
 
 
       <h1>Fixtures and results</h1>
-      <match v-bind:info="match"></match>
+      <match v-for="match in matches" :key="match.id" v-bind:info="match"></match>
    </b-container>
 </template>
 

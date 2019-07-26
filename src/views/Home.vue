@@ -28,7 +28,7 @@
          <b-container>
             <b-row>
                <b-col cols="12">
-                  <h2 class="display-4">News</h2>
+                  <h2 class="display-4">{{ $t("home.News") }}</h2>
                </b-col>
             </b-row>
             <b-row>
@@ -48,11 +48,13 @@
          <b-container>
             <b-row>
                <b-col xs="12">
-                  <h2 class="display-4">Calendar</h2>
+                  <h2 class="display-4">{{ $t('home.Calendar') }}</h2>
                </b-col>
             </b-row>
             <b-row>
-               <calendar></calendar>
+               <b-col>
+                  <calendar></calendar>
+               </b-col>
             </b-row>
          </b-container>
       </section>

@@ -5,18 +5,21 @@ Vue.use(VueI18n);
 
 const messages = {
   en: {
-    message: {
-      hello: 'hello world'
+    home: {
+      News: "News",
+      Calendar: "Calendar"
     }
   },
   fr: {
-    message: {
-      hello: 'texte en français'
+    home: {
+      News: "Nouvelles",
+      Calendar: "Calendrier"
     }
   },
   nl: {
-    message: {
-      hello: 'text in nederlands'
+    home: {
+      News: "Nieuws",
+      Calendar: "Kalender"
     }
   }
 };

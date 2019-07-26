@@ -14,6 +14,10 @@
            v-bind:close="false"
       ></Tag>
       <b-row>
+         <b-col v-if="error" cols="12">
+            <b-alert show variant="warning">Posts could not be retrieved.</b-alert>
+         </b-col>
+
          <b-col md="4" v-for="post in filtered_posts" :key="post.id">
             <PostCard
               v-bind:iden="post.id"
@@ -37,14 +41,18 @@
  export default {
    data () {
      return {
-
+       error: null
      }
    },
    methods: {
    },
-   mounted () {
-     this.$store.dispatch("blog/fetch_posts");
-     this.$store.dispatch("blog/fetch_tags");
+   async mounted () {
+     try {
+       await this.$store.dispatch("blog/fetch_posts");
+       await this.$store.dispatch("blog/fetch_tags");
+     } catch (e) {
+       this.error = true;
+     }
      this.$on('add_tag', (word) => {
        this.tags = this.tags.filter(x => x != word);
        if (!this.selected_tags.includes(word))

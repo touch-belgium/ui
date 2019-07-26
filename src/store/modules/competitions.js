@@ -5,7 +5,7 @@ const state = {
   search_box: "",
   competitions: [],
   matches: [],
-  n_total_shown: 5,
+  max_shown: 5,
   competition: null
 };
 
@@ -18,7 +18,10 @@ const getters = {
     return state.competitions.filter(c => patt.test(c.name));
   },
   paginated_competitions (state, getters) {
-    return getters.filtered_competitions.slice(0, state.n_total_shown);
+    return getters.filtered_competitions.slice(0, state.max_shown);
+  },
+  n_total_shown (state, getters) {
+    return getters.paginated_competitions.length;
   },
   teams (state, getters) {
     let s = new Set();
@@ -98,7 +101,7 @@ const mutations = {
     state.search_box = search;
   },
   show_more (state) {
-    state.n_total_shown += 5;
+    state.max_shown += 5;
   }
 };
 

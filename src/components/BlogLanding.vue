@@ -1,7 +1,7 @@
 <template>
    <div>
       <b-col v-if="error" cols="12">
-         <b-alert show variant="warning">Oops. Could not retrieve any blog posts</b-alert>
+         <b-alert show variant="warning">Posts could not be retrieved.</b-alert>
       </b-col>
       <b-col v-if="posts != null && !posts.length" cols="12">
          <b-alert show variant="info">No posts yet. Come back later !</b-alert>
@@ -42,7 +42,7 @@
    },
    async mounted () {
      try {
-       this.$store.dispatch("blog/fetch_recent_posts");
+       await this.$store.dispatch("blog/fetch_recent_posts");
      } catch (e) {
        this.error = "Posts could not be retrieved";
      }
