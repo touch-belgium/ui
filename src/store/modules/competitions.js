@@ -6,7 +6,46 @@ const state = {
   competitions: [],
   matches: [],
   max_shown: 5,
-  competition: null
+  competition: null,
+  fields: {
+    team: {
+      label: "Team",
+      sortable: true
+    },
+    points: {
+      key: "points",
+      label: "Points",
+      sortable: true
+    },
+    bonus: {
+      label: "Bonus",
+      sortable: true
+    },
+    wins: {
+      label: "Wins",
+      sortable: true
+    },
+    loses: {
+      label: "Loses",
+      sortable: true
+    },
+    ties: {
+      label: "Ties",
+      sortable: true
+    },
+    tf: {
+      label: "TF",
+      sortable: true
+    },
+    ta: {
+      label: "TA",
+      sortable: true
+    },
+    td: {
+      label: "TD",
+      sortable: true
+    }
+  }
 };
 
 const getters = {

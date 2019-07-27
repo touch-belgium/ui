@@ -10,7 +10,15 @@
       <p v-if="comp">{{competition.description}}</p>
 
       <h1>Table</h1>
-      <b-table striped :items="table_info">
+      <b-table
+        striped
+        bordered
+        hover
+        sort-by="points"
+        sort-desc
+        :fields="fields"
+        :items="table_info"
+      >
 
       </b-table>
 
@@ -27,22 +35,7 @@
  export default {
    data () {
      return {
-       headers: [
-         {
-           text: 'Team',
-           align: 'left',
-           sortable: false,
-           value: 'team'
-         },
-         { text: 'Total points', value: 'points' },
-         { text: 'Bonus', value: 'bonus'},
-         { text: 'Wins', value: 'wins' },
-         { text: 'Loses', value: 'loses' },
-         { text: 'Ties', value: 'ties' },
-         { text: 'TDs for', value: 'tf' },
-         { text: 'TDs against', value: 'ta' },
-         { text: 'TDs diff', value: 'td' }],
-       filtered_team: null
+
      }
    },
    methods: {
@@ -52,7 +45,8 @@
      ...mapState("competitions", [
        "competition",
        "matches",
-       "teams"
+       "teams",
+       "fields"
      ]),
      ...mapGetters("competitions", [
        "table_info"
