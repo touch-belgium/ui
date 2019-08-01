@@ -43,9 +43,9 @@
 
             <b-nav-item-dropdown class="lang-picker">
                <template slot="button-content"><span v-html="globe_icon"></span> {{pretty_locale}} </template>
-               <b-dropdown-item-button @click="on_locale_change">English</b-dropdown-item-button>
-               <b-dropdown-item-button @click="on_locale_change">Français</b-dropdown-item-button>
-               <b-dropdown-item-button @click="on_locale_change">Nederlands</b-dropdown-item-button>
+               <b-dropdown-item-button @click="on_locale_change('English')">English</b-dropdown-item-button>
+               <b-dropdown-item-button @click="on_locale_change('Français')">Français</b-dropdown-item-button>
+               <b-dropdown-item-button @click="on_locale_change('Nederlands')">Nederlands</b-dropdown-item-button>
             </b-nav-item-dropdown>
 
          </b-navbar-nav>
@@ -74,9 +74,8 @@
      }
    },
    methods: {
-     on_locale_change (e) {
-       const locale = e.toElement.innerText;
-       this.$store.dispatch("i18n/change_locale", locale);
+     on_locale_change (lang) {
+       this.$store.dispatch("i18n/change_locale", lang);
      }
    },
    computed: {
