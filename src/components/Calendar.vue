@@ -6,7 +6,7 @@
         :time-format-options="{hour: 'numeric', minute:'2-digit'}"
         :show-event-times="true"
         :starting-day-of-week=1
-        locale="fr"
+        :locale="locale"
         class="theme-default"
         @click-event="on_click_event"
       >
@@ -60,6 +60,9 @@
      },
    },
    computed: {
+     ...mapState("i18n", [
+       "locale"
+     ]),
      ...mapState("calendar", [
        "show_date",
        "events",

@@ -28,7 +28,7 @@
          <b-container>
             <b-row>
                <b-col cols="12">
-                  <h2 class="display-4">{{ $t("home.News") }}</h2>
+                  <h2 class="display-4"><span v-html="note_icon"></span> {{ $t("home.News") }}</h2>
                </b-col>
             </b-row>
             <b-row>
@@ -48,7 +48,7 @@
          <b-container>
             <b-row>
                <b-col xs="12">
-                  <h2 class="display-4">{{ $t('home.Calendar') }}</h2>
+                  <h2 class="display-4"><span v-html="calendar_icon"></span> {{ $t('home.Calendar') }}</h2>
                </b-col>
             </b-row>
             <b-row>
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+ import octicons from "octicons";
  import { Timeline } from "vue-tweet-embed";
  import BlogLanding from "../components/BlogLanding.vue";
  import Calendar from "../components/Calendar.vue";
@@ -70,6 +71,14 @@
    data () {
      return {
 
+     }
+   },
+   computed: {
+     note_icon () {
+       return octicons["note"].toSVG({ "height": 48 });
+     },
+     calendar_icon () {
+       return octicons["calendar"].toSVG({ "height": 48 });
      }
    },
    components: {

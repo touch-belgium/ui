@@ -21,6 +21,10 @@ const state = {
       label: "Bonus",
       sortable: true
     },
+    played: {
+      label: "Played",
+      sortable: true
+    },
     wins: {
       label: "Wins",
       sortable: true
@@ -86,6 +90,7 @@ const getters = {
     let loses = getters.home_matches(name).reduce(getters.away_wins, 0)
         + getters.away_matches(name).reduce(getters.home_wins, 0);
     let ties = getters.relevant_matches(name).reduce(getters.ties, 0);
+    let played = wins + loses + ties;
     let bonus = getters.home_matches(name).reduce(getters.home_bonus, 0)
         + getters.away_matches(name).reduce(getters.away_bonus, 0);
     let tf = getters.home_matches(name).reduce(getters.home_td, 0)
@@ -95,6 +100,7 @@ const getters = {
     return {team: name,
             points: wins * state.competition.win_value + ties * state.competition.tie_value + loses * state.competition.defeat_value + bonus,
             bonus,
+            played,
             wins,
             loses,
             ties,

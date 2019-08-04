@@ -41,14 +41,16 @@
 
       <b-row v-if="error">
          <b-col cols="12">
-            <b-alert show variant="warning">No tournaments available could not be retrieved.</b-alert>
+            <b-alert show variant="warning">Tournaments could not be retrieved</b-alert>
          </b-col>
       </b-row>
 
       <b-row v-if="n_total_shown == 0">
-         <b-alert show variant="warning">
-            No competitions to show
-         </b-alert>
+         <b-col>
+            <b-alert show variant="warning">
+               No competitions to show
+            </b-alert>
+         </b-col>
       </b-row>
    </b-container>
 </template>

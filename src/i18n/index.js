@@ -18,7 +18,7 @@ const messages = {
   },
   nl: {
     home: {
-      News: "Nieuws",
+      News: "Laatste artikelen",
       Calendar: "Kalender"
     }
   }

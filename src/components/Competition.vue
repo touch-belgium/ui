@@ -1,10 +1,14 @@
 <template>
    <b-container class="mt-5">
-      <span v-if="competition">{{competition.name}}</span>
+      <h1 class="display-4" v-if="competition">{{competition.name}}</h1>
 
-      <p v-if="competition" class="subheading">
-         {{competition.venue.name}}
-         <span class="font-italic" v-if="competition.venue.address">. {{competition.venue.address}}</span>
+      <p v-if="competition" class="">
+         <span class="mr-2" v-html="milestone_icon"></span> <span class="align-middle">
+            {{competition.venue.name}}.
+            <span class="font-italic" v-if="competition.venue.address">
+               {{competition.venue.address}}
+            </span>
+         </span>
       </p>
 
       <p v-if="comp">{{competition.description}}</p>
@@ -29,6 +33,7 @@
 </template>
 
 <script>
+ import octicons from "octicons";
  import Match from './Match.vue';
  import { mapState, mapGetters } from "vuex";
 
@@ -50,12 +55,17 @@
      ]),
      ...mapGetters("competitions", [
        "table_info"
-     ])
+     ]),
+     law_icon () {
+       return octicons["law"].toSVG();
+     },
+     milestone_icon () {
+       return octicons["milestone"].toSVG();
+     }
    },
    async mounted () {
      await this.$store.dispatch("competitions/fetch_competition", this.$route.params.id);
      await this.$store.dispatch("competitions/fetch_matches", this.$route.params.id);
-     console.log(this.table_info);
    },
    components: {
      Match
