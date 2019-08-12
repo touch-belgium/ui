@@ -8,45 +8,51 @@
 
       <b-collapse id="nav-collapse" is-nav>
          <b-navbar-nav>
-            <b-nav-item-dropdown >
-               <template slot="button-content">News and events</template>
+
+            <b-nav-dropdown
+              id="asdf"
+              text="News and events"
+            >
                <b-dropdown-item :to="{ name: 'news' }">Announcements</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'competitions' }">Tournaments and results</b-dropdown-item>
                <b-dropdown-item href="#">Calendar</b-dropdown-item>
                <b-dropdown-item href="#">AGM</b-dropdown-item>
-            </b-nav-item-dropdown>
+            </b-nav-dropdown>
 
-            <b-nav-item-dropdown>
-               <template slot="button-content">Get Involved</template>
+            <b-nav-dropdown
+              text="Get Involved"
+            >
                <b-dropdown-item href="#">Where to play</b-dropdown-item>
                <b-dropdown-item href="#">Referees</b-dropdown-item>
                <b-dropdown-item href="#">Coaches</b-dropdown-item>
                <b-dropdown-item href="#">National teams</b-dropdown-item>
-            </b-nav-item-dropdown>
+            </b-nav-dropdown>
 
-            <b-nav-item-dropdown>
-               <template slot="button-content">About touch</template>
+            <b-nav-dropdown
+              text="About touch"
+            >
                <b-dropdown-item href="#">What is touch</b-dropdown-item>
                <b-dropdown-item href="#">Where to play</b-dropdown-item>
                <b-dropdown-item href="#">Training/courses</b-dropdown-item>
                <b-dropdown-item href="#">Rules and regulations</b-dropdown-item>
-            </b-nav-item-dropdown>
+            </b-nav-dropdown>
 
             <b-nav-item href="#">Sponsorship</b-nav-item>
 
-            <b-nav-item-dropdown>
-               <template slot="button-content">Touch Belgium</template>
+            <b-nav-dropdown
+              text="Touch Belgium"
+            >
                <b-dropdown-item href="#">Members</b-dropdown-item>
                <b-dropdown-item href="#">Committee</b-dropdown-item>
                <b-dropdown-item href="#">Contact</b-dropdown-item>
-            </b-nav-item-dropdown>
+            </b-nav-dropdown>
 
-            <b-nav-item-dropdown class="lang-picker">
+            <b-nav-dropdown class="lang-picker">
                <template slot="button-content"><span v-html="globe_icon"></span> {{pretty_locale}} </template>
                <b-dropdown-item-button @click="on_locale_change('English')">English</b-dropdown-item-button>
                <b-dropdown-item-button @click="on_locale_change('Français')">Français</b-dropdown-item-button>
                <b-dropdown-item-button @click="on_locale_change('Nederlands')">Nederlands</b-dropdown-item-button>
-            </b-nav-item-dropdown>
+            </b-nav-dropdown>
 
          </b-navbar-nav>
 
@@ -102,14 +108,14 @@
  }
 
  .navbar-nav {
-   a.dropdown-item {
-     a {
-       text-decoration: none;
-       &:hover {
-         text-decoration: none;
-       }
-     }
-   }
+   /* a.dropdown-item {
+      a {
+      text-decoration: none;
+      &:hover {
+      text-decoration: none;
+      }
+      }
+      } */
    .lang-picker {
      @media (min-width: map-get($grid-breakpoints, "xl")) {
        padding-left: 1em;
