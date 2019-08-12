@@ -24,7 +24,7 @@
          <b-button class="mt-3" variant="outline-secondary" block @click="on_click_close_modal">Close</b-button>
       </b-modal>
 
-      <b-alert show class="mt-3">Sync this calendar (iCal): <a href="https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics">https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics</a></b-alert>
+      <b-alert show class="mt-3">Sync this calendar (iCal): <a class="text-break" href="https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics">https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics</a></b-alert>
    </div>
 </template>
 

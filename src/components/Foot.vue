@@ -12,7 +12,7 @@
                      <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT"><div class="align-middle" data-icon="ei-sc-youtube"></div>YouTube</a></li>
                   </ul>
                </b-col>
-               <b-col class="text-right" cols="12" md="6" xl="4">
+               <b-col class="footer-more text-right" cols="12" md="6" xl="4">
                   <ul>
                      <h5>More</h5>
                      <li><a class="subheading grey-text text-lighten-3" href="#!">TB logo</a></li>
@@ -57,7 +57,14 @@
 </script>
 
 <style lang="scss">
+ /* Import mixins (and dependencies) */
+ @import "~bootstrap/scss/functions";
+ @import "Styles/_custom-bootstrap-variables.scss";
+ @import "~bootstrap/scss/mixins/_breakpoints";
+
+ /* This custom imports must come after the mixin import */
  @import "Styles/_custom-color-variables.scss";
+
 
  .footer {
    color: white;
@@ -75,6 +82,11 @@
    }
    .footer1 {
      background: $tb-black-light;
+     @include media-breakpoint-down(md) {
+       .footer-more {
+         text-align: left !important;
+       }
+     }
    }
    .footer2 {
      background: $tb-black;
