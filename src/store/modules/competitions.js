@@ -5,7 +5,7 @@ const state = {
   search_box: "",
   competitions: [],
   matches: [],
-  max_shown: 5,
+  max_shown: 10,
   competition: null,
   fields: {
     team: {

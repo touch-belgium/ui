@@ -1,7 +1,7 @@
 <template>
    <b-navbar toggleable="xl" variant="light" fixed="top">
-      <b-navbar-brand class="mr-5" :to="{ name: 'home' }">
-         <b-img src="~Images/navbar-logo.png" height="45px" alt="Touch Belgium"></b-img>
+      <b-navbar-brand class="p-2 mr-3" :to="{ name: 'home' }">
+         <b-img src="~Images/navbar-logo.png" height="65px" alt="Touch Belgium"></b-img>
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -11,9 +11,11 @@
 
             <b-nav-dropdown
               id="asdf"
+              class="h5 m-0"
               text="News and events"
             >
                <b-dropdown-item :to="{ name: 'news' }">Announcements</b-dropdown-item>
+               <b-dropdown-item href="#">Newsletter</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'competitions' }">Tournaments and results</b-dropdown-item>
                <b-dropdown-item href="#">Calendar</b-dropdown-item>
                <b-dropdown-item href="#">AGM</b-dropdown-item>
@@ -21,6 +23,7 @@
 
             <b-nav-dropdown
               text="Get Involved"
+              class="h5 m-0"
             >
                <b-dropdown-item href="#">Where to play</b-dropdown-item>
                <b-dropdown-item href="#">Referees</b-dropdown-item>
@@ -30,6 +33,7 @@
 
             <b-nav-dropdown
               text="About touch"
+              class="h5 m-0"
             >
                <b-dropdown-item href="#">What is touch</b-dropdown-item>
                <b-dropdown-item href="#">Where to play</b-dropdown-item>
@@ -37,10 +41,11 @@
                <b-dropdown-item href="#">Rules and regulations</b-dropdown-item>
             </b-nav-dropdown>
 
-            <b-nav-item href="#">Sponsorship</b-nav-item>
+            <b-nav-item class="h5 m-0" href="#">Sponsorship</b-nav-item>
 
             <b-nav-dropdown
               text="Touch Belgium"
+              class="h5 m-0"
             >
                <b-dropdown-item href="#">Members</b-dropdown-item>
                <b-dropdown-item href="#">Committee</b-dropdown-item>
@@ -48,7 +53,7 @@
             </b-nav-dropdown>
 
             <b-nav-dropdown class="lang-picker">
-               <template slot="button-content"><span v-html="globe_icon"></span> {{pretty_locale}} </template>
+               <template slot="button-content"><span class="mr-2" v-html="globe_icon"></span> {{pretty_locale}} </template>
                <b-dropdown-item-button @click="on_locale_change('English')">English</b-dropdown-item-button>
                <b-dropdown-item-button @click="on_locale_change('Français')">Français</b-dropdown-item-button>
                <b-dropdown-item-button @click="on_locale_change('Nederlands')">Nederlands</b-dropdown-item-button>

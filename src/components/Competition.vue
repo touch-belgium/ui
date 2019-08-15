@@ -34,7 +34,7 @@
 
 <script>
  import octicons from "octicons";
- import Match from './Match.vue';
+ import Match from "./Match.vue";
  import { mapState, mapGetters } from "vuex";
 
  export default {

@@ -5,7 +5,6 @@
 
       <b-row>
          <b-col class="my-4" cols="12" md="6" lg="4" xl="6">
-            <!-- TODO: hacer que este b-form-input sea una especie de v-model, leyendo del state de vue tambien -->
             <b-form-input
               label="Competition name"
               placeholder="Start typing to narrow down the results"
