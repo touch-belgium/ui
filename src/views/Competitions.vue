@@ -1,57 +1,61 @@
 <template>
-   <b-container class="mt-5">
-      <b-img fluid src="media/banner_tournaments.jpg"></b-img>
-      <h1>Tournaments and competitions</h1>
+   <div>
+      <b-container fluid class="p-0">
+         <b-img fluid-grow class="mt-4" src="media/banner_tournaments.jpg"></b-img>
+      </b-container>
+      <b-container class="mt-5">
+         <h1>Tournaments and competitions</h1>
 
-      <b-row>
-         <b-col class="my-4" cols="12" md="6" lg="4" xl="6">
-            <b-form-input
-              label="Competition name"
-              placeholder="Start typing to narrow down the results"
-              browser-autocomplete="off"
-              @input="on_type_search_box"
-              :value="search_box"
-            ></b-form-input>
-         </b-col>
-      </b-row>
+         <b-row>
+            <b-col class="my-4" cols="12" md="6" lg="4" xl="6">
+               <b-form-input
+                 label="Competition name"
+                 placeholder="Start typing to narrow down the results"
+                 browser-autocomplete="off"
+                 @input="on_type_search_box"
+                 :value="search_box"
+               ></b-form-input>
+            </b-col>
+         </b-row>
 
 
-      <b-row v-if="n_total_shown" class="pb-4">
-         <b-col>
-            <b-list-group>
-               <b-list-group-item
-                 v-for="comp in paginated_competitions"
-                 :key="comp.id"
-                 :to="{ path: comp.router }"
-               >
-                  {{comp.name}}
-               </b-list-group-item>
-               <b-list-group-item
-                 variant="secondary"
-                 button
-                 v-if="n_total_shown < filtered_competitions.length"
-                 @click="on_show_more_click"
-               >
-                  Show 5 more...
-               </b-list-group-item>
-            </b-list-group>
-         </b-col>
-      </b-row>
+         <b-row v-if="n_total_shown" class="pb-4">
+            <b-col>
+               <b-list-group>
+                  <b-list-group-item
+                    v-for="comp in paginated_competitions"
+                    :key="comp.id"
+                    :to="{ path: comp.router }"
+                  >
+                     {{comp.name}}
+                  </b-list-group-item>
+                  <b-list-group-item
+                    variant="secondary"
+                    button
+                    v-if="n_total_shown < filtered_competitions.length"
+                    @click="on_show_more_click"
+                  >
+                     Show 5 more...
+                  </b-list-group-item>
+               </b-list-group>
+            </b-col>
+         </b-row>
 
-      <b-row v-if="error">
-         <b-col cols="12">
-            <b-alert show variant="warning">Tournaments could not be retrieved</b-alert>
-         </b-col>
-      </b-row>
+         <b-row v-if="error">
+            <b-col cols="12">
+               <b-alert show variant="warning">Tournaments could not be retrieved</b-alert>
+            </b-col>
+         </b-row>
 
-      <b-row v-if="n_total_shown == 0">
-         <b-col>
-            <b-alert show variant="warning">
-               No competitions to show
-            </b-alert>
-         </b-col>
-      </b-row>
-   </b-container>
+         <b-row v-if="n_total_shown == 0">
+            <b-col>
+               <b-alert show variant="warning">
+                  No competitions to show
+               </b-alert>
+            </b-col>
+         </b-row>
+      </b-container>
+   </div>
 </template>
 
 <script>

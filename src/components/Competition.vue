@@ -33,7 +33,7 @@
 </template>
 
 <script>
- import octicons from "octicons";
+ import octicons from "@primer/octicons";
  import Match from "./Match.vue";
  import { mapState, mapGetters } from "vuex";
 

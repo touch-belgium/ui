@@ -9,16 +9,15 @@
       <b-collapse id="nav-collapse" is-nav>
          <b-navbar-nav>
 
+            <b-nav-item class="h5 m-0" :to="{ name: 'news' }">News</b-nav-item>
+
             <b-nav-dropdown
               id="asdf"
               class="h5 m-0"
-              text="News and events"
+              text="Events"
             >
-               <b-dropdown-item :to="{ name: 'news' }">Announcements</b-dropdown-item>
-               <b-dropdown-item href="#">Newsletter</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'competitions' }">Tournaments and results</b-dropdown-item>
                <b-dropdown-item href="#">Calendar</b-dropdown-item>
-               <b-dropdown-item href="#">AGM</b-dropdown-item>
             </b-nav-dropdown>
 
             <b-nav-dropdown
@@ -26,9 +25,10 @@
               class="h5 m-0"
             >
                <b-dropdown-item href="#">Where to play</b-dropdown-item>
-               <b-dropdown-item href="#">Referees</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'referees' }">Referees</b-dropdown-item>
                <b-dropdown-item href="#">Coaches</b-dropdown-item>
                <b-dropdown-item href="#">National teams</b-dropdown-item>
+               <b-dropdown-item href="#">Setting up a club</b-dropdown-item>
             </b-nav-dropdown>
 
             <b-nav-dropdown
@@ -49,8 +49,11 @@
             >
                <b-dropdown-item href="#">Members</b-dropdown-item>
                <b-dropdown-item href="#">Committee</b-dropdown-item>
-               <b-dropdown-item href="#">Contact</b-dropdown-item>
+               <b-dropdown-item href="#">Newsletter</b-dropdown-item>
+               <b-dropdown-item href="#">AGM</b-dropdown-item>
             </b-nav-dropdown>
+
+            <b-nav-item class="h5 m-0" href="#">Contact</b-nav-item>
 
             <b-nav-dropdown class="lang-picker">
                <template slot="button-content"><span class="mr-2" v-html="globe_icon"></span> {{pretty_locale}} </template>
@@ -75,7 +78,7 @@
 
 <script>
  import moment from "moment";
- import octicons from "octicons";
+ import octicons from "@primer/octicons";
  import { mapGetters } from "vuex";
 
  export default {

@@ -3,8 +3,9 @@
       <header>
          <div class="overlay"></div>
          <video poster="" id="bgvid" playsinline autoplay muted loop>
-            <!-- <source src="~Videos/splash.webm" type="video/webm">
-                 <source src="~Videos/splash.mp4" type="video/mp4"> -->
+            <source src="~Videos/out-x265-2pass.mp4" type="video/H265">
+            <source src="~Videos/out-vp9-2pass.webm" type="video/webm">
+            <source src="~Videos/out-2pass.mp4" type="video/mp4">
          </video>
 
          <b-container class="h-100">
@@ -62,7 +63,7 @@
 </template>
 
 <script>
- import octicons from "octicons";
+ import octicons from "@primer/octicons";
  import { Timeline } from "vue-tweet-embed";
  import BlogLanding from "../components/BlogLanding.vue";
  import Calendar from "../components/Calendar.vue";

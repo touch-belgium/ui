@@ -11,12 +11,20 @@ export default new Router({
     // { path: '/calendar', name: "calendar", component: Calendar },
     // { path: '/template', name: "template", component: Template },
     { path: '/competitions', name: "competitions", component: () => import("../views/Competitions.vue") },
+    { path: '/referees', name: "referees", component: () => import("../views/Referees.vue") },
     { path: '/competitions/*,:id', name: "competition", component: () => import("../components/Competition.vue")},
     // { path: '/sponsorship', name: "sponsorship", component: Sponsorship },
   ],
-  // The following makes the page scroll to the top after clicking a
-  // router link
+  // The following makes vue router able to navigate through anchor tags
+
+  // It also allows the page to automatically scroll to the top after
+  // clicking a router link
   scrollBehavior (to, from, savedPosition) {
-    return { x: 0, y: 0 };
+    if (to.hash) {
+      return {
+        selector: to.hash,
+        offset: { x: 0, y: 120 }
+      }
+    }
   }
 });

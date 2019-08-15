@@ -31,7 +31,7 @@
 <script>
  import { CalendarView, CalendarViewHeader } from "vue-simple-calendar";
  import { mapState, mapGetters, mapMutations } from "vuex";
- import octicons from "octicons";
+ import octicons from "@primer/octicons";
  require("vue-simple-calendar/static/css/default.css");
 
  export default {

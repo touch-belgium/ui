@@ -39,7 +39,7 @@
 </template>
 
 <script>
- import octicons from "octicons";
+ import octicons from "@primer/octicons";
 
  export default {
    name: 'Foot',
