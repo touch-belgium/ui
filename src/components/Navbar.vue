@@ -1,7 +1,7 @@
 <template>
    <b-navbar toggleable="xl" variant="light" fixed="top">
       <b-navbar-brand class="p-2 mr-3" :to="{ name: 'home' }">
-         <b-img src="~Images/navbar-logo.png" height="65px" alt="Touch Belgium"></b-img>
+         <b-img src="~Images/navbar-logo.png" height="60px" alt="Touch Belgium"></b-img>
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -9,11 +9,10 @@
       <b-collapse id="nav-collapse" is-nav>
          <b-navbar-nav>
 
-            <b-nav-item class="h5 m-0" :to="{ name: 'news' }">News</b-nav-item>
+            <b-nav-item class="m-0" :to="{ name: 'news' }">News</b-nav-item>
 
             <b-nav-dropdown
-              id="asdf"
-              class="h5 m-0"
+              class="m-0"
               text="Events"
             >
                <b-dropdown-item :to="{ name: 'competitions' }">Tournaments and results</b-dropdown-item>
@@ -22,7 +21,7 @@
 
             <b-nav-dropdown
               text="Get Involved"
-              class="h5 m-0"
+              class="m-0"
             >
                <b-dropdown-item href="#">Where to play</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'referees' }">Referees</b-dropdown-item>
@@ -33,7 +32,7 @@
 
             <b-nav-dropdown
               text="About touch"
-              class="h5 m-0"
+              class="m-0"
             >
                <b-dropdown-item href="#">What is touch</b-dropdown-item>
                <b-dropdown-item href="#">Where to play</b-dropdown-item>
@@ -41,11 +40,11 @@
                <b-dropdown-item href="#">Rules and regulations</b-dropdown-item>
             </b-nav-dropdown>
 
-            <b-nav-item class="h5 m-0" href="#">Sponsorship</b-nav-item>
+            <b-nav-item class="m-0" href="#">Sponsorship</b-nav-item>
 
             <b-nav-dropdown
               text="Touch Belgium"
-              class="h5 m-0"
+              class="m-0"
             >
                <b-dropdown-item href="#">Members</b-dropdown-item>
                <b-dropdown-item href="#">Committee</b-dropdown-item>
@@ -53,7 +52,7 @@
                <b-dropdown-item href="#">AGM</b-dropdown-item>
             </b-nav-dropdown>
 
-            <b-nav-item class="h5 m-0" href="#">Contact</b-nav-item>
+            <b-nav-item class="m-0" href="#">Contact</b-nav-item>
 
             <b-nav-dropdown class="lang-picker">
                <template slot="button-content"><span class="mr-2" v-html="globe_icon"></span> {{pretty_locale}} </template>

@@ -29,10 +29,9 @@
                </p>
 
                <p class="text-justify">
-                  Take a look at the information below or contact our
-                  National Director of Referees [Insert Referee
-                  contact – referee@touch-belgium.be ] if you are up
-                  for the challenge!
+                  Take a look at the information below or <a href="mailto:referee@touch-belgium.be">contact our
+                  National Director of Referees</a> if you are up for
+                  the challenge!
                </p>
 
                <h5 id="referee-pathway" style="">Referee Pathway</h5>
@@ -50,7 +49,7 @@
                   website
                </p>
 
-               <h5 id="referee-courses" style="">Referee courses</h5>
+               <h5 id="referee-courses">Referee courses</h5>
 
                <p class="text-justify">
                   To become a qualified referee, there is a practical
@@ -83,12 +82,12 @@
                <p class="text-justify">
                   If you would like to find out when the next theory
                   or practical assessment opportunity is, please email
-                  refereetraining@touch-belgium.be.
+                  <a href="mailto:refereetraining@touch-belgium.be">refereetraining@touch-belgium.be</a>.
                </p>
 
                <h2 id="referee-resources">Resources</h2>
 
-               <p class="text-justify">
+               <p class="text-justify lead font-italic">
                   In this section, you can find links or information
                   to useful resources that you will need as a referee.
                </p>
@@ -109,7 +108,7 @@
 
                <p class="text-justify">
                   For any questions relating to referee resource
-                  material, email referee@touch-belgium.be.
+                  material, email <a href="mailto:referee@touch-belgium.be">referee@touch-belgium.be</a>.
                </p>
 
                <b-card
@@ -128,8 +127,9 @@
                </b-card>
 
 
-               <h2 id="tb-referees" style="">Touch Belgium Referees</h2>
+               <h2 id="tb-referees" class="mt-4">Touch Belgium Referees</h2>
                <p class="text-justify">Phil, Karla, etc</p>
+
             </div>
          </b-col>
 
