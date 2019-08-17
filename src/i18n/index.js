@@ -6,20 +6,29 @@ Vue.use(VueI18n);
 const messages = {
   en: {
     home: {
-      News: "News",
+      News: "Latest news",
       Calendar: "Calendar"
+    },
+    news: {
+      News: "News"
     }
   },
   fr: {
     home: {
-      News: "Nouvelles",
+      News: "Dernières nouvelles",
       Calendar: "Calendrier"
+    },
+    news: {
+      News: "Nouvelles"
     }
   },
   nl: {
     home: {
       News: "Laatste artikelen",
       Calendar: "Kalender"
+    },
+    news: {
+      News: "Nieuws"
     }
   }
 };

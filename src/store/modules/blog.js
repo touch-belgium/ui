@@ -2,6 +2,7 @@ import api from "../../common/api.js";
 
 const state = {
   posts: [],
+  post: null,
   tags: [],
   selected_tags: []
 };
@@ -40,6 +41,11 @@ const actions = {
     const response = await api.get(url).json();
     commit("set_posts", response.results);
   },
+  async fetch_post ({ state, commit }, id) {
+    const url = `posts/${id}/`;
+    const response = await api.get(url).json();
+    commit("set_post", response);
+  },
   async fetch_tags ({ state, commit }) {
     const url = "tags";
     const response = await api.get(url).json();
@@ -50,6 +56,9 @@ const actions = {
 const mutations = {
   set_posts (state, posts) {
     state.posts = posts;
+  },
+  set_post (state, post) {
+    state.post = post;
   },
   set_tags (state, tags) {
     state.tags = tags;

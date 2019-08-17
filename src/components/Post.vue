@@ -1,51 +1,73 @@
 <template>
-   <v-container>
-      <p>← Back to news</p>
-      <v-card raised v-if="post">
-         <v-card-title primary-title>
-            <h3 class="display-1">{{post.title}}</h3>
-         </v-card-title>
+   <b-container class="mt-5">
 
-         <v-card-text>
-            <p><em>Published: {{ post.created_at | moment("from") }} by {{ post.author.username }}</em></p>
-            <div v-html="post.body"></div>
-            <div v-if="post.tags.length" class="mt-5">
+      <b-row>
+         <router-link :to="{ name: 'news' }" class="lead">← Back to news</router-link>
+      </b-row>
+
+      <b-row v-if="error">
+         <b-col cols="12">
+            <b-alert show variant="warning">Post could not be retrieved.</b-alert>
+         </b-col>
+      </b-row>
+
+      <b-row class="mb-5" v-if="post">
+         <b-card
+           no-body
+           footer-tag="footer"
+         >
+            <b-card-body>
+               <b-card-title>
+                  <h3 class="display-4">{{ post.title }}</h3>
+               </b-card-title>
+
+
+               <b-card-text>
+                  <p><em>Published: {{ post.created_at | moment("from") }} by {{ post.author.username }}</em></p>
+                  <div v-html="post.body"></div>
+               </b-card-text>
+            </b-card-body>
+            <b-card-footer v-if="post.tags.length">
                <em>Tags: </em>
                <Tag v-for="tag in post.tags" :key="tag.id" v-bind:word="tag.word"></Tag>
-            </div>
-         </v-card-text>
-      </v-card>
-   </v-container>
+            </b-card-footer>
+         </b-card>
+      </b-row>
+   </b-container>
 </template>
 
 <script>
- import Tag from './Tag.vue';
- import axios from 'axios';
+ import Tag from "./Tag.vue";
+ import { mapGetters, mapState } from "vuex";
 
  export default {
    data () {
      return {
-       post: null
+       error: null
+     }
+   },
+   async mounted () {
+     /* Setup i18n listener */
+     this.$root.$on("SIGlocale", () => {
+       this.$forceUpdate();
+     });
+     /* Fetch the post */
+     try {
+       await this.$store.dispatch("blog/fetch_post", this.$route.params.id);
+     } catch (e) {
+       this.error = true;
      }
    },
    methods: {
-     fetchPost () {
-       let url = API + "posts/" + this.$route.params.id + "/";
-       axios.get(url, {crossdomain: true}).then(response => {
-         this.post = response.data;
-       });
-     }
+
    },
-   created () {
-     this.fetchPost();
-   },
-   watch: {
-     '$route': 'fetchPost'
-   },
-   mounted () {
-     this.$root.$on("SIGlocale", () => {
-       this.$forceUpdate();
-     })
+   /* watch: {
+    *   '$route': 'fetchPost'
+    * }, */
+   computed: {
+     ...mapState("blog", [
+       "post"
+     ])
    },
    components: {
      Tag
@@ -54,16 +76,6 @@
 </script>
 
 <style scoped lang="scss">
- @import "custom-color-variables";
+ @import "~Styles/custom-color-variables";
 
- .card.post {
-   .card-content {
-     p {
-       em {
-         color: color("grey", "darken-3");
-         font-size: 0.8em;
-       }
-     }
-   }
- }
 </style>

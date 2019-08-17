@@ -2,7 +2,7 @@
    <b-container class="mt-5">
       <b-row>
          <b-col xs="12">
-            <h2 class="display-4">News</h2>
+            <h2 class="display-4">{{ $t("news.News") }}</h2>
          </b-col>
       </b-row>
       <b-row>

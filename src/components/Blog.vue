@@ -1,18 +1,27 @@
 <template>
    <b-container class="mt-5">
-      <p>Selected tags:</p>
-      <Tag v-for="tag in selected_tags"
-           :key="tag.id"
-           v-bind:word="tag"
-           v-bind:close="true"
-      ></Tag>
+      <b-row>
+         <b-col cols="12">
+            <p>Selected tags:</p>
+            <Tag v-for="tag in selected_tags"
+                 :key="tag.id"
+                 v-bind:word="tag"
+                 v-bind:close="true"
+            ></Tag>
+         </b-col>
+      </b-row>
 
-      <p>Sort by tag:</p>
-      <Tag v-for="tag in tags"
-           :key="tag.id"
-           v-bind:word="tag.word"
-           v-bind:close="false"
-      ></Tag>
+      <b-row>
+         <b-col cols="12">
+            <p>Sort by tag:</p>
+            <Tag v-for="tag in tags"
+                 :key="tag.id"
+                 v-bind:word="tag.word"
+                 v-bind:close="false"
+            ></Tag>
+         </b-col>
+      </b-row>
+
       <b-row>
          <b-col v-if="error" cols="12">
             <b-alert show variant="warning">Posts could not be retrieved.</b-alert>
