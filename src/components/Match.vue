@@ -1,7 +1,7 @@
 <template>
    <b-card
      no-body
-     class="my-4"
+     class="my-4 match_card"
      header="Competition match"
      header-tag="header"
    >
@@ -14,32 +14,33 @@
          </b-col>
 
          <b-col class="match_info_right" cols="12" md="8">
-            <b-row>
-               <b-col cols="5">
-                  <b-card
-                    class="h5 m-3 text-center"
-                    :class="home_outcome_class"
-                    :header="info.home_team.name"
-                  >
-                     <b-img :src="info.home_team.logo" :alt="info.home_team.name" fluid></b-img>
-                  </b-card>
-               </b-col>
+            <b-container fluid>
+               <b-row>
+                  <b-col cols="5">
+                     <b-card
+                       class="h5 m-3 text-center"
+                       :class="home_outcome_class"
+                       :header="info.home_team.name"
+                     >
+                        <b-img :src="info.home_team.logo" :alt="info.home_team.name" fluid></b-img>
+                     </b-card>
+                  </b-col>
 
-               <b-col class="d-flex justify-content-center" cols="2">
-                  <div class="h5 align-self-center text-nowrap">{{info.home_touchdowns}} - {{info.away_touchdowns}}</div>
-               </b-col>
+                  <b-col class="d-flex justify-content-center" cols="2">
+                     <div class="h5 align-self-center text-nowrap">{{info.home_touchdowns}} - {{info.away_touchdowns}}</div>
+                  </b-col>
 
-               <b-col cols="5">
-                  <b-card
-                    class="h5 m-3 text-center"
-                    :class="away_outcome_class"
-                    :header="info.away_team.name"
-                  >
-                     <b-img :src="info.away_team.logo" :alt="info.home_team.name" fluid></b-img>
-                  </b-card>
-               </b-col>
-            </b-row>
-
+                  <b-col cols="5">
+                     <b-card
+                       class="h5 m-3 text-center"
+                       :class="away_outcome_class"
+                       :header="info.away_team.name"
+                     >
+                        <b-img :src="info.away_team.logo" :alt="info.home_team.name" fluid></b-img>
+                     </b-card>
+                  </b-col>
+               </b-row>
+            </b-container>
          </b-col>
       </b-row>
 

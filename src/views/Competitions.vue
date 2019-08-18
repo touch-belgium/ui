@@ -13,7 +13,7 @@
                  placeholder="Start typing to narrow down the results"
                  browser-autocomplete="off"
                  @input="on_type_search_box"
-                 :value="search_box"
+                 :value="search_competition_box"
                ></b-form-input>
             </b-col>
          </b-row>
@@ -73,7 +73,7 @@
        this.$store.commit("competitions/show_more");
      },
      on_type_search_box (text) {
-       this.$store.commit("competitions/update_search_box", text);
+       this.$store.commit("competitions/update_search_competition_box", text);
      }
    },
    async mounted () {
@@ -86,7 +86,7 @@
    computed: {
      ...mapState("competitions", [
        "max_shown",
-       "search_box"
+       "search_competition_box"
      ]),
      ...mapGetters("competitions", [
        "competitions",

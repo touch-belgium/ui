@@ -2,12 +2,13 @@ import api from "../../common/api.js";
 import slugify from "slugify";
 
 const state = {
-  search_box: "",
+  search_competition_box: "",
+  select_team_box: "",
   competitions: [],
   matches: [],
   max_shown: 10,
   competition: null,
-  fields: {
+  table_fields: {
     team: {
       label: "Team",
       sortable: true
@@ -57,7 +58,7 @@ const getters = {
     return state.competitions;
   },
   filtered_competitions (state, getters) {
-    const patt = new RegExp(state.search_box, "i");
+    const patt = new RegExp(state.search_competition_box, "i");
     return state.competitions.filter(c => patt.test(c.name));
   },
   paginated_competitions (state, getters) {
@@ -111,6 +112,11 @@ const getters = {
   },
   table_info (state, getters) {
     return getters.teams.map(t => getters.team_name_to_row(t));
+  },
+  filtered_matches: (state, getters) => team => {
+    return team == null ? state.matches :
+      state.matches.filter(m => m.home_team.name == team ||
+                           m.away_team.name == team);
   }
 };
 
@@ -142,8 +148,11 @@ const mutations = {
   set_matches (state, matches) {
     state.matches = matches;
   },
-  update_search_box (state, search) {
-    state.search_box = search;
+  update_search_competition_box (state, search) {
+    state.search_competition_box = search;
+  },
+  update_select_team_box (state, selected) {
+    state.select_team_box = selected;
   },
   show_more (state) {
     state.max_shown += 5;
