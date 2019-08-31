@@ -9,7 +9,7 @@ const state = {
 
 const getters = {
   latest_posts (state, getters) {
-    return state.posts.slice(0, 6);
+    return state.posts.slice(0, 4);
   },
   posts (state, getters) {
     return state.posts;

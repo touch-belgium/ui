@@ -1,5 +1,8 @@
 <template>
    <b-container class="mt-5">
+      <b-row v-if="error">
+         <b-alert show variant="danger">Failed to load competition</b-alert>
+      </b-row>
       <b-row>
          <h1 class="display-4" v-if="competition">{{competition.name}}</h1>
 
@@ -49,6 +52,7 @@
               :options="teams"
             >
             </b-form-select>
+            <!-- TODO: clear selected team -->
          </b-col>
       </b-row>
 
@@ -74,6 +78,7 @@
  export default {
    data () {
      return {
+       error: null,
        selected_team: null
      }
    },
@@ -104,9 +109,16 @@
      }
    },
    async mounted () {
-     await this.$store.dispatch("competitions/fetch_competition", this.$route.params.id);
-     await this.$store.dispatch("competitions/fetch_matches", this.$route.params.id);
-     console.log(this.teams);
+     try {
+       this.$Progress.start();
+       await this.$store.dispatch("competitions/fetch_competition", this.$route.params.id);
+       this.$Progress.increase(20);
+       await this.$store.dispatch("competitions/fetch_matches", this.$route.params.id);
+       this.$Progress.finish();
+     } catch (e) {
+       this.$Progress.fail();
+       this.error = "Competition could not be retrieved";
+     }
    },
    components: {
      Match

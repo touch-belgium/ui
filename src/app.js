@@ -4,6 +4,7 @@ import EvilIconsCss from 'evil-icons/assets/evil-icons.min.css';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import BootstrapVue from 'bootstrap-vue';
+import VueProgressBar from 'vue-progressbar';
 import css from './css/main.scss';
 
 import moment from 'moment';
@@ -22,6 +23,11 @@ Vue.config.devtools = true;
 Vue.use(require('vue-moment'), {moment});
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
+Vue.use(VueProgressBar, {
+  color: '#e11e26',
+  failedColor: 'black',
+  thickness: '2px'
+});
 
 export default new Vue({
   el: '#vue-root',

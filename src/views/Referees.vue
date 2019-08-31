@@ -1,36 +1,38 @@
 <template>
    <b-container class="mt-5">
       <b-row>
-         <b-col cols="12" lg="8">
+         <b-col cols="12" lg="10">
             <div id="scrollspy" style="position:relative; overflow-y: auto">
                <h2 id="referees">Referees</h2>
                <p class="text-justify">
-                  You don’t have to be a player to enjoy
-                  Touch. Becoming a qualified Touch referee allows you
-                  to master the rules of the game and ensure that
-                  matches are played to the highest standards of
-                  respect and fair play.
+                  Becoming a qualified Touch referee allows you to
+                  master the rules of the game and ensure that matches
+                  are played to the highest standards of respect and
+                  fair play. Playing and refereeing are very
+                  complementary, being both a player and a referee
+                  helps your understanding of the sport and improves
+                  your skill level.
                </p>
 
                <p class="text-justify">
                   We are very proud of our referees that represent
-                  Belgium at the highest levels of European
-                  competition including the European Touch
-                  Championships.
+                  Belgium at the highest levels of competition
+                  including the European Touch Championships.
                </p>
 
                <p class="text-justify">
                   Refereeing allows you to take an active part in club
                   and international tournaments from both a sporting
-                  and social perspective. To help master the required
-                  signals, our team of referees has created a video
-                  demonstrating how to perform each signal, included
-                  as part of our <router-link to="#referee-resources">Resources section</router-link> below.
+                  and social perspective.
+
+                  <!-- To help master the required signals, our team of
+                       referees has created a video demonstrating how to
+                       perform each signal, included as part of our <router-link to="#referee-resources">Resources section</router-link> below. -->
                </p>
 
                <p class="text-justify">
-                  Take a look at the information below or <a href="mailto:referee@touch-belgium.be">contact our
-                  National Director of Referees</a> if you are up for
+                  Take a look at the information below or <a href="mailto:referee@touch-belgium.be">contact
+                  our National Director of Referees</a> if you are up for
                   the challenge!
                </p>
 
@@ -92,13 +94,11 @@
                   to useful resources that you will need as a referee.
                </p>
 
-               <p class="text-justify">
-                  Separate document
-               </p>
-
-               <p class="text-justify">
-                  Separate document
-               </p>
+               <b-list-group class="mb-3">
+                  <b-list-group-item v-for="doc in referee_files">
+                     <a :href="doc.file">{{doc.title}}</a>
+                  </b-list-group-item>
+               </b-list-group>
 
                <iframe width="560" height="315" src="https://www.youtube.com/embed/c5wNEgVDyBc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -128,12 +128,16 @@
 
 
                <h2 id="tb-referees" class="mt-4">Touch Belgium Referees</h2>
-               <p class="text-justify">Phil, Karla, etc</p>
+               <b-row>
+                  <b-col>
+                     <p class="text-justify">Phil, Karla, etc</p>
+                  </b-col>
+               </b-row>
 
             </div>
          </b-col>
 
-         <b-col class="d-none d-lg-inline" cols="0" lg="4">
+         <b-col class="d-none d-lg-inline" cols="0" lg="2">
             <b-navbar v-b-scrollspy="120" class="position-fixed flex-column">
                <b-navbar-brand href="#">Navigation</b-navbar-brand>
                <b-nav pills class="flex-column">
@@ -155,28 +159,33 @@
 
 <script>
  import octicons from "@primer/octicons";
+ import { mapGetters } from "vuex";
 
  export default {
    data () {
      return {
-       config: {
-         element: 'body',
-         offset: -100,
-         method: 'auto',
-         throttle: 100
-       }
+       error: null
      }
    },
    methods: {
-
    },
    async mounted () {
-
+     try {
+       /* await this.$store.dispatch("members/fetch_") */
+       this.$Progress.start();
+       await this.$store.dispatch("files/fetch_files");
+       this.$Progress.finish();
+     } catch (e) {
+       this.error = true;
+     }
    },
    computed: {
      info_icon () {
        return octicons["info"].toSVG( { "class": "white_icon" } );
-     }
+     },
+     ...mapGetters("files", [
+       "referee_files"
+     ])
    }
  }
 </script>

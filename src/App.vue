@@ -2,6 +2,7 @@
    <div>
       <navbar></navbar>
       <router-view></router-view>
+      <vue-progress-bar></vue-progress-bar>
       <foot></foot>
    </div>
 </template>

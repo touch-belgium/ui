@@ -4,6 +4,7 @@ import i18n from "./modules/i18n.js";
 import blog from "./modules/blog.js";
 import competitions from "./modules/competitions.js";
 import calendar from "./modules/calendar.js";
+import files from "./modules/files.js";
 
 // As of 22/07/19, the following line is needed so devtools can check
 // the Vuex store. No store detected otherwise.
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     i18n,
     blog,
     competitions,
-    calendar
+    calendar,
+    files
   }
 });

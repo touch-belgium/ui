@@ -59,11 +59,11 @@
 <style lang="scss">
  /* Import mixins (and dependencies) */
  @import "~bootstrap/scss/functions";
- @import "Styles/_custom-bootstrap-variables.scss";
+ @import "Styles/_custom-bootstrap-variables";
  @import "~bootstrap/scss/mixins/_breakpoints";
 
  /* This custom imports must come after the mixin import */
- @import "Styles/_custom-color-variables.scss";
+ @import "~Styles/custom-color-variables";
 
 
  .footer {
@@ -90,7 +90,6 @@
    }
    .footer2 {
      background: $tb-black;
-     color: color("grey", "lighten-4");
      .octicon {
        fill: white;
      }
