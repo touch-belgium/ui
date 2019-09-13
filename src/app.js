@@ -7,6 +7,17 @@ import BootstrapVue from 'bootstrap-vue';
 import VueProgressBar from 'vue-progressbar';
 import css from './css/main.scss';
 
+import { Icon }  from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
+// this part resolves an issue where the markers would not appear
+delete Icon.Default.prototype._getIconUrl;
+Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
+
 import moment from 'moment';
 // require('moment/locale/fr');
 

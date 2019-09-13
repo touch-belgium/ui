@@ -28,7 +28,7 @@
          </b-col>
 
          <b-col md="4" v-for="post in filtered_posts" :key="post.id">
-            <PostCard
+            <postcard
               v-bind:iden="post.id"
               v-bind:title="post.title"
               v-bind:body="post.body"
@@ -36,7 +36,7 @@
               v-bind:created_at="post.created_at"
               v-bind:author="post.author"
               v-bind:tags="post.tags"
-            ></PostCard>
+            ></postcard>
          </b-col>
       </b-row>
    </b-container>

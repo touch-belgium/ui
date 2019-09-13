@@ -11,7 +11,13 @@ export default new Router({
     // { path: '/calendar', name: "calendar", component: Calendar },
     // { path: '/template', name: "template", component: Template },
     { path: '/competitions', name: "competitions", component: () => import("../views/Competitions.vue") },
+    { path: '/where', name: "where", component: () => import("../views/Where.vue") },
     { path: '/referees', name: "referees", component: () => import("../views/Referees.vue") },
+    { path: '/coaching', name: "coaching", component: () => import("../views/Coaching.vue") },
+    { path: '/national-teams', name: "national-teams", component: () => import("../views/NationalTeams.vue") },
+    { path: '/youth', name: "youth", component: () => import("../views/Youth.vue") },
+    { path: '/getting-started', name: "getting-started", component: () => import("../views/GettingStarted.vue") },
+
     { path: '/competitions/*,:id', name: "competition", component: () => import("../components/Competition.vue")},
     // { path: '/sponsorship', name: "sponsorship", component: Sponsorship },
   ],

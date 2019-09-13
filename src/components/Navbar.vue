@@ -23,11 +23,12 @@
               text="Get Involved"
               class="m-0"
             >
-               <b-dropdown-item href="#">Where to play</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'where' }">Where to play</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'referees' }">Referees</b-dropdown-item>
-               <b-dropdown-item href="#">Coaches</b-dropdown-item>
-               <b-dropdown-item href="#">National teams</b-dropdown-item>
-               <b-dropdown-item href="#">Setting up a club</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'coaching' }">Coaches</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'national-teams' }">National teams</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'youth' }">Youth</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'getting-started' }">Getting started</b-dropdown-item>
             </b-nav-dropdown>
 
             <b-nav-dropdown
