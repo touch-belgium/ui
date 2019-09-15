@@ -36,7 +36,8 @@
                   the challenge!
                </p>
 
-               <h5 id="referee-pathway" style="">Referee Pathway</h5>
+               <h5 id="referee-pathway">Referee pathway</h5>
+
                <p class="text-justify">
                   Learning to referee in Belgium allows individuals to
                   grow and hone their skills from social tournaments up
@@ -69,16 +70,14 @@
                   upwards.
                </p>
 
-               <p class="text-justify">
-                  Upcoming courses:
-               </p>
+               <h5 id="upcoming-courses">Upcoming referee courses</h5>
+
+               <b-list-group class="mb-3">
+                  <b-list-group-item variant="warning">No upcoming events to show</b-list-group-item>
+               </b-list-group>
 
                <p class="text-justify">
-                  [insert a list of upcoming referee theory and practical courses]
-               </p>
-
-               <p class="text-justify">
-                  For all upcoming training courses, please see the calendar.
+                  For all upcoming training courses, please see the <router-link :to="{ name: 'calendar' }">calendar</router-link>.
                </p>
 
                <p class="text-justify">
@@ -95,16 +94,18 @@
                </p>
 
                <b-list-group class="mb-3">
+                  <b-list-group-item v-if="!referee_files.length" variant="warning">
+                     No documents to show.
+                  </b-list-group-item>
                   <b-list-group-item v-for="doc in referee_files" :key="doc.title">
-                     <a :href="doc.file">{{doc.title}}</a>
+                     <a target="_blank" :href="doc.file">{{doc.title}}</a>
+                  </b-list-group-item>
+                  <b-list-group-item>
+                     <a target="_blank" href="https://www.beliefsports.com/shop/shop-england-touch-live/">Kit shop</a>
                   </b-list-group-item>
                </b-list-group>
 
                <iframe width="560" height="315" src="https://www.youtube.com/embed/c5wNEgVDyBc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-               <p class="text-justify">
-                  Referee kit shop
-               </p>
 
                <p class="text-justify">
                   For any questions relating to referee resource
@@ -127,10 +128,33 @@
                </b-card>
 
 
-               <h2 id="tb-referees" class="mt-4">Touch Belgium Referees</h2>
+               <h2 id="tb-referees" class="my-4">Touch Belgium referees</h2>
+
                <b-row>
-                  <b-col>
-                     <p class="text-justify">Phil, Karla, etc</p>
+                  <b-col cols="12" md="6" lg="4" class="mb-4" v-for="ref in referee_board" :key="ref.name">
+                     <b-card no-body class="overflow-hidden">
+                        <b-card-img top :src="ref.picture" class="rounded-circle"></b-card-img>
+                        <b-card-body :title="ref.name">
+                           <b-card-text>
+                              <p>Level: {{ref.referee_level}}</p>
+                              <p>Club: {{ref.team}}</p>
+                           </b-card-text>
+                        </b-card-body>
+                     </b-card>
+                  </b-col>
+               </b-row>
+
+               <b-row>
+                  <b-col cols="12" md="4" lg="3" class="mb-4" v-for="ref in normal_refs" :key="ref.name">
+                     <b-card no-body class="overflow-hidden">
+                        <b-card-img top :src="ref.picture" class="rounded-circle"></b-card-img>
+                        <b-card-body :title="ref.name">
+                           <b-card-text>
+                              <p>Level: {{ref.referee_level}}</p>
+                              <p>Club: {{ref.team}}</p>
+                           </b-card-text>
+                        </b-card-body>
+                     </b-card>
                   </b-col>
                </b-row>
 
@@ -142,9 +166,10 @@
                <b-navbar-brand href="#">Navigation</b-navbar-brand>
                <b-nav pills class="flex-column">
                   <b-nav-item to="#referees">Referees</b-nav-item>
+                  <b-nav-item to="#referee-pathway">Referee pathway</b-nav-item>
+                  <b-nav-item to="#referee-courses">Referee courses</b-nav-item>
                   <b-nav pills class="flex-column">
-                     <b-nav-item class="ml-3 my-1" to="#referee-pathway">Referee Pathway</b-nav-item>
-                     <b-nav-item class="ml-3 my-1" to="#referee-courses">Referee Courses</b-nav-item>
+                     <b-nav-item class="ml-3 my-1" to="#upcoming-courses">Upcoming courses</b-nav-item>
                   </b-nav>
                   <b-nav-item to="#referee-resources">Resources</b-nav-item>
                   <b-nav-item to="#tb-referees">Touch Belgium referees</b-nav-item>
@@ -159,7 +184,7 @@
 
 <script>
  import octicons from "@primer/octicons";
- import { mapGetters } from "vuex";
+ import { mapGetters, mapState } from "vuex";
 
  export default {
    data () {
@@ -171,12 +196,13 @@
    },
    async mounted () {
      try {
-       /* await this.$store.dispatch("members/fetch_") */
        this.$Progress.start();
+       await this.$store.dispatch("members/fetch_referees");
        await this.$store.dispatch("files/fetch_files");
        this.$Progress.finish();
      } catch (e) {
        this.error = true;
+       this.$Progress.fail();
      }
    },
    computed: {
@@ -185,6 +211,10 @@
      },
      ...mapGetters("files", [
        "referee_files"
+     ]),
+     ...mapGetters("members", [
+       "referee_board",
+       "normal_refs"
      ])
    }
  }

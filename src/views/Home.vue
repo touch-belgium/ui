@@ -48,7 +48,7 @@
       <section>
          <b-container>
             <b-row>
-               <b-col xs="12">
+               <b-col cols="12">
                   <h2 class="display-4"><span v-html="calendar_icon"></span> {{ $t('home.Calendar') }}</h2>
                </b-col>
             </b-row>

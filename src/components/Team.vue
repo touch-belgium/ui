@@ -3,21 +3,15 @@
      no-body
      class="mb-5"
    >
-      <b-card-img :src="team.logo" alt="Team logo" top></b-card-img>
+      <b-card-img class="team_logo" :src="team.logo" alt="Team logo" top></b-card-img>
 
       <b-card-body>
          <b-card-title>{{team.name}}</b-card-title>
-         <b-card-sub-title class="mb-2">Card Sub Title</b-card-sub-title>
-         <b-card-text>
-            Some quick example text to build on the card title and make up the bulk of the card's
-            content.
-         </b-card-text>
+         <b-card-sub-title class="mb-2">{{team.address}}</b-card-sub-title>
       </b-card-body>
 
       <b-list-group flush>
-         <b-list-group-item>Cras justo odio</b-list-group-item>
-         <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-         <b-list-group-item>Vestibulum at eros</b-list-group-item>
+         <b-list-group-item>Team page/stats</b-list-group-item>
       </b-list-group>
 
       <b-card-body>
@@ -48,9 +42,10 @@
 </script>
 
 <style module lang="scss">
- .card-img-top {
+ .card-img-top.team_logo {
    width: 100%;
    height: 10vw;
    object-fit: contain;
+   padding: 20px;
  }
 </style>

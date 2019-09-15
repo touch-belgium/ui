@@ -6,7 +6,9 @@ const state = {
 
 const getters = {
   main_teams (state, getters) {
-    return state.teams.filter(f => f.main_belgian_club);
+    return state.teams.filter(f => f.main_belgian_club).sort((a, b) => {
+      return a.name > b.name ? 1 : -1;
+    });
   },
   teams (state, getters) {
     return state.teams;

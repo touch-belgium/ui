@@ -30,7 +30,7 @@ module.exports = merge(common, {
   devServer: {
     hot: true,
     proxy: {
-      '/media/*.(png|jpg|jpeg)': {
+      '/media/*.(png|jpg|jpeg|doc|docx|pdf)': {
         target: "http://localhost:8000",
         secure: false
       }

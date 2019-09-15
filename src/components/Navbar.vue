@@ -16,7 +16,7 @@
               text="Events"
             >
                <b-dropdown-item :to="{ name: 'competitions' }">Tournaments and results</b-dropdown-item>
-               <b-dropdown-item href="#">Calendar</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'calendar' }">Calendar</b-dropdown-item>
             </b-nav-dropdown>
 
             <b-nav-dropdown

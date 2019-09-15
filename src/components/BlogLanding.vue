@@ -3,8 +3,8 @@
       <b-col v-if="error" cols="12">
          <b-alert show variant="danger">Posts could not be retrieved.</b-alert>
       </b-col>
-      <b-col v-if="posts != null && !posts.length" cols="12">
-         <b-alert show variant="info">No posts yet. Come back later !</b-alert>
+      <b-col v-if="latest_posts != null && !latest_posts.length" cols="12">
+         <b-alert show variant="info">No posts to show.</b-alert>
       </b-col>
       <b-card-group deck>
          <b-row>

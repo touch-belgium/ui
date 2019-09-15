@@ -8,7 +8,7 @@ export default new Router({
     { path: '/', name: "home", component: () => import("../views/Home.vue") },
     { path: '/news', name: "news", component: () => import("../views/News.vue") },
     { path: '/news/*,:id', name: "post", component: () => import("../components/Post.vue") },
-    // { path: '/calendar', name: "calendar", component: Calendar },
+    { path: '/calendar', name: "calendar", component: () => import("../views/Calendar.vue") },
     // { path: '/template', name: "template", component: Template },
     { path: '/competitions', name: "competitions", component: () => import("../views/Competitions.vue") },
     { path: '/where', name: "where", component: () => import("../views/Where.vue") },

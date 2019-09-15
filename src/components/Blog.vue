@@ -27,6 +27,10 @@
             <b-alert show variant="warning">Posts could not be retrieved.</b-alert>
          </b-col>
 
+         <b-col v-if="filtered_posts != null && !filtered_posts.length" cols="12">
+            <b-alert show variant="info">No posts to show.</b-alert>
+         </b-col>
+
          <b-col md="4" v-for="post in filtered_posts" :key="post.id">
             <postcard
               v-bind:iden="post.id"
@@ -57,10 +61,13 @@
    },
    async mounted () {
      try {
+       this.$Progress.start();
        await this.$store.dispatch("blog/fetch_posts");
        await this.$store.dispatch("blog/fetch_tags");
+       this.$Progress.finish();
      } catch (e) {
        this.error = true;
+       this.$Progress.fail();
      }
      this.$on('add_tag', (word) => {
        this.tags = this.tags.filter(x => x != word);
