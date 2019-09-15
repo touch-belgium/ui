@@ -95,7 +95,7 @@
                </p>
 
                <b-list-group class="mb-3">
-                  <b-list-group-item v-for="doc in referee_files">
+                  <b-list-group-item v-for="doc in referee_files" :key="doc.title">
                      <a :href="doc.file">{{doc.title}}</a>
                   </b-list-group-item>
                </b-list-group>

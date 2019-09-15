@@ -10,7 +10,8 @@ const getters = {
   },
   teams (state, getters) {
     return state.teams;
-  }
+  },
+  team_coordinates: (state, getters) => (team) => [team.lat, team.lng],
 };
 
 const actions = {
