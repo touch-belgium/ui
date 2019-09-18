@@ -93,6 +93,7 @@
                   to useful resources that you will need as a referee.
                </p>
 
+               <p>Documents:</p>
                <b-list-group class="mb-3">
                   <b-list-group-item v-if="!referee_files.length" variant="warning">
                      No documents to show.
@@ -100,8 +101,12 @@
                   <b-list-group-item v-for="doc in referee_files" :key="doc.title">
                      <a target="_blank" :href="doc.file">{{doc.title}}</a>
                   </b-list-group-item>
-                  <b-list-group-item>
-                     <a target="_blank" href="https://www.beliefsports.com/shop/shop-england-touch-live/">Kit shop</a>
+               </b-list-group>
+
+               <p v-if="referee_links.length">Links:</p>
+               <b-list-group v-if="referee_links.length" class="mb-3">
+                  <b-list-group-item v-for="link in referee_links" :key="link.title">
+                     <a target="_blank" :href="link.link">{{link.title}}</a>
                   </b-list-group-item>
                </b-list-group>
 
@@ -132,25 +137,38 @@
 
                <b-row>
                   <b-col cols="12" md="6" lg="4" class="mb-4" v-for="ref in referee_board" :key="ref.name">
-                     <b-card no-body class="overflow-hidden">
-                        <b-card-img top :src="ref.picture" class="rounded-circle"></b-card-img>
+                     <b-card no-body class="overflow-hidden" style="height: 100%;">
+                        <div class="ref_pic_square">
+                           <b-card-img top :src="ref.picture" class="rounded-circle p-3 ref_pic"></b-card-img>
+                        </div>
                         <b-card-body :title="ref.name">
                            <b-card-text>
-                              <p>Level: {{ref.referee_level}}</p>
-                              <p>Club: {{ref.team}}</p>
+                              <p><b>Level: {{ref.referee_level}}</b></p>
+                              <p v-if="ref.team">Club: {{ref.team}}</p>
+
+                              <b-modal centered :id="ref.name" :title="ref.name" hide-footer>
+                                 <p class="my-2">{{ref.more}}</p>
+                                 <b-button class="mt-3" block @click="$bvModal.hide(ref.name)">Close</b-button>
+                              </b-modal>
+                              <b-button @click="$bvModal.show(ref.name)" variant="outline-primary">More</b-button>
+
                            </b-card-text>
                         </b-card-body>
                      </b-card>
                   </b-col>
                </b-row>
 
+               <hr />
+
                <b-row>
                   <b-col cols="12" md="4" lg="3" class="mb-4" v-for="ref in normal_refs" :key="ref.name">
-                     <b-card no-body class="overflow-hidden">
-                        <b-card-img top :src="ref.picture" class="rounded-circle"></b-card-img>
+                     <b-card no-body class="overflow-hidden" style="height: 100%;">
+                        <div class="ref_pic_square">
+                           <b-card-img top :src="ref.picture" class="rounded-circle p-3 ref_pic"></b-card-img>
+                        </div>
                         <b-card-body :title="ref.name">
                            <b-card-text>
-                              <p>Level: {{ref.referee_level}}</p>
+                              <p><b>Level: {{ref.referee_level}}</b></p>
                               <p>Club: {{ref.team}}</p>
                            </b-card-text>
                         </b-card-body>
@@ -199,6 +217,7 @@
        this.$Progress.start();
        await this.$store.dispatch("members/fetch_referees");
        await this.$store.dispatch("files/fetch_files");
+       await this.$store.dispatch("links/fetch_links");
        this.$Progress.finish();
      } catch (e) {
        this.error = true;
@@ -212,6 +231,9 @@
      ...mapGetters("files", [
        "referee_files"
      ]),
+     ...mapGetters("links", [
+       "referee_links"
+     ]),
      ...mapGetters("members", [
        "referee_board",
        "normal_refs"
@@ -223,5 +245,23 @@
 <style module lang="scss">
  .white_icon {
    fill: white;
+ }
+
+ .ref_pic_square {
+   width: 100%;
+   height: 0;
+   padding-bottom: 100%;
+   opacity: 1;
+   background: white;
+   position: relative;
+ }
+
+ .ref_pic {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
  }
 </style>

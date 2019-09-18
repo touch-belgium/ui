@@ -5,6 +5,7 @@ import blog from "./modules/blog.js";
 import competitions from "./modules/competitions.js";
 import calendar from "./modules/calendar.js";
 import files from "./modules/files.js";
+import links from "./modules/links.js";
 import teams from "./modules/teams.js";
 import members from "./modules/members.js";
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     competitions,
     calendar,
     files,
+    links,
     teams,
     members,
   }

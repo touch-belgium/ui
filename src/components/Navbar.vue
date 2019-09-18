@@ -36,7 +36,7 @@
               class="m-0"
             >
                <b-dropdown-item href="#">What is touch</b-dropdown-item>
-               <b-dropdown-item href="#">Where to play</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'where' }">Where to play</b-dropdown-item>
                <b-dropdown-item href="#">Training/courses</b-dropdown-item>
                <b-dropdown-item href="#">Rules and regulations</b-dropdown-item>
             </b-nav-dropdown>

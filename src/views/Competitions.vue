@@ -1,7 +1,7 @@
 <template>
    <div>
       <b-container fluid class="p-0">
-         <b-img fluid-grow class="mt-4" src="media/banner_tournaments.jpg"></b-img>
+         <b-img fluid-grow class="mt-4" src="media/banner_tournaments.jpg" alt="Tournament picture"></b-img>
       </b-container>
       <b-container class="mt-5">
          <h1>Tournaments and competitions</h1>
