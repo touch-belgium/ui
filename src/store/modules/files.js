@@ -8,6 +8,9 @@ const getters = {
   referee_files (state, getters) {
     return state.files.filter(f => f.tag.word === "referees");
   },
+  sponsorship_files (state, getters) {
+    return state.files.filter(f => f.tag.word === "sponsorship");
+  },
   files (state, getters) {
     return state.files;
   }

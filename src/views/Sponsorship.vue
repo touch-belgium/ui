@@ -32,6 +32,16 @@
                website profiling. For more information, download our
                sponsorship brochures here:
             </p>
+
+            <b-list-group class="mb-3">
+               <b-list-group-item v-if="!sponsorship_files.length" variant="warning">
+                  No documents to show.
+               </b-list-group-item>
+               <b-list-group-item v-for="doc in sponsorship_files" :key="doc.title">
+                  <a target="_blank" :href="doc.file">{{doc.title}}</a>
+               </b-list-group-item>
+            </b-list-group>
+
             <p class="text-justify">
                For tailored sponsoring opportunities or any further
                questions, contact <a href="mailto:sponsorship@touch-belgium.be">sponsorship@touch-belgium.be</a>
@@ -42,7 +52,33 @@
 </template>
 
 <script>
+ import { mapGetters, mapState } from "vuex";
 
+ export default {
+   data () {
+     return {
+
+     }
+   },
+   methods: {
+
+   },
+   async mounted () {
+     try {
+       this.$Progress.start();
+       await this.$store.dispatch("files/fetch_files");
+       this.$Progress.finish();
+     } catch (e) {
+       this.error = true;
+       this.$Progress.fail();
+     }
+   },
+   computed: {
+     ...mapGetters("files", [
+       "sponsorship_files"
+     ])
+   }
+ }
 </script>
 
 <style module lang="scss">

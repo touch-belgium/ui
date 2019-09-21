@@ -46,10 +46,96 @@
 
                <p class="text-justify">
                   There are five levels of referee qualification:
-                  Level 1 (entry level) through to Level 5 (World Cup
-                  level). The requirements and assessment processes
-                  can be found on the European Touch Federation
-                  website
+                  <b>Level 1</b> (entry level) through to <b>Level 5</b>
+                  (World Cup level).
+               </p>
+
+
+               <ul class="list-unstyled">
+                  <b-media tag="li">
+                     <template v-slot:aside>
+                        <b-img src="~Images/l1badge.png" width="100" alt="Level 1 badge"></b-img>
+                     </template>
+                     <h5 class="mt-0 mb-1">Level 1</h5>
+                     <p class="mb-0">
+                        At Level 1, referees are able to watch over a
+                        game, including counting the touches and
+                        awarding touchdowns. A basic level of
+                        communication to players and decision-making
+                        is required.
+                     </p>
+                  </b-media>
+
+                  <b-media tag="li" class="mt-4">
+                     <template v-slot:aside>
+                        <b-img src="~Images/l2badge.png" width="100" alt="Level 2 badge"></b-img>
+                     </template>
+
+                     <h5 class="mt-0 mb-1">Level 2</h5>
+                     <p class="mb-0">
+                        At Level 2, referees improve the game by their
+                        presence, helping players to avoid penalties
+                        and bringing order to games. You need to have
+                        held a Level 1 badge for 3 months in order to
+                        obtain an upgrade to Level 2.
+                     </p>
+                  </b-media>
+
+                  <b-media tag="li" class="mt-4">
+                     <template v-slot:aside>
+                        <b-img src="~Images/l3badge.png" width="100" alt="Level 3 badge"></b-img>
+                     </template>
+
+                     <h5 class="mt-0 mb-1">Level 3</h5>
+                     <p class="mb-0">
+                        At level 3, referees create a positive
+                        environment to play. They help the game to
+                        flow by using consistent communication with
+                        players, making timely decisions and
+                        anticipating the play. You must hold a Touch
+                        Europe Level 2 badge or equivalent to attend a
+                        Level 3 course.
+                     </p>
+                  </b-media>
+                  <b-media tag="li" class="mt-4">
+                     <template v-slot:aside>
+                        <b-img src="~Images/l4badge.png" width="100" alt="Level 4 badge"></b-img>
+                     </template>
+
+                     <h5 class="mt-0 mb-1">Level 4</h5>
+                     <p class="mb-0">
+                        At level 4, referees help to raise the level
+                        of a game. They deal with challenging
+                        situations clearly and quickly, and keep the
+                        game moving whilst maintaining
+                        consistency. You must hold a recognized Touch
+                        Europe Level 3 badge or equivalent for one
+                        year to obtain a Level 4 upgrade.
+                     </p>
+                  </b-media>
+                  <b-media tag="li" class="mt-4">
+                     <template v-slot:aside>
+                        <b-img src="~Images/l5badge.png" width="100" alt="Level 5 badge"></b-img>
+                     </template>
+
+                     <h5 class="mt-0 mb-1">Level 5</h5>
+                     <p class="mb-0">
+                        At Level 5, referees enable continuous play
+                        and maintain control throughout, including the
+                        use of penalties as a last resort. They
+                        actively choose an approach to referee a game
+                        based on their experience, and current
+                        circumstances to reach an outcome. They
+                        anticipate several possible next options in
+                        play.
+                     </p>
+                  </b-media>
+               </ul>
+
+               <p class="text-justify">
+                  The requirements and assessment processes
+                  can be found on the <a href="http://www.toucheurope.org/wp-content/uploads/2019/05/Referee-Accreditation-System-Policy-4-May-2019.pdf" target="_blank">European
+                  Touch Federation website</a>
                </p>
 
                <h5 id="referee-courses">Referee courses</h5>

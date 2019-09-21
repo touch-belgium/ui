@@ -8,10 +8,14 @@ const state = {
 
 const getters = {
   referee_board (state, getters) {
-    return state.referees.filter(r => r.referee_board_member);
+    return state.referees.filter(r => r.referee_board_member).sort((a, b) => {
+      return a.referee_level < b.referee_level ? 1 : -1;
+    });
   },
   normal_refs (state, getters) {
-    return state.referees.filter(r => !r.referee_board_member);
+    return state.referees.filter(r => !r.referee_board_member).sort((a, b) => {
+      return a.referee_level < b.referee_level ? 1 : -1;
+    });
   },
   coaching_board (state, getters) {
   }
