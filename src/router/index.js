@@ -19,7 +19,7 @@ export default new Router({
     { path: '/getting-started', name: "getting-started", component: () => import("../views/GettingStarted.vue") },
 
     { path: '/competitions/*,:id', name: "competition", component: () => import("../components/Competition.vue")},
-    // { path: '/sponsorship', name: "sponsorship", component: Sponsorship },
+    { path: '/sponsorship', name: "sponsorship", component: () => import("../views/Sponsorship.vue") },
   ],
   // The following makes vue router able to navigate through anchor tags
 
@@ -30,7 +30,7 @@ export default new Router({
       return {
         selector: to.hash,
         offset: { x: 0, y: 120 }
-      }
+      };
     }
   }
 });

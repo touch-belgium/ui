@@ -41,7 +41,7 @@
                <b-dropdown-item href="#">Rules and regulations</b-dropdown-item>
             </b-nav-dropdown>
 
-            <b-nav-item class="m-0" href="#">Sponsorship</b-nav-item>
+            <b-nav-item class="m-0" :to="{ name: 'sponsorship' }">Sponsorship</b-nav-item>
 
             <b-nav-dropdown
               text="Touch Belgium"
