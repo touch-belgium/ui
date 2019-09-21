@@ -30,7 +30,9 @@ module.exports = merge(common, {
   devServer: {
     hot: true,
     proxy: {
-      '/media/*.(png|jpg|jpeg|doc|docx|pdf)': {
+      // Careful ! as this proxy might only go up to 1 level
+      // (directory tree)
+      '/media/*/*.(png|jpg|jpeg|doc|docx|pdf)': {
         target: "http://localhost:8000",
         secure: false
       }

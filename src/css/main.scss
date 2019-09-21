@@ -1,18 +1,5 @@
 @import "custom-bootstrap";
 
-/* body { */
-/*     background: #fefefe !important; */
-/*     #vue-root { */
-/*         background: inherit; */
-/*         z-index: 2; */
-/*     } */
-/* } */
-
-/* .icon { */
-/*     vertical-align: middle; */
-/*     margin-bottom: 3px; */
-/* } */
-
 body {
     padding-top: $nav-link-height;
 }
@@ -44,4 +31,9 @@ body {
 
 .block-with-text {
     @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3);
+}
+
+.banner_picture {
+   max-height: 35vh;
+   object-fit: cover;
 }
