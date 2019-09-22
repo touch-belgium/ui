@@ -59,7 +59,7 @@
                   <ul class="list-unstyled">
                      <b-media tag="li">
                         <template v-slot:aside>
-                           <b-img src="~Images/l1badge.png" width="100" alt="Level 1 badge"></b-img>
+                           <b-img fluid-grow src="~Images/l1badge.png" width="100" alt="Level 1 badge"></b-img>
                         </template>
                         <h5 class="mt-0 mb-1">Level 1</h5>
                         <p class="mb-0">
@@ -73,7 +73,7 @@
 
                      <b-media tag="li" class="mt-4">
                         <template v-slot:aside>
-                           <b-img src="~Images/l2badge.png" width="100" alt="Level 2 badge"></b-img>
+                           <b-img fluid-grow src="~Images/l2badge.png" width="100" alt="Level 2 badge"></b-img>
                         </template>
 
                         <h5 class="mt-0 mb-1">Level 2</h5>
@@ -88,7 +88,7 @@
 
                      <b-media tag="li" class="mt-4">
                         <template v-slot:aside>
-                           <b-img src="~Images/l3badge.png" width="100" alt="Level 3 badge"></b-img>
+                           <b-img fluid-grow src="~Images/l3badge.png" width="100" alt="Level 3 badge"></b-img>
                         </template>
 
                         <h5 class="mt-0 mb-1">Level 3</h5>
@@ -104,7 +104,7 @@
                      </b-media>
                      <b-media tag="li" class="mt-4">
                         <template v-slot:aside>
-                           <b-img src="~Images/l4badge.png" width="100" alt="Level 4 badge"></b-img>
+                           <b-img fluid-grow src="~Images/l4badge.png" width="100" alt="Level 4 badge"></b-img>
                         </template>
 
                         <h5 class="mt-0 mb-1">Level 4</h5>
@@ -120,7 +120,7 @@
                      </b-media>
                      <b-media tag="li" class="mt-4">
                         <template v-slot:aside>
-                           <b-img src="~Images/l5badge.png" width="100" alt="Level 5 badge"></b-img>
+                           <b-img fluid-grow src="~Images/l5badge.png" width="100" alt="Level 5 badge"></b-img>
                         </template>
 
                         <h5 class="mt-0 mb-1">Level 5</h5>

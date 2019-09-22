@@ -16,13 +16,13 @@
          </b-col>
       </b-row>
       <b-row>
-         <b-col v-for="team in main_teams" :key="team.url" lg="4" cols="12">
+         <b-col v-for="team in main_teams" :key="team.url" lg="4" md="6" cols="12" class="my-3">
             <team v-bind:team="team"></team>
          </b-col>
       </b-row>
       <b-row>
          <b-col>
-            <div style="height: 50vh;" class="mb-3">
+            <div style="height: 60vh;" class="mb-3">
                <l-map
                  ref="map"
                  style="height:inherit;"

@@ -1,7 +1,8 @@
 <template>
    <b-card
      no-body
-     class="mb-5"
+     class="mb-2"
+     style="height: 100%;"
    >
       <b-card-img class="team_logo" :src="team.logo" alt="Team logo" top></b-card-img>
 
@@ -44,7 +45,7 @@
 <style module lang="scss">
  .card-img-top.team_logo {
    width: 100%;
-   height: 10vw;
+   height: 30vh;
    object-fit: contain;
    padding: 20px;
  }
