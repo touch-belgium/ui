@@ -413,6 +413,6 @@ const belgium_polygon = [
   [51.285000000000004, 2.385]
 ];
 
-const belgium_center_coords = [50.5039, 4.4699];
+const belgium_center_coords = [50.8259, 4.4775];
 
 export { belgium_center_coords, belgium_polygon };
