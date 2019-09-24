@@ -2,7 +2,7 @@
    <b-container class="mt-5">
 
       <b-row>
-         <router-link :to="{ name: 'news' }" class="lead">← Back to news</router-link>
+         <router-link :to="{ name: 'news' }" class="lead">← More news</router-link>
       </b-row>
 
       <b-row v-if="error">

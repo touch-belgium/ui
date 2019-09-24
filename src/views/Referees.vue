@@ -10,22 +10,24 @@
            @sliding-end="onSlideEnd"
          >
             <!-- Text slides with image -->
-            <b-carousel-slide class="banner_picture"
+            <b-carousel-slide
+              class="banner_picture"
               img-src="media/banner_pictures/referees_banner1.jpg"
             ></b-carousel-slide>
 
             <!-- Slides with image only -->
-            <b-carousel-slide class="banner_picture"
+            <b-carousel-slide
+              class="banner_picture"
               img-src="media/banner_pictures/referees_banner2.jpg"
             ></b-carousel-slide>
 
             <!-- Slides with image only -->
-            <b-carousel-slide class="banner_picture"
+            <b-carousel-slide
+              class="banner_picture"
               img-src="media/banner_pictures/referees_banner3.jpg"
             ></b-carousel-slide>
 
          </b-carousel>
-         <!-- <b-img fluid-grow class="banner_picture mt-4" src="media/banner_pictures/referees_banner1.jpg" alt="Refs picture"></b-img> -->
       </b-container>
 
       <b-container class="mt-5">

@@ -1,7 +1,7 @@
 <template>
    <div>
       <b-container fluid class="p-0">
-         <b-img fluid-grow class="mt-4" src="media/banner_tournaments.jpg" alt="Tournament picture"></b-img>
+         <b-img fluid-grow class="mt-4" src="media/banner_pictures/banner_tournaments1.jpg" alt="Tournament picture"></b-img>
       </b-container>
       <b-container class="mt-5">
          <h1>Tournaments and competitions</h1>
@@ -43,7 +43,9 @@
 
          <b-row v-if="error">
             <b-col cols="12">
-               <b-alert show variant="warning">Tournaments could not be retrieved</b-alert>
+               <b-alert show variant="warning">
+                  Tournaments could not be retrieved
+               </b-alert>
             </b-col>
          </b-row>
 

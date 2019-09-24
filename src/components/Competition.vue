@@ -1,13 +1,18 @@
 <template>
    <b-container class="mt-5">
       <b-row v-if="error">
-         <b-alert show variant="danger">Failed to load competition</b-alert>
+         <b-col>
+            <b-alert show variant="danger">Failed to load competition</b-alert>
+         </b-col>
       </b-row>
       <b-row>
-         <h1 class="display-4" v-if="competition">{{competition.name}}</h1>
+         <b-col>
+            <h1 class="display-4" v-if="competition">{{competition.name}}</h1>
+         </b-col>
 
       </b-row>
       <b-row>
+         <b-col>
          <p v-if="competition">
             <span class="mr-2" v-html="milestone_icon"></span> <span class="align-middle">
                {{competition.venue.name}}.
@@ -17,10 +22,12 @@
             </span>
          </p>
 
-         <p v-if="comp">{{competition.description}}</p>
+         <pre class="comp_description" v-if="competition">{{competition.description}}</pre>
+         </b-col>
       </b-row>
 
       <b-row>
+         <b-col cols="12">
          <h1>Table</h1>
          <b-table
            striped
@@ -32,6 +39,7 @@
            :items="table_info"
          >
          </b-table>
+         </b-col>
       </b-row>
 
       <b-row class="mt-3">
@@ -45,7 +53,8 @@
             <p>Filter matches by team:</p>
          </b-col>
       </b-row>
-      <b-row>
+
+      <b-row class="mb-4">
          <b-col cols="12" md="6" lg="4">
             <b-form-select
               @input="on_select_team_box"
@@ -127,4 +136,8 @@
 </script>
 
 <style module lang="scss">
+ .comp_description {
+   /* TODO: remove monospace font ? */
+   word-wrap: break-word;
+ }
 </style>

@@ -12,6 +12,7 @@ export default new Router({
     // { path: '/template', name: "template", component: Template },
     { path: '/competitions', name: "competitions", component: () => import("../views/Competitions.vue") },
     { path: '/where', name: "where", component: () => import("../views/Where.vue") },
+    { path: '/teams/*,:id', name: "team_detail", component: () => import("../views/TeamDetail.vue")},
     { path: '/referees', name: "referees", component: () => import("../views/Referees.vue") },
     { path: '/coaching', name: "coaching", component: () => import("../views/Coaching.vue") },
     { path: '/national-teams', name: "national-teams", component: () => import("../views/NationalTeams.vue") },

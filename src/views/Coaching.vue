@@ -1,32 +1,8 @@
 <template>
    <div>
-      <b-container fluid class="p-0 mt-4">
-
-         <b-carousel
-           id="referees_carousel"
-           v-model="slide"
-           :interval="4000"
-           @sliding-start="onSlideStart"
-           @sliding-end="onSlideEnd"
-         >
-            <!-- Text slides with image -->
-            <b-carousel-slide class="banner_picture"
-                                     img-src="media/banner_pictures/referees_banner1.jpg"
-            ></b-carousel-slide>
-
-            <!-- Slides with image only -->
-            <b-carousel-slide class="banner_picture"
-                                     img-src="media/banner_pictures/referees_banner2.jpg"
-            ></b-carousel-slide>
-
-            <!-- Slides with image only -->
-            <b-carousel-slide class="banner_picture"
-                                     img-src="media/banner_pictures/referees_banner3.jpg"
-            ></b-carousel-slide>
-
-         </b-carousel>
-      </b-container>
-
+      <!-- <b-container fluid class="p-0 mt-4">
+           </b-container>
+      -->
       <b-container class="mt-5">
          <b-row>
             <b-col cols="12" lg="9">

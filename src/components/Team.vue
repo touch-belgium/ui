@@ -12,7 +12,7 @@
       </b-card-body>
 
       <b-list-group flush>
-         <b-list-group-item>Team page/stats</b-list-group-item>
+         <b-list-group-item variant="primary" :to="team_page_url(team)">Team page/stats</b-list-group-item>
       </b-list-group>
 
       <b-card-body>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+ import { mapGetters } from "vuex";
  export default {
    props: ['team'],
    data () {
@@ -37,7 +38,9 @@
 
    },
    computed: {
-
+     ...mapGetters("teams", [
+       "team_page_url"
+     ])
    }
  }
 </script>

@@ -55,11 +55,11 @@ const state = {
 
 const getters = {
   competitions (state, getters) {
-    return state.competitions;
+    return state.competitions.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   },
   filtered_competitions (state, getters) {
     const patt = new RegExp(state.search_competition_box, "i");
-    return state.competitions.filter(c => patt.test(c.name));
+    return getters.competitions.filter(c => patt.test(c.name));
   },
   paginated_competitions (state, getters) {
     return getters.filtered_competitions.slice(0, state.max_shown);

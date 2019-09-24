@@ -22,7 +22,7 @@
       </b-row>
       <b-row>
          <b-col>
-            <div style="height: 60vh;" class="mb-3">
+            <div style="height: 60vh; max-height: 1300px" class="mb-3">
                <l-map
                  ref="map"
                  style="height:inherit;"

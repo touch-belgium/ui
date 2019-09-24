@@ -1,4 +1,5 @@
 import api from "../../common/api.js";
+import slugify from "slugify";
 
 const state = {
   teams: []
@@ -14,6 +15,7 @@ const getters = {
     return state.teams;
   },
   team_coordinates: (state, getters) => (team) => [team.lat, team.lng],
+  team_page_url: (state, getters) => (team) => `teams/${slugify(team.name)},${team.id}`
 };
 
 const actions = {
