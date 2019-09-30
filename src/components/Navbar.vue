@@ -53,7 +53,7 @@
                <b-dropdown-item href="#">AGM</b-dropdown-item>
             </b-nav-dropdown>
 
-            <b-nav-item class="m-0" href="#">Contact</b-nav-item>
+            <b-nav-item class="m-0" :to="{ name: 'contact' }">Contact</b-nav-item>
 
             <b-nav-dropdown class="lang-picker">
                <template slot="button-content"><span class="mr-2" v-html="globe_icon"></span> {{pretty_locale}} </template>

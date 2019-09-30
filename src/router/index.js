@@ -21,6 +21,7 @@ export default new Router({
 
     { path: '/competitions/*,:id', name: "competition", component: () => import("../components/Competition.vue")},
     { path: '/sponsorship', name: "sponsorship", component: () => import("../views/Sponsorship.vue") },
+    { path: '/contact', name: "contact", component: () => import("../views/Contact.vue") },
   ],
   // The following makes vue router able to navigate through anchor tags
 

@@ -33,7 +33,6 @@ body {
     @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3);
 }
 
-.banner_picture {
-   height: 35vh;
-   object-fit: cover;
+.banner_container {
+    height: 25vw;
 }

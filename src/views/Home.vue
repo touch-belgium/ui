@@ -17,7 +17,7 @@
                         <b-button size="lg" variant="danger">What is touch</b-button>
                      </b-col>
                      <b-col xs="12" md="3">
-                        <b-button size="lg" variant="danger">Where to play</b-button>
+                        <b-button :to="{ name: 'where' }" size="lg" variant="danger">Where to play</b-button>
                      </b-col>
                   </b-row>
                </div>

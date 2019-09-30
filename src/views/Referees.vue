@@ -2,35 +2,32 @@
    <div>
       <b-container fluid class="p-0 mt-4">
          <b-carousel
-           id="coaching_carousel"
+           id="referee_carousel"
            fade
            v-model="slide"
            :interval="4000"
            @sliding-start="onSlideStart"
            @sliding-end="onSlideEnd"
          >
-            <!-- Text slides with image -->
             <b-carousel-slide
-              class="banner_picture"
+              class="banner_container"
               img-src="media/banner_pictures/referees_banner1.jpg"
             ></b-carousel-slide>
 
-            <!-- Slides with image only -->
             <b-carousel-slide
-              class="banner_picture"
+              class="banner_container"
               img-src="media/banner_pictures/referees_banner2.jpg"
             ></b-carousel-slide>
 
-            <!-- Slides with image only -->
             <b-carousel-slide
-              class="banner_picture"
+              class="banner_container"
               img-src="media/banner_pictures/referees_banner3.jpg"
             ></b-carousel-slide>
 
          </b-carousel>
       </b-container>
 
-      <b-container class="mt-5">
+      <b-container class="mt-3">
          <b-row>
             <b-col cols="12" lg="9">
                <div id="scrollspy" style="position:relative; overflow-y: auto">
@@ -323,7 +320,7 @@
 
 <script>
  import octicons from "@primer/octicons";
- import { mapGetters, mapState } from "vuex";
+ import { mapGetters } from "vuex";
 
  export default {
    data () {

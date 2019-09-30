@@ -8,6 +8,7 @@ import files from "./modules/files.js";
 import links from "./modules/links.js";
 import teams from "./modules/teams.js";
 import members from "./modules/members.js";
+import contacts from "./modules/contacts.js";
 
 // As of 22/07/19, the following line is needed so devtools can check
 // the Vuex store. No store detected otherwise.
@@ -24,5 +25,6 @@ export default new Vuex.Store({
     links,
     teams,
     members,
+    contacts
   }
 });
