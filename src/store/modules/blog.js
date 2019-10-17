@@ -34,12 +34,12 @@ const actions = {
   async fetch_recent_posts ({ state, commit }) {
     const url = "posts/recent";
     const response = await api.get(url).json();
-    commit("set_posts", response.results);
+    commit("set_posts", response);
   },
   async fetch_posts ({ state, commit }) {
     const url = "posts";
     const response = await api.get(url).json();
-    commit("set_posts", response.results);
+    commit("set_posts", response);
   },
   async fetch_post ({ state, commit }, id) {
     const url = `posts/${id}/`;
@@ -49,7 +49,7 @@ const actions = {
   async fetch_tags ({ state, commit }) {
     const url = "tags";
     const response = await api.get(url).json();
-    commit("set_tags", response.results);
+    commit("set_tags", response);
   }
 };
 

@@ -101,13 +101,13 @@
    },
    computed: {
      ...mapState("competitions", [
+       "teams",
        "competition",
        "matches",
        "table_fields"
      ]),
      ...mapGetters("competitions", [
        "table_info",
-       "teams",
        "filtered_matches"
      ]),
      law_icon () {

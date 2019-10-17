@@ -49,8 +49,8 @@
             >
                <b-dropdown-item :to="{ name: 'where' }">Members</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'become-a-member' }">Become a member</b-dropdown-item>
-               <b-dropdown-item href="#">Committee</b-dropdown-item>
-               <b-dropdown-item href="#">AGM</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'committee' }">Committee</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'agm' }">AGM</b-dropdown-item>
             </b-nav-dropdown>
 
             <b-nav-item class="m-0" :to="{ name: 'contact' }">Contact</b-nav-item>
