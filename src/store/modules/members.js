@@ -44,7 +44,6 @@ const mutations = {
     state.all_members = members;
   },
   set_referees (state, refs) {
-    console.log(refs);
     state.referees = refs;
   },
   set_coaches (state, coaches) {

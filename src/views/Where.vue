@@ -1,6 +1,6 @@
 <template>
-
    <b-container class="mt-5">
+      <FixedTBLogo></FixedTBLogo>
       <b-row>
          <b-col v-if="error" cols="12">
             <b-alert show variant="danger">Teams could not be retrieved.</b-alert>
@@ -62,7 +62,9 @@
 </template>
 
 <script>
+ import FixedTBLogo from "../components/FixedTBLogo.vue";
  import Team from "../components/Team.vue";
+
  import octicons from "@primer/octicons";
  import { LMap, LTileLayer, LMarker, LPolygon, LPopup } from "vue2-leaflet";
  import { mapGetters } from "vuex";
@@ -107,7 +109,7 @@
      ])
    },
    components: {
-     LMap, LTileLayer, LMarker, LPolygon, LPopup, Team
+     LMap, LTileLayer, LMarker, LPolygon, LPopup, Team, FixedTBLogo
    }
  }
 </script>

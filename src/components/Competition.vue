@@ -1,5 +1,6 @@
 <template>
    <b-container class="mt-5">
+      <FixedTBLogo></FixedTBLogo>
       <b-row v-if="error">
          <b-col>
             <b-alert show variant="danger">Failed to load competition</b-alert>
@@ -80,8 +81,10 @@
 </template>
 
 <script>
- import octicons from "@primer/octicons";
  import Match from "./Match.vue";
+ import FixedTBLogo from "./FixedTBLogo.vue";
+
+ import octicons from "@primer/octicons";
  import { mapState, mapGetters } from "vuex";
 
  export default {
@@ -130,7 +133,7 @@
      }
    },
    components: {
-     Match
+     Match, FixedTBLogo
    }
  }
 </script>

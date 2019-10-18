@@ -1,8 +1,7 @@
 <template>
    <div>
-      <b-container fluid class="p-0">
-         <b-img fluid-grow class="mt-4" src="media/banner_pictures/banner_tournaments1.jpg" alt="Tournament picture"></b-img>
-      </b-container>
+      <carousel :pictures="tournaments_banner_pictures"></carousel>
+      <FixedTBLogo></FixedTBLogo>
       <b-container class="mt-5">
          <h1>Tournaments and competitions</h1>
 
@@ -61,6 +60,9 @@
 </template>
 
 <script>
+ import Carousel from "../components/Carousel.vue";
+ import FixedTBLogo from "../components/FixedTBLogo.vue";
+
  import { mapGetters, mapState } from "vuex";
 
  export default {
@@ -80,9 +82,13 @@
    },
    async mounted () {
      try {
+       this.$Progress.start();
+       await this.$store.dispatch("banner_pictures/fetch_banner_pictures");
        await this.$store.dispatch("competitions/fetch_competition_list");
+       this.$Progress.finish();
      } catch (e) {
        this.error = true;
+       this.$Progress.fail();
      }
    },
    computed: {
@@ -90,13 +96,17 @@
        "max_shown",
        "search_competition_box"
      ]),
+     ...mapGetters("banner_pictures", [
+       "tournaments_banner_pictures"
+     ]),
      ...mapGetters("competitions", [
        "competitions",
        "filtered_competitions",
        "paginated_competitions",
        "n_total_shown"
      ])
-   }
+   },
+   components: { Carousel, FixedTBLogo }
  }
 
 </script>

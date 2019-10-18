@@ -1,32 +1,7 @@
 <template>
    <div>
-      <b-container fluid class="p-0 mt-4">
-         <b-carousel
-           id="referee_carousel"
-           fade
-           v-model="slide"
-           :interval="4000"
-           @sliding-start="onSlideStart"
-           @sliding-end="onSlideEnd"
-         >
-            <b-carousel-slide
-              class="banner_container"
-              img-src="media/banner_pictures/referees_banner1.jpg"
-            ></b-carousel-slide>
-
-            <b-carousel-slide
-              class="banner_container"
-              img-src="media/banner_pictures/referees_banner2.jpg"
-            ></b-carousel-slide>
-
-            <b-carousel-slide
-              class="banner_container"
-              img-src="media/banner_pictures/referees_banner3.jpg"
-            ></b-carousel-slide>
-
-         </b-carousel>
-      </b-container>
-
+      <FixedTBLogo></FixedTBLogo>
+      <carousel :pictures="referee_banner_pictures"></carousel>
       <b-container class="mt-3">
          <b-row>
             <b-col cols="12" lg="9">
@@ -261,7 +236,7 @@
                                  <p v-if="ref.team">Club: {{ref.team}}</p>
 
                                  <b-modal centered :id="ref.name" :title="ref.name" hide-footer>
-                                    <p class="my-2">{{ref.more}}</p>
+                                    <p class="my-2">{{ref.referee_text}}</p>
                                     <b-button class="mt-3" block @click="$bvModal.hide(ref.name)">Close</b-button>
                                  </b-modal>
                                  <b-button @click="$bvModal.show(ref.name)" variant="outline-primary">More</b-button>
@@ -322,6 +297,9 @@
  import octicons from "@primer/octicons";
  import { mapGetters } from "vuex";
 
+ import FixedTBLogo from "../components/FixedTBLogo.vue";
+ import Carousel from "../components/Carousel.vue";
+
  export default {
    data () {
      return {
@@ -331,16 +309,11 @@
      }
    },
    methods: {
-     onSlideStart(slide) {
-       this.sliding = true
-     },
-     onSlideEnd(slide) {
-       this.sliding = false
-     }
    },
    async mounted () {
      try {
        this.$Progress.start();
+       await this.$store.dispatch("banner_pictures/fetch_banner_pictures");
        await this.$store.dispatch("members/fetch_referees");
        await this.$store.dispatch("files/fetch_files");
        await this.$store.dispatch("links/fetch_links");
@@ -354,6 +327,9 @@
      info_icon () {
        return octicons["info"].toSVG( { "class": "white_icon" } );
      },
+     ...mapGetters("banner_pictures", [
+       "referee_banner_pictures"
+     ]),
      ...mapGetters("files", [
        "referee_files"
      ]),
@@ -364,7 +340,8 @@
        "referee_board",
        "normal_refs"
      ])
-   }
+   },
+   components: { Carousel, FixedTBLogo }
  }
 </script>
 
