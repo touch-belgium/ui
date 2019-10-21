@@ -3,7 +3,7 @@
       <carousel :pictures="tournaments_banner_pictures"></carousel>
       <FixedTBLogo></FixedTBLogo>
       <b-container class="mt-5">
-         <h1>Tournaments and competitions</h1>
+         <h1>National Championship</h1>
 
          <b-row>
             <b-col class="my-4" cols="12" md="6" lg="4" xl="6">

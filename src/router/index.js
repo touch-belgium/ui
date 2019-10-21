@@ -9,8 +9,9 @@ export default new Router({
     { path: '/news', name: "news", component: () => import("../views/News.vue") },
     { path: '/news/*,:id', name: "post", component: () => import("../components/Post.vue") },
     { path: '/calendar', name: "calendar", component: () => import("../views/Calendar.vue") },
-    // { path: '/template', name: "template", component: Template },
     { path: '/competitions', name: "competitions", component: () => import("../views/Competitions.vue") },
+    { path: '/tournament/*,:id', name: "tournament", component: () => import("../views/Competition.vue")},
+    { path: '/championship/*,:id', name: "championship", component: () => import("../views/Championship.vue")},
     { path: '/where', name: "where", component: () => import("../views/Where.vue") },
     { path: '/teams/*,:id', name: "team_detail", component: () => import("../views/TeamDetail.vue")},
     { path: '/referees', name: "referees", component: () => import("../views/Referees.vue") },
@@ -19,7 +20,6 @@ export default new Router({
     { path: '/youth', name: "youth", component: () => import("../views/Youth.vue") },
     { path: '/getting-started', name: "getting-started", component: () => import("../views/GettingStarted.vue") },
 
-    { path: '/competitions/*,:id', name: "competition", component: () => import("../components/Competition.vue")},
     { path: '/sponsorship', name: "sponsorship", component: () => import("../views/Sponsorship.vue") },
     { path: '/contact', name: "contact", component: () => import("../views/Contact.vue") },
     { path: '/become-a-member', name: "become-a-member", component: () => import("../views/BecomeAMember.vue") },

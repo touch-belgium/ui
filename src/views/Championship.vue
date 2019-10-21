@@ -81,8 +81,8 @@
 </template>
 
 <script>
- import Match from "./Match.vue";
- import FixedTBLogo from "./FixedTBLogo.vue";
+ import Match from "../components/Match.vue";
+ import FixedTBLogo from "../components/FixedTBLogo.vue";
 
  import octicons from "@primer/octicons";
  import { mapState, mapGetters } from "vuex";
