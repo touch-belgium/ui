@@ -1,5 +1,5 @@
 import api from "../../common/api.js";
-import { RRule, Day } from "rfc5545-rrule";
+import { RRule, RRuleSet, rrulestr } from "rrule";
 import ky from "ky";
 import _ from "lodash";
 import moment from "moment";
@@ -7,11 +7,7 @@ import moment from "moment";
 const state = {
   show_date: new Date(),
   events: [], // fill with call to GCalendar API
-  selected_event: {
-    title: null,
-    start: null,
-    end: null
-  }
+  selected_event: null
 };
 
 const getters = {
@@ -19,28 +15,64 @@ const getters = {
     const expanded_events = [];
     for (const ev of events) {
       if (ev.hasOwnProperty('recurrence')) {
-        const rfc5545 = RRule.fromString(ev.recurrence[0]);
-        const startDate = ev.start.hasOwnProperty('dateTime') ? ev.start.dateTime : ev.start.date;
-        const endDate = ev.end.hasOwnProperty('dateTime') ? ev.end.dateTime : ev.end.date;
-        if (rfc5545.frequency === 'weekly') {
-          let count;
-          if (rfc5545.hasOwnProperty('until')) {
-            /* Calculate for how many weeks should the event be
-               shown. The MomentJS diff result could be 3.8 weeks,
-               or 5.02 weeks so we round that number */
-            count = _.round(moment(rfc5545.until).diff(moment(startDate), 'weeks', true));
-          } else if (rfc5545.hasOwnProperty('count')) {
-            count = rfc5545.count;
+        // If event is recurrent, push several copies of it.
+        if (ev.start.hasOwnProperty("dateTime") && ev.end.hasOwnProperty("dateTime")) {
+          const rule = rrulestr(_.join(ev.recurrence, "\n"));
+          rule.options.dtstart = new Date(ev.start.dateTime);
+          const near_future_dates = rule.between(new Date(moment().subtract(2, "month")),
+                                                 new Date(moment().add(3, "months")));
+          const start_date = moment(ev.start.dateTime);
+          const end_date = moment(ev.end.dateTime);
+          for (const future_date of near_future_dates) {
+            const future_start_date = moment(future_date).hour(start_date.hour()).minute(start_date.minute());
+            const future_end_date = moment(future_date).hour(end_date.hour()).minute(end_date.minute());
+            expanded_events.push({
+              ...ev,
+              all_day: false,
+              recurrent: true,
+              start: {
+                dateTime: future_start_date
+              },
+              end: {
+                dateTime: future_end_date
+              }
+            });
           }
-          _.times(count, (i) => {
-            const next = _.cloneDeep(ev);
-            next.start.dateTime = moment(startDate).add(i, 'weeks');
-            next.end.dateTime = moment(endDate).add(i, 'weeks');
-            expanded_events.push(next);
-          });
+        } else {
+          // TODO: rare case, recurrent event with no dateTime, just
+          // dates. No need for this until I see a specific case
         }
       } else {
-        expanded_events.push(ev);
+        // If it is not a recurrent event, push it, but check for
+        // all-day events. These events have a end.date of a day
+        // later.
+        if (ev.start.hasOwnProperty("dateTime") && ev.end.hasOwnProperty("dateTime")) {
+          expanded_events.push({
+            ...ev,
+            all_day: false,
+            recurrent: false,
+            start: {
+              dateTime: moment(ev.start.dateTime)
+            },
+            end: {
+              dateTime: moment(ev.end.dateTime)
+            }
+          });
+        } else {
+          // Google considers all-day events to finish the next day,
+          // so subtract one day.
+          expanded_events.push({
+            ...ev,
+            all_day: true,
+            recurrent: false,
+            start: {
+              date: moment(ev.start.date)
+            },
+            end: {
+              date: moment(ev.end.date).subtract(1, "day")
+            }
+          });
+        }
       }
     }
     return expanded_events;
@@ -51,8 +83,28 @@ const getters = {
       title: ev.summary,
       startDate: ev.start.hasOwnProperty('dateTime') ? ev.start.dateTime : ev.start.date,
       endDate: ev.end.hasOwnProperty('dateTime') ? ev.end.dateTime : ev.end.date,
+      description: ev.description,
+      location: ev.location,
       classes: "clickable_event",
+      all_day: ev.all_day,
+      recurrent: ev.recurrent,
+      id: ev.id
     };
+  },
+
+  formatted_datetime: (state, getters) => (ev) => {
+    if (ev.all_day) {
+      if (ev.startDate.dayOfYear() == ev.endDate.dayOfYear()) {
+        return ` ${ev.startDate.format("MMMM Do")}`;
+      } else {
+        return ` ${ev.startDate.format("MMMM Do")} - ${ev.endDate.format("MMMM Do")}`;
+      }
+    } else if (ev.recurrent) {
+
+      return ` ${ev.startDate.format("HH:mm")} - ${ev.endDate.format("HH:mm")}`;
+    } else if (!ev.recurrent) {
+      return ` ${ev.startDate.format("MMMM Do, HH:mm")} - ${ev.endDate.format("MMMM Do, HH:mm")}`;
+    }
   }
 };
 
@@ -82,9 +134,12 @@ const mutations = {
     state.events = events;
   },
   set_selected_event (state, mouse_event) {
-    state.selected_event.title = mouse_event.title;
-    state.selected_event.start = moment(mouse_event.startDate).format("LT");
-    state.selected_event.end = moment(mouse_event.endDate).format("LT");
+    // vue-simple-calendar gives, through the mouse event, the
+    // event-id, with which we can find the event in our store and
+    // display more info in the modal.
+
+    // TODO: convert into a hash map to avoid searching
+    state.selected_event = state.events.find(e => e.id == mouse_event.id);
   }
 };
 

@@ -3,8 +3,7 @@
       <calendar-view
         :show-date="show_date"
         :events="events"
-        :time-format-options="{hour: 'numeric', minute:'2-digit'}"
-        :show-event-times="true"
+        :show-event-times="false"
         :starting-day-of-week=1
         :locale="locale"
         class="theme-default"
@@ -19,9 +18,13 @@
       </calendar-view>
 
       <b-modal centered ref="event_modal" hide-footer title="Touch Belgium event">
-         <h4>{{this.selected_event.title}}</h4>
-         <p><span v-html="calendar_icon"></span><span> {{this.selected_event.start}} - {{this.selected_event.end}}</span></p>
-         <b-button class="mt-3" variant="outline-secondary" block @click="on_click_close_modal">Close</b-button>
+         <div v-if="this.selected_event">
+            <h4>{{this.selected_event.title}}</h4>
+            <p><span v-html="calendar_icon"></span><span>{{formatted_datetime(this.selected_event)}} </span></p>
+            <p v-if="this.selected_event.location"><span v-html="location_icon"></span> {{this.selected_event.location}}</p>
+            <p>{{this.selected_event.description}}</p>
+            <b-button class="mt-3" variant="outline-secondary" block @click="on_click_close_modal">Close</b-button>
+         </div>
       </b-modal>
 
       <b-alert show class="mt-3">Sync this calendar (iCal): <a class="text-break" href="https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics">https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics</a></b-alert>
@@ -69,10 +72,13 @@
        "selected_event"
      ]),
      ...mapGetters("calendar", [
-
+       "formatted_datetime"
      ]),
      calendar_icon () {
        return octicons["calendar"].toSVG();
+     },
+     location_icon () {
+       return octicons["location"].toSVG();
      }
    }
  }
