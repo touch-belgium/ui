@@ -5,22 +5,24 @@ import _ from "lodash";
 import moment from "moment";
 
 const state = {
+  raw_google_events: [], // filled with call to GCalendar API
   show_date: new Date(),
-  events: [], // fill with call to GCalendar API
+  show_events: [],
   selected_event: null
 };
 
 const getters = {
-  expanded_recurrent_events: (state, getters) => (events) => {
+  expanded_recurrent_events: (state, getters) => {
     const expanded_events = [];
-    for (const ev of events) {
+    for (const ev of state.raw_google_events) {
       if (ev.hasOwnProperty('recurrence')) {
         // If event is recurrent, push several copies of it.
         if (ev.start.hasOwnProperty("dateTime") && ev.end.hasOwnProperty("dateTime")) {
           const rule = rrulestr(_.join(ev.recurrence, "\n"));
           rule.options.dtstart = new Date(ev.start.dateTime);
-          const near_future_dates = rule.between(new Date(moment().subtract(2, "month")),
-                                                 new Date(moment().add(3, "months")));
+          const from_date = new Date(moment(state.show_date).subtract(1, "week"));
+          const to_date = new Date(moment(state.show_date).add(1, "month"));
+          const near_future_dates = rule.between(from_date, to_date);
           const start_date = moment(ev.start.dateTime);
           const end_date = moment(ev.end.dateTime);
           for (const future_date of near_future_dates) {
@@ -102,7 +104,7 @@ const getters = {
     } else if (ev.recurrent) {
 
       return ` ${ev.startDate.format("HH:mm")} - ${ev.endDate.format("HH:mm")}`;
-    } else if (!ev.recurrent) {
+    } else {
       return ` ${ev.startDate.format("MMMM Do, HH:mm")} - ${ev.endDate.format("MMMM Do, HH:mm")}`;
     }
   }
@@ -118,20 +120,27 @@ const actions = {
 
     try {
       const response = await ky.get(endpoint).json();
-      const processed = getters.expanded_recurrent_events(response.items).map(e => getters.streamlined_event(e));
-      commit("set_events", processed);
+      commit("set_raw_google_events", response.items);
     } catch (e) {
       console.log(e);
     }
   },
+  change_period ({ state, commit, getters }, date) {
+    commit("set_show_date", date);
+    const processed = getters.expanded_recurrent_events.map(e => getters.streamlined_event(e));
+    commit("set_show_events", processed);
+  }
 };
 
 const mutations = {
   set_show_date (state, date) {
     state.show_date = date;
   },
-  set_events (state, events) {
-    state.events = events;
+  set_raw_google_events (state, events) {
+    state.raw_google_events = events;
+  },
+  set_show_events (state, events) {
+    state.show_events = events;
   },
   set_selected_event (state, mouse_event) {
     // vue-simple-calendar gives, through the mouse event, the
@@ -139,7 +148,7 @@ const mutations = {
     // display more info in the modal.
 
     // TODO: convert into a hash map to avoid searching
-    state.selected_event = state.events.find(e => e.id == mouse_event.id);
+    state.selected_event = state.show_events.find(e => e.id == mouse_event.id);
   }
 };
 

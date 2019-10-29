@@ -2,7 +2,7 @@
    <div id="calendar" class="mb-5 mt-3">
       <calendar-view
         :show-date="show_date"
-        :events="events"
+        :events="show_events"
         :show-event-times="false"
         :starting-day-of-week=1
         :locale="locale"
@@ -13,7 +13,7 @@
            slot="header"
            slot-scope="{ headerProps }"
            :header-props="headerProps"
-           @input="set_show_date"
+           @input="change_period"
          />
       </calendar-view>
 
@@ -49,11 +49,15 @@
    },
    async mounted () {
      await this.$store.dispatch("calendar/fetch_events");
+     const month_start = new Date();
+     month_start.setDate(1);
+     this.$store.dispatch("calendar/change_period", month_start);
    },
    methods: {
-     ...mapMutations("calendar", [
-       "set_show_date"
-     ]),
+     change_period (e) {
+       /* e is just the first day of the selected month */
+       this.$store.dispatch("calendar/change_period", e);
+     },
      on_click_event(e) {
        this.$store.commit("calendar/set_selected_event", e);
        this.$refs['event_modal'].show();
@@ -68,7 +72,7 @@
      ]),
      ...mapState("calendar", [
        "show_date",
-       "events",
+       "show_events",
        "selected_event"
      ]),
      ...mapGetters("calendar", [
