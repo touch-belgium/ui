@@ -1,5 +1,5 @@
 <template>
-   <b-card class="m-3" :img-src="picture" img-top>
+   <b-card class="m-2" :img-src="picture" img-top style="height: 100%;">
       <b-card-text>
          <router-link tag="a" :to="slug" class="lead">{{ title }}</router-link>
          <p v-html="raw_body" class="block-with-text mt-2"></p>

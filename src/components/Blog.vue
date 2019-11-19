@@ -31,8 +31,8 @@
             <b-alert show variant="info">No posts to show.</b-alert>
          </b-col>
 
-         <b-col md="4" v-for="post in filtered_posts" :key="post.id">
-            <postcard
+         <b-col md="4" v-for="post in posts" :key="post.id" class="mb-4">
+            <PostCard
               v-bind:iden="post.id"
               v-bind:title="post.title"
               v-bind:body="post.body"
@@ -40,14 +40,15 @@
               v-bind:created_at="post.created_at"
               v-bind:author="post.author"
               v-bind:tags="post.tags"
-            ></postcard>
+            ></PostCard>
          </b-col>
       </b-row>
    </b-container>
 </template>
 
 <script>
- import { mapGetters } from "vuex";
+ import { mapGetters, mapState } from "vuex";
+
  import PostCard from "./PostCard.vue";
  import Tag from "./Tag.vue";
 
@@ -85,6 +86,9 @@
      ...mapGetters("blog", [
        "filtered_posts",
        "tags"
+     ]),
+     ...mapState("blog", [
+       "posts"
      ])
    },
    components: {

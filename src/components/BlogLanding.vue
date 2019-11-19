@@ -8,7 +8,7 @@
       </b-col>
       <b-card-group deck>
          <b-row>
-            <b-col md="6" v-for="post in latest_posts" :key="post.id">
+            <b-col md="6" v-for="post in latest_posts" :key="post.id" class="mb-4">
                <PostCard
                  v-bind:iden="post.id"
                  v-bind:title="post.title"
@@ -26,10 +26,11 @@
 </template>
 
 <script>
- import Blog from "./Blog.vue";
- import PostCard from "./PostCard.vue";
  import slugify from "slugify";
  import { mapGetters } from "vuex";
+
+ import Blog from "./Blog.vue";
+ import PostCard from "./PostCard.vue";
 
  export default {
    /* extends: Blog, */

@@ -1,8 +1,8 @@
 <template>
    <b-container class="mt-5">
 
-      <b-row>
-         <router-link :to="{ name: 'news' }" class="lead">← More news</router-link>
+      <b-row class="mb-3">
+         <router-link :to="{ name: 'news' }" class="lead">← Back to news</router-link>
       </b-row>
 
       <b-row v-if="error">
@@ -17,6 +17,7 @@
            footer-tag="footer"
          >
             <b-card-body>
+               <SharingButtons :text="share_text" :url="share_url"></SharingButtons>
                <b-card-title>
                   <h3 class="display-4">{{ post.title }}</h3>
                </b-card-title>
@@ -24,6 +25,7 @@
 
                <b-card-text>
                   <p><em>Published: {{ post.created_at | moment("from") }} by {{ post.author.username }}</em></p>
+
                   <div v-html="post.body"></div>
                </b-card-text>
             </b-card-body>
@@ -37,8 +39,10 @@
 </template>
 
 <script>
- import Tag from "./Tag.vue";
  import { mapGetters, mapState } from "vuex";
+
+ import Tag from "./Tag.vue";
+ import SharingButtons from "./SharingButtons.vue";
 
  export default {
    data () {
@@ -61,21 +65,23 @@
    methods: {
 
    },
-   /* watch: {
-    *   '$route': 'fetchPost'
-    * }, */
    computed: {
      ...mapState("blog", [
        "post"
-     ])
+     ]),
+     share_text () {
+       return `Touch Belgium news: ${this.post.title}`;
+     },
+     share_url () {
+       return `${window.location.href}`;
+     }
    },
    components: {
-     Tag
+     Tag, SharingButtons
    }
  }
 </script>
 
 <style scoped lang="scss">
  @import "~Styles/custom-color-variables";
-
 </style>
