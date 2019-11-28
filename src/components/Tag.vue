@@ -6,9 +6,9 @@
  export default {
    props: ['word', 'close'],
    methods: {
-     add_tag () {
-       this.$parent.$emit('add_tag', this.word);
-     },
+     /* add_tag () {
+      *   this.$parent.$emit('add_tag', this.word);
+      * }, */
      remove_tag () {
        this.$parent.$emit('remove_tag', this.word);
      }

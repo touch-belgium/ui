@@ -21,7 +21,7 @@ const getters = {
     if (state.selected_tags.length) {
       return state.posts.filter(p => {
         return p.tags.some(t => {
-          return store.selected_tags.includes(t.word);
+          return state.selected_tags.includes(t.word);
         });
       });
     } else {
@@ -50,6 +50,12 @@ const actions = {
     const url = "tags";
     const response = await api.get(url).json();
     commit("set_tags", response);
+  },
+  select_tag ({ state, commit }, tag_word) {
+    const tag = state.tags.find(t => t.word == tag_word);
+    commit("add_selected_tag", tag);
+    const new_tags = _.without(state.tags, tag);
+    commit("set_tags", new_tags);
   }
 };
 
@@ -62,8 +68,11 @@ const mutations = {
   },
   set_tags (state, tags) {
     state.tags = tags;
+  },
+  add_selected_tag (state, tag) {
+    state.selected_tags.push(tag);
   }
-};
+ };
 
 export default {
   namespaced: true,

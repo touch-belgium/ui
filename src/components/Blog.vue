@@ -2,23 +2,17 @@
    <b-container class="mt-5">
       <b-row>
          <b-col cols="12">
-            <p>Selected tags:</p>
-            <Tag v-for="tag in selected_tags"
-                 :key="tag.id"
-                 v-bind:word="tag"
-                 v-bind:close="true"
-            ></Tag>
-         </b-col>
-      </b-row>
-
-      <b-row>
-         <b-col cols="12">
             <p>Sort by tag:</p>
-            <Tag v-for="tag in tags"
-                 :key="tag.id"
-                 v-bind:word="tag.word"
-                 v-bind:close="false"
-            ></Tag>
+            <b-button v-for="tag in tags"
+                      pill
+                      :key="tag.id"
+                      :ref="tag.word"
+                      class="mr-2 mb-3 selectable_blog_tag"
+                      variant="outline-primary"
+                      @click="tag_click_handler(tag.word)"
+            >
+               <span>{{ tag.word }}</span> <span class="ml-2" v-html="plus_icon"></span>
+            </b-button>
          </b-col>
       </b-row>
 
@@ -48,9 +42,9 @@
 
 <script>
  import { mapGetters, mapState } from "vuex";
+ import octicons from "@primer/octicons";
 
  import PostCard from "./PostCard.vue";
- import Tag from "./Tag.vue";
 
  export default {
    data () {
@@ -59,6 +53,9 @@
      }
    },
    methods: {
+     tag_click_handler (tag_word) {
+       this.$store.dispatch("blog/select_tag", tag_word);
+     }
    },
    async mounted () {
      try {
@@ -70,17 +67,17 @@
        this.error = true;
        this.$Progress.fail();
      }
-     this.$on('add_tag', (word) => {
-       this.tags = this.tags.filter(x => x != word);
-       if (!this.selected_tags.includes(word))
-         this.selected_tags.push(word);
-       this.selected_tags.sort();
-     });
-     this.$on('remove_tag', (word) => {
-       this.selected_tags = this.selected_tags.filter(t => t != word);
-       this.tags.push(word);
-       this.tags.sort();
-     })
+     /* this.$on('add_tag', (word) => {
+      *   this.tags = this.tags.filter(x => x != word);
+      *   if (!this.selected_tags.includes(word))
+      *     this.selected_tags.push(word);
+      *   this.selected_tags.sort();
+      * }); */
+     /* this.$on('remove_tag', (word) => {
+      *   this.selected_tags = this.selected_tags.filter(t => t != word);
+      *   this.tags.push(word);
+      *   this.tags.sort();
+      * }) */
    },
    computed: {
      ...mapGetters("blog", [
@@ -89,21 +86,42 @@
      ]),
      ...mapState("blog", [
        "posts"
-     ])
+     ]),
+     x_icon () {
+       return octicons.x.toSVG();
+     },
+     plus_icon () {
+       return octicons.plus.toSVG();
+     }
    },
    components: {
-     PostCard,
-     Tag
+     PostCard
    },
  }
 </script>
 
-<style scoped lang="scss">
+<style module lang="scss">
+ @import "Styles/_custom-bootstrap-variables";
+
  .container {
    padding-top: 5px;
    .row {
      display: flex;
      flex-wrap: wrap;
    }
+ }
+ .selectable_blog_tag {
+   &:hover {
+     .octicon {
+       fill: white;
+     }
+   }
+   .octicon {
+     fill: $blue;
+   }
+ }
+
+ .selected_blog_tag {
+
  }
 </style>

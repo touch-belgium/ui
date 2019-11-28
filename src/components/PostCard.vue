@@ -5,7 +5,13 @@
          <p v-html="raw_body" class="block-with-text mt-2"></p>
          <div v-if="tags.length" class="post-tags">
             <em>Tags: </em>
-            <Tag v-for="tag in tags" :key="tag.id" v-bind:word="tag.word"></Tag>
+            <b-badge pill v-for="tag in tags"
+                     :key="tag.id"
+                     class="mr-1"
+                     variant="info"
+            >
+               {{ tag.word }}
+            </b-badge>
          </div>
       </b-card-text>
       <div slot="footer"><small class="text-muted">Last updated {{ created_at | moment("from") }} by {{ author.username }}</small></div>
@@ -13,9 +19,7 @@
 </template>
 
 <script>
- import Tag from "./Tag.vue";
  import slugify from "slugify";
-
 
  export default {
    props: ['iden', 'body', 'title', 'picture', 'created_at', 'author', 'tags'],
@@ -33,7 +37,6 @@
      })
    },
    components: {
-     Tag
    }
  }
 </script>
