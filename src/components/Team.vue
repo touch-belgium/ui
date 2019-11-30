@@ -8,7 +8,7 @@
 
       <b-card-body>
          <b-card-title>{{team.name}}</b-card-title>
-         <b-card-sub-title class="mb-2">{{team.address}}</b-card-sub-title>
+         <b-card-sub-title class="mb-2">{{team.venue.address}}</b-card-sub-title>
       </b-card-body>
 
       <b-list-group flush>

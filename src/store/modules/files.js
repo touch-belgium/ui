@@ -13,6 +13,9 @@ const getters = {
   },
   files (state, getters) {
     return state.files;
+  },
+  display_sponsorship_brochure (state, getters) {
+    return getters.sponsorship_files.find(f => _.includes(f.file, "sponsoring-en"));
   }
 };
 

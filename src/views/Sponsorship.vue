@@ -48,6 +48,12 @@
             </p>
          </b-col>
       </b-row>
+      <b-row v-if="sponsorship_files.length" class="mb-5">
+         <b-embed
+           type="iframe"
+           :src="display_sponsorship_brochure.file">
+         </b-embed>
+      </b-row>
    </b-container>
 </template>
 
@@ -75,7 +81,8 @@
    },
    computed: {
      ...mapGetters("files", [
-       "sponsorship_files"
+       "sponsorship_files",
+       "display_sponsorship_brochure"
      ])
    }
  }

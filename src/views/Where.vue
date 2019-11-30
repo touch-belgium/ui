@@ -43,7 +43,7 @@
                   >
                      <l-popup>
                         <h4>{{team.name}} - Touch Club</h4>
-                        <p>Address: {{team.address}}</p>
+                        <p>Address: {{team.venue.address}}</p>
                         <a :href="team.website" target="_blank">Website</a>
                      </l-popup>
                   </l-marker>
