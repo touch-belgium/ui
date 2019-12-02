@@ -1,4 +1,6 @@
 <template>
+   <div>
+      <FixedTBLogo></FixedTBLogo>
    <b-container class="mt-5">
       <b-row>
          <b-col cols="12">
@@ -55,10 +57,13 @@
          </b-embed>
       </b-row>
    </b-container>
+   </div>
 </template>
 
 <script>
  import { mapGetters, mapState } from "vuex";
+
+ import FixedTBLogo from "../components/FixedTBLogo.vue";
 
  export default {
    data () {
@@ -84,7 +89,8 @@
        "sponsorship_files",
        "display_sponsorship_brochure"
      ])
-   }
+   },
+   components: { FixedTBLogo }
  }
 </script>
 
