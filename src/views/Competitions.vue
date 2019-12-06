@@ -3,7 +3,7 @@
       <carousel :pictures="tournaments_banner_pictures"></carousel>
       <FixedTBLogo></FixedTBLogo>
       <b-container class="mt-5">
-         <h1>National Championship</h1>
+         <h1>Competitions and tournaments</h1>
 
          <b-row>
             <b-col class="my-4" cols="12" md="6" lg="4" xl="6">
@@ -43,7 +43,7 @@
          <b-row v-if="error">
             <b-col cols="12">
                <b-alert show variant="warning">
-                  Tournaments could not be retrieved
+                  Competitions could not be retrieved
                </b-alert>
             </b-col>
          </b-row>

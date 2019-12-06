@@ -16,7 +16,7 @@
          </b-col>
       </b-row>
       <b-row>
-         <b-col v-for="team in main_teams" :key="team.url" lg="4" md="6" cols="12" class="my-3">
+         <b-col v-for="team in belgian_teams" :key="team.url" lg="4" md="6" cols="12" class="my-3">
             <team v-bind:team="team"></team>
          </b-col>
       </b-row>
@@ -37,7 +37,7 @@
                   >
                   </l-polygon>
                   <l-marker
-                    v-for="team in main_teams"
+                    v-for="team in belgian_teams"
                     :key="team.url"
                     :lat-lng="team_coordinates(team)"
                   >
@@ -67,7 +67,7 @@
 
  import octicons from "@primer/octicons";
  import { LMap, LTileLayer, LMarker, LPolygon, LPopup } from "vue2-leaflet";
- import { mapGetters } from "vuex";
+ import { mapGetters, mapState } from "vuex";
  import { belgium_polygon, belgium_center_coords } from "../common/geodata.js";
 
  export default {
@@ -95,7 +95,7 @@
    async mounted () {
      try {
        this.$Progress.start();
-       await this.$store.dispatch("teams/fetch_teams");
+       await this.$store.dispatch("teams/fetch_belgian_teams");
        this.$Progress.finish();
      } catch (e) {
        this.$Progress.fail();
@@ -103,8 +103,10 @@
      }
    },
    computed: {
+     ...mapState("teams", [
+       "belgian_teams"
+     ]),
      ...mapGetters("teams", [
-       "main_teams",
        "team_coordinates"
      ])
    },

@@ -1,7 +1,7 @@
 @import "custom-bootstrap";
 
 body {
-    padding-top: $nav-link-height;
+    padding-top: $nav-link-height + 0.5rem;
 }
 
 /* Thanks hackingui.com */

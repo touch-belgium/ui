@@ -11,16 +11,17 @@
 
             <b-nav-item class="m-0" :to="{ name: 'news' }">News</b-nav-item>
 
-            <b-nav-dropdown
+            <b-nav-item-dropdown
               class="m-0"
               text="Events"
             >
+               <b-dropdown-item :to="{ name: 'national-championship' }">National championship</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'competitions' }">Competitions and results</b-dropdown-item>
                <b-dropdown-divider></b-dropdown-divider>
                <b-dropdown-item :to="{ name: 'calendar' }">Calendar</b-dropdown-item>
-            </b-nav-dropdown>
+            </b-nav-item-dropdown>
 
-            <b-nav-dropdown
+            <b-nav-item-dropdown
               text="Get Involved"
               class="m-0"
             >
@@ -30,9 +31,9 @@
                <b-dropdown-item :to="{ name: 'national-teams' }">National teams</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'youth' }">Youth</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'getting-started' }">Getting started</b-dropdown-item>
-            </b-nav-dropdown>
+            </b-nav-item-dropdown>
 
-            <b-nav-dropdown
+            <b-nav-item-dropdown
               text="About touch"
               class="m-0"
             >
@@ -40,11 +41,11 @@
                <b-dropdown-item :to="{ name: 'where' }">Where to play</b-dropdown-item>
                <b-dropdown-item href="#">Training/courses</b-dropdown-item>
                <b-dropdown-item href="#">Rules and regulations</b-dropdown-item>
-            </b-nav-dropdown>
+            </b-nav-item-dropdown>
 
             <b-nav-item class="m-0" :to="{ name: 'sponsorship' }">Sponsorship</b-nav-item>
 
-            <b-nav-dropdown
+            <b-nav-item-dropdown
               text="Touch Belgium"
               class="m-0"
             >
@@ -52,16 +53,16 @@
                <b-dropdown-item :to="{ name: 'become-a-member' }">Become a member</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'committee' }">Committee</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'agm' }">AGM</b-dropdown-item>
-            </b-nav-dropdown>
+            </b-nav-item-dropdown>
 
             <b-nav-item class="m-0" :to="{ name: 'contact' }">Contact</b-nav-item>
 
-            <b-nav-dropdown class="lang-picker">
+            <b-nav-item-dropdown class="lang-picker">
                <template slot="button-content"><span class="mr-2" v-html="globe_icon"></span> {{pretty_locale}} </template>
                <b-dropdown-item-button @click="on_locale_change('English')">English</b-dropdown-item-button>
                <b-dropdown-item-button @click="on_locale_change('Français')">Français</b-dropdown-item-button>
                <b-dropdown-item-button @click="on_locale_change('Nederlands')">Nederlands</b-dropdown-item-button>
-            </b-nav-dropdown>
+            </b-nav-item-dropdown>
 
          </b-navbar-nav>
 
