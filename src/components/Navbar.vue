@@ -118,14 +118,14 @@
  }
 
  .navbar-nav {
-   /* a.dropdown-item {
-      a {
-      text-decoration: none;
-      &:hover {
-      text-decoration: none;
-      }
-      }
-      } */
+   .dropdown {
+     .dropdown-toggle:focus {
+       outline: none;
+     }
+     .dropdown-menu:focus {
+       outline: none;
+     }
+   }
    .lang-picker {
      @media (min-width: map-get($grid-breakpoints, "xl")) {
        padding-left: 1em;

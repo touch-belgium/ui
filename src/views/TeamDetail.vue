@@ -1,8 +1,17 @@
 <template>
    <b-container class="mt-5">
+      <b-row v-if="error">
+         <b-col cols="12">
+            <b-alert show variant="warning">
+               {{error}}
+            </b-alert>
+         </b-col>
+      </b-row>
       <b-row>
          <b-col cols="12">
-            <h2>{{team_stats.name}}</h2>
+            <b-card>
+               <h2>{{team_stats.name}}</h2>
+            </b-card>
             <p class="text-justify">
 
             </p>
@@ -22,7 +31,7 @@
  export default {
    data () {
      return {
-
+       error: null
      }
    },
    methods: {
@@ -33,6 +42,7 @@
        this.$Progress.start();
        await this.$store.dispatch("teams/fetch_team_stats", this.$route.params.id);
        this.$Progress.finish();
+       console.log(this.team_stats);
      } catch (e) {
        this.$Progress.fail();
        this.error = "Team info could not be retrieved";
