@@ -7,10 +7,10 @@
    >
       <b-row class="" no-gutters>
          <b-col class="match_info_left" cols="12" md="4">
-            <p><span v-html="calendar_icon"></span> {{info.when | moment("dddd Do MMMM YYYY")}}</p>
-            <p><span v-html="clock_icon"></span> {{info.when | moment("HH:mm")}}</p>
-            <p><span v-html="law_icon"></span> Ref(s): {{info.refs}}</p>
-            <p><span v-html="location_icon"></span> Pitch: {{info.pitch}}</p>
+            <p><span v-html="calendar_icon"></span> <span class="align-middle">{{info.when | moment("dddd Do MMMM YYYY")}}</span></p>
+               <p><span v-html="clock_icon"></span> <span class="align-middle">{{info.when | moment("HH:mm")}}</span></p>
+               <p><span v-html="law_icon"></span> <span class="align-middle">Ref(s): {{info.refs}}</span></p>
+               <p><span v-html="location_icon"></span> <span class="align-middle">Pitch: {{info.pitch}}</span></p>
          </b-col>
 
          <b-col class="match_info_right" cols="12" md="8">

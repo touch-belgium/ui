@@ -27,6 +27,12 @@ const getters = {
     } else {
       return state.posts;
     }
+  },
+  tag_selected: (state, getters) => (tag) => {
+    console.log("esooo");
+    console.log(tag);
+    console.log(state.selected_tags);
+    return state.selected_tags.includes(tag);
   }
 };
 
@@ -52,10 +58,7 @@ const actions = {
     commit("set_tags", response);
   },
   select_tag ({ state, commit }, tag_word) {
-    const tag = state.tags.find(t => t.word == tag_word);
-    commit("add_selected_tag", tag);
-    const new_tags = _.without(state.tags, tag);
-    commit("set_tags", new_tags);
+    commit("add_selected_tag", tag_word);
   }
 };
 
@@ -70,7 +73,10 @@ const mutations = {
     state.tags = tags;
   },
   add_selected_tag (state, tag) {
+
     state.selected_tags.push(tag);
+    console.log("added on");
+    console.log(state.selected_tags);
   }
  };
 

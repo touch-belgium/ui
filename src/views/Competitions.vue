@@ -100,7 +100,7 @@
        "tournaments_banner_pictures"
      ]),
      ...mapGetters("competitions", [
-       "competitions",
+       "other_competitions",
        "filtered_competitions",
        "paginated_competitions",
        "n_total_shown"

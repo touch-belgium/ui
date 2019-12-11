@@ -35,6 +35,10 @@ module.exports = merge(common, {
       '/media/*/*.(png|jpg|jpeg|doc|docx|pdf)': {
         target: "http://localhost:8000",
         secure: false
+      },
+      '/media/*.(png|jpg|jpeg|doc|docx|pdf)': {
+        target: "http://localhost:8000",
+        secure: false
       }
     }
   },

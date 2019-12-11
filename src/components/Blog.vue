@@ -7,7 +7,8 @@
                       pill
                       :key="tag.id"
                       :ref="tag.word"
-                      class="mr-2 mb-3 selectable_blog_tag"
+                      class="mr-2 mb-3"
+                      :class="{ selectable_blog_tag: !tag_selected(tag.word) }"
                       variant="outline-primary"
                       @click="tag_click_handler(tag.word)"
             >
@@ -81,6 +82,7 @@
    },
    computed: {
      ...mapGetters("blog", [
+       "tag_selected",
        "filtered_posts",
        "tags"
      ]),

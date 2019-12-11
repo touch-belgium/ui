@@ -15,7 +15,7 @@
               class="m-0"
               text="Events"
             >
-               <b-dropdown-item :to="{ name: 'national-championship' }">National championship</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'national-championships' }">National championship</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'competitions' }">Competitions and results</b-dropdown-item>
                <b-dropdown-divider></b-dropdown-divider>
                <b-dropdown-item :to="{ name: 'calendar' }">Calendar</b-dropdown-item>

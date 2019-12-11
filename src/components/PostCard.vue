@@ -14,7 +14,7 @@
             </b-badge>
          </div>
       </b-card-text>
-      <div slot="footer"><small class="text-muted">Last updated {{ created_at | moment("from") }} by {{ author.username }}</small></div>
+      <div slot="footer"><small class="text-muted">Last updated {{ created_at | moment("from") }} by {{ author }}</small></div>
    </b-card>
 </template>
 
