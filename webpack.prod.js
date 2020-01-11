@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WebappWebpackPlugin = require('webapp-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const common = require('./webpack.common.js');
 
@@ -36,7 +36,7 @@ module.exports = merge(common, {
       filename: '[name]-[hash].css',
       chunkFilename: '[id]-[hash].css',
     }),
-    new WebappWebpackPlugin({
+    new FaviconsWebpackPlugin({
       logo: path.resolve(__dirname, 'resources/img/logo.png'),
       cache: true,
       prefix: 'icons/',
