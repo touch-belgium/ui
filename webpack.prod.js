@@ -26,7 +26,7 @@ module.exports = merge(common, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'API_URL': JSON.stringify("https://admin.touchb.shop/api"),
+      'API_URL': JSON.stringify(process.env.API_URL),
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
