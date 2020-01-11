@@ -96,8 +96,7 @@ module.exports = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      inject: true,
-      chunksSortMode: 'dependency'
+      inject: true
     }),
     new MomentLocalesPlugin({
       localesToKeep: ['en', 'fr', 'nl'],
