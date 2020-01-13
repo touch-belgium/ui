@@ -117,7 +117,7 @@
  }
 
  .team_form_chart {
-   height: 30vh;
+   height: 55vh;
  }
 
  .win_lose_ratio {

@@ -13,7 +13,6 @@
      this.renderChart(this.datacollection, {
        responsive: true,
        maintainAspectRatio: false
-
      });
    },
    methods: {
