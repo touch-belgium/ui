@@ -35,8 +35,7 @@ Vue.use(require('vue-moment'), {moment});
 Vue.use(BootstrapVue);
 Vue.use(Vuex);
 Vue.use(VueProgressBar, {
-  color: '#e11e26',
-  failedColor: 'black',
+  color: '#8ac6d1',
   thickness: '2px'
 });
 

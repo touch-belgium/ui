@@ -257,7 +257,8 @@
                               <div class="ref_pic_square">
                                  <b-card-img top :src="ref.picture" class="rounded-circle p-3 ref_pic"></b-card-img>
                               </div>
-                              <b-card-body :title="ref.name">
+                              <b-card-body>
+                                 <h6>{{ref.name}}</h6>
                                  <b-card-text>
                                     <p><b>Level: {{ref.referee_level}}</b></p>
                                     <p>Club: {{ref.team}}</p>

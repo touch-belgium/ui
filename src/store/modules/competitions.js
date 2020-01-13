@@ -133,7 +133,6 @@ const actions = {
   async fetch_competition ({ state, commit }, id) {
     const url = `competitions/${id}`;
     const response = await api.get(url).json();
-    console.log(response);
     commit("set_competition", response);
   }
 };

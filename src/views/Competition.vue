@@ -1,6 +1,6 @@
 <template>
    <div>
-      <carousel :pictures="referee_banner_pictures"></carousel>
+      <BannerPicture v-if="competition" :picture="competition.picture"></BannerPicture>
       <FixedTBLogo></FixedTBLogo>
       <b-container class="mt-3">
          <b-row v-if="error">
@@ -29,7 +29,7 @@
             </b-col>
          </b-row>
 
-         <Category :cat="competition.categories[0]"></Category>
+         <Category v-if="competition" :cat="competition.categories[0]"></Category>
 
       </b-container>
    </div>
@@ -38,7 +38,7 @@
 <script>
  import FixedTBLogo from "../components/FixedTBLogo.vue";
  import Category from "../components/Category.vue";
- import Carousel from "../components/Carousel.vue";
+ import BannerPicture from "../components/BannerPicture.vue";
 
  import octicons from "@primer/octicons";
  import { mapState, mapGetters } from "vuex";
@@ -46,9 +46,6 @@
  export default {
    data () {
      return {
-       referee_banner_pictures: [
-         { picture: "http://localhost:8000/media/banner_pictures/banner.jpg"}
-       ],
        error: null,
        selected_team: null
      }
@@ -70,6 +67,7 @@
        this.$Progress.fail();
        this.error = "Competition could not be retrieved";
      }
+     console.log(this.competition);
    },
    computed: {
      ...mapState("competitions", [
@@ -82,7 +80,7 @@
      }
    },
    components: {
-     FixedTBLogo, Category, Carousel
+     FixedTBLogo, Category, BannerPicture
    }
  }
 </script>

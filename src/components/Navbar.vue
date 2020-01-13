@@ -9,7 +9,7 @@
       <b-collapse id="nav-collapse" is-nav>
          <b-navbar-nav>
 
-            <b-nav-item class="m-0" :to="{ name: 'news' }">News</b-nav-item>
+            <b-nav-item class="m-0" href="https://blog.touch-belgium.be">News</b-nav-item>
 
             <b-nav-item-dropdown
               class="m-0"
