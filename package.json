@@ -1,74 +1,32 @@
 {
-  "name": "TouchBelgium",
+  "name": "touchbelgium",
   "version": "1.0.0",
   "description": "Touch Belgium's website",
-  "main": "index.js",
+  "author": "Carlos Requena López",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.dev.js --host 0.0.0.0",
-    "build": "webpack --config webpack.prod.js",
-    "//": "Comment: the following will run after `npm i`",
-    "heroku-postbuild": "npm run build"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
   },
-  "engines": {
-    "node": ">=13.3.0",
-    "npm": ">=6.12.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/carlosgeos/touchbelgium.git"
-  },
-  "author": "Carlos Requena",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/carlosgeos/touchbelgium/issues"
-  },
-  "homepage": "https://github.com/carlosgeos/touchbelgium#readme",
   "dependencies": {
+    "@nuxtjs/axios": "^5.9.3",
     "@primer/octicons": "^9.3.1",
-    "bootstrap": "^4.4.1",
-    "bootstrap-vue": "^2.2.0",
-    "chart.js": "^2.9.3",
-    "evil-icons": "^1.10.1",
-    "ky": "^0.11.2",
-    "leaflet": "^1.6.0",
+    "bootstrap": "4.4.1",
+    "bootstrap-vue": "2.2.0",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
-    "portal-vue": "^2.1.7",
-    "rrule": "^2.6.3",
-    "sass-loader": "^7.3.1",
+    "nuxt": "^2.11.0",
+    "nuxt-i18n": "^6.4.1",
+    "nuxt-leaflet": "0.0.19",
+    "rrule": "^2.6.4",
     "slugify": "^1.3.6",
-    "vue": "^2.6.11",
-    "vue-chartjs": "^3.5.0",
-    "vue-i18n": "^8.15.1",
-    "vue-moment": "^4.1.0",
-    "vue-progressbar": "^0.7.5",
-    "vue-router": "^3.1.3",
     "vue-simple-calendar": "^4.3.2",
-    "vue-tweet-embed": "^2.4.0",
-    "vue2-leaflet": "^2.4.2",
-    "vuex": "^3.1.2"
+    "vue-tweet-embed": "^2.4.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "babel-loader": "^8.0.6",
-    "clean-webpack-plugin": "^0.1.19",
-    "css-loader": "^1.0.1",
-    "dart-sass": "^1.24.4",
-    "favicons-webpack-plugin": "^3.0.0",
-    "file-loader": "^2.0.0",
-    "html-webpack-plugin": "^4.0.0-beta.11",
-    "mini-css-extract-plugin": "^0.4.5",
-    "moment-locales-webpack-plugin": "^1.1.2",
-    "style-loader": "^0.23.1",
-    "url-loader": "^1.1.2",
-    "vue-loader": "^15.8.3",
-    "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.41.5",
-    "webpack-bundle-analyzer": "^3.6.0",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1",
-    "webpack-merge": "^4.2.2"
+    "@nuxtjs/moment": "^1.5.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.2"
   }
 }

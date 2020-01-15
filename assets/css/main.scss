@@ -1,0 +1,34 @@
+@import "~assets/css/custom-bootstrap-variables";
+
+body {
+    padding-top: $nav-link-height + 2rem;
+}
+
+/* Thanks hackingui.com */
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1){
+    overflow: hidden;
+    position: relative;
+    line-height: $lineHeight;
+    max-height: $lineHeight * $lineCount;
+    text-align: justify;
+    margin-right: -1em;
+    padding-right: 1em;
+    &:before {
+        content: '...';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 1em;
+        height: 1em;
+        margin-top: 0.2em;
+    }
+}
+
+.block-with-text {
+    @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3);
+}
