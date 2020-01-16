@@ -1,5 +1,19 @@
 @import "~assets/css/custom-bootstrap-variables";
 
+@font-face {
+    font-family: 'Creo Bold';
+    src: url("~assets/fonts/creo-bold.ttf") format('truetype');
+}
+
+.creo-font {
+    font-family: "Creo Bold";
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Creo Bold";
+}
+
+
 body {
     padding-top: $nav-link-height + 2rem;
 }
@@ -31,4 +45,10 @@ body {
 
 .block-with-text {
     @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3);
+}
+
+/* FIXME: this piece of CSS is not working inside the component, has
+   to remain on main.scss for the moment */
+.clickable_event {
+    cursor: pointer;
 }

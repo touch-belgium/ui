@@ -6,7 +6,7 @@
             <b-alert show variant="danger">Teams could not be retrieved.</b-alert>
          </b-col>
          <b-col cols="12">
-            <h2>Where to play</h2>
+            <h1>Where to play</h1>
             <p class="text-justify">
                There are a number of Touch clubs in Belgium. For
                training times and schedules, click on the
@@ -43,7 +43,7 @@
                        :lat-lng="team_coordinates(team)"
                      >
                         <l-popup>
-                           <h4>{{team.name}} - Touch Club</h4>
+                           <p class="h4">{{team.name}} - Touch Club</p>
                            <p>Address: {{team.venue.address}}</p>
                            <a :href="team.website" target="_blank">Website</a>
                         </l-popup>

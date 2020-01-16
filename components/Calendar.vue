@@ -1,21 +1,23 @@
 <template>
    <div id="calendar" class="mb-5 mt-3">
-      <calendar-view
-        :show-date="show_date"
-        :events="show_events"
-        :show-event-times="false"
-        :starting-day-of-week=1
-        :locale="locale"
-        class="theme-default"
-        @click-event="on_click_event"
-      >
-         <calendar-view-header
-           slot="header"
-           slot-scope="{ headerProps }"
-           :header-props="headerProps"
-           @input="change_period"
-         />
-      </calendar-view>
+      <client-only>
+         <calendar-view
+           :show-date="show_date"
+           :events="show_events"
+           :show-event-times="false"
+           :starting-day-of-week=1
+           :locale="locale"
+           class="theme-default"
+           @click-event="on_click_event"
+         >
+            <calendar-view-header
+              slot="header"
+              slot-scope="{ headerProps }"
+              :header-props="headerProps"
+              @input="change_period"
+            />
+         </calendar-view>
+      </client-only>
 
       <b-modal centered ref="event_modal" hide-footer title="Touch Belgium event">
          <div v-if="this.selected_event">
@@ -103,8 +105,9 @@
    margin-right: auto;
    padding-bottom: 5em;
 
-   .clickable_event {
-     cursor: pointer;
-   }
  }
+ .theme-default .cv-event.clickable_event {
+   cursor: pointer;
+ }
+
 </style>

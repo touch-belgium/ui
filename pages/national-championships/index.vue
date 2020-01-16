@@ -38,8 +38,8 @@
 </template>
 
 <script>
- import Carousel from "../components/Carousel.vue";
- import FixedTBLogo from "../components/FixedTBLogo.vue";
+ import Carousel from "@/components/Carousel.vue";
+ import FixedTBLogo from "@/components/FixedTBLogo.vue";
 
  import { mapGetters, mapState } from "vuex";
 
@@ -48,6 +48,11 @@
      return {
        per_page: 5,
        error: null
+     }
+   },
+   head () {
+     return {
+       title: "National Championships"
      }
    },
    methods: {
@@ -75,5 +80,5 @@
  }
 </script>
 
-<style module lang="scss">
+<style scoped lang="scss">
 </style>

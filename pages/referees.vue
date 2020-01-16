@@ -5,7 +5,7 @@
       <b-container class="mt-3">
          <b-row>
             <b-col cols="12" lg="9">
-                  <h2 id="referees">Referees</h2>
+                  <h1 id="referees">Referees</h1>
                   <p class="text-justify">
                      Becoming a qualified Touch referee allows you to
                      master the rules of the game and ensure that matches
@@ -38,7 +38,7 @@
                      the challenge!
                   </p>
 
-                  <h5 id="referee-pathway">Referee pathway</h5>
+                  <h3 id="referee-pathway">Referee pathway</h3>
 
                   <p class="text-justify">
                      Learning to referee in Belgium allows individuals to
@@ -58,7 +58,7 @@
                         <template v-slot:aside>
                            <b-img fluid-grow src="~assets/img/l1badge.png" width="100" alt="Level 1 badge"></b-img>
                         </template>
-                        <h5 class="mt-0 mb-1">Level 1</h5>
+                        <p class="mt-0 mb-1 h5">Level 1</p>
                         <p class="mb-0">
                            At Level 1, referees are able to watch over a
                            game, including counting the touches and
@@ -73,7 +73,7 @@
                            <b-img fluid-grow src="~assets/img/l2badge.png" width="100" alt="Level 2 badge"></b-img>
                         </template>
 
-                        <h5 class="mt-0 mb-1">Level 2</h5>
+                        <p class="mt-0 mb-1 h5">Level 2</p>
                         <p class="mb-0">
                            At Level 2, referees improve the game by their
                            presence, helping players to avoid penalties
@@ -88,7 +88,7 @@
                            <b-img fluid-grow src="~assets/img/l3badge.png" width="100" alt="Level 3 badge"></b-img>
                         </template>
 
-                        <h5 class="mt-0 mb-1">Level 3</h5>
+                        <p class="mt-0 mb-1 h5">Level 3</p>
                         <p class="mb-0">
                            At level 3, referees create a positive
                            environment to play. They help the game to
@@ -104,7 +104,7 @@
                            <b-img fluid-grow src="~assets/img/l4badge.png" width="100" alt="Level 4 badge"></b-img>
                         </template>
 
-                        <h5 class="mt-0 mb-1">Level 4</h5>
+                        <p class="mt-0 mb-1 h5">Level 4</p>
                         <p class="mb-0">
                            At level 4, referees help to raise the level
                            of a game. They deal with challenging
@@ -120,7 +120,7 @@
                            <b-img fluid-grow src="~assets/img/l5badge.png" width="100" alt="Level 5 badge"></b-img>
                         </template>
 
-                        <h5 class="mt-0 mb-1">Level 5</h5>
+                        <p class="mt-0 mb-1 h5">Level 5</p>
                         <p class="mb-0">
                            At Level 5, referees enable continuous play
                            and maintain control throughout, including the
@@ -140,7 +140,7 @@
                      Touch Federation website</a>
                   </p>
 
-                  <h5 id="referee-courses">Referee courses</h5>
+                  <h3 id="referee-courses">Referee courses</h3>
 
                   <p class="text-justify">
                      To become a qualified referee, there is a practical
@@ -158,7 +158,7 @@
                      upwards.
                   </p>
 
-                  <h5 id="upcoming-courses">Upcoming referee courses</h5>
+                  <h4 id="upcoming-courses">Upcoming referee courses</h4>
 
                   <b-list-group class="mb-3">
                      <b-list-group-item variant="warning">No upcoming events to show</b-list-group-item>
@@ -174,7 +174,7 @@
                      <a href="mailto:refereetraining@touch-belgium.be">refereetraining@touch-belgium.be</a>.
                   </p>
 
-                  <h2 id="referee-resources">Resources</h2>
+                  <h3 id="referee-resources">Resources</h3>
 
                   <p class="text-justify lead font-italic">
                      In this section, you can find links or information
@@ -221,7 +221,7 @@
                   </b-card>
 
 
-                  <h2 id="tb-referees" class="my-4">Touch Belgium referees</h2>
+                  <h3 id="tb-referees" class="my-4">Touch Belgium referees</h3>
 
                   <b-row>
                      <b-col cols="12" md="6" lg="4" class="mb-4" v-for="ref in referee_board" :key="ref.name">

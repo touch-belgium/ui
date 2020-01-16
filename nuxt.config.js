@@ -54,6 +54,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
     "nuxt-leaflet",
+    "nuxt-fontawesome",
     [
       "nuxt-i18n",
       {
@@ -105,6 +106,18 @@ export default {
       startYear: 2014,
       endYear: 2040
     }
+  },
+  fontawesome: {
+    imports: [
+      {
+        set: "@fortawesome/free-solid-svg-icons",
+        icons: ["fas"]
+      },
+      {
+        set: "@fortawesome/free-brands-svg-icons",
+        icons: ["fab"]
+      }
+    ],
   },
   /*
   ** Build configuration

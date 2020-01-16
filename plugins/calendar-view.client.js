@@ -3,4 +3,12 @@
 import Vue from "vue";
 import { CalendarView } from "vue-simple-calendar";
 
-Vue.use(CalendarView, { name: "calendar-view" });
+const VueSimpleCalendar = {
+  install (Vue, options) {
+    Vue.component("calendar-view", CalendarView);
+  }
+};
+
+Vue.use(VueSimpleCalendar, { name: "calendar-view" });
+
+export default VueSimpleCalendar;

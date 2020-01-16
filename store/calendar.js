@@ -118,7 +118,7 @@ export const actions = {
     const endpoint = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR}/events?key=${GOOGLE_API_KEY}`;
 
     try {
-      const response = await ky.get(endpoint).json();
+      const response = await this.$axios.$get(endpoint);
       commit("set_raw_google_events", response.items);
     } catch (e) {
       console.log(e);

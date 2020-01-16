@@ -9,14 +9,15 @@
       <b-collapse id="nav-collapse" is-nav>
          <b-navbar-nav>
 
-            <b-nav-item class="m-0" href="https://blog.touch-belgium.be">News</b-nav-item>
+            <b-nav-item class="m-0" :to="{ name: 'posts' }">News</b-nav-item>
 
             <b-nav-item-dropdown
               class="m-0"
               text="Events"
             >
                <b-dropdown-item :to="{ name: 'national-championships' }">National championship</b-dropdown-item>
-               <b-dropdown-item :to="{ name: 'competitions' }">Competitions and results</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'competitions' }">Touch Belgium competitions</b-dropdown-item>
+               <b-dropdown-item v-show="false">International competitions</b-dropdown-item>
                <b-dropdown-divider></b-dropdown-divider>
                <b-dropdown-item :to="{ name: 'calendar' }">Calendar</b-dropdown-item>
             </b-nav-item-dropdown>
@@ -25,7 +26,7 @@
               text="Get Involved"
               class="m-0"
             >
-               <b-dropdown-item :to="{ name: 'where' }">Where to play</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'where' }">Where to play ?</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'referees' }">Referees</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'coaching' }">Coaches</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'national-teams' }">National teams</b-dropdown-item>
@@ -34,11 +35,11 @@
             </b-nav-item-dropdown>
 
             <b-nav-item-dropdown
-              text="About touch"
+              text="About Touch"
               class="m-0"
             >
-               <b-dropdown-item href="#">What is touch</b-dropdown-item>
-               <b-dropdown-item :to="{ name: 'where' }">Where to play</b-dropdown-item>
+               <b-dropdown-item href="#">What is Touch ?</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'where' }">Where to play ?</b-dropdown-item>
                <b-dropdown-item href="#">Training/courses</b-dropdown-item>
                <b-dropdown-item href="#">Rules and regulations</b-dropdown-item>
             </b-nav-item-dropdown>
@@ -57,7 +58,7 @@
 
             <b-nav-item class="m-0" :to="{ name: 'contact' }">Contact</b-nav-item>
 
-            <b-nav-item-dropdown class="lang-picker">
+            <b-nav-item-dropdown class="lang-picker" v-show="false">
                <template slot="button-content"><span class="mr-2" v-html="globe_icon"></span> {{pretty_locale}} </template>
                <b-dropdown-item-button @click="on_locale_change('English')">English</b-dropdown-item-button>
                <b-dropdown-item-button @click="on_locale_change('Français')">Français</b-dropdown-item-button>
@@ -68,11 +69,46 @@
 
          <!-- Right aligned nav items -->
          <b-navbar-nav class="ml-auto d-none d-xl-flex">
-            <b-nav-item class="social-icon" target="_blank" href="https://www.instagram.com/touchbelgium"><div data-icon="ei-sc-instagram" data-size="m"></div></b-nav-item>
-            <b-nav-item class="social-icon" target="_blank" href="https://facebook.com/touchbelgium"><div data-icon="ei-sc-facebook" data-size="m"></div></b-nav-item>
-            <b-nav-item class="social-icon" target="_blank" href="https://twitter.com/touchbelgium"><div data-icon="ei-sc-twitter" data-size="m"></div></b-nav-item>
-            <b-nav-item class="social-icon" target="_blank" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT"><div data-icon="ei-sc-youtube" data-size="m"></div></b-nav-item>
-
+            <a target="_blank" href="https://www.instagram.com/touchbelgium">
+               <font-awesome-icon
+                 class="mr-2"
+                 :icon="['fab', 'instagram']"
+                 :style="{
+                   fontSize: '40px',
+                   color: '#405de6'
+                 }"
+               />
+            </a>
+            <a target="_blank" href="https://twitter.com/touchbelgium">
+               <font-awesome-icon
+                 class="mx-2"
+                 :icon="['fab', 'twitter']"
+                 :style="{
+                   fontSize: '40px',
+                   color: '#00acee'
+                 }"
+               />
+            </a>
+            <a target="_blank" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT">
+               <font-awesome-icon
+                 class="mx-2"
+                 :icon="['fab', 'youtube']"
+                 :style="{
+                   fontSize: '40px',
+                   color: '#c4302b'
+                 }"
+               />
+            </a>
+            <a target="_blank" href="https://facebook.com/touchbelgium">
+               <font-awesome-icon
+                 class="ml-2"
+                 :icon="['fab', 'facebook-square']"
+                 :style="{
+                   fontSize: '40px',
+                   color: '#3b5998'
+                 }"
+               />
+            </a>
          </b-navbar-nav>
       </b-collapse>
    </b-navbar>
@@ -105,7 +141,7 @@
  }
 </script>
 
-<style module lang="scss">
+<style scoped lang="scss">
  @import "~assets/css/_custom-bootstrap-variables.scss";
  @import "~assets/css/_custom-color-variables.scss";
 

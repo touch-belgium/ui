@@ -2,7 +2,7 @@
    <b-container class="mt-5">
       <b-row>
          <b-col cols="12">
-            <h2 class="display-4"><span v-html="calendar_icon"></span> {{ $t('home.Calendar') }}</h2>
+            <h2 class="display-4"><span v-html="calendar_icon"></span> {{ $t('calendar') }}</h2>
          </b-col>
       </b-row>
       <b-row>
@@ -23,10 +23,15 @@
 
      }
    },
+   head () {
+     return {
+       title: "Calendar - Touch Belgium"
+     }
+   },
    methods: {
 
    },
-   async mounted () {
+   mounted () {
 
    },
    computed: {

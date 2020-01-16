@@ -2,7 +2,7 @@
    <b-container class="mt-5">
       <b-row>
          <b-col cols="12">
-            <h2>National teams</h2>
+            <h1>National teams</h1>
             <p class="text-justify">
                Have you ever wanted the opportunity to represent your
                country, and to play for Belgium as part of a national
@@ -43,10 +43,15 @@
 
      }
    },
+   head () {
+     return {
+       title: "National Teams - Touch Belgium"
+     }
+   },
    methods: {
 
    },
-   async mounted () {
+   mounted () {
 
    },
    computed: {

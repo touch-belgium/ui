@@ -1,4 +1,14 @@
+// https://github.com/richardtallent/vue-simple-calendar/issues/132
+
 import Vue from "vue";
 import { CalendarViewHeader } from "vue-simple-calendar";
 
-Vue.use(CalendarViewHeader, { name: "calendar-view-header" });
+const VueSimpleCalendarHeader = {
+  install (Vue, options) {
+    Vue.component("calendar-view-header", CalendarViewHeader);
+  }
+};
+
+Vue.use(VueSimpleCalendarHeader, { name: "calendar-view-header" });
+
+export default VueSimpleCalendarHeader;
