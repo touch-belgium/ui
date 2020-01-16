@@ -2,7 +2,10 @@
    <b-container class="mt-5">
       <b-row>
          <b-col cols="12">
-            <h2 class="display-4"><span v-html="calendar_icon"></span> {{ $t('calendar') }}</h2>
+            <h2 class="display-4">
+               <font-awesome-icon icon="calendar-alt" />
+               {{ $t('calendar') }}
+            </h2>
          </b-col>
       </b-row>
       <b-row>
@@ -14,10 +17,16 @@
 </template>
 
 <script>
- import octicons from "@primer/octicons";
  import Calendar from "@/components/Calendar.vue";
 
  export default {
+   async asyncData ({ store }) {
+     try {
+       await store.dispatch("calendar/fetch_events");
+     } catch (e) {
+       return { error_message: "Network error" };
+     }
+   },
    data () {
      return {
 
@@ -35,9 +44,7 @@
 
    },
    computed: {
-     calendar_icon () {
-       return octicons["calendar"].toSVG({ "height": 48 });
-     }
+
    },
    components: {
      Calendar
@@ -46,4 +53,5 @@
 </script>
 
 <style module lang="scss">
+
 </style>

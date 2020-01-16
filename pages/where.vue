@@ -1,6 +1,5 @@
 <template>
    <b-container class="mt-5">
-      <FixedTBLogo></FixedTBLogo>
       <b-row>
          <b-col v-if="error" cols="12">
             <b-alert show variant="danger">Teams could not be retrieved.</b-alert>
@@ -16,7 +15,7 @@
          </b-col>
       </b-row>
       <b-row>
-         <b-col v-for="team in belgian_teams" :key="team.url" lg="4" md="6" cols="12" class="my-3">
+         <b-col v-for="team in belgian_teams" :key="team.url" md="4" cols="6" class="my-3">
             <team v-bind:team="team"></team>
          </b-col>
       </b-row>
@@ -64,10 +63,8 @@
 </template>
 
 <script>
- import FixedTBLogo from "@/components/FixedTBLogo.vue";
  import Team from "@/components/Team.vue";
 
- import octicons from "@primer/octicons";
  import { mapGetters, mapState } from "vuex";
 
  export default {
@@ -83,15 +80,16 @@
        zoom: 8
      }
    },
+   head () {
+     return {
+       title: "Where to play ?"
+     }
+   },
    methods: {
 
    },
    mounted () {
-     /* try {
-      *   await this.$store.dispatch("teams/fetch_belgian_teams");
-      * } catch (e) {
-      *   this.error = true;
-      * } */
+
    },
    computed: {
      ...mapState("geodata", [
@@ -103,10 +101,11 @@
      ])
    },
    components: {
-     Team, FixedTBLogo
+     Team
    }
  }
 </script>
 
 <style module lang="scss">
+
 </style>

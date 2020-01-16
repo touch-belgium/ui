@@ -17,3 +17,8 @@ $ npm run generate
 
 For detailed explanation on how things work, check out [Nuxt.js
 docs](https://nuxtjs.org).
+
+## Deployment on Dokku/Heroku
+
+There is no need for custom buildpack, build script or Procfile. The
+defaults work well (`npm run build` -> `npm start`).

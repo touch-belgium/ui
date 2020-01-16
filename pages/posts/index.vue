@@ -12,7 +12,7 @@
                       variant="outline-primary"
                       @click="tag_click_handler(tag.word)"
             >
-               <span>{{ tag.word }}</span> <span class="ml-2" v-html="plus_icon"></span>
+               <!-- TODO: Add fontawesome icon -->
             </b-button>
          </b-col>
       </b-row>
@@ -43,7 +43,6 @@
 
 <script>
  import { mapGetters, mapState } from "vuex";
- import octicons from "@primer/octicons";
 
  import PostCard from "@/components/PostCard.vue";
 
@@ -56,20 +55,22 @@
        error: null
      }
    },
+   head () {
+     return {
+       title: "News - Touch Belgium"
+     }
+   },
    methods: {
      /* tag_click_handler (tag_word) {
       *   this.$store.dispatch("blog/select_tag", tag_word);
       * } */
    },
-   async mounted () {
+   mounted () {
      /* try {
-      *   this.$Progress.start();
       *   await this.$store.dispatch("blog/fetch_posts");
       *   await this.$store.dispatch("blog/fetch_tags");
-      *   this.$Progress.finish();
       * } catch (e) {
       *   this.error = true;
-      *   this.$Progress.fail();
       * } */
      /* this.$on('add_tag', (word) => {
       *   this.tags = this.tags.filter(x => x != word);
@@ -84,12 +85,7 @@
       * }) */
    },
    computed: {
-     x_icon () {
-       return octicons.x.toSVG();
-     },
-     plus_icon () {
-       return octicons.plus.toSVG();
-     }
+
    },
    components: {
      PostCard

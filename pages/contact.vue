@@ -39,6 +39,11 @@
        error: null
      }
    },
+   head () {
+     return {
+       title: "Contact - Touch Belgium"
+     }
+   },
    methods: {
      mailto (email) {
        return `mailto:${email}`;
@@ -46,12 +51,9 @@
    },
    async mounted () {
      try {
-       this.$Progress.start();
        await this.$store.dispatch("contacts/fetch_contacts");
-       this.$Progress.finish();
      } catch (e) {
        this.error = true;
-       this.$Progress.fail();
      }
    },
    computed: {

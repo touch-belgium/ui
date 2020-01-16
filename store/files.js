@@ -13,14 +13,14 @@ export const getters = {
     return state.files;
   },
   display_sponsorship_brochure (state, getters) {
-    return getters.sponsorship_files.find(f => _.includes(f.file, "sponsoring-en"));
+    return getters.sponsorship_files.find(f => f.file.includes("sponsorship-en"));
   }
 };
 
 export const actions = {
   async fetch_files ({ state, commit }) {
     const url = "files";
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_files", response);
   }
 };

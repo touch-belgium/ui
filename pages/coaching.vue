@@ -1,6 +1,5 @@
 <template>
    <b-container class="mt-5">
-      <FixedTBLogo></FixedTBLogo>
       <b-row>
          <b-col cols="12" lg="9">
             <h1 id="referees">Coaching</h1>
@@ -111,7 +110,7 @@
             </b-list-group>
 
             <p class="text-justify">
-               For all upcoming training courses, please see the <router-link :to="{ name: 'calendar' }">calendar</router-link>.
+               For all upcoming training courses, please see the <nuxt-link :to="{ name: 'calendar' }">calendar</nuxt-link>.
             </p>
 
             <p class="text-justify">
@@ -180,7 +179,6 @@
 <script>
  import FixedTBLogo from "../components/FixedTBLogo.vue";
 
- import octicons from "@primer/octicons";
  import { mapGetters, mapState } from "vuex";
 
  export default {
@@ -194,19 +192,13 @@
    },
    mounted () {
      /* try {
-      *   this.$Progress.start();
       *   await this.$store.dispatch("members/fetch_coaches")
       *   await this.$store.dispatch("files/fetch_files");
-      *   this.$Progress.finish();
       * } catch (e) {
       *   this.error = true;
-      *   this.$Progress.fail();
       * } */
    },
    computed: {
-     info_icon () {
-       return octicons["info"].toSVG( { "class": "white_icon" } );
-     },
      ...mapGetters("files", [
        "coaching_files"
      ])

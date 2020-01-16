@@ -5,7 +5,10 @@
          <b-container>
             <b-row>
                <b-col cols="12">
-                  <h2 class="display-4 creo-font"><span v-html="note_icon"></span> {{ $t("news") }}</h2>
+                  <h2 class="display-4 creo-font">
+                     <font-awesome-icon icon="newspaper" />
+                     {{ $t("news") }}
+                  </h2>
                </b-col>
             </b-row>
             <b-row>
@@ -25,7 +28,10 @@
          <b-container>
             <b-row>
                <b-col cols="12">
-                  <h2 class="display-4 creo-font"><span v-html="calendar_icon"></span> {{ $t('calendar') }}</h2>
+                  <h2 class="display-4 creo-font">
+                     <font-awesome-icon icon="calendar-alt" />
+                     {{ $t('calendar') }}
+                  </h2>
                </b-col>
             </b-row>
             <b-row>
@@ -35,11 +41,30 @@
             </b-row>
          </b-container>
       </section>
+
+      <section>
+         <b-container>
+            <b-row>
+               <b-col cols="12">
+                  <h2 class="display-4 creo-font mb-5">
+                     <font-awesome-icon icon="trophy" />
+                     Upcoming tournaments
+                  </h2>
+               </b-col>
+            </b-row>
+            <b-row>
+               <b-col>
+
+               </b-col>
+            </b-row>
+         </b-container>
+      </section>
+
+
    </div>
 </template>
 
 <script>
- import octicons from "@primer/octicons";
  import { Timeline } from "vue-tweet-embed";
 
  import BlogLanding from "@/components/BlogLanding";
@@ -47,6 +72,18 @@
  import VideoOverlay from "@/components/VideoOverlay";
 
  export default {
+   async asyncData ({ store }) {
+     try {
+       /* News */
+
+       /* Calendar */
+       await store.dispatch("calendar/fetch_events");
+       /* Tournaments */
+
+     } catch (e) {
+       return { error_message: "Network error" };
+     }
+   },
    data () {
      return {
 
@@ -58,12 +95,7 @@
      }
    },
    computed: {
-     note_icon () {
-       return octicons["note"].toSVG({ "height": 48 });
-     },
-     calendar_icon () {
-       return octicons["calendar"].toSVG({ "height": 48 });
-     }
+
    },
    components: {
      Timeline, BlogLanding, Calendar, VideoOverlay

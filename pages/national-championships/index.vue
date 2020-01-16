@@ -1,7 +1,6 @@
 <template>
    <div>
       <carousel :pictures="tournaments_banner_pictures"></carousel>
-      <FixedTBLogo></FixedTBLogo>
       <b-container class="mt-5">
          <h1>Belgium National Championship</h1>
          <b-row v-if="championships.length" class="pb-4">
@@ -39,7 +38,6 @@
 
 <script>
  import Carousel from "@/components/Carousel.vue";
- import FixedTBLogo from "@/components/FixedTBLogo.vue";
 
  import { mapGetters, mapState } from "vuex";
 
@@ -59,13 +57,10 @@
    },
    async mounted () {
      try {
-       this.$Progress.start();
        await this.$store.dispatch("banner_pictures/fetch_banner_pictures");
        await this.$store.dispatch("competitions/fetch_competition_list");
-       this.$Progress.finish();
      } catch (e) {
        this.error = true;
-       this.$Progress.fail();
      }
    },
    computed: {
@@ -76,9 +71,12 @@
        "championships",
      ])
    },
-   components: { Carousel, FixedTBLogo }
+   components: {
+     Carousel
+   }
  }
 </script>
 
 <style scoped lang="scss">
+
 </style>

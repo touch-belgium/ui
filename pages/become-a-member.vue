@@ -108,8 +108,6 @@
 </template>
 
 <script>
- import octicons from "@primer/octicons";
-
  import FixedTBLogo from "../components/FixedTBLogo.vue";
 
  export default {
@@ -118,16 +116,19 @@
 
      }
    },
+   head () {
+     return {
+       title: "Become a member - Touch Belgium"
+     }
+   },
    methods: {
 
    },
-   async mounted () {
+   mounted () {
 
    },
    computed: {
-     info_icon () {
-       return octicons["info"].toSVG();
-     },
+
    },
    components: { FixedTBLogo }
  }

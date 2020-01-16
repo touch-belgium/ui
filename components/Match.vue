@@ -5,12 +5,12 @@
      header="Competition match"
      header-tag="header"
    >
-      <b-row class="" no-gutters>
+      <b-row no-gutters>
          <b-col class="match_info_left" cols="12" md="4">
-            <p><span v-html="calendar_icon"></span> <span class="align-middle">{{info.when | moment("dddd Do MMMM YYYY")}}</span></p>
-               <p><span v-html="clock_icon"></span> <span class="align-middle">{{info.when | moment("HH:mm")}}</span></p>
-               <p><span v-html="law_icon"></span> <span class="align-middle">Ref(s): {{info.refs}}</span></p>
-               <p><span v-html="location_icon"></span> <span class="align-middle">Pitch: {{info.pitch}}</span></p>
+            <p><span>{{info.when | moment("dddd Do MMMM YYYY")}}</span></p>
+               <p><span>{{info.when | moment("HH:mm")}}</span></p>
+               <p><span>Ref(s): {{info.refs}}</span></p>
+               <p><span>Pitch: {{info.pitch}}</span></p>
          </b-col>
 
          <b-col class="match_info_right" cols="12" md="8">
@@ -48,8 +48,6 @@
 </template>
 
 <script>
- import octicons from "@primer/octicons";
-
  export default {
    /* The content is passed as props so that this component does not
       need to do any external requests */
@@ -62,18 +60,6 @@
    methods: {
    },
    computed: {
-     calendar_icon () {
-       return octicons["calendar"].toSVG();
-     },
-     clock_icon () {
-       return octicons["clock"].toSVG();
-     },
-     law_icon () {
-       return octicons["law"].toSVG();
-     },
-     location_icon () {
-       return octicons["location"].toSVG();
-     },
      home_outcome_class () {
        if (this.info.home_touchdowns > this.info.away_touchdowns) {
          return "winner_card";

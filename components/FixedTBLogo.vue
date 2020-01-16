@@ -12,7 +12,7 @@
    methods: {
 
    },
-   async mounted () {
+   mounted () {
 
    },
    computed: {
@@ -22,6 +22,9 @@
 </script>
 
 <style scoped lang="scss">
+ @import "~assets/css/custom-bootstrap-variables";
+ @import "~bootstrap/scss/mixins";
+
  .fixed_logo {
    position: fixed;
    top: 50%;
@@ -29,8 +32,11 @@
    -webkit-transform: translate(-50%, -50%);
    -ms-transform: translate(-50%, -50%);
    transform: translate(-50%, -50%);
-   height: 40vh;
+   width: 80vw;
    opacity: 0.1;
    z-index: -100;
+   @include media-breakpoint-up(sm) {
+     width: 60vw;
+   }
  }
 </style>

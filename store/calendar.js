@@ -1,5 +1,4 @@
 import { RRule, RRuleSet, rrulestr } from "rrule";
-// import ky from "ky";
 import _ from "lodash";
 import moment from "moment";
 
@@ -11,7 +10,7 @@ export const state = () => ({
 });
 
 export const getters = {
-  expanded_recurrent_events: (state, getters) => {
+  expanded_recurrent_events (state, getters) {
     const expanded_events = [];
     for (const ev of state.raw_google_events) {
       if (ev.hasOwnProperty('recurrence')) {
@@ -111,20 +110,17 @@ export const getters = {
 
 export const actions = {
   async fetch_events ({ state, commit, getters }) {
-    /* Google Apis JS library doesn't work very well with Vue, so
-       the request is made in a simpler way */
+    /* Google Apis JS library/SDK difficult to set up with Vue
+     * (2019). Sending vanilla request */
     const CALENDAR = "touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k@group.calendar.google.com";
     const GOOGLE_API_KEY = "AIzaSyAGfECY7JPalI0pfARPXTmAxiN1uz15Ja8";
     const endpoint = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR}/events?key=${GOOGLE_API_KEY}`;
-
-    try {
-      const response = await this.$axios.$get(endpoint);
-      commit("set_raw_google_events", response.items);
-    } catch (e) {
-      console.log(e);
-    }
+    const response = await this.$axios.$get(endpoint);
+    commit("set_raw_google_events", response.items);
   },
+
   change_period ({ state, commit, getters }, date) {
+    // TODO: doc needed
     commit("set_show_date", date);
     const processed = getters.expanded_recurrent_events.map(e => getters.streamlined_event(e));
     commit("set_show_events", processed);

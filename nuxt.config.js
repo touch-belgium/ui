@@ -18,7 +18,9 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: "#fff" },
+  loading: {
+    color: '#28a745'
+  },
   /*
   ** Global CSS
   */
@@ -55,9 +57,9 @@ export default {
     "@nuxtjs/axios",
     "nuxt-leaflet",
     "nuxt-fontawesome",
+    "nuxt-rfg-icon",            // Using all default config, check docs
     [
-      "nuxt-i18n",
-      {
+      "nuxt-i18n", {
         strategy: "no_prefix",
         locales: ["en", "fr", "nl"],
         defaultLocale: "en",
@@ -96,7 +98,7 @@ export default {
   axios: {
     // The environment variable API_URL can be used to override the
     // following:
-    baseURL: "http://localhost:8000/api"
+    baseURL: "http://localhost:8000/api/"
   },
   moment: {
     defaultLocale: "en",
@@ -126,6 +128,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
+    standalone: true,
     extend (config, ctx) {
     }
   },

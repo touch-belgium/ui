@@ -1,7 +1,7 @@
 <template>
    <b-navbar toggleable="xl" variant="light" fixed="top">
       <b-navbar-brand class="p-2 mr-3" :to="{ name: 'index' }">
-         <b-img src="~assets/img/navbar-logo.png" height="60px" alt="Touch Belgium"></b-img>
+         <b-img src="~assets/img/navbar-logo.png" class="navbar-logo" alt="Touch Belgium"></b-img>
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -59,7 +59,8 @@
             <b-nav-item class="m-0" :to="{ name: 'contact' }">Contact</b-nav-item>
 
             <b-nav-item-dropdown class="lang-picker" v-show="false">
-               <template slot="button-content"><span class="mr-2" v-html="globe_icon"></span> {{pretty_locale}} </template>
+               <!-- TODO: add globe int i18n icon -->
+               <template slot="button-content">{{pretty_locale}} </template>
                <b-dropdown-item-button @click="on_locale_change('English')">English</b-dropdown-item-button>
                <b-dropdown-item-button @click="on_locale_change('Français')">Français</b-dropdown-item-button>
                <b-dropdown-item-button @click="on_locale_change('Nederlands')">Nederlands</b-dropdown-item-button>
@@ -116,7 +117,6 @@
 
 <script>
  import moment from "moment";
- import octicons from "@primer/octicons";
  import { mapGetters } from "vuex";
 
  export default {
@@ -133,17 +133,16 @@
    computed: {
      /* ...mapGetters("i18n", [
       *   "pretty_locale"
-      * ]), */
-     globe_icon () {
-       return octicons.globe.toSVG({ "height": 24 });
-     }
+      * ]) */
    }
  }
 </script>
 
 <style scoped lang="scss">
- @import "~assets/css/_custom-bootstrap-variables.scss";
- @import "~assets/css/_custom-color-variables.scss";
+ @import "~assets/css/custom-bootstrap-variables";
+ @import "~assets/css/custom-color-variables";
+ @import "~bootstrap/scss/mixins";
+
 
  .v-list a {
    color: #000;
@@ -153,7 +152,13 @@
    }
  }
 
- .navbar-nav {
+ .navbar {
+   .navbar-logo {
+     height: 40px;
+     @include media-breakpoint-up(sm) {
+       height: 50px;
+     }
+   }
    .dropdown {
      .dropdown-toggle:focus {
        outline: none;
@@ -167,15 +172,6 @@
        padding-left: 1em;
        margin-left: 1em;
        border-left: 1px solid black;
-     }
-   }
-   .social-icon {
-     .nav-link {
-       padding: 0;
-       background-size: 10px 10px;
-       .icon {
-
-       }
      }
    }
  }

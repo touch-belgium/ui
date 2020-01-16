@@ -22,17 +22,17 @@ export const getters = {
 export const actions = {
   async fetch_members ({ state, commit }) {
     const url = "members";
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_teams", response);
   },
   async fetch_referees ({ state, commit }) {
     const url = "referees";
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_referees", response);
   },
   async fetch_coaches ({ state, commit }) {
     const url = "coaches";
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_coaches", response);
   }
 };

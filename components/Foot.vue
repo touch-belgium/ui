@@ -4,13 +4,51 @@
          <b-container>
             <b-row align-h="between" class="pt-5">
                <b-col cols="12" md="6" xl="4">
-                  <ul>
-                     <h5>Find us on social media !</h5>
-                     <li><a target="_blank" href="https://facebook.com/touchbelgium"><div class="align-middle" data-icon="ei-sc-facebook"></div>Facebook</a></li>
-                     <li><a target="_blank" href="https://www.instagram.com/touchbelgium/"><div class="align-middle" data-icon="ei-sc-instagram"></div>Instagram</a></li>
-                     <li><a target="_blank" href="https://twitter.com/touchbelgium?lang=en"><div class="align-middle" data-icon="ei-sc-twitter"></div>Twitter</a></li>
-                     <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT"><div class="align-middle" data-icon="ei-sc-youtube"></div>YouTube</a></li>
-                  </ul>
+                  <h5>Find us on social media !</h5>
+                  <p>
+                     <a target="_blank" href="https://facebook.com/touchbelgium">
+                        <font-awesome-icon
+                          class="mr-2"
+                          :icon="['fab', 'facebook']"
+                          :style="{
+                            color: '#3b5998'
+                          }"
+                        />Facebook
+                     </a>
+                  </p>
+                  <p>
+                     <a target="_blank" href="https://www.instagram.com/touchbelgium/">
+                        <font-awesome-icon
+                          class="mr-2"
+                          :icon="['fab', 'instagram']"
+                          :style="{
+                            color: '#405de6'
+                          }"
+                        />Instagram
+                     </a>
+                  </p>
+                  <p>
+                     <a target="_blank" href="https://twitter.com/touchbelgium?lang=en">
+                        <font-awesome-icon
+                          class="mr-2"
+                          :icon="['fab', 'twitter']"
+                          :style="{
+                            color: '#00acee'
+                          }"
+                        />Twitter
+                     </a>
+                  </p>
+                  <p>
+                     <a target="_blank" href="https://www.youtube.com/playlist?list=PLtSZiW1M9VjkRkxrrWVNHRgvm-m7VzOMT">
+                        <font-awesome-icon
+                          class="mr-2"
+                          :icon="['fab', 'youtube']"
+                          :style="{
+                            color: '#c4302b'
+                          }"
+                        />YouTube
+                     </a>
+                  </p>
                </b-col>
 
                <b-col class="footer-more text-right" cols="12" md="6" xl="4" v-show="false">
@@ -29,15 +67,15 @@
          <b-container>
             <b-row align-h="between">
                <b-col cols="6" class="pt-2 pb-2">
-                  <span class="align-middle">Touch Belgium</span>
+                  <span>Touch Belgium</span>
                </b-col>
                <b-col cols="6" class="text-right pt-2 pb-2">
                   <a href="https://github.com/touch-belgium">
                      <font-awesome-icon :icon="['fab', 'github-alt']"  />
-                     <span class="align-middle ml-1"> GitHub</span>
+                     <span class="ml-1"> GitHub</span>
                   </a>
-                  <span class="align-middle">|</span>
-                  <a class="align-middle" href="https://admin.touch-belgium.be/api">API</a>
+                  <span>|</span>
+                  <a href="https://admin.touch-belgium.be/api">API</a>
                </b-col>
             </b-row>
          </b-container>
@@ -46,8 +84,6 @@
 </template>
 
 <script>
- import octicons from "@primer/octicons";
-
  export default {
    data () {
      return {
@@ -55,9 +91,7 @@
      }
    },
    computed: {
-     github_icon () {
-       return octicons["mark-github"].toSVG();
-     }
+
    }
  }
 </script>

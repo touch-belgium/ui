@@ -41,5 +41,8 @@
  }
 </script>
 
-<style module lang="scss">
+<style scoped lang="scss">
+ .banner_container {
+   height: 25vw;
+ }
 </style>

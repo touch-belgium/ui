@@ -1,52 +1,64 @@
 <template>
-   <div id="calendar" class="mb-5 mt-3">
-      <client-only>
-         <calendar-view
-           :show-date="show_date"
-           :events="show_events"
-           :show-event-times="false"
-           :starting-day-of-week=1
-           :locale="locale"
-           class="theme-default"
-           @click-event="on_click_event"
-         >
-            <calendar-view-header
-              slot="header"
-              slot-scope="{ headerProps }"
-              :header-props="headerProps"
-              @input="change_period"
-            />
-         </calendar-view>
-      </client-only>
+   <div>
+      <div id="calendar" class="mt-3">
+         <client-only>
+            <calendar-view
+              :show-date="show_date"
+              :events="show_events"
+              :show-event-times="false"
+              :starting-day-of-week=1
+              :locale="locale"
+              class="theme-default"
+              @click-event="on_click_event"
+            >
+               <calendar-view-header
+                 slot="header"
+                 slot-scope="{ headerProps }"
+                 :header-props="headerProps"
+                 @input="change_period"
+               />
+            </calendar-view>
+         </client-only>
+      </div>
+      <div>
+         <b-modal centered ref="event_modal" hide-footer title="Touch Belgium event" title-tag="p">
+            <div v-if="this.selected_event">
+               <p class="h4">{{this.selected_event.title}}</p>
+               <p>
+                  <font-awesome-icon icon="calendar-day" />
+                  <span>{{formatted_datetime(this.selected_event)}} </span>
+               </p>
+               <p v-if="this.selected_event.location">
+                  <font-awesome-icon icon="map-marker-alt" />
+                  {{this.selected_event.location}}
+               </p>
+               <p>{{this.selected_event.description}}</p>
+               <b-button class="mt-3" variant="outline-secondary" block @click="on_click_close_modal">Close</b-button>
+            </div>
+         </b-modal>
 
-      <b-modal centered ref="event_modal" hide-footer title="Touch Belgium event">
-         <div v-if="this.selected_event">
-            <h4>{{this.selected_event.title}}</h4>
-            <p><span v-html="calendar_icon"></span><span>{{formatted_datetime(this.selected_event)}} </span></p>
-            <p v-if="this.selected_event.location"><span v-html="location_icon"></span> {{this.selected_event.location}}</p>
-            <p>{{this.selected_event.description}}</p>
-            <b-button class="mt-3" variant="outline-secondary" block @click="on_click_close_modal">Close</b-button>
-         </div>
-      </b-modal>
-
-      <b-alert show class="mt-3">Sync this calendar (iCal): <a class="text-break" href="https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics">https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics</a></b-alert>
+         <b-alert show class="mt-4">
+            Sync this calendar (iCal):
+            <a class="text-break" href="https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics">https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics</a>
+         </b-alert>
+      </div>
    </div>
 </template>
 
 <script>
  import { mapState, mapGetters, mapMutations } from "vuex";
- import octicons from "@primer/octicons";
  require("vue-simple-calendar/static/css/default.css");
 
  export default {
    data () {
      return {
-       locale: "en"
+       locale: "en",
+       error_message: null
      }
    },
-   async mounted () {
-     await this.$store.dispatch("calendar/fetch_events");
+   mounted () {
      const month_start = new Date();
+     /* TODO: comment this section on what change_period does */
      month_start.setDate(1);
      this.$store.dispatch("calendar/change_period", month_start);
    },
@@ -74,19 +86,27 @@
      ]),
      ...mapGetters("calendar", [
        "formatted_datetime"
-     ]),
-     calendar_icon () {
-       return octicons["calendar"].toSVG();
-     },
-     location_icon () {
-       return octicons["location"].toSVG();
-     }
+     ])
    },
    components: {
 
    }
  }
 </script>
+
+<!-- Global styles are able to take effect in calendar-view component -->
+<style lang="scss">
+ /* Make all same-month cells transparent */
+ .theme-default .cv-day.past {
+   background-color: transparent;
+   &.outsideOfMonth {
+     background-color: #fafafa;
+   }
+ }
+ .theme-default .cv-event.clickable_event {
+   cursor: pointer;
+ }
+</style>
 
 <style scoped lang="scss">
  @import "~assets/css/_custom-bootstrap-variables.scss";
@@ -95,7 +115,7 @@
    @media (min-width: map-get($grid-breakpoints, "xl")) {
      min-height: 700px;
    }
-   height: 70vh;
+   height: 60vh;
    display: flex;
    flex-direction: column;
    flex-grow: 1;
@@ -103,11 +123,5 @@
    color: #2c3e50;
    margin-left: auto;
    margin-right: auto;
-   padding-bottom: 5em;
-
  }
- .theme-default .cv-event.clickable_event {
-   cursor: pointer;
- }
-
 </style>

@@ -82,13 +82,10 @@
    },
    mounted () {
      /* try {
-      *   this.$Progress.start();
       *   await this.$store.dispatch("banner_pictures/fetch_banner_pictures");
       *   await this.$store.dispatch("competitions/fetch_competition_list");
-      *   this.$Progress.finish();
       * } catch (e) {
       *   this.error = true;
-      *   this.$Progress.fail();
       * } */
    },
    computed: {

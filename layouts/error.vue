@@ -1,22 +1,18 @@
 <template>
    <!-- The purpose of flex wrapper is to push the footer down when content is short -->
    <div class="flex-wrapper">
-      <FixedTBLogo />
       <navbar />
       <nuxt />
-      <foot />
    </div>
 </template>
 
 <script>
- import FixedTBLogo from "@/components/FixedTBLogo";
  import Navbar from "@/components/Navbar";
- import Foot from "@/components/Foot";
 
 
  export default {
    components: {
-     Navbar, Foot, FixedTBLogo
+     Navbar
    }
  }
 </script>

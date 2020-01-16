@@ -1,7 +1,7 @@
 <template>
    <header>
       <div class="overlay"></div>
-      <video poster="" id="bgvid" playsinline autoplay muted loop>
+      <video id="bgvid" playsinline autoplay muted loop>
          <source src="~assets/video/out-x265-2pass.mp4" type="video/H265">
          <source src="~assets/video/out-vp9-2pass.webm" type="video/webm">
          <source src="~assets/video/out-2pass.mp4" type="video/mp4">
@@ -84,11 +84,6 @@
      height: 100%;
      width: 100%;
      z-index: 1;
-   }
-   @media (pointer: coarse) and (hover: none) {
-     video {
-       display: none;
-     }
    }
    .overlay-button {
      font-weight: 500;

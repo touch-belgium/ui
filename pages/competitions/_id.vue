@@ -17,7 +17,8 @@
          <b-row>
             <b-col>
                <p>
-                  <span class="mr-2" v-html="milestone_icon"></span> <span class="align-middle">
+                  <!-- Add milestone icon -->
+                   <span class="align-middle">
                      {{competition.venue.name}}.
                      <span class="font-italic" v-if="competition.venue.address">
                         {{competition.venue.address}}
@@ -40,7 +41,6 @@
  import Category from "@/components/Category";
  import BannerPicture from "@/components/BannerPicture";
 
- import octicons from "@primer/octicons";
  import { mapState, mapGetters } from "vuex";
 
  export default {
@@ -58,24 +58,19 @@
 
      }
    },
-   async mounted () {
+   mounted () {
      /* try {
-      *   this.$Progress.start();
       *   await this.$store.dispatch("competitions/fetch_competition", this.$route.params.id);
-      *   this.$Progress.finish();
       * } catch (e) {
-      *   this.$Progress.fail();
       *   this.error = "Competition could not be retrieved";
-      * }
-      * console.log(this.competition); */
+        * }
+     */
+
    },
    computed: {
      ...mapState("competitions", [
        "competition"
-     ]),
-     milestone_icon () {
-       return octicons["milestone"].toSVG();
-     }
+     ])
    },
    components: {
      FixedTBLogo, Category, BannerPicture

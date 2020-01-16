@@ -32,10 +32,15 @@
 
      }
    },
+   head () {
+     return {
+       title: "Committee - Touch Belgium"
+     }
+   },
    methods: {
 
    },
-   async mounted () {
+   mounted () {
 
    },
    computed: {

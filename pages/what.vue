@@ -27,7 +27,7 @@
    },
    head () {
      return {
-       title: ""
+       title: "What is Touch ? - Touch Belgium"
      }
    },
    methods: {
