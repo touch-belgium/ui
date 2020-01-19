@@ -1,6 +1,7 @@
 <template>
    <b-container fluid class="p-0 mt-4">
       <b-carousel
+        no-hover-pause
         fade
         v-model="slide"
         :interval="4000"

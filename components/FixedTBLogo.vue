@@ -33,7 +33,7 @@
    -ms-transform: translate(-50%, -50%);
    transform: translate(-50%, -50%);
    width: 80vw;
-   opacity: 0.1;
+   opacity: 0.05;
    z-index: -100;
    @include media-breakpoint-up(sm) {
      width: 60vw;

@@ -82,7 +82,7 @@
    },
    head () {
      return {
-       title: "Where to play ?"
+       title: "Where to play ? - Touch Belgium"
      }
    },
    methods: {

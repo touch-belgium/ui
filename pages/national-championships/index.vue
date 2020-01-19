@@ -1,6 +1,6 @@
 <template>
    <div>
-      <carousel :pictures="tournaments_banner_pictures"></carousel>
+      <carousel :pictures="banner_pictures_of('championship')"></carousel>
       <b-container class="mt-5">
          <h1>Belgium National Championship</h1>
          <b-row v-if="championships.length" class="pb-4">
@@ -42,6 +42,14 @@
  import { mapGetters, mapState } from "vuex";
 
  export default {
+   async asyncData ({ store, error }) {
+     try {
+       await store.dispatch("banner_pictures/fetch_banner_pictures");
+       await store.dispatch("competitions/fetch_competition_list");
+     } catch (e) {
+       error({ statusCode: 404, message: "This page is currently unavailable" });
+     }
+   },
    data () {
      return {
        per_page: 5,
@@ -50,22 +58,18 @@
    },
    head () {
      return {
-       title: "National Championships"
+       title: "National Championships - Touch Belgium"
      }
    },
    methods: {
+
    },
-   async mounted () {
-     try {
-       await this.$store.dispatch("banner_pictures/fetch_banner_pictures");
-       await this.$store.dispatch("competitions/fetch_competition_list");
-     } catch (e) {
-       this.error = true;
-     }
+   mounted () {
+
    },
    computed: {
      ...mapGetters("banner_pictures", [
-       "tournaments_banner_pictures"
+       "banner_pictures_of"
      ]),
      ...mapGetters("competitions", [
        "championships",

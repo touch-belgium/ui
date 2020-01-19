@@ -34,6 +34,13 @@
  import { mapState } from "vuex";
 
  export default {
+   async asyncData ({ store, error }) {
+     try {
+       await store.dispatch("contacts/fetch_contacts");
+     } catch (e) {
+       error({ statusCode: 404, message: "This page is currently unavailable" });
+     }
+   },
    data () {
      return {
        error: null
@@ -49,12 +56,8 @@
        return `mailto:${email}`;
      }
    },
-   async mounted () {
-     try {
-       await this.$store.dispatch("contacts/fetch_contacts");
-     } catch (e) {
-       this.error = true;
-     }
+   mounted () {
+
    },
    computed: {
      ...mapState("contacts", [

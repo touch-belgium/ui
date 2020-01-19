@@ -126,12 +126,12 @@ export const getters = {
 export const actions = {
   async fetch_competition_list ({ state, commit }) {
     const url = "competitions";
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_competition_list", response);
   },
   async fetch_competition ({ state, commit }, id) {
     const url = `competitions/${id}`;
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_competition", response);
   }
 };

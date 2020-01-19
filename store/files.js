@@ -13,7 +13,7 @@ export const getters = {
     return state.files;
   },
   display_sponsorship_brochure (state, getters) {
-    return getters.sponsorship_files.find(f => f.file.includes("sponsorship-en"));
+    return getters.sponsorship_files.find(f => f.file.includes("sponsorship-booklet-en"));
   }
 };
 

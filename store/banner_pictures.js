@@ -3,17 +3,8 @@ export const state = () => ({
 });
 
 export const getters = {
-  referee_banner_pictures (state, getters) {
-    return state.banner_pictures.filter(f => f.tag.word === "referees");
-  },
-  sponsorship_banner_pictures (state, getters) {
-    return state.banner_pictures.filter(f => f.tag.word === "sponsorship");
-  },
-  tournaments_banner_pictures (state, getters) {
-    return state.banner_pictures.filter(f => f.tag.word === "tournaments");
-  },
-  banner_pictures (state, getters) {
-    return state.banner_pictures;
+  banner_pictures_of: (state, getters) => (tag_word) => {
+    return state.banner_pictures.filter(f => f.tag.word === tag_word);
   }
 };
 

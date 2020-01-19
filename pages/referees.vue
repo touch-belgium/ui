@@ -1,6 +1,6 @@
 <template>
    <div>
-      <carousel :pictures="referee_banner_pictures"></carousel>
+      <carousel :pictures="banner_pictures_of('referees')"></carousel>
       <b-container class="mt-3">
          <b-row>
             <b-col cols="12" lg="9">
@@ -202,7 +202,6 @@
                  src="https://www.youtube.com/embed/c5wNEgVDyBc"
                >
                </b-embed>
-               <iframe width="560" height="315" src="https://www.youtube.com/embed/c5wNEgVDyBc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                <p class="text-justify">
                   For any questions relating to referee resource
@@ -306,7 +305,7 @@
        await store.dispatch("files/fetch_files");
        await store.dispatch("links/fetch_links");
      } catch (e) {
-       error({ statusCode: 404, message: "This site is currently unavailable" });
+       error({ statusCode: 404, message: "This page is currently unavailable" });
      }
    },
    data () {
@@ -326,7 +325,7 @@
    },
    computed: {
      ...mapGetters("banner_pictures", [
-       "referee_banner_pictures"
+       "banner_pictures_of"
      ]),
      ...mapGetters("files", [
        "referee_files"

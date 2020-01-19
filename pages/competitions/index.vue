@@ -1,9 +1,20 @@
 <template>
    <div>
-      <carousel :pictures="tournaments_banner_pictures"></carousel>
-      <FixedTBLogo></FixedTBLogo>
+      <carousel :pictures="banner_pictures_of('domestic events')"></carousel>
       <b-container class="mt-5">
-         <h1>Competitions and tournaments</h1>
+         <h1>Touch Belgium competitions and tournaments</h1>
+
+         <p class="text-justify">
+            Playing Touch is one of the best ways to get involved,
+            learn the game and develop as a player.
+         </p>
+         <p class="text-justify">
+            Touch Belgium and its member clubs organise a number of
+            sporting and social events throughout the year. To see
+            what tournaments and events might interest you, click on
+            one of the items below:
+         </p>
+
 
          <b-row>
             <b-col class="my-4" cols="12" md="6" lg="4" xl="6">
@@ -61,15 +72,27 @@
 
 <script>
  import Carousel from "@/components/Carousel.vue";
- import FixedTBLogo from "@/components/FixedTBLogo.vue";
 
  import { mapGetters, mapState } from "vuex";
 
  export default {
+   async asyncData ({ store, error }) {
+     try {
+       await store.dispatch("banner_pictures/fetch_banner_pictures");
+       await store.dispatch("competitions/fetch_competition_list");
+     } catch (e) {
+       error({ statusCode: 404, message: "This page is currently unavailable" });
+     }
+   },
    data () {
      return {
        per_page: 5,
        error: null
+     }
+   },
+   head () {
+     return {
+       title: "Competitions - Touch Belgium"
      }
    },
    methods: {
@@ -81,12 +104,7 @@
      }
    },
    mounted () {
-     /* try {
-      *   await this.$store.dispatch("banner_pictures/fetch_banner_pictures");
-      *   await this.$store.dispatch("competitions/fetch_competition_list");
-      * } catch (e) {
-      *   this.error = true;
-      * } */
+
    },
    computed: {
      ...mapState("competitions", [
@@ -94,7 +112,7 @@
        "search_competition_box"
      ]),
      ...mapGetters("banner_pictures", [
-       "tournaments_banner_pictures"
+       "banner_pictures_of"
      ]),
      ...mapGetters("competitions", [
        "other_competitions",
@@ -103,14 +121,11 @@
        "n_total_shown"
      ])
    },
-   components: { Carousel, FixedTBLogo }
+   components: { Carousel }
  }
 
 </script>
 
-<style module lang="scss">
- .v-rating .v-icon {
-   padding: 0;
-   font-size: 18px;
- }
+<style scoped lang="scss">
+
 </style>

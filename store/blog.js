@@ -34,22 +34,22 @@ export const getters = {
 export const actions = {
   async fetch_recent_posts ({ state, commit }) {
     const url = "posts/recent";
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_posts", response);
   },
   async fetch_posts ({ state, commit }) {
     const url = "posts";
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_posts", response);
   },
   async fetch_post ({ state, commit }, id) {
     const url = `posts/${id}/`;
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_post", response);
   },
   async fetch_tags ({ state, commit }) {
     const url = "tags";
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_tags", response);
   },
   select_tag ({ state, commit }, tag_word) {

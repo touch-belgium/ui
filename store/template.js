@@ -11,7 +11,7 @@ export const getters = {
 export const actions = {
   async fetch_contacts ({ state, commit }) {
     const url = "contacts";
-    const response = await api.get(url).json();
+    const response = await this.$axios.$get(url);
     commit("set_contacts", response);
   }
 };
