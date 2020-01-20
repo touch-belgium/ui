@@ -310,7 +310,7 @@
    },
    data () {
      return {
-       error: null
+
      }
    },
    head () {
@@ -319,6 +319,7 @@
      }
    },
    methods: {
+
    },
    mounted () {
 
@@ -349,10 +350,6 @@
 
  .sticky-top {
    top: $nav-link-height + 4rem;
- }
-
- .white_icon {
-   fill: white;
  }
 
  .ref_pic_square {

@@ -39,7 +39,7 @@
                <p class="text-justify">
                   Junior players are welcome at all of the Belgian Touch
                   clubs. For a list of opportunities to play in Belgium,
-                  see our <nuxt-link :to="{ name: 'where' }">'Where to play' section </nuxt-link>.
+                  see our <nuxt-link :to="{ name: 'teams' }">'Where to play' section </nuxt-link>.
                </p>
                </p>
             </b-col>

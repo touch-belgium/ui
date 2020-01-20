@@ -17,7 +17,7 @@
             >
                <b-dropdown-item :to="{ name: 'national-championships' }">National championship</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'competitions' }">Touch Belgium competitions</b-dropdown-item>
-               <b-dropdown-item v-show="false">International competitions</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'international-events' }">International events</b-dropdown-item>
                <b-dropdown-divider></b-dropdown-divider>
                <b-dropdown-item :to="{ name: 'calendar' }">Calendar</b-dropdown-item>
             </b-nav-item-dropdown>
@@ -26,7 +26,7 @@
               text="Get Involved"
               class="m-0"
             >
-               <b-dropdown-item :to="{ name: 'where' }">Where to play ?</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'teams' }">Where to play ?</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'referees' }">Referees</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'coaching' }">Coaches</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'national-teams' }">National teams</b-dropdown-item>
@@ -39,7 +39,7 @@
               class="m-0"
             >
                <b-dropdown-item href="#">What is Touch ?</b-dropdown-item>
-               <b-dropdown-item :to="{ name: 'where' }">Where to play ?</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'teams' }">Where to play ?</b-dropdown-item>
                <b-dropdown-item href="#">Training/courses</b-dropdown-item>
                <b-dropdown-item href="#">Rules and regulations</b-dropdown-item>
             </b-nav-item-dropdown>
@@ -50,7 +50,7 @@
               text="Touch Belgium"
               class="m-0"
             >
-               <b-dropdown-item :to="{ name: 'where' }">Members</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'teams' }">Members</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'become-a-member' }">Become a member</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'committee' }">Committee</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'agm' }">AGM</b-dropdown-item>

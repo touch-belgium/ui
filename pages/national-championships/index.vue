@@ -3,6 +3,22 @@
       <carousel :pictures="banner_pictures_of('championship')"></carousel>
       <b-container class="mt-5">
          <h1>Belgium National Championship</h1>
+         <b-row>
+            <b-col>
+               <p class="text-justify">
+                  Every year each club in Belgium competes for the
+                  title of national champion. Held over four days
+                  throughout the year and at different locations
+                  across Flanders, Wallonia and Brussels, the
+                  2019-2020 national championship will be played in a
+                  league format. The overall winner will be announced
+                  at the end of the final leg in June.
+               </p>
+               <p class="text-justify">
+                  The current national champion is Boitsfort.
+               </p>
+            </b-col>
+         </b-row>
          <b-row v-if="championships.length" class="pb-4">
             <b-col>
                <b-list-group>
@@ -68,6 +84,9 @@
 
    },
    computed: {
+     ...mapGetters("teams", [
+       "current_champion"
+     ]),
      ...mapGetters("banner_pictures", [
        "banner_pictures_of"
      ]),

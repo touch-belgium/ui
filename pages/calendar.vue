@@ -24,7 +24,7 @@
      try {
        await store.dispatch("calendar/fetch_events");
      } catch (e) {
-       return { error_message: "Network error" };
+       error({ statusCode: 404, message: "This page is currently unavailable" });
      }
    },
    data () {

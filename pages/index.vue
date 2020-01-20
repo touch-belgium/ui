@@ -46,10 +46,20 @@
          <b-container>
             <b-row>
                <b-col cols="12">
-                  <h2 class="display-4 creo-font mb-5">
+                  <h2 class="display-4 creo-font mb-2">
                      <font-awesome-icon icon="trophy" />
                      Upcoming tournaments
                   </h2>
+                  <p class="text-justify">
+                     Playing Touch is one of the best ways to get involved,
+                     learn the game and develop as a player.
+                  </p>
+                  <p class="text-justify">
+                     Touch Belgium and its member clubs organise a
+                     number of sporting and social events throughout
+                     the year. Check out the upcoming tournaments
+                     below and click on them to find out more:
+                  </p>
                </b-col>
             </b-row>
             <b-row>

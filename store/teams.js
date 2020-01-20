@@ -8,7 +8,11 @@ export const state = () => ({
 
 export const getters = {
   team_coordinates: (state, getters) => (team) => [team.lat, team.lng],
-  team_page_url: (state, getters) => (team) => `teams/${slugify(team.name)},${team.id}`
+  team_page_url: (state, getters) => (team) => `teams/${slugify(team.name)},${team.id}`,
+  current_champion (state, getters) {
+    // TODO: FIXME: this is just a dummy implementation.
+    return state.belgian_teams.find(t => t.name == "Boitsfort");
+  }
 };
 
 export const actions = {

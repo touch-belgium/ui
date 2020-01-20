@@ -138,7 +138,7 @@
                  header-text-variant="white"
                >
                   <template slot="header">
-                     <span class="mr-2" v-html="info_icon"></span> Tip !
+                     <font-awesome-icon icon="info-circle" /> Tip !
                   </template>
                   <b-card-text>
                      The coaching community in Belgium exists to help
@@ -177,33 +177,45 @@
 </template>
 
 <script>
- import FixedTBLogo from "../components/FixedTBLogo.vue";
-
  import { mapGetters, mapState } from "vuex";
 
+ import Carousel from "@/components/Carousel";
+
  export default {
+   async asyncData ({ store, error }) {
+     try {
+       await store.dispatch("banner_pictures/fetch_banner_pictures");
+       await store.dispatch("members/fetch_coaches");
+       await store.dispatch("files/fetch_files");
+       await store.dispatch("links/fetch_links");
+     } catch (e) {
+       error({ statusCode: 404, message: "This page is currently unavailable" });
+     }
+   },
    data () {
      return {
 
+     }
+   },
+   head () {
+     return {
+       title: "Coaching - Touch Belgium"
      }
    },
    methods: {
 
    },
    mounted () {
-     /* try {
-      *   await this.$store.dispatch("members/fetch_coaches")
-      *   await this.$store.dispatch("files/fetch_files");
-      * } catch (e) {
-      *   this.error = true;
-      * } */
+
    },
    computed: {
      ...mapGetters("files", [
        "coaching_files"
      ])
    },
-   components: { FixedTBLogo }
+   components: {
+     Carousel
+   }
  }
 </script>
 

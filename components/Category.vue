@@ -69,7 +69,8 @@
    data () {
      return {
        error: null,
-       selected_team: null
+       selected_team: null,
+       select_team_box: null/* FIX: que es esto */
      }
    },
    methods: {

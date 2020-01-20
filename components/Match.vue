@@ -7,8 +7,8 @@
    >
       <b-row no-gutters>
          <b-col class="match_info_left" cols="12" md="4">
-            <p><span>{{info.when | moment("dddd Do MMMM YYYY")}}</span></p>
-               <p><span>{{info.when | moment("HH:mm")}}</span></p>
+            <p><span>{{ $moment(info.when).format("dddd Do MMMM YYYY") }}</span></p>
+               <p><span>{{ $moment(info.when).format("HH:mm") }}</span></p>
                <p><span>Ref(s): {{info.refs}}</span></p>
                <p><span>Pitch: {{info.pitch}}</span></p>
          </b-col>

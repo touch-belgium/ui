@@ -5,16 +5,66 @@
          <h1>Touch Belgium competitions and tournaments</h1>
 
          <p class="text-justify">
-            Playing Touch is one of the best ways to get involved,
-            learn the game and develop as a player.
+            From one day tournaments to six-week social competitions,
+            there are plenty of opportunities to play touch throughout
+            the year!
          </p>
          <p class="text-justify">
-            Touch Belgium and its member clubs organise a number of
-            sporting and social events throughout the year. To see
-            what tournaments and events might interest you, click on
-            one of the items below:
+            The next tournament to be held in Belgium will be the
+            Winter Thaw tournament, taking place on Saturday 21st
+            March.
          </p>
-
+         <h3>
+            Brussels Men's and Women's International - BMWI
+         </h3>
+         <p class="text-justify">
+            Belgium's biggest international tournament! Welcoming
+            teams from across Europe, and played according to
+            international rules, it is one of the few men's and
+            women's competitive level tournaments held on an annual
+            basis.
+         </p>
+         <h3>
+            Winter Thaw
+         </h3>
+         <p class="text-justify">
+            Winter Thaw is a purely social tournament designed to give
+            new and experienced players alike the opportunity to enjoy
+            a fun afternoon playing touch. As the name suggests, it is
+            held in the first few months of the year to help ease
+            players out of the winter with a social tournament! Teams
+            are created on the day from individual subscriptions, so
+            it's a perfect opportunity to play with players from other
+            clubs.
+         </p>
+         <h3>
+            Spring Into Touch
+         </h3>
+         <p class="text-justify">
+            Spring Into Touch is a summer league, aimed specifically
+            at allowing new players to discover the sport and played
+            for fun! Teams play two games per week over six weeks,
+            every Wednesday from May to June. Burgers and beer are
+            waiting for all players at the end of every evening.
+         </p>
+         <p class="text-justify">
+            Experienced and new players are welcome! Bring your
+            friends, bring your colleagues, sign up your own team, or
+            join an existing team to participate in Spring Into Touch.
+         </p>
+         <h3>
+            St Nicolas
+         </h3>
+         <p class="text-justify">
+            Want to play some festive Touch? St Nicolas is a one-day
+            social tournament, that takes place at the beginning of
+            December, around the festival of St Nicolas.
+         </p>
+         <p class="text-justify">
+            All teams are welcome to join. With a great atmosphere,
+            plenty of Touch to play to keep everyone warm and a fun
+            and friendly after party, this is one not to be missed.
+         </p>
 
          <b-row>
             <b-col class="my-4" cols="12" md="6" lg="4" xl="6">
@@ -66,12 +116,27 @@
                </b-alert>
             </b-col>
          </b-row>
+
+         <b-row>
+            <b-col cols="12">
+               <h2 class="creo-font">
+                  <font-awesome-icon icon="calendar-alt" />
+                  Full calendar
+               </h2>
+            </b-col>
+         </b-row>
+         <b-row>
+            <b-col>
+               <calendar></calendar>
+            </b-col>
+         </b-row>
       </b-container>
    </div>
 </template>
 
 <script>
- import Carousel from "@/components/Carousel.vue";
+ import Carousel from "@/components/Carousel";
+ import Calendar from "@/components/Calendar";
 
  import { mapGetters, mapState } from "vuex";
 
@@ -80,6 +145,7 @@
      try {
        await store.dispatch("banner_pictures/fetch_banner_pictures");
        await store.dispatch("competitions/fetch_competition_list");
+       await store.dispatch("calendar/fetch_events");
      } catch (e) {
        error({ statusCode: 404, message: "This page is currently unavailable" });
      }
@@ -121,7 +187,9 @@
        "n_total_shown"
      ])
    },
-   components: { Carousel }
+   components: {
+     Carousel, Calendar
+   }
  }
 
 </script>

@@ -8,7 +8,7 @@
         @sliding-start="onSlideStart"
         @sliding-end="onSlideEnd"
       >
-         <b-carousel-slide class="banner_container"
+         <b-carousel-slide v-if="picture" class="banner_container"
                            :img-src="picture"
          ></b-carousel-slide>
       </b-carousel>
