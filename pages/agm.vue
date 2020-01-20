@@ -30,10 +30,15 @@
 
      }
    },
+   head () {
+     return {
+       title: "AGM - Touch Belgium"
+     }
+   },
    methods: {
 
    },
-   async mounted () {
+   mounted () {
 
    },
    computed: {
@@ -42,5 +47,5 @@
  }
 </script>
 
-<style module lang="scss">
+<style scoped lang="scss">
 </style>
