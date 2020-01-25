@@ -53,22 +53,44 @@ export const state = () => ({
 });
 
 export const getters = {
-  other_competitions (state, getters) {
+  competitions (state, getters) {
     return state.competitions.filter(c => !c.belgian_championship);
+  },
+  ongoing_competitions (state, getters) {
+    return getters.competitions.filter(c => new Date(c.start_date) < new Date() &&
+                                       new Date(c.end_date) > new Date());
+  },
+  upcoming_competitions (state, getters) {
+    return getters.competitions.filter(c => new Date(c.start_date) > new Date()).sort((a, b) => {
+      return new Date(a.start_date) < new Date(b.start_date) ? -1 : 1;
+    });
+  },
+  past_competitions (state, getters) {
+    return getters.competitions.filter(c => new Date(c.end_date) < new Date());
   },
   championships (state, getters) {
     return state.competitions.filter(c => c.belgian_championship);
   },
-  filtered_competitions (state, getters) {
-    const patt = new RegExp(state.search_competition_box, "i");
-    return getters.other_competitions.filter(c => patt.test(c.name));
+  ongoing_championships (state, getters) {
+    return getters.championships.filter(c => new Date(c.start_date) < new Date() &&
+                                        new Date(c.end_date) > new Date());
   },
-  paginated_competitions (state, getters) {
-    return getters.filtered_competitions.slice(0, state.max_shown);
+  upcoming_championships (state, getters) {
+    return getters.championships.filter(c => new Date(c.start_date) > new Date());
   },
-  n_total_shown (state, getters) {
-    return getters.paginated_competitions.length;
+  past_championships (state, getters) {
+    return getters.championships.filter(c => new Date(c.end_date) < new Date());
   },
+  // filtered_competitions (state, getters) {
+  //   const patt = new RegExp(state.search_competition_box, "i");
+  //   return getters.other_competitions.filter(c => patt.test(c.name));
+  // },
+  // paginated_competitions (state, getters) {
+  //   return getters.filtered_competitions.slice(0, state.max_shown);
+  // },
+  // n_total_shown (state, getters) {
+  //   return getters.paginated_competitions.length;
+  // },
   teams (state, getters) {
     let s = new Set();
     for (let match of state.matches) {
@@ -89,17 +111,17 @@ export const getters = {
   away_td: (state, getters) => (acc, cur, idx, src) => acc + cur.away_touchdowns,
   team_name_to_row: (state, getters) => name => {
     const wins = getters.home_matches(name).reduce(getters.home_wins, 0)
-        + getters.away_matches(name).reduce(getters.away_wins, 0);
+          + getters.away_matches(name).reduce(getters.away_wins, 0);
     const loses = getters.home_matches(name).reduce(getters.away_wins, 0)
-        + getters.away_matches(name).reduce(getters.home_wins, 0);
+          + getters.away_matches(name).reduce(getters.home_wins, 0);
     const ties = getters.relevant_matches(name).reduce(getters.ties, 0);
     const played = wins + loses + ties;
     // const bonus = getters.home_matches(name).reduce(getters.home_bonus, 0)
     //     + getters.away_matches(name).reduce(getters.away_bonus, 0);
     const tf = getters.home_matches(name).reduce(getters.home_td, 0)
-        + getters.away_matches(name).reduce(getters.away_td, 0);
+          + getters.away_matches(name).reduce(getters.away_td, 0);
     const ta = getters.home_matches(name).reduce(getters.away_td, 0)
-        + getters.away_matches(name).reduce(getters.home_td, 0);
+          + getters.away_matches(name).reduce(getters.home_td, 0);
     return {team: name,
             points: wins * state.competition.win_value +
             ties * state.competition.tie_value +

@@ -1,10 +1,7 @@
 <template>
-   <b-card
-     border-variant="dark"
-     header-border-variant="dark"
-   >
+   <b-card>
       <template v-slot:header>
-         <p class="h4">Upcoming events</p>
+         <p class="h4">Past events</p>
       </template>
       <b-list-group>
          <b-list-group-item
@@ -14,7 +11,7 @@
          >
             <p class="h5">{{ comp.name }}</p>
             <p>{{ comp.short_description }}</p>
-            <small class="d-block">Starts: {{ $moment(comp.start_date).fromNow() }}</small>
+            <small class="d-block">Ended: {{ $moment(comp.end_date).fromNow() }}</small>
          </b-list-group-item>
       </b-list-group>
    </b-card>

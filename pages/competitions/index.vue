@@ -68,32 +68,24 @@
 
          <hr />
 
-         <b-row v-show="false">
-            <b-col class="my-4" cols="12" md="6" lg="4" xl="6">
-               <b-form-input
-                 label="Competition name"
-                 placeholder="Start typing to narrow down the results"
-                 browser-autocomplete="off"
-                 @input="on_type_search_box"
-                 :value="search_competition_box"
-               ></b-form-input>
-            </b-col>
-         </b-row>
-
-
-         <b-row v-if="n_total_shown" class="pb-4">
+         <b-row v-if="ongoing_competitions.length" class="pb-4">
             <b-col>
-               <competition-list :competitions="paginated_competitions" />
+               <ongoing-events :competitions="ongoing_competitions" />
             </b-col>
          </b-row>
 
-         <b-row v-if="n_total_shown == 0">
+         <b-row v-if="upcoming_competitions.length" class="pb-4">
             <b-col>
-               <b-alert show variant="warning">
-                  No competitions to show
-               </b-alert>
+               <upcoming-events :competitions="upcoming_competitions" />
             </b-col>
          </b-row>
+
+         <b-row v-if="past_competitions.length" class="pb-4">
+            <b-col>
+               <past-events :competitions="past_competitions" />
+            </b-col>
+         </b-row>
+
 
          <b-row>
             <b-col cols="12">
@@ -115,7 +107,9 @@
 <script>
  import Carousel from "@/components/Carousel";
  import Calendar from "@/components/Calendar";
- import CompetitionList from "@/components/CompetitionList";
+ import OngoingEvents from "@/components/OngoingEvents";
+ import UpcomingEvents from "@/components/UpcomingEvents";
+ import PastEvents from "@/components/PastEvents";
 
  import { mapGetters, mapState } from "vuex";
 
@@ -160,14 +154,14 @@
        "banner_pictures_of"
      ]),
      ...mapGetters("competitions", [
-       "other_competitions",
-       "filtered_competitions",
-       "paginated_competitions",
-       "n_total_shown"
+       "competitions",
+       "ongoing_competitions",
+       "upcoming_competitions",
+       "past_competitions"
      ])
    },
    components: {
-     Carousel, Calendar, CompetitionList
+     Carousel, Calendar, OngoingEvents, UpcomingEvents, PastEvents
    }
  }
 

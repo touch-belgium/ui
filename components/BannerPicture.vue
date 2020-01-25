@@ -46,7 +46,7 @@
  .banner_container {
    height: 25vw;
    @include media-breakpoint-down(md) {
-     height: 60vw;
+     height: 30vw;
    }
  }
 </style>

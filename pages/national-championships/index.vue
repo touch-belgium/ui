@@ -35,17 +35,21 @@
             </b-row>
          </client-only>
 
-         <b-row v-if="championships.length" class="pb-4">
+         <b-row v-if="ongoing_championships.length" class="pb-4">
             <b-col>
-               <competition-list :competitions="championships" />
+               <ongoing-events :competitions="ongoing_championships" />
             </b-col>
          </b-row>
 
-         <b-row v-if="error">
-            <b-col cols="12">
-               <b-alert show variant="warning">
-                  Competitions could not be retrieved
-               </b-alert>
+         <b-row v-if="upcoming_championships.length" class="pb-4">
+            <b-col>
+               <upcoming-events :competitions="upcoming_championships" />
+            </b-col>
+         </b-row>
+
+         <b-row v-if="past_championships.length" class="pb-4">
+            <b-col>
+               <past-events :competitions="past_championships" />
             </b-col>
          </b-row>
 
@@ -62,7 +66,9 @@
 
 <script>
  import Carousel from "@/components/Carousel";
- import CompetitionList from "@/components/CompetitionList";
+ import OngoingEvents from "@/components/OngoingEvents";
+ import UpcomingEvents from "@/components/UpcomingEvents";
+ import PastEvents from "@/components/PastEvents";
 
  import { mapGetters, mapState } from "vuex";
 
@@ -107,10 +113,13 @@
      ]),
      ...mapGetters("competitions", [
        "championships",
+       "ongoing_championships",
+       "upcoming_championships",
+       "past_championships"
      ])
    },
    components: {
-     Carousel, CompetitionList
+     Carousel, OngoingEvents, UpcomingEvents, PastEvents
    }
  }
 </script>

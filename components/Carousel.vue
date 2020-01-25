@@ -49,6 +49,5 @@
    @include media-breakpoint-down(md) {
      height: 30vw;
    }
-
  }
 </style>
