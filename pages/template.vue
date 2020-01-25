@@ -17,7 +17,7 @@
 
 <script>
  export default {
-   async asyncData() {
+   async asyncData({ params, axios, error }) {
 
    },
    data () {
@@ -27,7 +27,7 @@
    },
    head () {
      return {
-       title: ""
+       title: "Touch Belgium"
      }
    },
    methods: {
@@ -37,6 +37,9 @@
 
    },
    computed: {
+
+   },
+   components: {
 
    }
  }

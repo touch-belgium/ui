@@ -82,16 +82,16 @@
  import VideoOverlay from "@/components/VideoOverlay";
 
  export default {
-   async asyncData ({ store }) {
+   async asyncData ({ store, error }) {
      try {
        /* News */
-
+       await store.dispatch("blog/fetch_posts");
        /* Calendar */
        await store.dispatch("calendar/fetch_events");
        /* Tournaments */
 
      } catch (e) {
-       return { error_message: "Network error" };
+       error({ statusCode: 404, message: "This page is currently unavailable" });
      }
    },
    data () {
@@ -101,7 +101,7 @@
    },
    head () {
      return {
-       title: "Touch Belgium"
+       title: "Home - Touch Belgium"
      }
    },
    computed: {

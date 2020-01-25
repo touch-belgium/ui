@@ -1,41 +1,12 @@
 <template>
-   <b-container class="mt-5">
+   <b-container class="mt-3">
       <b-row>
-         <b-col cols="12">
-            <p>Sort by tag:</p>
-            <b-button v-for="tag in tags"
-                      pill
-                      :key="tag.id"
-                      :ref="tag.word"
-                      class="mr-2 mb-3"
-                      :class="{ selectable_blog_tag: !tag_selected(tag.word) }"
-                      variant="outline-primary"
-                      @click="tag_click_handler(tag.word)"
-            >
-               <!-- TODO: Add fontawesome icon -->
-            </b-button>
-         </b-col>
-      </b-row>
-
-      <b-row>
-         <b-col v-if="error" cols="12">
-            <b-alert show variant="warning">Posts could not be retrieved.</b-alert>
-         </b-col>
-
          <b-col v-if="filtered_posts != null && !filtered_posts.length" cols="12">
             <b-alert show variant="info">No posts to show.</b-alert>
          </b-col>
 
          <b-col md="4" v-for="post in posts" :key="post.id" class="mb-4">
-            <PostCard
-              v-bind:iden="post.id"
-              v-bind:title="post.title"
-              v-bind:body="post.body"
-              v-bind:picture="post.picture"
-              v-bind:created_at="post.created_at"
-              v-bind:author="post.author"
-              v-bind:tags="post.tags"
-            ></PostCard>
+            <post-card :post="post" />
          </b-col>
       </b-row>
    </b-container>
@@ -47,12 +18,16 @@
  import PostCard from "@/components/PostCard.vue";
 
  export default {
-   async asyncData ({ $axios }) {
-     return { eso: 1 };
+   async asyncData ({ store, error }) {
+     try {
+       await store.dispatch("blog/fetch_posts");
+     } catch (e) {
+       error({ statusCode: 404, message: "This page is currently unavailable" });
+     }
    },
    data () {
      return {
-       error: null
+
      }
    },
    head () {
@@ -85,7 +60,12 @@
       * }) */
    },
    computed: {
-
+     ...mapState("blog", [
+       "posts"
+     ]),
+     ...mapGetters("blog", [
+       "filtered_posts"
+     ])
    },
    components: {
      PostCard
