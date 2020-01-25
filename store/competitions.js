@@ -138,7 +138,8 @@ export const actions = {
 
 export const mutations = {
   set_competition_list (state, competitions) {
-    state.competitions = competitions.map(comp => {return {...comp, router: `competitions/${slugify(comp.name)},${comp.id}`};});
+    // Save competitions and augment with router path
+    state.competitions = competitions.map(comp => {return {...comp, router: `competitions/${comp.id}/${slugify(comp.name)}`};});
   },
   set_competition (state, competition) {
     state.competition = competition;

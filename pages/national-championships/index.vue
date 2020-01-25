@@ -19,6 +19,22 @@
                </p>
             </b-col>
          </b-row>
+
+         <client-only>
+            <b-row class="mb-4">
+               <b-col>
+                  <v-gallery :images="images" :index="index" @close="index = null"/>
+                  <div
+                    class="vue-gallery-image"
+                    v-for="(image, imageIndex) in images"
+                    :key="imageIndex"
+                    @click="index = imageIndex"
+                    :style="{ backgroundImage: 'url(' + image + ')', width: '300px', height: '200px' }"
+                  ></div>
+               </b-col>
+            </b-row>
+         </client-only>
+
          <b-row v-if="championships.length" class="pb-4">
             <b-col>
                <b-list-group>
@@ -27,7 +43,10 @@
                     :key="champ.id"
                     :to="{ path: champ.router }"
                   >
-                     {{champ.name}}
+                     <h5>{{ champ.name }}</h5>
+                     <p>{{ champ.short_description }}</p>
+                     <small class="d-block">Start: {{ $moment(champ.start_date).fromNow() }}</small>
+                     <small class="d-block">End: {{ $moment(champ.end_date).fromNow() }}</small>
                   </b-list-group-item>
                </b-list-group>
             </b-col>
@@ -58,10 +77,12 @@
  import { mapGetters, mapState } from "vuex";
 
  export default {
-   async asyncData ({ store, error }) {
+   async asyncData ({ $axios, store, error }) {
      try {
        await store.dispatch("banner_pictures/fetch_banner_pictures");
        await store.dispatch("competitions/fetch_competition_list");
+       const pictures = await $axios.$get("pictures");
+       return { pictures }
      } catch (e) {
        error({ statusCode: 404, message: "This page is currently unavailable" });
      }
@@ -69,7 +90,8 @@
    data () {
      return {
        per_page: 5,
-       error: null
+       error: null,
+       index: null
      }
    },
    head () {
@@ -84,6 +106,9 @@
 
    },
    computed: {
+     images () {
+       return this.pictures.map(p => p.picture);
+     },
      ...mapGetters("teams", [
        "current_champion"
      ]),

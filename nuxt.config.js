@@ -32,14 +32,10 @@ export default {
   */
   plugins: [
     // https://github.com/richardtallent/vue-simple-calendar/issues/132
-    {
-      src: "~/plugins/calendar-view.client.js",
-      mode: "client"
-    },
-    {
-      src: "~/plugins/calendar-view-header.client.js",
-      mode: "client"
-    }
+    "~/plugins/calendar-view.client.js",
+    "~/plugins/calendar-view-header.client.js",
+    // Vue gallery: https://github.com/RobinCK/vue-gallery
+    "~plugins/vue-gallery.client.js"
   ],
   /*
   ** Nuxt.js dev-modules

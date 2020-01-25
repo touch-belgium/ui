@@ -43,7 +43,13 @@
 </script>
 
 <style scoped lang="scss">
+ @import "~assets/css/custom-bootstrap-variables";
+ @import "~bootstrap/scss/mixins";
+
  .banner_container {
    height: 25vw;
+   @include media-breakpoint-down(md) {
+     height: 60vw;
+   }
  }
 </style>

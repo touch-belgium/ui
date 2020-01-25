@@ -47,3 +47,15 @@ body {
 .block-with-text {
     @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3);
 }
+
+
+/* Vue Gallery global css */
+.vue-gallery-image {
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid #ebebeb;
+    margin: 5px;
+    cursor: pointer;
+}

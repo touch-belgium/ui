@@ -5,6 +5,7 @@
      header="Competition match"
      header-tag="header"
    >
+      <b-badge v-show="false" variant="danger">LIVE</b-badge>
       <b-row no-gutters>
          <b-col class="match_info_left" cols="12" md="4">
             <p><span>{{ $moment(info.when).format("dddd Do MMMM YYYY") }}</span></p>

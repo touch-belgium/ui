@@ -4,7 +4,7 @@
       <b-container class="mt-3">
          <b-row>
             <b-col>
-               <h1 class="display-4" v-if="competition">{{competition.name}}</h1>
+               <h1 class="display-4" v-if="competition">{{ competition.name }}</h1>
             </b-col>
          </b-row>
          <b-row>
@@ -12,9 +12,9 @@
                <p>
                   <!-- Add milestone icon -->
                   <span class="align-middle">
-                     {{competition.venue.name}}.
+                     {{ competition.venue.name }}.
                      <span class="font-italic" v-if="competition.venue.address">
-                        {{competition.venue.address}}
+                        {{ competition.venue.address }}
                      </span>
                   </span>
                </p>
