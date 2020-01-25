@@ -220,8 +220,6 @@
 </script>
 
 <style scoped lang="scss">
- @import "~assets/css/custom-bootstrap-variables";
-
  .sticky-top {
    top: $nav-link-height + 4rem;
  }

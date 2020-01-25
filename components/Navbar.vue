@@ -38,10 +38,10 @@
               text="About Touch"
               class="m-0"
             >
-               <b-dropdown-item href="#">What is Touch ?</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'what' }">What is Touch ?</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'teams' }">Where to play ?</b-dropdown-item>
-               <b-dropdown-item href="#">Training/courses</b-dropdown-item>
-               <b-dropdown-item href="#">Rules and regulations</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'training' }">Training/courses</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'rules' }">Rules and regulations</b-dropdown-item>
             </b-nav-item-dropdown>
 
             <b-nav-item class="m-0" :to="{ name: 'sponsorship' }">Sponsorship</b-nav-item>
@@ -139,19 +139,6 @@
 </script>
 
 <style scoped lang="scss">
- @import "~assets/css/custom-bootstrap-variables";
- @import "~assets/css/custom-color-variables";
- @import "~bootstrap/scss/mixins";
-
-
- .v-list a {
-   color: #000;
-   text-decoration: none;
-   &.router-link-active {
-     color: red;
-   }
- }
-
  .navbar {
    .navbar-logo {
      height: 40px;

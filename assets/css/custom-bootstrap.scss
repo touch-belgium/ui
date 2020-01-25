@@ -1,0 +1,11 @@
+// Custom Bootstrap variable overrides go first
+/*
+   Checkout
+   https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss
+   to see the variables
+*/
+$enable-responsive-font-sizes:                true !default;
+
+// Then include the following
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-vue/src/index.scss';

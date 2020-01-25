@@ -20,7 +20,7 @@
                </p>
                <ul>
                   <li>
-                     Providing 'An introduction to Touch' sessions that
+                     Providing '<em>An introduction to Touch</em>' sessions that
                      enable players to have a taste of the sport, and
                      understand the basics of the game
                   </li>

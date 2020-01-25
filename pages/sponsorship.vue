@@ -34,9 +34,6 @@
             </p>
 
             <b-list-group class="mb-3">
-               <b-list-group-item  v-if="error_message" variant="warning">
-                  {{ error_message }}
-               </b-list-group-item>
                <b-list-group-item v-for="doc in sponsorship_files" :key="doc.title">
                   <a target="_blank" :href="doc.file">{{doc.title}}</a>
                </b-list-group-item>
@@ -65,12 +62,12 @@
      try {
        await store.dispatch("files/fetch_files");
      } catch (e) {
-       return { error_message: "Sponsorship files could not be retrieved" };
+       error({ statusCode: 404, message: "This page is currently unavailable" });
      }
    },
    data () {
      return {
-       error_message: null
+
      }
    },
    head () {

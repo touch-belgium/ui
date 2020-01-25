@@ -97,15 +97,6 @@
 </script>
 
 <style scoped lang="scss">
- /* Import mixins (and dependencies) */
- @import "~bootstrap/scss/functions";
- @import "~assets/css/_custom-bootstrap-variables";
- @import "~bootstrap/scss/mixins/_breakpoints";
-
- /* This custom imports must come after the mixin import */
- @import "~assets/css/custom-color-variables";
-
-
  .footer {
    a {
      color: white;

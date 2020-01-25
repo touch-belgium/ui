@@ -87,6 +87,7 @@
                  class="mb-3"
                >
                   <template slot="header">
+                     <font-awesome-icon icon="exclamation-circle" />
                      <span class="mr-2" v-html="info_icon"></span> Please note
                   </template>
                   <b-card-text>

@@ -33,6 +33,16 @@
                   supporting the national teams in any way, email
                   <a href="mailto:president@touch-belgium.be">president@touch-belgium.be</a>.
                </p>
+
+               <p class="text-justify">
+                  For sponsorship opportunities, check out our sponsorship brochure below:
+               </p>
+               <b-row v-if="display_sponsorship_brochure" class="mb-5">
+                  <b-embed
+                    type="iframe"
+                    :src="display_sponsorship_brochure.file">
+                  </b-embed>
+               </b-row>
             </b-col>
          </b-row>
       </b-container>
@@ -48,6 +58,7 @@
    async asyncData ({ store, error }) {
      try {
        await store.dispatch("banner_pictures/fetch_banner_pictures");
+       await store.dispatch("files/fetch_files");
      } catch (e) {
        error({ statusCode: 404, message: "This page is currently unavailable" });
      }
@@ -71,6 +82,10 @@
    computed: {
      ...mapGetters("banner_pictures", [
        "banner_pictures_of"
+     ]),
+     ...mapGetters("files", [
+       "sponsorship_files",
+       "display_sponsorship_brochure"
      ])
    },
    components: {

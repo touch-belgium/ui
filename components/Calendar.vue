@@ -109,7 +109,6 @@
 </style>
 
 <style scoped lang="scss">
- @import "~assets/css/_custom-bootstrap-variables.scss";
 
  #calendar {
    @media (min-width: map-get($grid-breakpoints, "xl")) {

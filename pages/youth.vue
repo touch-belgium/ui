@@ -41,6 +41,9 @@
                   clubs. For a list of opportunities to play in Belgium,
                   see our <nuxt-link :to="{ name: 'teams' }">'Where to play' section </nuxt-link>.
                </p>
+
+               <p class="text-justify">
+                  To find out more about the involvement of Touch Belgium with the youth, email <a href="mailto:youth@touch-belgium.be">secretary@touch-belgium.be</a>
                </p>
             </b-col>
          </b-row>

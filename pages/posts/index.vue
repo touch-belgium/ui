@@ -93,9 +93,7 @@
  }
 </script>
 
-<style module lang="scss">
- @import "~assets/css/_custom-bootstrap-variables";
-
+<style scoped lang="scss">
  .container {
    padding-top: 5px;
    .row {

@@ -22,9 +22,6 @@
 </script>
 
 <style scoped lang="scss">
- @import "~assets/css/custom-bootstrap-variables";
- @import "~bootstrap/scss/mixins";
-
  .fixed_logo {
    position: fixed;
    top: 50%;

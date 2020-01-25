@@ -51,6 +51,7 @@ export default {
     "bootstrap-vue/nuxt",
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
+    "@nuxtjs/style-resources",
     "nuxt-leaflet",
     "nuxt-fontawesome",
     "nuxt-rfg-icon",            // Using all default config, check docs
@@ -95,6 +96,18 @@ export default {
     // The environment variable API_URL can be used to override the
     // following:
     baseURL: "http://localhost:8000/api/"
+  },
+  bootstrapVue: {
+    bootstrapCSS: false, // Or `css: false`
+    bootstrapVueCSS: false // Or `bvCSS: false`
+  },
+  styleResources: {
+    scss: [
+      "bootstrap/scss/_functions.scss",
+      "bootstrap/scss/_variables.scss",
+      "bootstrap/scss/_mixins.scss",
+      "~assets/css/_colours.scss"
+   ]
   },
   moment: {
     defaultLocale: "en",

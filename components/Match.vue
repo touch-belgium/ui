@@ -89,19 +89,17 @@
 </script>
 
 <style module lang="scss">
- @import "~assets/css/custom-color-variables";
-
  .match_info_left {
    padding: 1em !important;/* Overrides the no-gutters setting */
-   background: color("grey", "lighten-3");
+   background: grey;
  }
  .winner_card {
-   box-shadow: 0px 0px 20px 2px color("green", "darken-1");
+   box-shadow: 0px 0px 20px 2px color("green");
  }
  .loser_card {
-   box-shadow: 0px 0px 20px 2px color("red", "darken-1");
+   box-shadow: 0px 0px 20px 2px color("pink");
  }
  .tie_card {
-   box-shadow: 0px 0px 20px 2px color("teal", "lighten-2");
+   box-shadow: 0px 0px 20px 2px color("orange");
  }
 </style>

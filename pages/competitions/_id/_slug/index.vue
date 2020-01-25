@@ -10,7 +10,7 @@
          <b-row>
             <b-col>
                <p>
-                  <!-- Add milestone icon -->
+                  <font-awesome-icon icon="map-marker-alt" />
                   <span class="align-middle">
                      {{ competition.venue.name }}.
                      <span class="font-italic" v-if="competition.venue.address">

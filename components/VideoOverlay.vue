@@ -50,8 +50,6 @@
 </script>
 
 <style scoped lang="scss">
- @import "~assets/css/custom-color-variables";
-
  header {
    position: relative;
    background-color: black;

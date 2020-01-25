@@ -37,18 +37,7 @@
 
          <b-row v-if="championships.length" class="pb-4">
             <b-col>
-               <b-list-group>
-                  <b-list-group-item
-                    v-for="champ in championships"
-                    :key="champ.id"
-                    :to="{ path: champ.router }"
-                  >
-                     <h5>{{ champ.name }}</h5>
-                     <p>{{ champ.short_description }}</p>
-                     <small class="d-block">Start: {{ $moment(champ.start_date).fromNow() }}</small>
-                     <small class="d-block">End: {{ $moment(champ.end_date).fromNow() }}</small>
-                  </b-list-group-item>
-               </b-list-group>
+               <competition-list :competitions="championships" />
             </b-col>
          </b-row>
 
@@ -72,7 +61,8 @@
 </template>
 
 <script>
- import Carousel from "@/components/Carousel.vue";
+ import Carousel from "@/components/Carousel";
+ import CompetitionList from "@/components/CompetitionList";
 
  import { mapGetters, mapState } from "vuex";
 
@@ -120,7 +110,7 @@
      ])
    },
    components: {
-     Carousel
+     Carousel, CompetitionList
    }
  }
 </script>

@@ -66,7 +66,9 @@
             and friendly after party, this is one not to be missed.
          </p>
 
-         <b-row>
+         <hr />
+
+         <b-row v-show="false">
             <b-col class="my-4" cols="12" md="6" lg="4" xl="6">
                <b-form-input
                  label="Competition name"
@@ -81,31 +83,7 @@
 
          <b-row v-if="n_total_shown" class="pb-4">
             <b-col>
-               <b-list-group>
-                  <b-list-group-item
-                    v-for="comp in paginated_competitions"
-                    :key="comp.id"
-                    :to="{ path: comp.router }"
-                  >
-                     {{comp.name}}
-                  </b-list-group-item>
-                  <b-list-group-item
-                    variant="secondary"
-                    button
-                    v-if="n_total_shown < filtered_competitions.length"
-                    @click="on_show_more_click"
-                  >
-                     Show 5 more...
-                  </b-list-group-item>
-               </b-list-group>
-            </b-col>
-         </b-row>
-
-         <b-row v-if="error">
-            <b-col cols="12">
-               <b-alert show variant="warning">
-                  Competitions could not be retrieved
-               </b-alert>
+               <competition-list :competitions="paginated_competitions" />
             </b-col>
          </b-row>
 
@@ -137,6 +115,7 @@
 <script>
  import Carousel from "@/components/Carousel";
  import Calendar from "@/components/Calendar";
+ import CompetitionList from "@/components/CompetitionList";
 
  import { mapGetters, mapState } from "vuex";
 
@@ -188,7 +167,7 @@
      ])
    },
    components: {
-     Carousel, Calendar
+     Carousel, Calendar, CompetitionList
    }
  }
 
