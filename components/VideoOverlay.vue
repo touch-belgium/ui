@@ -12,7 +12,7 @@
             <div class="w-100 text-white">
                <b-row class="mb-5">
                   <b-col cols=12>
-                     <span class="display-4 creo-font">Ready to take on the challenge ?</span>
+                     <span class="h1 creo-font">Ready to take on the challenge ?</span>
                   </b-col>
                </b-row>
                <b-row class="justify-content-center mt-5">

@@ -19,7 +19,7 @@
             <b-card-body>
                <SharingButtons :text="share_text" :url="share_url"></SharingButtons>
                <b-card-title>
-                  <h3 class="display-4">{{ post.title }}</h3>
+                  <h3>{{ post.title }}</h3>
                </b-card-title>
 
 

@@ -5,10 +5,10 @@
          <b-container>
             <b-row>
                <b-col cols="12">
-                  <h2 class="display-4 creo-font">
+                  <h1 class="creo-font">
                      <font-awesome-icon icon="newspaper" />
                      {{ $t("news") }}
-                  </h2>
+                  </h1>
                </b-col>
             </b-row>
             <b-row>
@@ -28,10 +28,10 @@
          <b-container>
             <b-row>
                <b-col cols="12">
-                  <h2 class="display-4 creo-font">
+                  <h1 class="creo-font">
                      <font-awesome-icon icon="calendar-alt" />
                      {{ $t('calendar') }}
-                  </h2>
+                  </h1>
                </b-col>
             </b-row>
             <b-row>
@@ -46,10 +46,10 @@
          <b-container>
             <b-row>
                <b-col cols="12">
-                  <h2 class="display-4 creo-font mb-2">
+                  <h1 class="mb-2">
                      <font-awesome-icon icon="trophy" />
                      Upcoming tournaments
-                  </h2>
+                  </h1>
                   <p class="text-justify">
                      Playing Touch is one of the best ways to get involved,
                      learn the game and develop as a player.

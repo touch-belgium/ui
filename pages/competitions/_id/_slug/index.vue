@@ -4,7 +4,7 @@
       <b-container class="mt-3">
          <b-row>
             <b-col>
-               <h1 class="display-4" v-if="competition">{{ competition.name }}</h1>
+               <h1>{{ competition.name }}</h1>
             </b-col>
          </b-row>
          <b-row>

@@ -2,7 +2,7 @@
    <b-container class="mt-5">
       <b-row>
          <b-col cols="12">
-            <h2 class="display-4">
+            <h2>
                <font-awesome-icon icon="calendar-alt" />
                {{ $t('calendar') }}
             </h2>
