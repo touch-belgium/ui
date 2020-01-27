@@ -42,13 +42,13 @@
          </b-container>
       </section>
 
-      <section>
+      <section class="mb-4">
          <b-container>
             <b-row>
                <b-col cols="12">
                   <h1 class="mb-2">
                      <font-awesome-icon icon="trophy" />
-                     Upcoming tournaments
+                     Upcoming events
                   </h1>
                   <p class="text-justify">
                      Playing Touch is one of the best ways to get involved,
@@ -57,16 +57,12 @@
                   <p class="text-justify">
                      Touch Belgium and its member clubs organise a
                      number of sporting and social events throughout
-                     the year. Check out the upcoming tournaments
-                     below and click on them to find out more:
+                     the year. Check out the upcoming ones below and
+                     click on them to find out more:
                   </p>
                </b-col>
             </b-row>
-            <b-row>
-               <b-col>
-
-               </b-col>
-            </b-row>
+            <upcoming-events :competitions="upcoming_competitions" />
          </b-container>
       </section>
 
@@ -75,11 +71,13 @@
 </template>
 
 <script>
+ import { mapGetters, mapState } from "vuex";
  import { Timeline } from "vue-tweet-embed";
 
  import BlogLanding from "@/components/BlogLanding";
  import Calendar from "@/components/Calendar";
  import VideoOverlay from "@/components/VideoOverlay";
+ import UpcomingEvents from "@/components/UpcomingEvents";
 
  export default {
    async asyncData ({ store, error }) {
@@ -89,7 +87,7 @@
        /* Calendar */
        await store.dispatch("calendar/fetch_events");
        /* Tournaments */
-
+       await store.dispatch("competitions/fetch_competition_list");
      } catch (e) {
        error({ statusCode: 404, message: "This page is currently unavailable" });
      }
@@ -105,10 +103,12 @@
      }
    },
    computed: {
-
+     ...mapGetters("competitions", [
+       "upcoming_competitions"
+     ])
    },
    components: {
-     Timeline, BlogLanding, Calendar, VideoOverlay
+     Timeline, BlogLanding, Calendar, VideoOverlay, UpcomingEvents
    },
  }
 </script>

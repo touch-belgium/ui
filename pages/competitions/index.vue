@@ -68,21 +68,21 @@
 
          <hr />
 
-         <b-row v-if="ongoing_competitions.length" class="pb-4">
+         <b-row v-if="ongoing_domestic_competitions.length" class="pb-4">
             <b-col>
-               <ongoing-events :competitions="ongoing_competitions" />
+               <ongoing-events :competitions="ongoing_domestic_competitions" />
             </b-col>
          </b-row>
 
-         <b-row v-if="upcoming_competitions.length" class="pb-4">
+         <b-row v-if="upcoming_domestic_competitions.length" class="pb-4">
             <b-col>
-               <upcoming-events :competitions="upcoming_competitions" />
+               <upcoming-events :competitions="upcoming_domestic_competitions" />
             </b-col>
          </b-row>
 
-         <b-row v-if="past_competitions.length" class="pb-4">
+         <b-row v-if="past_domestic_competitions.length" class="pb-4">
             <b-col>
-               <past-events :competitions="past_competitions" />
+               <past-events :competitions="past_domestic_competitions" />
             </b-col>
          </b-row>
 
@@ -154,10 +154,10 @@
        "banner_pictures_of"
      ]),
      ...mapGetters("competitions", [
-       "competitions",
-       "ongoing_competitions",
-       "upcoming_competitions",
-       "past_competitions"
+       "domestic_competitions",
+       "ongoing_domestic_competitions",
+       "upcoming_domestic_competitions",
+       "past_domestic_competitions"
      ])
    },
    components: {

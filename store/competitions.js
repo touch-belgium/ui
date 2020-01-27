@@ -53,20 +53,25 @@ export const state = () => ({
 });
 
 export const getters = {
-  competitions (state, getters) {
-    return state.competitions.filter(c => !c.belgian_championship);
-  },
-  ongoing_competitions (state, getters) {
-    return getters.competitions.filter(c => new Date(c.start_date) < new Date() &&
-                                       new Date(c.end_date) > new Date());
-  },
   upcoming_competitions (state, getters) {
-    return getters.competitions.filter(c => new Date(c.start_date) > new Date()).sort((a, b) => {
+    return state.competitions.filter(c => new Date(c.start_date) > new Date()).sort((a, b) => {
       return new Date(a.start_date) < new Date(b.start_date) ? -1 : 1;
     });
   },
-  past_competitions (state, getters) {
-    return getters.competitions.filter(c => new Date(c.end_date) < new Date());
+  domestic_competitions (state, getters) {
+    return state.competitions.filter(c => !c.belgian_championship);
+  },
+  ongoing_domestic_competitions (state, getters) {
+    return getters.domestic_competitions.filter(c => new Date(c.start_date) < new Date() &&
+                                       new Date(c.end_date) > new Date());
+  },
+  upcoming_domestic_competitions (state, getters) {
+    return getters.domestic_competitions.filter(c => new Date(c.start_date) > new Date()).sort((a, b) => {
+      return new Date(a.start_date) < new Date(b.start_date) ? -1 : 1;
+    });
+  },
+  past_domestic_competitions (state, getters) {
+    return getters.domestic_competitions.filter(c => new Date(c.end_date) < new Date());
   },
   championships (state, getters) {
     return state.competitions.filter(c => c.belgian_championship);
@@ -147,7 +152,7 @@ export const getters = {
 
 export const actions = {
   async fetch_competition_list ({ state, commit }) {
-    const url = "competitions";
+    const url = "competitions/";
     const response = await this.$axios.$get(url);
     commit("set_competition_list", response);
   },
@@ -161,7 +166,12 @@ export const actions = {
 export const mutations = {
   set_competition_list (state, competitions) {
     // Save competitions and augment with router path
-    state.competitions = competitions.map(comp => {return {...comp, router: `competitions/${comp.id}/${slugify(comp.name)}`};});
+    state.competitions = competitions.map(comp => {
+      return {
+        ...comp,
+        router: `competitions/${comp.id}/${slugify(comp.name)}`
+      };
+    });
   },
   set_competition (state, competition) {
     state.competition = competition;
