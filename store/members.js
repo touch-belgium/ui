@@ -1,7 +1,10 @@
+import _ from "lodash";
+
 export const state = () => ({
   all_members: [],
   referees: [],
-  coaches: []
+  coaches: [],
+  committee: []
 });
 
 export const getters = {
@@ -16,6 +19,29 @@ export const getters = {
     });
   },
   coaching_board (state, getters) {
+  },
+  committee (state, getters) {
+    const committee = _.cloneDeep(state.committee);
+    return committee.sort((a, b) => {
+      // DANGER: volatile and can break as soon as the position is
+      // modified
+      const priority_ordering = new Map([
+        ["President", 3],
+        ["Treasurer", 2],
+        ["Secretary", 1]
+      ]);
+      if (priority_ordering.has(a.committee_position) &&
+          priority_ordering.has(b.committee_position)) {
+        return priority_ordering.get(a.committee_position) <
+          priority_ordering.get(b.committee_position) ? 1 : -1;
+      } else if (priority_ordering.has(a.committee_position)) {
+        return -1;
+      } else if (priority_ordering.has(b.committee_position)) {
+        return 1;
+      } else {
+        return a.committee_position > b.committee_position ? 1 : -1;
+      }
+    });
   }
 };
 
@@ -23,7 +49,7 @@ export const actions = {
   async fetch_members ({ state, commit }) {
     const url = "members";
     const response = await this.$axios.$get(url);
-    commit("set_teams", response);
+    commit("set_members", response);
   },
   async fetch_referees ({ state, commit }) {
     const url = "referees";
@@ -34,6 +60,11 @@ export const actions = {
     const url = "coaches";
     const response = await this.$axios.$get(url);
     commit("set_coaches", response);
+  },
+  async fetch_committee ({ state, commit }) {
+    const url = "committee";
+    const response = await this.$axios.$get(url);
+    commit("set_committee", response);
   }
 };
 
@@ -46,5 +77,8 @@ export const mutations = {
   },
   set_coaches (state, coaches) {
     state.coaches = coaches;
+  },
+  set_committee (state, committee) {
+    state.committee = committee;
   },
 };

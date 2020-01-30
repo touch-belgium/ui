@@ -16,17 +16,29 @@
                opportunities, plan tournaments, schedule referee and
                coaching courses and share new ideas to grow the sport.
             </p>
-            <p class="text-justify">
-               Click on each of Committee members below to find out
-               more.
-            </p>
          </b-col>
+      </b-row>
+      <b-row>
+         <committee-card v-for="person in committee"
+                         :person="person"
+                         :key="person.name" />
       </b-row>
    </b-container>
 </template>
 
 <script>
+ import { mapGetters } from "vuex";
+
+ import CommitteeCard from "@/components/CommitteeCard";
+
  export default {
+   async asyncData ({ store, error }) {
+     try {
+       await store.dispatch("members/fetch_committee");
+     } catch (e) {
+       error({ statusCode: 404, message: "This page is currently unavailable" });
+     }
+   },
    data () {
      return {
 
@@ -44,7 +56,12 @@
 
    },
    computed: {
-
+     ...mapGetters("members", [
+       "committee"
+     ])
+   },
+   components: {
+     CommitteeCard
    }
  }
 </script>

@@ -68,9 +68,12 @@
  import { mapGetters, mapState } from "vuex";
 
  export default {
-   async asyncData ({ $axios }) {
-     const data = await $axios.$get("/belgian_teams");
-     return { belgian_teams: data };
+   async asyncData ({ $axios, store, error }) {
+     try {
+       await store.dispatch("teams/fetch_belgian_teams");
+     } catch (e) {
+       error({ statusCode: 404, message: "This page is currently unavailable" });
+     }
    },
    data () {
      return {
@@ -92,6 +95,9 @@
 
    },
    computed: {
+     ...mapState("teams", [
+       "belgian_teams"
+     ]),
      ...mapState("geodata", [
        "belgium_center_coords",
        "belgium_polygon"
@@ -106,6 +112,6 @@
  }
 </script>
 
-<style module lang="scss">
+<style scoped lang="scss">
 
 </style>
