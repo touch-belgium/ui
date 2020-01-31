@@ -2,7 +2,7 @@
    <b-card class="m-2" :img-src="post.picture" img-top style="height: 100%;">
       <b-card-text>
          <nuxt-link tag="a" :to="slug" class="lead">{{ post.title }}</nuxt-link>
-         <p v-html="raw_body" class="block-with-text mt-2"></p>
+         <p v-html="post.excerpt" class="mt-2"></p>
          <div v-if="post.tags.length" class="post-tags">
             <em>Tags: </em>
             <tag v-for="tag in post.tags" :key="tag.id" v-bind:word="tag.word" />
@@ -43,6 +43,10 @@
 </script>
 
 <style scoped lang="scss">
+ .card-img-top {
+   height: 50%;
+   object-fit: cover;
+ }
  .b-card {
    cursor: auto;
    a {

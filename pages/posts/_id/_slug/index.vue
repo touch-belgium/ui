@@ -1,6 +1,5 @@
 <template>
    <b-container class="mt-5">
-
       <b-row class="mb-3">
          <router-link :to="{ name: 'posts' }" class="lead">← Back to news</router-link>
       </b-row>
@@ -11,6 +10,7 @@
            footer-tag="footer"
          >
             <b-card-body>
+               <b-img :src="post.picture" fluid class="mb-2 post-picture"></b-img>
                <sharing-buttons :text="share_text" :url="share_url" />
                <b-card-title>
                   <h2>{{ post.title }}</h2>
@@ -39,13 +39,11 @@
  import SharingButtons from "@/components/SharingButtons";
 
  export default {
-   async asyncData({ store, params, error, req }) {
+   async asyncData({ store, params, route, error }) {
      try {
        await store.dispatch("blog/fetch_post", params.id);
-       /* Augment with request data to get the window.location url */
        return {
-         url: req.originalUrl,
-         headers: req.headers
+         path: route.fullPath
        }
      } catch (e) {
        error({ statusCode: 404, message: "This page is currently unavailable" });
@@ -58,7 +56,7 @@
    },
    head () {
      return {
-       title: `Touch Belgium`
+       title: `${this.post.title} - Touch Belgium`
      }
    },
    methods: {
@@ -73,12 +71,10 @@
        "post"
      ]),
      share_text () {
-       /* return `Touch Belgium news: ${this.post.title}`; */
-       return "asdf";
+       return `Touch Belgium news: ${this.post.title}`;
      },
      share_url () {
-       /* return `${this.req.headers.protocol}://${this.req.headers.host}${this.req.originalUrl}`; */
-       return "asdf";
+       return `https://touch-belgium.be${this.path}`;
      }
    },
    components: {
@@ -88,5 +84,7 @@
 </script>
 
 <style scoped lang="scss">
-
+ .post-picture {
+   width: 100%;
+ }
 </style>

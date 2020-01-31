@@ -78,7 +78,7 @@
  .resp-sharing-button__link {
    text-decoration: none;
    color: #fff;
-   margin: 0.5em
+   margin: 0.5em 0.5em 0.5em 0em;/* All except left */
  }
 
  .resp-sharing-button {
