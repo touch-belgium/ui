@@ -26,7 +26,7 @@
               text="Get Involved"
               class="m-0"
             >
-               <b-dropdown-item :to="{ name: 'teams' }">Where to play ?</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'clubs' }">Where to play ?</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'referees' }">Referees</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'coaching' }">Coaches</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'national-teams' }">National teams</b-dropdown-item>
@@ -39,7 +39,7 @@
               class="m-0"
             >
                <b-dropdown-item :to="{ name: 'what' }">What is Touch ?</b-dropdown-item>
-               <b-dropdown-item :to="{ name: 'teams' }">Where to play ?</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'clubs' }">Where to play ?</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'training' }">Training/courses</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'rules' }">Rules and regulations</b-dropdown-item>
             </b-nav-item-dropdown>
@@ -50,7 +50,7 @@
               text="Touch Belgium"
               class="m-0"
             >
-               <b-dropdown-item :to="{ name: 'teams' }">Members</b-dropdown-item>
+               <b-dropdown-item :to="{ name: 'members' }">Members</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'become-a-member' }">Become a member</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'committee' }">Committee</b-dropdown-item>
                <b-dropdown-item :to="{ name: 'agm' }">AGM</b-dropdown-item>

@@ -20,7 +20,7 @@
                      <b-button :to="{ name: 'what' }" size="lg" variant="danger" class="overlay-button">What is Touch ?</b-button>
                   </b-col>
                   <b-col xs="12" md="3">
-                     <b-button :to="{ name: 'teams' }" size="lg" variant="danger" class="overlay-button">Where to play ?</b-button>
+                     <b-button :to="{ name: 'clubs' }" size="lg" variant="danger" class="overlay-button">Where to play ?</b-button>
                   </b-col>
                </b-row>
             </div>

@@ -5,17 +5,17 @@
     src: url("~assets/fonts/creo-bold.ttf") format('truetype');
 }
 
-.creo-font {
-    font-family: "Creo Bold";
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-family: "Creo Bold";
 }
 
+.creo-font {
+    font-family: "Creo Bold";
+}
+
 body {
-    padding-top: $nav-link-height + 0.5rem;
-    font-size: 1rem;
+    padding-top: $navbar-brand-height + 1.5rem;
+    /* font-size: 1rem; */
 }
 
 /* Thanks hackingui.com */

@@ -157,7 +157,7 @@ export const actions = {
     commit("set_competition_list", response);
   },
   async fetch_competition ({ state, commit }, id) {
-    const url = `competitions/${id}`;
+    const url = `competitions/${id}/`;
     const response = await this.$axios.$get(url);
     commit("set_competition", response);
   }

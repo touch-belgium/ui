@@ -1,9 +1,6 @@
 <template>
    <b-container class="mt-5">
       <b-row>
-         <b-col v-if="error" cols="12">
-            <b-alert show variant="danger">Teams could not be retrieved.</b-alert>
-         </b-col>
          <b-col cols="12">
             <h1>Where to play</h1>
             <p class="text-justify">
@@ -15,8 +12,8 @@
          </b-col>
       </b-row>
       <b-row>
-         <b-col v-for="team in belgian_teams" :key="team.url" md="4" cols="6" class="my-3">
-            <team v-bind:team="team"></team>
+         <b-col v-for="club in belgian_clubs" :key="club.url" md="4" cols="6" class="my-3">
+            <club v-bind:club="club"></club>
          </b-col>
       </b-row>
       <b-row>
@@ -37,14 +34,14 @@
                      >
                      </l-polygon>
                      <l-marker
-                       v-for="team in belgian_teams"
-                       :key="team.url"
-                       :lat-lng="team_coordinates(team)"
+                       v-for="club in belgian_clubs"
+                       :key="club.url"
+                       :lat-lng="club_coordinates(club)"
                      >
                         <l-popup>
-                           <p class="h4">{{team.name}} - Touch Club</p>
-                           <p>Address: {{team.venue.address}}</p>
-                           <a :href="team.website" target="_blank">Website</a>
+                           <p class="h4">{{club.name}} - Touch Club</p>
+                           <p>Address: {{club.venue.address}}</p>
+                           <a :href="club.website" target="_blank">Website</a>
                         </l-popup>
                      </l-marker>
                   </l-map>
@@ -63,21 +60,20 @@
 </template>
 
 <script>
- import Team from "@/components/Team.vue";
+ import Club from "@/components/Club.vue";
 
  import { mapGetters, mapState } from "vuex";
 
  export default {
    async asyncData ({ $axios, store, error }) {
      try {
-       await store.dispatch("teams/fetch_belgian_teams");
+       await store.dispatch("clubs/fetch_belgian_clubs");
      } catch (e) {
        error({ statusCode: 404, message: "This page is currently unavailable" });
      }
    },
    data () {
      return {
-       error: null,
        tile_url: "https://{s}.tile.osm.org/{z}/{x}/{y}.png",
        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
        zoom: 8
@@ -95,19 +91,19 @@
 
    },
    computed: {
-     ...mapState("teams", [
-       "belgian_teams"
+     ...mapState("clubs", [
+       "belgian_clubs"
      ]),
      ...mapState("geodata", [
        "belgium_center_coords",
        "belgium_polygon"
      ]),
-     ...mapGetters("teams", [
-       "team_coordinates"
+     ...mapGetters("clubs", [
+       "club_coordinates"
      ])
    },
    components: {
-     Team
+     Club
    }
  }
 </script>

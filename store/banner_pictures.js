@@ -10,7 +10,7 @@ export const getters = {
 
 export const actions = {
   async fetch_banner_pictures ({ state, commit }) {
-    const url = "banner_pictures";
+    const url = "banner_pictures/";
     const response = await this.$axios.$get(url);
     commit("set_banner_pictures", response);
   }

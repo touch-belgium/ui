@@ -1,7 +1,7 @@
 <template>
    <div>
       <BannerPicture :picture="competition.picture"></BannerPicture>
-      <b-container class="mt-3">
+      <b-container class="mt-5">
          <b-row>
             <b-col>
                <h1>{{ competition.name }}</h1>

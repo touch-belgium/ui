@@ -4,7 +4,7 @@
         ref="map"
         style="height:inherit;"
         :zoom="zoom"
-        :center="team_coordinates(team)"
+        :center="club_coordinates(club)"
       >
          <l-tile-layer :url="tile_url" :attribution="attribution"></l-tile-layer>
          <l-polygon
@@ -14,12 +14,12 @@
          >
          </l-polygon>
          <l-marker
-           :lat-lng="team_coordinates(team)"
+           :lat-lng="club_coordinates(club)"
          >
             <l-popup>
-               <h4>{{team.name}} - Touch Club</h4>
-               <p>Address: {{team.venue.address}}</p>
-               <a :href="team.website" target="_blank">Website</a>
+               <h4>{{club.name}} - Touch Club</h4>
+               <p>Address: {{club.venue.address}}</p>
+               <a :href="club.website" target="_blank">Website</a>
             </l-popup>
          </l-marker>
       </l-map>
@@ -32,7 +32,7 @@
  import { belgium_polygon, belgium_center_coords } from "../common/geodata.js";
 
  export default {
-   props: ["team"],
+   props: ["club"],
    data () {
      return {
        error: null,
@@ -58,8 +58,8 @@
 
    },
    computed: {
-     ...mapGetters("teams", [
-       "team_coordinates"
+     ...mapGetters("clubs", [
+       "club_coordinates"
      ])
    },
    components: {

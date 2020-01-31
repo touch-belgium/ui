@@ -1,5 +1,5 @@
 <template>
-   <b-container class="mt-3">
+   <b-container class="mt-5">
       <b-row>
          <b-col v-if="filtered_posts != null && !filtered_posts.length" cols="12">
             <b-alert show variant="info">No posts to show.</b-alert>

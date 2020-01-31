@@ -13,7 +13,7 @@ export const getters = {
 
 export const actions = {
   async fetch_links ({ state, commit }) {
-    const url = "links";
+    const url = "links/";
     const response = await this.$axios.$get(url);
     commit("set_links", response);
   }

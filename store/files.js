@@ -19,7 +19,7 @@ export const getters = {
 
 export const actions = {
   async fetch_files ({ state, commit }) {
-    const url = "files";
+    const url = "files/";
     const response = await this.$axios.$get(url);
     commit("set_files", response);
   }

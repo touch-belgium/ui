@@ -39,13 +39,19 @@
                <p class="text-justify">
                   Junior players are welcome at all of the Belgian Touch
                   clubs. For a list of opportunities to play in Belgium,
-                  see our <nuxt-link :to="{ name: 'teams' }">'Where to play' section </nuxt-link>.
+                  see our <nuxt-link :to="{ name: 'clubs' }">'Where to play' section</nuxt-link>.
                </p>
 
                <p class="text-justify">
-                  To find out more about the involvement of Touch Belgium with the youth, email <a href="mailto:youth@touch-belgium.be">secretary@touch-belgium.be</a>
+                  To find out more about the involvement of Touch Belgium with the youth, email <a href="mailto:youth@touch-belgium.be">youth@touch-belgium.be</a>.
                </p>
             </b-col>
+         </b-row>
+         <b-row v-if="display_sponsorship_brochure" class="mb-5">
+            <b-embed
+              type="iframe"
+              :src="display_sponsorship_brochure.file">
+            </b-embed>
          </b-row>
       </b-container>
    </div>
@@ -60,6 +66,7 @@
    async asyncData ({ store, error }) {
      try {
        await store.dispatch("banner_pictures/fetch_banner_pictures");
+       await store.dispatch("files/fetch_files");
      } catch (e) {
        error({ statusCode: 404, message: "This page is currently unavailable" });
      }
@@ -83,6 +90,9 @@
    computed: {
      ...mapGetters("banner_pictures", [
        "banner_pictures_of"
+     ]),
+     ...mapGetters("files", [
+       "display_sponsorship_brochure"
      ])
    },
    components: {

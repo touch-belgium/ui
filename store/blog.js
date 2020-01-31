@@ -30,12 +30,12 @@ export const getters = {
 
 export const actions = {
   async fetch_recent_posts ({ state, commit }) {
-    const url = "posts/recent";
+    const url = "posts/recent/";
     const response = await this.$axios.$get(url);
     commit("set_posts", response);
   },
   async fetch_posts ({ state, commit }) {
-    const url = "posts";
+    const url = "posts/";
     const response = await this.$axios.$get(url);
     commit("set_posts", response);
   },
@@ -45,7 +45,7 @@ export const actions = {
     commit("set_post", response);
   },
   async fetch_tags ({ state, commit }) {
-    const url = "tags";
+    const url = "tags/";
     const response = await this.$axios.$get(url);
     commit("set_tags", response);
   },

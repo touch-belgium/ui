@@ -58,7 +58,7 @@
  import { mapGetters, mapState } from "vuex";
 
  export default {
-   async asyncData ({ $axios, store, error }) {
+   async asyncData ({ store, error }) {
      try {
        await store.dispatch("files/fetch_files");
      } catch (e) {

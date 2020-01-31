@@ -58,7 +58,7 @@
                Are you interested in playing this fun, social and
                fast-growing sport? Would you like to try something
                different? On the following links you will find
-               information on <nuxt-link :to="{ name: 'teams' }">where
+               information on <nuxt-link :to="{ name: 'clubs' }">where
                to play</nuxt-link>, find out how to <nuxt-link :to="{ name: 'getting-started' }">set
                up a Touch club</nuxt-link>, or how to develop as a
                player, <nuxt-link :to="{ name: 'referees' }">referee</nuxt-link> or <nuxt-link :to="{ name: 'coaching' }">coach</nuxt-link>.

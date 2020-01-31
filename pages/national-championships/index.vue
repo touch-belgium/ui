@@ -105,7 +105,7 @@
      images () {
        return this.pictures.map(p => p.picture);
      },
-     ...mapGetters("teams", [
+     ...mapGetters("clubs", [
        "current_champion"
      ]),
      ...mapGetters("banner_pictures", [

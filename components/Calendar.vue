@@ -98,7 +98,7 @@
 <style lang="scss">
  /* Make all same-month cells transparent */
  .theme-default .cv-day.past {
-   background-color: transparent;
+   background-color: transparent !important;
    &.outsideOfMonth {
      background-color: #fafafa;
    }
