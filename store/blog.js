@@ -7,7 +7,6 @@ export const state = () => ({
 
 export const getters = {
   latest_posts (state, getters) {
-    console.log(state.posts.slice(0,4));
     return state.posts.slice(0, 3);
   },
   tags (state, getters) {

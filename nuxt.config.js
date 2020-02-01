@@ -55,7 +55,7 @@ export default {
     "nuxt-leaflet",
     "nuxt-fontawesome",
     "nuxt-rfg-icon",            // Using all default config, check docs
-    // ['nuxt-matomo', { matomoUrl: '//touchbelgium-analytics.duckdns.org/', siteId: 1 }],
+    ['nuxt-matomo', { matomoUrl: '//touchbelgium-analytics.duckdns.org/', siteId: 1 }],
     [
       "nuxt-i18n", {
         strategy: "no_prefix",
