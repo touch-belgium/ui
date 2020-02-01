@@ -20,7 +20,7 @@
  import Calendar from "@/components/Calendar.vue";
 
  export default {
-   async asyncData ({ store }) {
+   async asyncData ({ store, error }) {
      try {
        await store.dispatch("calendar/fetch_events");
      } catch (e) {

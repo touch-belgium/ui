@@ -80,7 +80,7 @@
             </b-col>
          </b-row>
 
-         <b-row v-if="past_domestic_competitions.length" class="pb-4">
+         <b-row v-if="past_domestic_competitions.length" class="pb-4" v-show="false">
             <b-col>
                <past-events :competitions="past_domestic_competitions" />
             </b-col>

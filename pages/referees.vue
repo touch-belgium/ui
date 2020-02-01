@@ -197,6 +197,8 @@
                   </b-list-group-item>
                </b-list-group>
 
+               <p class="text-justify">Referee signals video made by Sebastien Chassande (Touch France):</p>
+
                <b-embed
                  type="iframe"
                  src="https://www.youtube.com/embed/c5wNEgVDyBc"
@@ -250,9 +252,8 @@
                   </b-col>
                </b-row>
 
-               <b-button class="my-4" v-b-toggle.belgium-refs variant="primary">Show/hide all Touch Belgium referees</b-button>
-               <b-collapse id="belgium-refs" class="mt-4">
-
+               <b-button class="my-4" v-b-toggle.belgium-refs variant="primary" v-show="false">Show/hide all Touch Belgium referees</b-button>
+               <b-collapse id="belgium-refs" class="mt-4" v-show="false">
                   <b-row>
                      <b-col cols="12" md="4" lg="3" class="mb-4" v-for="ref in normal_refs" :key="ref.name">
                         <b-card no-body class="overflow-hidden" style="height: 100%;">

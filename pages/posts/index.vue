@@ -1,6 +1,11 @@
 <template>
    <b-container class="mt-5">
       <b-row>
+         <b-col cols="12">
+            <h1>News</h1>
+         </b-col>
+      </b-row>
+      <b-row>
          <b-col v-if="filtered_posts != null && !filtered_posts.length" cols="12">
             <b-alert show variant="info">No posts to show.</b-alert>
          </b-col>

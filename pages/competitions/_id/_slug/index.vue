@@ -50,7 +50,7 @@
    },
    head () {
      return {
-       title: "Touch Belgium"/* FIXME: add comp name */
+       title: `${this.competition.name} - Touch Belgium`
      }
    },
    methods: {

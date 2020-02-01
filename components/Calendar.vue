@@ -1,7 +1,7 @@
 <template>
    <div>
-      <div id="calendar" class="mt-3">
-         <client-only>
+      <client-only>
+         <div id="calendar" class="mt-3">
             <calendar-view
               :show-date="show_date"
               :events="show_events"
@@ -18,30 +18,30 @@
                  @input="change_period"
                />
             </calendar-view>
-         </client-only>
-      </div>
-      <div>
-         <b-modal centered ref="event_modal" hide-footer title="Touch Belgium event" title-tag="p">
-            <div v-if="this.selected_event">
-               <p class="h4">{{this.selected_event.title}}</p>
-               <p>
-                  <font-awesome-icon icon="calendar-day" />
-                  <span>{{formatted_datetime(this.selected_event)}} </span>
-               </p>
-               <p v-if="this.selected_event.location">
-                  <font-awesome-icon icon="map-marker-alt" />
-                  {{this.selected_event.location}}
-               </p>
-               <p>{{this.selected_event.description}}</p>
-               <b-button class="mt-3" variant="outline-secondary" block @click="on_click_close_modal">Close</b-button>
-            </div>
-         </b-modal>
+         </div>
+         <div>
+            <b-modal centered ref="event_modal" hide-footer title="Touch Belgium event" title-tag="p">
+               <div v-if="this.selected_event">
+                  <p class="h4">{{this.selected_event.title}}</p>
+                  <p>
+                     <font-awesome-icon icon="calendar-day" />
+                     <span>{{formatted_datetime(this.selected_event)}} </span>
+                  </p>
+                  <p v-if="this.selected_event.location">
+                     <font-awesome-icon icon="map-marker-alt" />
+                     {{this.selected_event.location}}
+                  </p>
+                  <p>{{this.selected_event.description}}</p>
+                  <b-button class="mt-3" variant="outline-secondary" block @click="on_click_close_modal">Close</b-button>
+               </div>
+            </b-modal>
 
-         <b-alert show class="mt-4">
-            Sync this calendar (iCal):
-            <a class="text-break" href="https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics">https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics</a>
-         </b-alert>
-      </div>
+            <b-alert show class="mt-4">
+               Sync this calendar (iCal):
+               <a class="text-break" href="https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics">https://calendar.google.com/calendar/ical/touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k%40group.calendar.google.com/public/basic.ics</a>
+            </b-alert>
+         </div>
+      </client-only>
    </div>
 </template>
 
@@ -58,7 +58,8 @@
    },
    mounted () {
      const month_start = new Date();
-     /* TODO: comment this section on what change_period does */
+     /* Set month start to the first day of the current month and call
+     change_period to reduce the number of events shown */
      month_start.setDate(1);
      this.$store.dispatch("calendar/change_period", month_start);
    },

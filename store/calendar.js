@@ -114,9 +114,21 @@ export const actions = {
      * (2019). Sending vanilla request */
     const CALENDAR = "touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k@group.calendar.google.com";
     const GOOGLE_API_KEY = "AIzaSyAGfECY7JPalI0pfARPXTmAxiN1uz15Ja8";
-    const endpoint = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR}/events?key=${GOOGLE_API_KEY}`;
-    const response = await this.$axios.$get(endpoint);
-    commit("set_raw_google_events", response.items);
+    const endpoint = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR}/events`;
+    let response = {};
+    let items = [];
+    let pageToken = "";
+    do {
+      response = await this.$axios.$get(endpoint, {
+        params: {
+          key: "AIzaSyAGfECY7JPalI0pfARPXTmAxiN1uz15Ja8",
+          pageToken: pageToken
+        }
+      });
+      pageToken = response.nextPageToken;
+      items = items.concat(response.items);
+    } while ("nextPageToken" in response);
+    commit("set_raw_google_events", items);
   },
 
   change_period ({ state, commit, getters }, date) {

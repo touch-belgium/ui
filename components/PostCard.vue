@@ -1,7 +1,7 @@
 <template>
    <b-card class="m-2" :img-src="post.picture" img-top style="height: 100%;">
       <b-card-text>
-         <nuxt-link tag="a" :to="slug" class="lead">{{ post.title }}</nuxt-link>
+         <nuxt-link :to="slug" class="lead">{{ post.title }}</nuxt-link>
          <p v-html="post.excerpt" class="mt-2"></p>
          <div v-if="post.tags.length" class="post-tags">
             <em>Tags: </em>

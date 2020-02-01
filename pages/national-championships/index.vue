@@ -47,7 +47,7 @@
             </b-col>
          </b-row>
 
-         <b-row v-if="past_championships.length" class="pb-4">
+         <b-row v-if="past_championships.length" class="pb-4" v-show="false">
             <b-col>
                <past-events :competitions="past_championships" />
             </b-col>
