@@ -160,7 +160,28 @@
                <h4 id="upcoming-courses">Upcoming referee courses</h4>
 
                <b-list-group class="mb-3">
-                  <b-list-group-item variant="warning">No upcoming events to show</b-list-group-item>
+                  <b-list-group-item>
+                     <h5>Level 1 English</h5>
+                     <p><b>Course Date:</b> Saturday 8th February </p>
+                     <p><b>Duration:</b> Full day</p>
+                     <p><b>Location:</b> TBC (Probably in Flanders)</p>
+                     <p><b>Cost:</b> Free for Touch Belgium Members</p>
+                     <p><b>Language:</b> English</p>
+                     <p><b>Course presenter:</b> Phil Holliday</p>
+                     <p><b>Registration:</b> Please follow the following link
+                        and fill in your details on Sheet 1 to register. <a  href="https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE" target="_blank">https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE</a></p>
+                  </b-list-group-item>
+                  <b-list-group-item>
+                     <h5>Level 1 French</h5>
+                     <p><b>Course Date:</b> Saturday 22nd February</p>
+                     <p><b>Duration:</b> Full day</p>
+                     <p><b>Location:</b> Boitsfort Rugby Club, Avenue de la Foresterie 2, 1170, Brussels</p>
+                     <p><b>Cost:</b> Free for Touch Belgium Members</p>
+                     <p><b>Language:</b> French</p>
+                     <p><b>Course presenter:</b> Stéphanie Horeau</p>
+                     <p><b>Registration:</b> Please follow the following link
+                        and fill in your details on Sheet 2 to register. <a  href="https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE/edit#gid=426014182" target="_blank">https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE</a></p>
+                  </b-list-group-item>
                </b-list-group>
 
                <p class="text-justify">
