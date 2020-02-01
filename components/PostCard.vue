@@ -1,5 +1,5 @@
 <template>
-   <b-card class="m-2" :img-src="post.picture" img-top style="height: 100%;">
+   <b-card class="m-2 postcard" :img-src="post.picture" img-top>
       <b-card-text>
          <nuxt-link :to="slug" class="lead">{{ post.title }}</nuxt-link>
          <p v-html="post.excerpt" class="mt-2"></p>
@@ -43,8 +43,11 @@
 </script>
 
 <style scoped lang="scss">
+ .postcard {
+   height: 100%;
+ }
  .card-img-top {
-   height: 50%;
+   max-height: 20vh;
    object-fit: cover;
  }
  .b-card {

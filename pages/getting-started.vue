@@ -1,6 +1,6 @@
 <template>
    <div>
-      <FixedTBLogo />
+      <carousel :pictures="banner_pictures_of('getting started')"></carousel>
       <b-container class="mt-5">
          <b-row>
             <b-col cols="12">
@@ -48,14 +48,12 @@
                      opportunities for both new and more experienced players
                   </li>
 
-
-
                </ul>
 
                <p class="text-justify">
-                  If you would like to know more about discovering Touch
-                  or establishing a Touch club, please contact:
-                  <a href="mailto:development@touch-belgium.be">development@touch-belgium.be</a>
+                  If you would like to know more about discovering
+                  Touch or establishing a Touch club, please contact:
+                  <a href="mailto:president@touch-belgium.be">president@touch-belgium.be</a>
                </p>
 
 
@@ -66,12 +64,16 @@
 </template>
 
 <script>
- import FixedTBLogo from "@/components/FixedTBLogo";
+ import { mapGetters } from "vuex";
+
+ import Carousel from "@/components/Carousel";
 
  export default {
-   data () {
-     return {
-
+   async asyncData ({ store, error }) {
+     try {
+       await store.dispatch("banner_pictures/fetch_banner_pictures");
+     } catch (e) {
+       error({ statusCode: 404, message: "This page is currently unavailable" });
      }
    },
    head () {
@@ -86,10 +88,12 @@
 
    },
    computed: {
-
+     ...mapGetters("banner_pictures", [
+       "banner_pictures_of"
+     ]),
    },
    components: {
-     FixedTBLogo
+     Carousel
    }
  }
 </script>

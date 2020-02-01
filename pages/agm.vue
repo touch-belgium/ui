@@ -13,10 +13,8 @@
             </p>
 
             <p class="text-justify">
-               The last AGM was held on 29th March 2019. The minutes
-               from the meeting, and previous meetings, can be found
-               here. The date for the next AGM in 2020 will be
-               indicated on this page.
+               The last AGM was held on 29th March 2019. The date for
+               the next AGM in 2020 will be indicated on this page.
             </p>
          </b-col>
       </b-row>

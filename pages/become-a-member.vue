@@ -75,12 +75,14 @@
                </p>
                <p class="text-justify">
                   The annual membership cost for Touch Belgium is
-                  &euro;300. This registers the club with Touch Belgium
-                  and covers the first 15 registered club players. Each
-                  additional player, beyond the 15, costs &euro;20 per
-                  player. Players may register as an independent player
-                  for &euro;20 per year. Independent players are not
-                  allowed to partake in the national championships.
+                  under review, and is currently &euro;300. This
+                  registers the club with Touch Belgium and covers the
+                  first 15 registered club players. Each additional
+                  player, beyond the 15, costs &euro;20 per
+                  player. Players may register as an independent
+                  player for &euro;20 per year. Independent players
+                  are not allowed to partake in the national
+                  championships.
                </p>
                <b-card
                  header-bg-variant="warning"

@@ -9,6 +9,9 @@
                corresponding link to go to their website, or find the
                club nearest to you on the map below.
             </p>
+            <p class="text-justify">
+               To find out more about a Touch club near you, email <a href="mailto:secretary@touch-belgium.be">secretary@touch-belgium.be</a>
+            </p>
          </b-col>
       </b-row>
       <b-row>
@@ -47,13 +50,6 @@
                   </l-map>
                </client-only>
             </div>
-         </b-col>
-      </b-row>
-      <b-row>
-         <b-col cols="12">
-            <p class="text-justify">
-               To find out more about a Touch club near you, email <a href="mailto:secretary@touch-belgium.be">secretary@touch-belgium.be</a>
-            </p>
          </b-col>
       </b-row>
    </b-container>

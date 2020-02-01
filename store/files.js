@@ -3,6 +3,9 @@ export const state = () => ({
 });
 
 export const getters = {
+  files_of: (state, getters) => (tag_word) => {
+    return state.files.filter(f => f.tag.word === tag_word);
+  },
   referee_files (state, getters) {
     return state.files.filter(f => f.tag.word === "referees");
   },

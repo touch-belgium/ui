@@ -24,24 +24,6 @@
          </b-container>
       </section>
 
-      <section>
-         <b-container>
-            <b-row>
-               <b-col cols="12">
-                  <h1 class="creo-font">
-                     <font-awesome-icon icon="calendar-alt" />
-                     {{ $t('calendar') }}
-                  </h1>
-               </b-col>
-            </b-row>
-            <b-row>
-               <b-col>
-                  <calendar></calendar>
-               </b-col>
-            </b-row>
-         </b-container>
-      </section>
-
       <section class="mb-4">
          <b-container>
             <b-row>
@@ -66,7 +48,23 @@
          </b-container>
       </section>
 
-
+      <section>
+         <b-container>
+            <b-row>
+               <b-col cols="12">
+                  <h1 class="creo-font">
+                     <font-awesome-icon icon="calendar-alt" />
+                     {{ $t('calendar') }}
+                  </h1>
+               </b-col>
+            </b-row>
+            <b-row>
+               <b-col>
+                  <calendar></calendar>
+               </b-col>
+            </b-row>
+         </b-container>
+      </section>
    </div>
 </template>
 

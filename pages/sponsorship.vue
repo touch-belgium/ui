@@ -34,7 +34,7 @@
             </p>
 
             <b-list-group class="mb-3">
-               <b-list-group-item v-for="doc in sponsorship_files" :key="doc.title">
+               <b-list-group-item v-for="doc in files_of('sponsorship')" :key="doc.title">
                   <a target="_blank" :href="doc.file">{{doc.title}}</a>
                </b-list-group-item>
             </b-list-group>
@@ -83,7 +83,7 @@
    },
    computed: {
      ...mapGetters("files", [
-       "sponsorship_files",
+       "files_of",
        "display_sponsorship_brochure"
      ])
    },

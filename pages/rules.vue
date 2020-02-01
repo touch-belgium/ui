@@ -20,18 +20,28 @@
                Touch Belgium members.
             </p>
 
-            <p class="text-justify">
+            <p>Documents:</p>
+            <b-list-group class="mb-3">
+               <b-list-group-item v-for="doc in files_of('rules')" :key="doc.title">
+                  <a target="_blank" :href="doc.file">{{doc.title}}</a>
+               </b-list-group-item>
+            </b-list-group>
 
-            </p>
          </b-col>
       </b-row>
    </b-container>
 </template>
 
 <script>
- export default {
-   async asyncData() {
+ import { mapGetters } from "vuex";
 
+ export default {
+   async asyncData ({ store, error }) {
+     try {
+       await store.dispatch("files/fetch_files");
+     } catch (e) {
+       error({ statusCode: 404, message: "This page is currently unavailable" });
+     }
    },
    data () {
      return {
@@ -50,7 +60,9 @@
 
    },
    computed: {
-
+     ...mapGetters("files", [
+       "files_of"
+     ])
    }
  }
 </script>
