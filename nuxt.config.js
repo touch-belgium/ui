@@ -87,7 +87,8 @@ export default {
           syncLocale: true
         }
       }
-    ]
+    ],
+    "@nuxtjs/sitemap"
   ],
   /*
   ** Axios module configuration
