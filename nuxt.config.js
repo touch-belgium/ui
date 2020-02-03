@@ -97,7 +97,7 @@ export default {
   axios: {
     // The environment variable API_URL can be used to override the
     // following:
-    baseURL: "https://admin.touch-belgium.be/api/"
+    baseURL: "http://localhost:8000/api/"
   },
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`

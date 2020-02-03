@@ -2,29 +2,43 @@
    <div>
       <BannerPicture :picture="competition.picture"></BannerPicture>
       <b-container class="mt-5">
-         <b-row>
-            <b-col>
-               <h1>{{ competition.name }}</h1>
-            </b-col>
-         </b-row>
-         <b-row>
-            <b-col>
-               <p>
-                  <font-awesome-icon icon="map-marker-alt" />
-                  <span class="align-middle">
-                     {{ competition.venue.name }}.
-                     <span class="font-italic" v-if="competition.venue.address">
-                        {{ competition.venue.address }}
+         <b-card class="transparent">
+            <b-row>
+               <b-col>
+                  <h1>{{ competition.name }}</h1>
+               </b-col>
+            </b-row>
+            <b-row>
+               <b-col>
+                  <p>
+                     <font-awesome-icon icon="map-marker-alt" />
+                     <span class="align-middle">
+                        {{ competition.venue.name }}.
+                        <span class="font-italic" v-if="competition.venue.address">
+                           {{ competition.venue.address }}
+                        </span>
                      </span>
-                  </span>
-               </p>
+                  </p>
 
-               <div v-html="competition.description"></div>
-            </b-col>
-         </b-row>
+                  <div v-html="competition.description"></div>
+               </b-col>
+            </b-row>
+         </b-card>
 
-         <Category v-show="false" :cat="competition.categories[0]"></Category>
-
+         <b-card no-body class="my-5">
+            <b-tabs pills card>
+               <template v-slot:tabs-start>
+                  <h5 class="tab-start">Categories:</h5>
+               </template>
+               <b-tab v-for="cat in competition.categories"
+                      :key="cat.category"
+                      :title="cat.category"
+                      @click="change_cat(cat.category)"
+                      lazy>
+                  <category :cat="cat" :competition_type="competition.competition_type" />
+               </b-tab>
+            </b-tabs>
+         </b-card>
       </b-container>
    </div>
 </template>
@@ -54,6 +68,9 @@
      }
    },
    methods: {
+     change_cat (cat_name) {
+       this.$store.dispatch("competitions/set_category", cat_name);
+     },
      on_select_team_box (team) {
        this.selected_team = team;
      },
@@ -62,7 +79,7 @@
      }
    },
    mounted () {
-
+     this.$store.dispatch("competitions/set_category", this.competition.categories[0].category);
    },
    computed: {
      ...mapState("competitions", [
@@ -76,5 +93,8 @@
 </script>
 
 <style scoped lang="scss">
-
+ .tab-start {
+   margin-right: 1em;
+   margin-top: 0.5rem;
+ }
 </style>

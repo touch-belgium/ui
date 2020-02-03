@@ -1,17 +1,18 @@
 <template>
-   <div class="mt-4">
-      <b-row>
+   <div class="mt-3">
+      <b-row v-show="false">
          <b-col>
             <h4>Category: <b-badge>{{cat.category}}</b-badge></h4>
          </b-col>
       </b-row>
 
-      <b-row v-if="false">
+      <b-row v-show="competition_type == 'LL'">
          <b-col cols="12">
             <h1>Table</h1>
             <b-table
               striped
               bordered
+              responsive
               hover
               sort-by="points"
               sort-desc
@@ -22,40 +23,42 @@
          </b-col>
       </b-row>
 
-      <b-row class="mt-3">
-         <b-col>
-            <h1>Fixtures and results</h1>
-         </b-col>
-      </b-row>
+      <div v-show="false">
+         <b-row class="mt-3">
+            <b-col>
+               <h1>Fixtures and results</h1>
+            </b-col>
+         </b-row>
 
-      <b-row>
-         <b-col>
-            <p>Filter matches by team:</p>
-         </b-col>
-      </b-row>
+         <b-row>
+            <b-col>
+               <p>Filter matches by team:</p>
+            </b-col>
+         </b-row>
 
-      <b-row class="mb-4">
-         <b-col cols="12" md="6" lg="4">
-            <b-form-select
-              @input="on_select_team_box"
-              :options="teams"
-            >
-            </b-form-select>
-            <!-- TODO: clear selected team -->
-         </b-col>
-      </b-row>
+         <b-row class="mb-4">
+            <b-col cols="12" md="6" lg="4">
+               <b-form-select
+                 @input="on_select_team_box"
+                 :options="teams"
+               >
+               </b-form-select>
+               <!-- TODO: clear selected team -->
+            </b-col>
+         </b-row>
 
-      <b-row v-if="select_team_box">
-         <b-col>
-            <p class="font-italic" @click="clear_select_team_box">Reset filter</p>
-         </b-col>
-      </b-row>
+         <b-row v-if="select_team_box">
+            <b-col>
+               <p class="font-italic" @click="clear_select_team_box">Reset filter</p>
+            </b-col>
+         </b-row>
 
-      <b-row no-gutters v-for="match in filtered_matches(cat.matches, selected_team)" :key="match.id">
-         <b-col cols="12">
-            <match v-bind:info="match"></match>
-         </b-col>
-      </b-row>
+         <b-row no-gutters v-for="match in filtered_matches(cat.matches, selected_team)" :key="match.id">
+            <b-col cols="12">
+               <match :info="match" />
+            </b-col>
+         </b-row>
+      </div>
    </div>
 </template>
 
@@ -65,10 +68,9 @@
  import { mapState, mapGetters } from "vuex";
 
  export default {
-   props: ["cat"],
+   props: ["cat", "competition_type"],
    data () {
      return {
-       error: null,
        selected_team: null,
        select_team_box: null/* FIX: que es esto */
      }
@@ -82,11 +84,11 @@
      }
    },
    mounted () {
+
    },
    computed: {
      ...mapState("competitions", [
        "teams",
-       "competition",
        "table_fields"
      ]),
      ...mapGetters("competitions", [
@@ -100,5 +102,6 @@
  }
 </script>
 
-<style module lang="scss">
+<style scoped lang="scss">
+
 </style>

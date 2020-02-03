@@ -1,55 +1,64 @@
 import slugify from "slugify";
 
 export const state = () => ({
-  search_competition_box: "",
-  select_team_box: "",
-  competitions: [],
+  category_name: "",
+  pools: [],
   matches: [],
-  max_shown: 10,
+  bonuses: [],
+  competitions: [],
   competition: null,
-  table_fields: {
-    team: {
+  table_fields: [
+    {
+      key: "team",
       label: "Team",
       sortable: true
     },
-    points: {
+    {
       key: "points",
       label: "Points",
       sortable: true
     },
-    bonus: {
+    {
+      key: "bonus",
       label: "Bonus",
       sortable: true
     },
-    played: {
+    {
+      key: "played",
       label: "Played",
       sortable: true
     },
-    wins: {
+    {
+      key: "wins",
       label: "Wins",
       sortable: true
     },
-    loses: {
+    {
+      key: "loses",
       label: "Loses",
       sortable: true
     },
-    ties: {
+    {
+      key: "ties",
       label: "Ties",
       sortable: true
     },
-    tf: {
+    {
+      key: "tf",
       label: "TF",
       sortable: true
     },
-    ta: {
+    {
+      key: "ta",
       label: "TA",
       sortable: true
     },
-    td: {
+    {
+      key: "td",
       label: "TD",
       sortable: true
     }
-  }
+  ]
 });
 
 export const getters = {
@@ -63,7 +72,7 @@ export const getters = {
   },
   ongoing_domestic_competitions (state, getters) {
     return getters.domestic_competitions.filter(c => new Date(c.start_date) < new Date() &&
-                                       new Date(c.end_date) > new Date());
+                                                new Date(c.end_date) > new Date());
   },
   upcoming_domestic_competitions (state, getters) {
     return getters.domestic_competitions.filter(c => new Date(c.start_date) > new Date()).sort((a, b) => {
@@ -86,6 +95,8 @@ export const getters = {
   past_championships (state, getters) {
     return getters.championships.filter(c => new Date(c.end_date) < new Date());
   },
+
+
   // filtered_competitions (state, getters) {
   //   const patt = new RegExp(state.search_competition_box, "i");
   //   return getters.other_competitions.filter(c => patt.test(c.name));
@@ -96,22 +107,23 @@ export const getters = {
   // n_total_shown (state, getters) {
   //   return getters.paginated_competitions.length;
   // },
+
+
   teams (state, getters) {
-    let s = new Set();
-    for (let match of state.matches) {
+    const s = new Set();
+    for (const match of state.matches) {
       s.add(match.home_team.name);
       s.add(match.away_team.name);
     }
     return [...s];
   },
-  home_matches: (state, getters) => (matches, team_name) => matches.filter(m => m.home_team.name == team_name),
-  away_matches: (state, getters) => (matches, team_name) => matches.filter(m => m.away_team.name == team_name),
-  relevant_matches: (state, getters) => (matches, team_name) => matches.filter(m => m.home_team.name == team_name || m.away_team.name == team_name),
+  home_matches: (state, getters) => (team_name) => state.matches.filter(m => m.home_team.name == team_name),
+  away_matches: (state, getters) => (team_name) => state.matches.filter(m => m.away_team.name == team_name),
+  relevant_matches: (state, getters) => (team_name) => state.matches.filter(m => m.home_team.name == team_name || m.away_team.name == team_name),
   home_wins: (state, getters) => (acc, cur, idx, src) => cur.home_touchdowns > cur.away_touchdowns ? acc + 1 : acc,
   away_wins: (state, getters) => (acc, cur, idx, src) => cur.away_touchdowns > cur.home_touchdowns ? acc + 1 : acc,
-  home_bonus: (state, getters) => (acc, cur, idx, src) => acc + cur.home_bonus,
-  away_bonus: (state, getters) => (acc, cur, idx, src) => acc + cur.away_bonus,
   ties: (state, getters) => (acc, cur, idx, src) => cur.home_touchdowns == cur.away_touchdowns ? acc + 1 : acc,
+  with_bonus: (state, getters) => (team_name) => state.bonuses.find(b => b.team == team_name),
   home_td: (state, getters) => (acc, cur, idx, src) => acc + cur.home_touchdowns,
   away_td: (state, getters) => (acc, cur, idx, src) => acc + cur.away_touchdowns,
   team_name_to_row: (state, getters) => name => {
@@ -121,33 +133,33 @@ export const getters = {
           + getters.away_matches(name).reduce(getters.home_wins, 0);
     const ties = getters.relevant_matches(name).reduce(getters.ties, 0);
     const played = wins + loses + ties;
-    // const bonus = getters.home_matches(name).reduce(getters.home_bonus, 0)
-    //     + getters.away_matches(name).reduce(getters.away_bonus, 0);
+    const bonus = getters.with_bonus(name) ? getters.with_bonus(name).points : 0;
     const tf = getters.home_matches(name).reduce(getters.home_td, 0)
           + getters.away_matches(name).reduce(getters.away_td, 0);
     const ta = getters.home_matches(name).reduce(getters.away_td, 0)
           + getters.away_matches(name).reduce(getters.home_td, 0);
-    return {team: name,
-            points: wins * state.competition.win_value +
-            ties * state.competition.tie_value +
-            loses * state.competition.defeat_value,
-            bonus: 1,
-            played,
-            wins,
-            loses,
-            ties,
-            tf,
-            ta,
-            td: tf - ta
-           };
+    return {
+      team: name,
+      points: wins * state.competition.win_value +
+        ties * state.competition.tie_value +
+        loses * state.competition.defeat_value,
+      bonus,
+      played,
+      wins,
+      loses,
+      ties,
+      tf,
+      ta,
+      td: tf - ta
+    };
   },
   table_info (state, getters) {
     return getters.teams.map(t => getters.team_name_to_row(t));
   },
   filtered_matches: (state, getters) => (matches, team) => {
     return team == null ? matches : getters.relevant_matches(matches, team.name);
-
   }
+
 };
 
 export const actions = {
@@ -160,10 +172,30 @@ export const actions = {
     const url = `competitions/${id}/`;
     const response = await this.$axios.$get(url);
     commit("set_competition", response);
+  },
+  set_category ({ state, commit }, cat_name) {
+    commit("set_category_name", cat_name);
+    const chosen_cat = state.competition.categories.find(c => c.category == cat_name);
+    commit("set_pools", chosen_cat.pools);
+    commit("set_matches", chosen_cat.matches);
+    commit("set_bonuses", chosen_cat.bonuses);
   }
+
 };
 
 export const mutations = {
+  set_category_name (state, category_name) {
+    state.category_name = category_name;
+  },
+  set_pools (state, pools) {
+    state.pools = pools;
+  },
+  set_matches (state, matches) {
+    state.matches = matches;
+  },
+  set_bonuses (state, bonuses) {
+    state.bonuses = bonuses;
+  },
   set_competition_list (state, competitions) {
     // Save competitions and augment with router path
     state.competitions = competitions.map(comp => {
@@ -175,15 +207,6 @@ export const mutations = {
   },
   set_competition (state, competition) {
     state.competition = competition;
-  },
-  set_matches (state, matches) {
-    state.matches = matches;
-  },
-  update_search_competition_box (state, search) {
-    state.search_competition_box = search;
-  },
-  update_select_team_box (state, selected) {
-    state.select_team_box = selected;
   },
   show_more (state) {
     state.max_shown += 5;

@@ -18,36 +18,6 @@ body {
     /* font-size: 1rem; */
 }
 
-/* Thanks hackingui.com */
-@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1){
-    overflow: hidden;
-    position: relative;
-    line-height: $lineHeight;
-    max-height: $lineHeight * $lineCount;
-    text-align: justify;
-    margin-right: -1em;
-    padding-right: 1em;
-    &:before {
-        content: '...';
-        position: absolute;
-        right: 0;
-        bottom: 0;
-    }
-    &:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        width: 1em;
-        height: 1em;
-        margin-top: 0.2em;
-    }
-}
-
-.block-with-text {
-    @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3);
-}
-
-
 /* Vue Gallery global css */
 .vue-gallery-image {
     float: left;
@@ -57,4 +27,8 @@ body {
     border: 1px solid #ebebeb;
     margin: 5px;
     cursor: pointer;
+}
+
+.transparent {
+    background-color: transparent;
 }
