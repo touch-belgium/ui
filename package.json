@@ -1,7 +1,7 @@
 {
   "name": "touchbelgium",
   "version": "1.0.0",
-  "description": "Touch Belgium is a non-profit organisation and the governing body of Touch rugby in Belgium",
+  "description": "Touch Belgium is a non-profit organisation and the governing body of Touch rugby in Belgium. Find out everything about the development of Touch in Belgium.",
   "author": "Carlos Requena López",
   "private": true,
   "scripts": {

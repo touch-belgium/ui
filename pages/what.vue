@@ -47,11 +47,10 @@
                      very quickly!
                   </li>
                   <li>
-                     <strong>It has an even gender split</strong> - with
-                     almost as many women playing as men. In Belgium, there
-                     are X number of female players and X number of male
-                     players. There are opportunities to play competitively
-                     as a mixed team, or as a men's or women's only team.
+                     <strong>It has an even gender split</strong> -
+                     with almost as many women playing as men. There
+                     are opportunities to play competitively as a
+                     mixed team, or as a men's or women's only team.
                   </li>
                </ul>
 
