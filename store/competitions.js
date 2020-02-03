@@ -11,7 +11,7 @@ export const state = () => ({
     {
       key: "team",
       label: "Team",
-      sortable: true
+      sortable: false
     },
     {
       key: "points",
@@ -21,7 +21,7 @@ export const state = () => ({
     {
       key: "bonus",
       label: "Bonus",
-      sortable: true
+      sortable: false
     },
     {
       key: "played",
@@ -29,18 +29,18 @@ export const state = () => ({
       sortable: true
     },
     {
-      key: "wins",
-      label: "Wins",
+      key: "won",
+      label: "Won",
       sortable: true
     },
     {
-      key: "loses",
-      label: "Loses",
+      key: "lost",
+      label: "Lost",
       sortable: true
     },
     {
-      key: "ties",
-      label: "Ties",
+      key: "drawn",
+      label: "Drawn",
       sortable: true
     },
     {
@@ -107,8 +107,15 @@ export const getters = {
   // n_total_shown (state, getters) {
   //   return getters.paginated_competitions.length;
   // },
-
-
+  invitational_team: (state, getters) => (team_name) => {
+    // If all matches a team is playing are invitational, then that
+    // team in invitational !
+    return getters.relevant_matches(team_name).every(m => m.invitational_match);
+  },
+  official_matches (state, getters) {
+    // Official matches are non-invitational
+    return state.matches.filter(m => !m.invitational_match);
+  },
   teams (state, getters) {
     const s = new Set();
     for (const match of state.matches) {
@@ -117,22 +124,29 @@ export const getters = {
     }
     return [...s];
   },
-  home_matches: (state, getters) => (team_name) => state.matches.filter(m => m.home_team.name == team_name),
-  away_matches: (state, getters) => (team_name) => state.matches.filter(m => m.away_team.name == team_name),
+  table_teams (state, getters) {
+    // These are teams that appear on the table and are counted to
+    // compute the scores. Invitational teams do not appear on the
+    // table
+    return getters.teams.filter(t => !getters.invitational_team(t));
+  },
+  home_matches: (state, getters) => (team_name) => getters.official_matches.filter(m => m.home_team.name == team_name),
+  away_matches: (state, getters) => (team_name) => getters.official_matches.filter(m => m.away_team.name == team_name),
   relevant_matches: (state, getters) => (team_name) => state.matches.filter(m => m.home_team.name == team_name || m.away_team.name == team_name),
+  relevant_official_matches: (state, getters) => (team_name) => getters.official_matches.filter(m => m.home_team.name == team_name || m.away_team.name == team_name),
   home_wins: (state, getters) => (acc, cur, idx, src) => cur.home_touchdowns > cur.away_touchdowns ? acc + 1 : acc,
   away_wins: (state, getters) => (acc, cur, idx, src) => cur.away_touchdowns > cur.home_touchdowns ? acc + 1 : acc,
-  ties: (state, getters) => (acc, cur, idx, src) => cur.home_touchdowns == cur.away_touchdowns ? acc + 1 : acc,
+  drawn: (state, getters) => (acc, cur, idx, src) => cur.home_touchdowns == cur.away_touchdowns ? acc + 1 : acc,
   with_bonus: (state, getters) => (team_name) => state.bonuses.find(b => b.team == team_name),
   home_td: (state, getters) => (acc, cur, idx, src) => acc + cur.home_touchdowns,
   away_td: (state, getters) => (acc, cur, idx, src) => acc + cur.away_touchdowns,
   team_name_to_row: (state, getters) => name => {
-    const wins = getters.home_matches(name).reduce(getters.home_wins, 0)
+    const won = getters.home_matches(name).reduce(getters.home_wins, 0)
           + getters.away_matches(name).reduce(getters.away_wins, 0);
-    const loses = getters.home_matches(name).reduce(getters.away_wins, 0)
+    const lost = getters.home_matches(name).reduce(getters.away_wins, 0)
           + getters.away_matches(name).reduce(getters.home_wins, 0);
-    const ties = getters.relevant_matches(name).reduce(getters.ties, 0);
-    const played = wins + loses + ties;
+    const drawn = getters.relevant_official_matches(name).reduce(getters.drawn, 0);
+    const played = won + lost + drawn;
     const bonus = getters.with_bonus(name) ? getters.with_bonus(name).points : 0;
     const tf = getters.home_matches(name).reduce(getters.home_td, 0)
           + getters.away_matches(name).reduce(getters.away_td, 0);
@@ -140,26 +154,25 @@ export const getters = {
           + getters.away_matches(name).reduce(getters.home_td, 0);
     return {
       team: name,
-      points: wins * state.competition.win_value +
-        ties * state.competition.tie_value +
-        loses * state.competition.defeat_value,
+      points: won * state.competition.win_value +
+        drawn * state.competition.tie_value +
+        lost * state.competition.defeat_value,
       bonus,
       played,
-      wins,
-      loses,
-      ties,
+      won,
+      lost,
+      drawn,
       tf,
       ta,
       td: tf - ta
     };
   },
   table_info (state, getters) {
-    return getters.teams.map(t => getters.team_name_to_row(t));
+    return getters.table_teams.map(t => getters.team_name_to_row(t));
   },
-  filtered_matches: (state, getters) => (matches, team) => {
-    return team == null ? matches : getters.relevant_matches(matches, team.name);
+  filtered_matches: (state, getters) => (team_name) => {
+    return team_name == null ? state.matches : getters.relevant_matches(team_name);
   }
-
 };
 
 export const actions = {

@@ -16,6 +16,7 @@
               hover
               sort-by="points"
               sort-desc
+              :sort-compare="custom_sort_table"
               :fields="table_fields"
               :items="table_info"
             >
@@ -23,7 +24,7 @@
          </b-col>
       </b-row>
 
-      <div v-show="false">
+      <div v-show="true">
          <b-row class="mt-3">
             <b-col>
                <h1>Fixtures and results</h1>
@@ -47,13 +48,7 @@
             </b-col>
          </b-row>
 
-         <b-row v-if="select_team_box">
-            <b-col>
-               <p class="font-italic" @click="clear_select_team_box">Reset filter</p>
-            </b-col>
-         </b-row>
-
-         <b-row no-gutters v-for="match in filtered_matches(cat.matches, selected_team)" :key="match.id">
+         <b-row no-gutters v-for="match in filtered_matches(selected_team)" :key="match.id">
             <b-col cols="12">
                <match :info="match" />
             </b-col>
@@ -72,10 +67,31 @@
    data () {
      return {
        selected_team: null,
-       select_team_box: null/* FIX: que es esto */
      }
    },
    methods: {
+     custom_sort_table (aRow, bRow, key, sortDesc, formatter, compareOptions, compareLocale) {
+       const points_a = aRow[key];
+       const points_b = bRow[key];
+       const td_a = aRow["td"];
+       const td_b = bRow["td"];
+       if (
+         /* This is useless but whatever */
+         (typeof points_a === 'number' && typeof points_b === 'number') ||
+         (points_a instanceof Date && points_b instanceof Date)
+       ) {
+         if (points_a != points_b) {
+           return points_a < points_b ? -1 : points_a > points_b ? 1 : 0
+         } else {
+           /* If same points, sort based on the tries difference */
+           return td_a < td_b ? -1 : td_a > td_b ? 1 : 0
+         }
+       } else {
+         // Otherwise stringify the field data and use String.prototype.localeCompare
+         /* This is useless but whatever */
+         return toString(points_a).localeCompare(toString(points_b), compareLocale, compareOptions)
+       }
+     },
      on_select_team_box (team) {
        this.selected_team = team;
      },
@@ -88,10 +104,10 @@
    },
    computed: {
      ...mapState("competitions", [
-       "teams",
        "table_fields"
      ]),
      ...mapGetters("competitions", [
+       "teams",
        "table_info",
        "filtered_matches"
      ])
