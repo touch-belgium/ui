@@ -112,8 +112,8 @@ export const actions = {
   async fetch_events ({ state, commit, getters }) {
     /* Google Apis JS library/SDK difficult to set up with Vue
      * (2019). Sending vanilla request */
-    const CALENDAR = "touch-belgium.be_n8dnngo4r1tjc2rqto95mii46k@group.calendar.google.com";
-    const GOOGLE_API_KEY = "AIzaSyAGfECY7JPalI0pfARPXTmAxiN1uz15Ja8";
+    const CALENDAR = process.env.GOOGLE_CALENDAR;
+    const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
     const endpoint = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR}/events`;
     let response = {};
     let items = [];
@@ -121,7 +121,7 @@ export const actions = {
     do {
       response = await this.$axios.$get(endpoint, {
         params: {
-          key: "AIzaSyAGfECY7JPalI0pfARPXTmAxiN1uz15Ja8",
+          key: GOOGLE_API_KEY,
           pageToken: pageToken
         }
       });

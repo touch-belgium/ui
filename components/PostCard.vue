@@ -28,7 +28,10 @@
        return this.post.body.replace(/<(?:.|\n)*?>/gm, '');
      },
      slug () {
-       return `posts/${this.post.id}/${slugify(this.post.title)}`;
+       const slug = slugify(this.post.title, {
+         lower: true
+       });
+       return `posts/${this.post.id}/${slug}`;
      }
    },
    mounted () {

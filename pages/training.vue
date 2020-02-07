@@ -31,7 +31,7 @@
                   <p><b>Language:</b> English</p>
                   <p><b>Course presenter:</b> Phil Holliday</p>
                   <p><b>Registration:</b> Please follow the following link
-                     and fill in your details on Sheet 1 to register. <a  href="https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE" target="_blank">https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE</a></p>
+                     and fill in your details on Sheet 1 to register. <a class="long-link" href="https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE" target="_blank">https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE</a></p>
                </b-list-group-item>
                <b-list-group-item>
                   <h5>Level 1 French</h5>
@@ -42,7 +42,7 @@
                   <p><b>Language:</b> French</p>
                   <p><b>Course presenter:</b> Stéphanie Horeau</p>
                   <p><b>Registration:</b> Please follow the following link
-                     and fill in your details on Sheet 2 to register. <a  href="https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE/edit#gid=426014182" target="_blank">https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE</a></p>
+                     and fill in your details on Sheet 2 to register. <a class="long-link" href="https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE/edit#gid=426014182" target="_blank">https://docs.google.com/spreadsheets/d/11qSOhwU5k5qnN5FDASw3LfIN6NbeBVlhTFZMXUJD1dE</a></p>
                </b-list-group-item>
             </b-list-group>
 

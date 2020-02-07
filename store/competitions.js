@@ -156,7 +156,8 @@ export const getters = {
       team: name,
       points: won * state.competition.win_value +
         drawn * state.competition.tie_value +
-        lost * state.competition.defeat_value,
+        lost * state.competition.defeat_value +
+        bonus,
       bonus,
       played,
       won,
@@ -212,9 +213,12 @@ export const mutations = {
   set_competition_list (state, competitions) {
     // Save competitions and augment with router path
     state.competitions = competitions.map(comp => {
+      const slug = slugify(comp.name, {
+        lower: true
+      });
       return {
         ...comp,
-        router: `competitions/${comp.id}/${slugify(comp.name)}`
+        router: `competitions/${comp.id}/${slug}`
       };
     });
   },

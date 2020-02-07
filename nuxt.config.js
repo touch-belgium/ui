@@ -1,3 +1,4 @@
+require('dotenv').config();
 
 export default {
   mode: "universal",
@@ -41,7 +42,8 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    "@nuxtjs/moment"
+    "@nuxtjs/moment",
+    "@nuxtjs/dotenv"
   ],
   /*
   ** Nuxt.js modules
@@ -55,7 +57,8 @@ export default {
     "nuxt-leaflet",
     "nuxt-fontawesome",
     "nuxt-rfg-icon",            // Using all default config, check docs
-    ['nuxt-matomo', { matomoUrl: '//touchbelgium-analytics.duckdns.org/', siteId: 1 }],
+    ['nuxt-matomo', { matomoUrl: process.env.MATOMO_URL,
+                      siteId: process.env.MATOMO_SITE_ID }],
     [
       "nuxt-i18n", {
         strategy: "no_prefix",
@@ -95,9 +98,8 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    // The environment variable API_URL can be used to override the
-    // following:
-    baseURL: "https://admin.touch-belgium.be/api/"
+    // The environment variable API_URL will override this value
+    baseURL: process.env.API_URL
   },
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`

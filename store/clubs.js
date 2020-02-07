@@ -9,7 +9,7 @@ export const state = () => ({
 
 export const getters = {
   club_coordinates: (state, getters) => (club) => [club.lat, club.lng],
-  club_page_url: (state, getters) => (club) => `clubs/${club.id}/${slugify(club.name)}/`,
+  club_page_url: (state, getters) => (club) => `clubs/${club.id}/${slugify(club.name, {lower: true})}/`,
   current_champion (state, getters) {
     // TODO: FIXME: DANGER: this is just a dummy implementation.
     return state.belgian_clubs.find(t => t.name == "Boitsfort");
