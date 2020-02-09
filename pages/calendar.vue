@@ -20,8 +20,14 @@
  import Calendar from "@/components/Calendar.vue";
 
  export default {
-   async asyncData ({ store, error }) {
+   async asyncData ({ app, req, store, error }) {
      try {
+       /* Google API Key is restricted based on the HTTP referer, add
+          it to Axios server-side request. If the process.client, it
+          doesn't matter since the browser overrides the header and it
+          works. */
+       const referrer = process.client ? window.document.referrer : `https://${req.headers.host}`;
+       app.$axios.setHeader('Referer', referrer);
        await store.dispatch("calendar/fetch_events");
      } catch (e) {
        error({ statusCode: 404, message: "This page is currently unavailable" });
