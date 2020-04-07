@@ -68,13 +68,13 @@
 
          <hr />
 
-         <b-row v-if="ongoing_domestic_competitions.length" class="pb-4">
+         <b-row class="pb-4">
             <b-col>
                <ongoing-events :competitions="ongoing_domestic_competitions" />
             </b-col>
          </b-row>
 
-         <b-row v-if="upcoming_domestic_competitions.length" class="pb-4">
+         <b-row class="pb-4">
             <b-col>
                <upcoming-events :competitions="upcoming_domestic_competitions" />
             </b-col>

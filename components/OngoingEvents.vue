@@ -10,6 +10,11 @@
       </template>
       <b-list-group>
          <b-list-group-item
+           v-if="!competitions.length"
+         >
+            No events taking place at the moment.
+         </b-list-group-item>
+         <b-list-group-item
            v-for="comp in competitions"
            :key="comp.id"
            :to="{ path: comp.router }"
