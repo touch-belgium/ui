@@ -36,7 +36,7 @@ export default {
     "~/plugins/calendar-view.client.js",
     "~/plugins/calendar-view-header.client.js",
     // Vue gallery: https://github.com/RobinCK/vue-gallery
-    "~plugins/vue-gallery.client.js"
+    "~plugins/vue-gallery.client.js",
   ],
   /*
   ** Nuxt.js dev-modules
