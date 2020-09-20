@@ -31,7 +31,7 @@
                      <label for="season">Season</label>
                      <b-form-input type="text" id="season" v-model="season" class="form-control" placeholder="YYYY/YYYY" maxlength="20" aria-describedby="input-live-help"></b-form-input>
                      <b-form-text id="input-live-help">
-                        The season starts on the 1st of August
+                        The season starts on September 1st.
                      </b-form-text>
                   </div>
                   <div class="col">
@@ -50,6 +50,7 @@
                <div class="form-group">
                   <label for="club">Touch club</label>
                   <b-form-select class="form-control" id="club" v-model="touch_club">
+                     <option>Other</option>
                      <option v-for="club in belgian_clubs">{{club.name}}</option>
                   </b-form-select>
                </div>
