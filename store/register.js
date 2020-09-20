@@ -2,9 +2,19 @@ import _ from "lodash";
 import moment from "moment";
 import { getField, updateField } from 'vuex-map-fields';
 
+const prefill_season = () => {
+  const season_start = moment().month("August").date(1).hour(0).minutes(0);
+  const this_year = moment().year();
+  if (moment().isAfter(season_start)) {
+    return `${this_year}/${this_year + 1}`;
+  } else {
+    return `${this_year - 1}/${this_year}`;
+  }
+};
+
 // Useful to reset the form
 const init_state = {
-  season: "",
+  season: prefill_season(),
   first_name: "",
   family_name: "",
   email_address: "",
@@ -16,7 +26,7 @@ const init_state = {
 };
 
 export const state = () => ({
-  season: "",
+  season: prefill_season(),
   first_name: "",
   family_name: "",
   email_address: "",

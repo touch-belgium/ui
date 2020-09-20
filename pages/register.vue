@@ -29,7 +29,10 @@
                <div class="form-group form-row">
                   <div class="col">
                      <label for="season">Season</label>
-                     <b-form-input type="text" id="season" v-model="season" class="form-control" placeholder="YYYY/YYYY" maxlength="20"></b-form-input>
+                     <b-form-input type="text" id="season" v-model="season" class="form-control" placeholder="YYYY/YYYY" maxlength="20" aria-describedby="input-live-help"></b-form-input>
+                     <b-form-text id="input-live-help">
+                        The season starts on the 1st of August
+                     </b-form-text>
                   </div>
                   <div class="col">
                      <label for="first_name">First name</label>
@@ -182,7 +185,7 @@
        } catch (e) {
          this.error_alert = true;
          /* Just get the first error, user will resend until there are
-         no more server-side errors */
+            no more server-side errors */
          this.error = e.response.data[Object.keys(e.response.data)[0]][0];
        }
      },
