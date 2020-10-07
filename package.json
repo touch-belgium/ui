@@ -12,15 +12,15 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@fortawesome/free-brands-svg-icons": "^5.14.0",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/free-brands-svg-icons": "^5.15.0",
+    "@fortawesome/free-solid-svg-icons": "^5.15.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/sitemap": "^2.4.0",
     "bootstrap": "^4.5.2",
-    "bootstrap-vue": "^2.17.0",
+    "bootstrap-vue": "^2.17.3",
     "lodash": "^4.17.20",
-    "nuxt": "^2.14.5",
+    "nuxt": "^2.14.6",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-i18n": "^6.15.1",
     "nuxt-leaflet": "0.0.21",
@@ -31,7 +31,7 @@
     "vue-gallery": "^2.0.1",
     "vue-simple-calendar": "^4.4.0",
     "vue-tweet-embed": "^2.4.0",
-    "vuex-map-fields": "^1.4.0"
+    "vuex-map-fields": "^1.4.1"
   },
   "devDependencies": {
     "@nuxtjs/dotenv": "^1.4.1",

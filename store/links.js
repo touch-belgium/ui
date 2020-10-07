@@ -6,6 +6,9 @@ export const getters = {
   referee_links (state, getters) {
     return state.links.filter(f => f.tag.word === "referees");
   },
+  rules_links (state, getters) {
+    return state.links.filter(f => f.tag.word === "rules");
+  },
   links (state, getters) {
     return state.links;
   }
