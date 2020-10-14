@@ -56,7 +56,14 @@
                </div>
                <div class="form-group">
                   <label for="dob">Date of birth</label>
-                  <b-form-datepicker id="dob" v-model="dob" class="form-control mb-2" initial-date="2000-01-01" :date-disabled-fn="disabled_dates" :required="true"></b-form-datepicker>
+                  <input
+                    type="date"
+                    placeholder="dd/mm/yyyy"
+                    id="dob"
+                    v-model="dob"
+                    class="d-inline-block form-control mb-2"
+                    initial-date="2000-01-01"
+                    required></input>
                </div>
                <p class="lead">
                   <u>Media consent</u>
@@ -195,7 +202,6 @@
      }
    },
    mounted () {
-
    },
    computed: {
      ...mapGetters("register", [
