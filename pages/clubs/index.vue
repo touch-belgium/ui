@@ -15,7 +15,7 @@
          </b-col>
       </b-row>
       <b-row>
-         <b-col v-for="club in belgian_clubs" :key="club.url" md="4" cols="6" class="my-3">
+         <b-col v-for="club in belgian_clubs" v-if="club.name !== 'Other'" :key="club.url" md="4" cols="6" class="my-3">
             <club v-bind:club="club"></club>
          </b-col>
       </b-row>
@@ -38,12 +38,13 @@
                      </l-polygon>
                      <l-marker
                        v-for="club in belgian_clubs"
+                       v-if="club.name !== 'Other'"
                        :key="club.url"
                        :lat-lng="club_coordinates(club)"
                      >
                         <l-popup>
                            <p class="h4">{{club.name}} - Touch Club</p>
-                           <p>Address: {{club.venue.address}}</p>
+                           <p v-if="club.venue">Address: {{club.venue.address}}</p>
                            <a :href="club.website" target="_blank">Website</a>
                         </l-popup>
                      </l-marker>

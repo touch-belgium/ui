@@ -8,7 +8,7 @@
 
       <b-card-body class="less-padding-y">
          <b-card-title title-tag="p" class="h4">{{ club.name }}</b-card-title>
-         <b-card-sub-title sub-title-tag="p" class="h6 mb-2">{{ club.venue.address }}</b-card-sub-title>
+         <b-card-sub-title sub-title-tag="p" v-if="club.venue" class="h6 mb-2">{{ club.venue.address }}</b-card-sub-title>
       </b-card-body>
 
       <b-list-group flush v-show="false">
