@@ -218,7 +218,7 @@
                   </b-list-group-item>
                </b-list-group>
 
-               <p class="text-justify">Referee signals video made by Sebastien Chassande (Touch France):</p>
+               <p class="lead text-justify">Referee signals video made by Sebastien Chassande (Touch France):</p>
 
                <b-embed
                  type="iframe"
@@ -226,16 +226,16 @@
                >
                </b-embed>
 
-               <p class="text-justify">Touch Belgium's FIT V5 rules presentation (EN):</p>
+               <p class="lead text-justify mt-5">Touch Belgium's FIT V5 rules presentation (EN):</p>
 
                <b-embed
                  type="iframe"
-                 src="https://youtu.be/CWtEfLaPpYc?list=PLKxqA_vVlXWKgoJ7DWhTP0sVORVuRUxQ2"
+                 src="https://www.youtube.com/embed/CWtEfLaPpYc"
                >
                </b-embed>
 
 
-               <p class="text-justify">
+               <p class="text-justify mt-4">
                   For any questions relating to referee resource
                   material, email <a href="mailto:referee@touch-belgium.be">referee@touch-belgium.be</a>.
                </p>
