@@ -1,6 +1,11 @@
-require('dotenv').config();
-
 export default {
+  ssr: false,
+  publicRuntimeConfig: {
+    google_api_key: process.env.GOOGLE_API_KEY,
+    google_calendar: process.env.GOOGLE_CALENDAR
+  },
+  // no SSR so privateRuntimeConfig doesn't do much
+  privateRuntimeConfig: {},
   /*
   ** Headers of the page
   */
@@ -42,7 +47,6 @@ export default {
   */
   buildModules: [
     "@nuxtjs/moment",
-    "@nuxtjs/dotenv"
   ],
   /*
   ** Nuxt.js modules
@@ -92,6 +96,13 @@ export default {
     ],
     "@nuxtjs/sitemap"
   ],
+  /*
+  ** Sitemap module configuration
+  ** See https://sitemap.nuxtjs.org/guide/configuration
+  */
+  sitemap: {
+    hostname: process.env.HOSTNAME || "touch-belgium.be"
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
