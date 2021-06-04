@@ -212,6 +212,7 @@ export const mutations = {
   },
   set_competition_list (state, competitions) {
     // Save competitions and augment with router path
+    console.log(competitions);
     state.competitions = competitions.map(comp => {
       const slug = slugify(comp.name, {
         lower: true

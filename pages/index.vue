@@ -93,6 +93,7 @@
        /* Tournaments */
        await store.dispatch("competitions/fetch_competition_list");
      } catch (e) {
+       console.log(e);
        error({ statusCode: 404, message: "This page is currently unavailable" });
      }
    },

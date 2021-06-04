@@ -57,6 +57,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
     "@nuxtjs/style-resources",
+    "@nuxtjs/sentry",
     "nuxt-leaflet",
     "nuxt-fontawesome",
     "nuxt-rfg-icon",            // Using all default config, check docs
@@ -103,6 +104,29 @@ export default {
   sitemap: {
     hostname: process.env.HOSTNAME || "touch-belgium.be"
   },
+
+  /* Sentry config */
+  sentry: {
+    dsn: 'https://abc61a60730e4f4184d78d04881d89e9@o794613.ingest.sentry.io/5801612',
+    // Additional Module Options go here
+    // https://sentry.nuxtjs.org/sentry/options
+    // Add native Sentry config here
+    // https://docs.sentry.io/platforms/javascript/guides/vue/configuration/options/
+    config: {
+      tracing:   {
+        tracesSampleRate: 0.5,
+        vueOptions: {
+          tracing: true,
+          tracingOptions: {
+            // hooks: [ 'mount', 'update' ],
+            timeout: 2000,
+            trackComponents: true
+          }
+        },
+        browserOptions: {}
+      }
+    },
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
@@ -121,7 +145,7 @@ export default {
       "bootstrap/scss/_variables.scss",
       "bootstrap/scss/_mixins.scss",
       "~assets/css/_colours.scss"
-   ]
+    ]
   },
   moment: {
     defaultLocale: "en",
