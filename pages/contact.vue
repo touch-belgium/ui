@@ -19,7 +19,7 @@
 
       <b-row class="mb-5">
          <b-col cols="12" md="8">
-            <b-list-group>
+            <b-list-group class="shadow">
                <b-list-group-item v-for="c in contacts" :key="c.name" class="d-flex justify-content-between align-items-center">
                   {{c.name}}
                   <a :href="mailto(c.email)">{{c.email}}</a>

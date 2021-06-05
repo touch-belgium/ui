@@ -19,9 +19,27 @@
          </b-col>
       </b-row>
       <b-row>
-         <committee-card v-for="person in committee"
-                         :person="person"
-                         :key="person.name" />
+         <b-table
+           class="shadow"
+           outlined
+           responsive
+           striped
+           :items="committee"
+           table-variant="light"
+         >
+            <template #cell(email)="data">
+               <a :href='"mailto:" + data.value'>{{ data.value }}</a>
+            </template>
+         </b-table>
+      </b-row>
+      <b-row v-if="$fetchState.pending">
+         <b-col cols="12">
+            <b-skeleton-table
+              :rows="8"
+              :columns="3"
+              :table-props="{ bordered: true, striped: true }"
+            ></b-skeleton-table>
+         </b-col>
       </b-row>
    </b-container>
 </template>
@@ -29,20 +47,10 @@
 <script>
  import { mapGetters } from "vuex";
 
- import CommitteeCard from "@/components/CommitteeCard";
-
  export default {
-   async asyncData ({ store, error }) {
-     try {
-       await store.dispatch("members/fetch_committee");
-     } catch (e) {
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
-   },
-   data () {
-     return {
-
-     }
+   async fetch () {
+     const { store } = this.$nuxt.context;
+     await store.dispatch("members/fetch_committee");
    },
    head () {
      return {
@@ -59,9 +67,6 @@
      ...mapGetters("members", [
        "committee"
      ])
-   },
-   components: {
-     CommitteeCard
    }
  }
 </script>

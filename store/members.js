@@ -21,25 +21,33 @@ export const getters = {
   coaching_board (state, getters) {
   },
   committee (state, getters) {
-    const committee = _.cloneDeep(state.committee);
+    let committee = _.cloneDeep(state.committee);
+    committee = committee.map(e => {
+      return {
+        "name": e.name,
+        "role": e.committee_position,
+        "email": e.email
+      };
+    });
+
     return committee.sort((a, b) => {
-      // DANGER: volatile and can break as soon as the position is
-      // modified
+      // DANGER: can break as soon as the position is modified
       const priority_ordering = new Map([
         ["President", 3],
         ["Treasurer", 2],
         ["Secretary", 1]
       ]);
-      if (priority_ordering.has(a.committee_position) &&
-          priority_ordering.has(b.committee_position)) {
-        return priority_ordering.get(a.committee_position) <
-          priority_ordering.get(b.committee_position) ? 1 : -1;
-      } else if (priority_ordering.has(a.committee_position)) {
+      if (priority_ordering.has(a.role) &&
+          priority_ordering.has(b.role)) {
+        return priority_ordering.get(a.role) <
+          priority_ordering.get(b.role) ? 1 : -1;
+      } else if (priority_ordering.has(a.role)) {
         return -1;
-      } else if (priority_ordering.has(b.committee_position)) {
+      } else if (priority_ordering.has(b.role)) {
         return 1;
       } else {
-        return a.committee_position > b.committee_position ? 1 : -1;
+        // Default alphabetical ordering
+        return a.role > b.role ? 1 : -1;
       }
     });
   }

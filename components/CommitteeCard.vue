@@ -1,6 +1,6 @@
 <template>
    <b-col cols="12" md="4" lg="3" class="mb-4">
-      <b-card no-body class="overflow-hidden" style="height: 100%;"
+      <b-card no-body class="shadow overflow-hidden" style="height: 100%;"
               :header="person.committee_position">
          <div class="pic_square" v-show="false">
             <b-card-img top :src="person.picture" class="rounded-circle p-3 ref_pic"></b-card-img>

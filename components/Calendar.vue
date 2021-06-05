@@ -1,7 +1,7 @@
 <template>
    <div>
       <client-only>
-         <div id="calendar" class="mt-3">
+         <div id="calendar" class="shadow mt-3">
             <calendar-view
               :show-date="show_date"
               :events="show_events"

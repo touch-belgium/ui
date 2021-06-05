@@ -1,8 +1,8 @@
 <template>
-   <b-card class="m-2 postcard" :img-src="post.picture" img-top>
+   <b-card class="shadow m-2 postcard" :img-src="post.picture" img-top>
       <b-card-text>
          <nuxt-link :to="slug" class="lead">{{ post.title }}</nuxt-link>
-         <p v-html="post.excerpt" class="mt-2"></p>
+         <p v-html="post.excerpt" style="white-space: pre-line;" class="mt-2"></p>
          <div v-if="post.tags.length" class="post-tags">
             <em>Tags: </em>
             <tag v-for="tag in post.tags" :key="tag.id" v-bind:word="tag.word" />
