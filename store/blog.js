@@ -1,6 +1,6 @@
 export const state = () => ({
   posts: [],
-  post: null,
+  post: {},
   tags: [],
   selected_tags: []
 });
@@ -25,6 +25,12 @@ export const getters = {
   },
   tag_selected: (state, getters) => (tag) => {
     return state.selected_tags.includes(tag);
+  },
+  share_text (state, getters) {
+    return `Touch Belgium news: ${state.post.title}`;
+  },
+  post_page_title (state, getters) {
+    return `${state.post.title} - Touch Belgium`;
   }
 };
 

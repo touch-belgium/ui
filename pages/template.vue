@@ -17,8 +17,8 @@
 
 <script>
  export default {
-   async asyncData({ params, axios, error }) {
-
+   async fetch() {
+     const { store } = this.$nuxt.context;
    },
    data () {
      return {

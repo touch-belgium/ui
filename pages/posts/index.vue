@@ -20,15 +20,10 @@
 <script>
  import { mapGetters, mapState } from "vuex";
 
- import PostCard from "@/components/PostCard.vue";
-
  export default {
-   async asyncData ({ store, error }) {
-     try {
-       await store.dispatch("blog/fetch_posts");
-     } catch (e) {
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
+   async fetch () {
+     const { store } = this.$nuxt.context;
+     await store.dispatch("blog/fetch_posts");
    },
    data () {
      return {
@@ -71,10 +66,7 @@
      ...mapGetters("blog", [
        "filtered_posts"
      ])
-   },
-   components: {
-     PostCard
-   },
+   }
  }
 </script>
 

@@ -29,7 +29,6 @@
 <script>
  import { mapGetters, mapState } from "vuex";
  import { LMap, LTileLayer, LMarker, LPolygon, LPopup } from "vue2-leaflet";
- import { belgium_polygon, belgium_center_coords } from "../common/geodata.js";
 
  export default {
    props: ["club"],
@@ -60,6 +59,10 @@
    computed: {
      ...mapGetters("clubs", [
        "club_coordinates"
+     ]),
+     ...mapState("geodata", [
+       "belgium_center_coords",
+       "belgium_polygon"
      ])
    },
    components: {

@@ -44,18 +44,12 @@
 </template>
 
 <script>
- import Category from "@/components/Category";
- import BannerPicture from "@/components/BannerPicture";
-
  import { mapState, mapGetters } from "vuex";
 
  export default {
-   async asyncData ({ store, params, error }) {
-     try {
-       await store.dispatch("competitions/fetch_competition", params.id);
-     } catch (e) {
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
+   async fetch () {
+     const { store } = this.$nuxt.context;
+     await store.dispatch("competitions/fetch_competition", params.id);
    },
    data () {
      return {
@@ -85,9 +79,6 @@
      ...mapState("competitions", [
        "competition"
      ])
-   },
-   components: {
-     Category, BannerPicture
    }
  }
 </script>

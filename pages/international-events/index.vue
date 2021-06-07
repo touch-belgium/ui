@@ -67,7 +67,7 @@
 
 <script>
  export default {
-   async asyncData() {
+   async fetch() {
 
    },
    data () {

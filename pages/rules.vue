@@ -52,13 +52,10 @@
  import { mapGetters } from "vuex";
 
  export default {
-   async asyncData ({ store, error }) {
-     try {
-       await store.dispatch("files/fetch_files");
-       await store.dispatch("links/fetch_links");
-     } catch (e) {
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
+   async fetch () {
+     const { store } = this.$nuxt.context;
+     await store.dispatch("files/fetch_files");
+     await store.dispatch("links/fetch_links");
    },
    data () {
      return {

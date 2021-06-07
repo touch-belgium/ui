@@ -65,26 +65,18 @@
 </template>
 
 <script>
- import Carousel from "@/components/Carousel";
- import OngoingEvents from "@/components/OngoingEvents";
- import UpcomingEvents from "@/components/UpcomingEvents";
- import PastEvents from "@/components/PastEvents";
-
  import { mapGetters, mapState } from "vuex";
 
  export default {
-   async asyncData ({ $axios, store, error }) {
-     try {
-       await store.dispatch("banner_pictures/fetch_banner_pictures");
-       await store.dispatch("competitions/fetch_competition_list");
-       const pictures = await $axios.$get("pictures");
-       return { pictures }
-     } catch (e) {
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
+   async fetch () {
+     const { store, $axios } = this.$nuxt.context;
+     await store.dispatch("banner_pictures/fetch_banner_pictures");
+     await store.dispatch("competitions/fetch_competition_list");
+     this.pictures = await $axios.$get("pictures");
    },
    data () {
      return {
+       pictures: [],
        per_page: 5,
        error: null,
        index: null
@@ -117,9 +109,6 @@
        "upcoming_championships",
        "past_championships"
      ])
-   },
-   components: {
-     Carousel, OngoingEvents, UpcomingEvents, PastEvents
    }
  }
 </script>

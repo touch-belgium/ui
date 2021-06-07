@@ -58,8 +58,6 @@
 </template>
 
 <script>
- import Match from "@/components/Match.vue";
-
  import { mapState, mapGetters } from "vuex";
 
  export default {
@@ -111,9 +109,6 @@
        "table_info",
        "filtered_matches"
      ])
-   },
-   components: {
-     Match
    }
  }
 </script>

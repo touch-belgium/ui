@@ -34,16 +34,13 @@
  import { mapState } from "vuex";
 
  export default {
-   async asyncData ({ store, error }) {
-     try {
-       await store.dispatch("contacts/fetch_contacts");
-     } catch (e) {
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
+   async fetch () {
+     const { store } = this.$nuxt.context;
+     await store.dispatch("contacts/fetch_contacts");
    },
    data () {
      return {
-       error: null
+
      }
    },
    head () {

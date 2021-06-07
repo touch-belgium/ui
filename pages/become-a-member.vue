@@ -111,8 +111,6 @@
 </template>
 
 <script>
- import FixedTBLogo from "../components/FixedTBLogo.vue";
-
  export default {
    data () {
      return {
@@ -132,8 +130,7 @@
    },
    computed: {
 
-   },
-   components: { FixedTBLogo }
+   }
  }
 </script>
 

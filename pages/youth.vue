@@ -60,16 +60,11 @@
 <script>
  import { mapGetters } from "vuex";
 
- import Carousel from "@/components/Carousel";
-
  export default {
-   async asyncData ({ store, error }) {
-     try {
-       await store.dispatch("banner_pictures/fetch_banner_pictures");
-       await store.dispatch("files/fetch_files");
-     } catch (e) {
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
+   async fetch () {
+     const { store } = this.$nuxt.context;
+     await store.dispatch("banner_pictures/fetch_banner_pictures");
+     await store.dispatch("files/fetch_files");
    },
    data () {
      return {
@@ -94,9 +89,6 @@
      ...mapGetters("files", [
        "display_sponsorship_brochure"
      ])
-   },
-   components: {
-     Carousel
    }
  }
 </script>

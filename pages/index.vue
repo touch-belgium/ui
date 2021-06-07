@@ -11,6 +11,9 @@
                   </h1>
                </b-col>
             </b-row>
+            <b-row v-if="$fetchState.error">
+               <APIError />
+            </b-row>
             <b-row>
                <b-col sm="12" md="9">
                   <blog-landing></blog-landing>
@@ -45,6 +48,9 @@
                </b-col>
             </b-row>
             <upcoming-events :competitions="upcoming_competitions" />
+            <b-row v-if="$fetchState.error">
+               <APIError />
+            </b-row>
          </b-container>
       </section>
 
@@ -72,30 +78,15 @@
  import { mapGetters, mapState } from "vuex";
  import { Timeline } from "vue-tweet-embed";
 
- import BlogLanding from "@/components/BlogLanding";
- import Calendar from "@/components/Calendar";
- import VideoOverlay from "@/components/VideoOverlay";
- import UpcomingEvents from "@/components/UpcomingEvents";
-
  export default {
-   async asyncData ({ app, req, store, error }) {
-     try {
-       /* Google API Key is restricted based on the HTTP referer, add
-          it to Axios server-side request. If the process.client, it
-          doesn't matter since the browser overrides the header and it
-          works. */
-       const referrer = process.client ? window.document.referrer : `https://${req.headers.host}`;
-       app.$axios.setHeader('Referer', referrer);
-       /* News */
-       await store.dispatch("blog/fetch_posts");
-       /* Calendar */
-       await store.dispatch("calendar/fetch_events");
-       /* Tournaments */
-       await store.dispatch("competitions/fetch_competition_list");
-     } catch (e) {
-       console.log(e);
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
+   async fetch () {
+     const { store } = this.$nuxt.context;
+     /* News */
+     await store.dispatch("blog/fetch_posts");
+     /* Calendar */
+     await store.dispatch("calendar/fetch_events");
+     /* Tournaments */
+     await store.dispatch("competitions/fetch_competition_list");
    },
    data () {
      return {
@@ -111,10 +102,7 @@
      ...mapGetters("competitions", [
        "upcoming_competitions"
      ])
-   },
-   components: {
-     Timeline, BlogLanding, Calendar, VideoOverlay, UpcomingEvents
-   },
+   }
  }
 </script>
 

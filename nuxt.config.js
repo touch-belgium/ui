@@ -4,6 +4,7 @@ export default {
     google_api_key: process.env.GOOGLE_API_KEY,
     google_calendar: process.env.GOOGLE_CALENDAR
   },
+  components: true,  // Autoimport and autoload components
   // no SSR so privateRuntimeConfig doesn't do much
   privateRuntimeConfig: {},
   /*

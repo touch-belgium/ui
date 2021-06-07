@@ -4,7 +4,10 @@
          <router-link :to="{ name: 'posts' }" class="lead">← Back to news</router-link>
       </b-row>
 
-      <b-row class="mb-5" v-if="post">
+      <b-row v-if="$fetchState.error">
+         <APIError />
+      </b-row>
+      <b-row class="mb-5" v-if="post && !$fetchState.pending && !$fetchState.error">
          <b-card
            no-body
            footer-tag="footer"
@@ -35,28 +38,20 @@
 <script>
  import { mapState, mapGetters } from "vuex";
 
- import Tag from "@/components/Tag";
- import SharingButtons from "@/components/SharingButtons";
-
  export default {
-   async asyncData({ store, params, route, error }) {
-     try {
-       await store.dispatch("blog/fetch_post", params.id);
-       return {
-         path: route.fullPath
-       }
-     } catch (e) {
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
+   async fetch () {
+     const { store, params, route } = this.$nuxt.context;
+     await store.dispatch("blog/fetch_post", params.id);
+     this.path = route.fullPath;
    },
    data () {
      return {
-
+       path: ""
      }
    },
    head () {
      return {
-       title: `${this.post.title} - Touch Belgium`
+       title: this.post_page_title
      }
    },
    methods: {
@@ -70,15 +65,13 @@
        "posts",
        "post"
      ]),
-     share_text () {
-       return `Touch Belgium news: ${this.post.title}`;
-     },
+     ...mapGetters("blog", [
+       "share_text",
+       "post_page_title"
+     ]),
      share_url () {
        return `https://touch-belgium.be${this.path}`;
      }
-   },
-   components: {
-     Tag, SharingButtons
    }
  }
 </script>

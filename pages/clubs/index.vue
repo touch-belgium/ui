@@ -57,17 +57,12 @@
 </template>
 
 <script>
- import Club from "@/components/Club.vue";
-
  import { mapGetters, mapState } from "vuex";
 
  export default {
-   async asyncData ({ $axios, store, error }) {
-     try {
-       await store.dispatch("clubs/fetch_belgian_clubs");
-     } catch (e) {
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
+   async fetch () {
+     const { store } = this.$nuxt.context;
+     await store.dispatch("clubs/fetch_belgian_clubs");
    },
    data () {
      return {
@@ -98,9 +93,6 @@
      ...mapGetters("clubs", [
        "club_coordinates"
      ])
-   },
-   components: {
-     Club
    }
  }
 </script>

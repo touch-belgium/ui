@@ -73,15 +73,10 @@
 <script>
  import { mapGetters } from "vuex";
 
- import Carousel from "@/components/Carousel";
-
  export default {
-   async asyncData ({ store, error }) {
-     try {
-       await store.dispatch("banner_pictures/fetch_banner_pictures");
-     } catch (e) {
-       error({ statusCode: 404, message: "This page is currently unavailable" });
-     }
+   async fetch () {
+     const { store } = this.$nuxt.context;
+     await store.dispatch("banner_pictures/fetch_banner_pictures");
    },
    data () {
      return {
@@ -103,9 +98,6 @@
      ...mapGetters("banner_pictures", [
        "banner_pictures_of"
      ])
-   },
-   components: {
-     Carousel
    }
  }
 </script>

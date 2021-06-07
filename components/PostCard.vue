@@ -19,8 +19,6 @@
 <script>
  import slugify from "slugify";
 
- import Tag from "@/components/Tag";
-
  export default {
    props: ["post"],
    computed: {
@@ -38,9 +36,6 @@
      /* this.$root.$on("SIGlocale", () => {
       *   this.$forceUpdate();
       * }) */
-   },
-   components: {
-     Tag
    }
  }
 </script>

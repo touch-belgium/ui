@@ -41,6 +41,18 @@
             ></b-skeleton-table>
          </b-col>
       </b-row>
+      <b-row v-if="$fetchState.pending">
+         <b-col cols="12">
+            <b-skeleton-table
+              :rows="8"
+              :columns="3"
+              :table-props="{ bordered: true, striped: true }"
+            ></b-skeleton-table>
+         </b-col>
+      </b-row>
+      <b-row v-if="$fetchState.error">
+         <APIError />
+      </b-row>
    </b-container>
 </template>
 

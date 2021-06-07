@@ -16,8 +16,6 @@
 <script>
  import { mapGetters } from "vuex";
 
- import PostCard from "@/components/PostCard";
-
  export default {
    data () {
      return {
@@ -33,9 +31,6 @@
      ...mapGetters("blog", [
        "latest_posts"
      ])
-   },
-   components: {
-     PostCard
    }
  }
 </script>

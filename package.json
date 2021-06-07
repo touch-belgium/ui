@@ -11,6 +11,10 @@
     "start": "nuxt start",
     "generate": "nuxt generate"
   },
+  "dependenciesComments": {
+    "chart.js": "Chart.js v3 not yet supported by vue-chartjs",
+    "sass": "1.33 deprecates / (div) operator and Bootstrap isn't ready yet."
+  },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
@@ -22,6 +26,7 @@
     "@sentry/tracing": "^6.5.1",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
+    "chart.js": "2.9.4",
     "lodash": "^4.17.21",
     "nuxt": "^2.15.6",
     "nuxt-fontawesome": "^0.4.0",
@@ -31,6 +36,7 @@
     "nuxt-rfg-icon": "^0.6.4",
     "rrule": "^2.6.8",
     "slugify": "^1.5.3",
+    "vue-chartjs": "^3.5.1",
     "vue-gallery": "^2.0.1",
     "vue-simple-calendar": "^4.4.0",
     "vue-tweet-embed": "^2.4.0",
@@ -40,9 +46,5 @@
     "fibers": "^5.0.0",
     "sass": "1.32.13",
     "sass-loader": "^10.2.0"
-  },
-  "engines": {
-    "node": ">=14.17.0 <17",
-    "npm": "~6.14.13"
   }
 }
